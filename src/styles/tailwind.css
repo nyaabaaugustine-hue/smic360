@@ -1173,3 +1173,318 @@ footer { background: linear-gradient(rgba(11,31,58,0.96), rgba(11,31,58,0.96)), 
   .topbar-left { gap: 12px; }
 }
 
+/* =============================================
+   PREMIUM UI ENHANCEMENTS — SMIC360
+   ============================================= */
+
+/* ── Navbar: Gold accent bar on scroll ── */
+.navbar::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), var(--cyan), var(--gold), transparent);
+  opacity: 0;
+  transition: opacity .4s;
+}
+.navbar.scrolled::after { opacity: 1; }
+
+/* ── Nav Book button: gold gradient on default (not just scrolled) ── */
+.nav-book {
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-d) 100%) !important;
+  color: var(--navy) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.3px;
+  box-shadow: 0 4px 18px rgba(255,193,7,.35) !important;
+}
+.nav-book:hover {
+  background: var(--gold-d) !important;
+  box-shadow: 0 6px 28px rgba(255,193,7,.55) !important;
+}
+
+/* ── Section dividers: gold wave line ── */
+.section-divider {
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--gold), var(--cyan), var(--gold), transparent);
+  border: none;
+  margin: 0;
+  opacity: .35;
+}
+
+/* ── Ribbon cards: glassmorphism glow on hover ── */
+.ribbon-card {
+  position: relative;
+  overflow: hidden;
+}
+.ribbon-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,193,7,.04), rgba(0,180,216,.04));
+  opacity: 0;
+  transition: opacity .3s;
+  pointer-events: none;
+}
+.ribbon-card:hover::before { opacity: 1; }
+
+/* ── Compare table SMIC360 column highlight ── */
+.ct-head-cell.hl {
+  color: var(--gold) !important;
+  font-size: 13px;
+  position: relative;
+}
+.ct-head-cell.hl::after {
+  content: '★ BEST';
+  display: block;
+  font-size: 9px;
+  letter-spacing: 1px;
+  color: var(--cyan);
+  margin-top: 2px;
+}
+.ct-cell.yes {
+  font-weight: 700;
+  font-size: 16px;
+}
+
+/* ── Case cards: gold left border accent ── */
+.case-card {
+  border-left: 3px solid transparent;
+  transition: border-color .3s, transform .3s, box-shadow .3s;
+}
+.case-card:hover { border-left-color: var(--gold); }
+
+/* ── Team cards: shimmer on hover ── */
+.team-card::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 40%;
+  height: 200%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.12), transparent);
+  transform: skewX(-20deg);
+  opacity: 0;
+  transition: opacity .3s;
+  pointer-events: none;
+}
+.team-card:hover::after {
+  opacity: 1;
+  animation: card-shimmer .6s ease forwards;
+}
+@keyframes card-shimmer {
+  from { left: -60%; }
+  to { left: 120%; }
+}
+
+/* ── Testimonial cards: gold quote mark ── */
+.testi-card { position: relative; }
+.testi-card::before {
+  content: '\201C';
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  font-size: 72px;
+  font-family: Georgia, serif;
+  color: var(--gold);
+  opacity: .12;
+  line-height: 1;
+  pointer-events: none;
+}
+
+/* ── Capability cards: animated gradient top border ── */
+.cap-card {
+  background-image: none;
+  position: relative;
+}
+.cap-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--gold), var(--cyan), var(--gold));
+  background-size: 200% 100%;
+  animation: border-flow 3s linear infinite;
+  opacity: 0;
+  transition: opacity .3s;
+}
+.cap-card:hover::before { opacity: 1; }
+@keyframes border-flow {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+/* ── Project cards: badge improvement ── */
+.proj-badge {
+  background: linear-gradient(135deg, var(--navy), #0d3580);
+  border: 1px solid rgba(255,193,7,.3);
+  backdrop-filter: blur(8px);
+}
+
+/* ── CTA banner: animated spotlight ── */
+.cta-banner::after {
+  content: '';
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,193,7,.08) 0%, transparent 70%);
+  left: 5%;
+  top: -30%;
+  pointer-events: none;
+  animation: spotlight-drift 8s ease-in-out infinite alternate;
+}
+@keyframes spotlight-drift {
+  from { transform: translateY(0) scale(1); }
+  to { transform: translateY(40px) scale(1.3); }
+}
+
+/* ── Float AI button: pulsing gold ring ── */
+.float-ai {
+  box-shadow: 0 0 0 0 rgba(255,193,7,.4), 0 8px 28px rgba(22,87,213,.6);
+  animation: ai-pulse 3s ease-in-out infinite;
+}
+@keyframes ai-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(255,193,7,.4), 0 8px 28px rgba(22,87,213,.5); }
+  50% { box-shadow: 0 0 0 10px rgba(255,193,7,0), 0 8px 28px rgba(22,87,213,.5); }
+  100% { box-shadow: 0 0 0 0 rgba(255,193,7,.4), 0 8px 28px rgba(22,87,213,.5); }
+}
+
+/* ── Chat panel: enhanced design ── */
+.chat-head {
+  background: linear-gradient(135deg, #071628 0%, #0b2d56 60%, #1361c4 100%);
+  position: relative;
+  overflow: hidden;
+}
+.chat-head::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(0,180,216,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(0,180,216,.06) 1px, transparent 1px);
+  background-size: 20px 20px;
+  pointer-events: none;
+}
+.chat-head::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--gold), var(--cyan), var(--gold));
+}
+.chat-panel {
+  border: 1px solid rgba(255,193,7,.15);
+  box-shadow: 0 24px 64px rgba(0,0,0,.24), 0 0 0 1px rgba(255,193,7,.08);
+}
+.chat-msg.user {
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-d) 100%);
+  color: var(--navy);
+}
+.chat-send {
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-d) 100%);
+  color: var(--navy);
+}
+.chat-send:hover {
+  background: var(--gold-d);
+  transform: scale(1.08);
+}
+.chat-quick-btn {
+  font-size: 11.5px;
+  border-color: rgba(212,160,23,.25);
+}
+.chat-quick-btn:hover {
+  background: linear-gradient(135deg, var(--gold), var(--gold-d));
+  color: var(--navy);
+  border-color: transparent;
+}
+
+/* ── About section: decorative quote marks ── */
+.about-text::before {
+  display: none; /* placeholder for future enhancement */
+}
+
+/* ── Section backgrounds: subtle noise texture ── */
+.capabilities, .compare, .team {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.015'/%3E%3C/svg%3E");
+}
+
+/* ── Hero stat numbers: gold glow ── */
+.hero-stat-num { text-shadow: 0 0 30px rgba(255,193,7,.2); }
+.hero-stat-num span { text-shadow: 0 0 20px rgba(255,193,7,.4); }
+
+/* ── Button primary: sheen animation ── */
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+}
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.25), transparent);
+  transform: skewX(-20deg);
+  transition: left .5s ease;
+}
+.btn-primary:hover::after { left: 150%; }
+
+/* ── Featured section image: gold border glow ── */
+.feat-img::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: calc(var(--r-lg) + 2px);
+  background: linear-gradient(135deg, var(--gold), var(--cyan), var(--gold));
+  z-index: -1;
+  opacity: 0;
+  transition: opacity .4s;
+}
+.feat-img:hover::after { opacity: .6; }
+
+/* ── Scroll top button: branded ── */
+.scroll-top {
+  background: linear-gradient(135deg, var(--navy), #142d52);
+  border: 1.5px solid var(--gold);
+}
+.scroll-top:hover { background: var(--gold); color: var(--navy); }
+
+/* ── Topbar: top accent line ── */
+.topbar {
+  border-bottom: 1px solid rgba(255,193,7,.12);
+  background: linear-gradient(90deg, #071628, #0b1f3a, #071628);
+}
+
+/* ── Footer: gold section title accent ── */
+footer .footer-col h4 {
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255,193,7,.15);
+  margin-bottom: 18px;
+}
+
+/* ── Clients section: section title enhancement ── */
+.clients-label {
+  position: relative;
+  display: inline-block;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0 20px;
+}
+.clients-label::before, .clients-label::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold));
+}
+.clients-label::before { right: 100%; }
+.clients-label::after { left: 100%; background: linear-gradient(90deg, var(--gold), transparent); }
+
+/* ── Smooth page loading ── */
+body { animation: page-in .4s ease-out; }
+@keyframes page-in { from { opacity: 0; } to { opacity: 1; } }
+
+

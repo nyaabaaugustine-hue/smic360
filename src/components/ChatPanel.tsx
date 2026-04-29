@@ -49,9 +49,11 @@ export default function ChatPanel() {
 
       const data = await response.json();
       setIsTyping(false);
-      
+
       if (data.text) {
         addMessage(data.text, 'bot');
+      } else if (data.error) {
+        addMessage(`Assistant Error: ${data.error}`, 'bot');
       } else {
         throw new Error('No response');
       }
@@ -107,72 +109,38 @@ export default function ChatPanel() {
           opacity: 1;
           visibility: visible;
         }
-        .chat-panel {
-          opacity: 0;
-          visibility: hidden;
-          transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-          transform: translateY(30px) scale(0.95);
-        }
-        .chat-panel.open {
-          opacity: 1;
-          visibility: visible;
-          width: 460px !important;
-          height: 720px !important;
-          max-width: 95vw;
-          max-height: 90vh;
-          z-index: 10000;
-          transform: translateY(10%) scale(1);
-        }
         .chat-close {
-          background: #ff0000 !important;
+          background: rgba(255,255,255,0.12) !important;
           color: white !important;
-          width: 32px !important;
-          height: 32px !important;
+          width: 30px !important;
+          height: 30px !important;
           border-radius: 50% !important;
           display: flex !important;
           align-items: center;
           justify-content: center;
-          opacity: 1 !important;
           cursor: pointer;
-          border: 2px solid #fff;
-          box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+          border: 1px solid rgba(255,255,255,0.2);
+          transition: background 0.2s;
+          font-size: 13px;
         }
-        @media (max-width: 640px) {
-          .chat-panel.open {
-            position: fixed !important;
-            top: 10% !important;
-            left: 0 !important;
-            right: 0 !important;
-            bottom: 0 !important;
-            width: 100% !important;
-            height: 90% !important;
-            max-width: 100vw !important;
-            border-radius: 0 !important;
-            margin: 0 !important;
-          }
-          .chat-close {
-            width: 40px !important;
-            height: 40px !important;
-            font-size: 20px !important;
-          }
+        .chat-close:hover { background: rgba(255,0,0,0.6) !important; }
+        .chat-clear {
+          background: rgba(255, 255, 255, 0.1);
+          border: none;
+          color: white;
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          margin-right: 6px;
+          transition: background 0.2s;
         }
-      .chat-clear {
-        background: rgba(255, 255, 255, 0.1);
-        border: none;
-        color: white;
-        width: 32px;
-        height: 32px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        margin-right: 8px;
-        transition: background 0.2s;
-      }
-      .chat-clear:hover {
-        background: rgba(255, 255, 255, 0.2);
-      }
+        .chat-clear:hover {
+          background: rgba(255, 255, 255, 0.2);
+        }
       `}</style>
       {/* Floating Buttons */}
       <div className={`chat-overlay${isOpen ? ' visible' : ''}`} onClick={() => setIsOpen(false)} />
