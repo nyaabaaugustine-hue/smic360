@@ -49,14 +49,18 @@ export default function AboutPage() {
       {teamModal &&
         <div
           onClick={(e) => { if (e?.target === e?.currentTarget) setTeamModal(null); }}
+          ref={(el) => { if (el) el.scrollTop = 0; }}
           style={{
             position: 'fixed', inset: 0,
             background: 'rgba(4,14,29,0.88)',
             backdropFilter: 'blur(10px)',
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            display: 'flex',
+            alignItems: 'flex-start',
+            justifyContent: 'center',
             zIndex: 100000,
-            padding: '24px 20px',
+            padding: '20px 16px 40px',
             overflowY: 'auto',
+            WebkitOverflowScrolling: 'touch',
           }}
         >
           <div style={{
@@ -67,7 +71,8 @@ export default function AboutPage() {
             boxShadow: '0 32px 80px rgba(4,14,29,0.35)',
             borderTop: '4px solid #FFC107',
             animation: 'bmIn 0.38s cubic-bezier(0.16,1,0.3,1)',
-            margin: 'auto',
+            margin: '0 auto',
+            alignSelf: 'flex-start',
             position: 'relative',
           }}>
             {/* Header */}

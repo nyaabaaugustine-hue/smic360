@@ -19,6 +19,41 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
     }
   }, [isOpen]);
 
+  // Lock body scroll while modal is open; restore on close
+  useEffect(() => {
+    if (isOpen) {
+      const y = window.scrollY;
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${y}px`;
+      document.body.style.left = '0';
+      document.body.style.right = '0';
+      document.body.style.overflowY = 'scroll';
+    } else {
+      const top = document.body.style.top;
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.left = '';
+      document.body.style.right = '';
+      document.body.style.overflowY = '';
+      if (top) window.scrollTo(0, -parseInt(top, 10));
+    }
+    return () => {
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.left = '';
+      document.body.style.right = '';
+      document.body.style.overflowY = '';
+    };
+  }, [isOpen]);
+
+  // Scroll modal overlay to top whenever it opens
+  const overlayRef = React.useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (isOpen && overlayRef.current) {
+      overlayRef.current.scrollTop = 0;
+    }
+  }, [isOpen]);
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
@@ -54,14 +89,18 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
 
   return (
     <div
+      ref={overlayRef}
       style={{
         position: 'fixed', inset: 0,
         background: 'rgba(4,14,29,0.88)',
-        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        display: 'flex',
+        alignItems: 'flex-start',
+        justifyContent: 'center',
         zIndex: 100001,
-        padding: '24px 20px',
+        padding: '20px 16px 40px',
         backdropFilter: 'blur(10px)',
         overflowY: 'auto',
+        WebkitOverflowScrolling: 'touch',
       }}
       onClick={(e) => { if (e.target === e.currentTarget) handleClose(); }}
     >
@@ -76,7 +115,8 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
           box-shadow: 0 32px 80px rgba(4,14,29,0.35);
           animation: bmIn 0.38s cubic-bezier(0.16,1,0.3,1);
           border-top: 4px solid #FFC107;
-          margin: auto;
+          margin: 0 auto;
+          align-self: flex-start;
         }
         @keyframes bmIn { from{opacity:0;transform:translateY(30px) scale(0.94);} to{opacity:1;transform:none;} }
 
