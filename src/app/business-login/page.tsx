@@ -10,6 +10,17 @@ export default function BusinessLoginPage() {
   const [done, setDone] = useState(false);
   const [error, setError] = useState('');
 
+  // Lock body scroll only while on this page, clean up on unmount
+  React.useEffect(() => {
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = prev;
+      document.documentElement.style.overflow = '';
+    };
+  }, []);
+
   const [loginEmail, setLoginEmail] = useState('');
   const [loginPassword, setLoginPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -71,7 +82,7 @@ export default function BusinessLoginPage() {
     <>
       <style>{`
         /* ── Full-viewport, no-scroll layout ── */
-        html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
+        /* overflow:hidden applied via useEffect to avoid global bleed */
 
         .blp {
           height: 100dvh;

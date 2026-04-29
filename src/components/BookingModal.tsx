@@ -58,7 +58,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
         position: 'fixed', inset: 0,
         background: 'rgba(4,14,29,0.88)',
         display: 'flex', alignItems: 'center', justifyContent: 'center',
-        zIndex: 10000,
+        zIndex: 100001,
         padding: '24px 20px',
         backdropFilter: 'blur(10px)',
         overflowY: 'auto',

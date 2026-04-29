@@ -45,59 +45,56 @@ export default function AboutPage() {
       <Topbar />
       <Navbar onBookClick={() => setBookOpen(true)} />
       <BookingModal isOpen={bookOpen} onClose={() => setBookOpen(false)} />
-      {/* Team Modal */}
+      {/* Team Modal — self-contained inline styles, no CSS class conflicts */}
       {teamModal &&
-        <div className="modal open" onClick={(e) => { if (e?.target === e?.currentTarget) setTeamModal(null); }}>
-          <style>{`
-            .vibrant-modal {
-              background: #fff;
-              border-radius: 24px !important;
-              padding: 0 !important;
-              overflow: hidden;
-              box-shadow: 0 25px 50px -12px rgba(19, 97, 196, 0.25) !important;
-              border: none !important;
-              animation: modalReveal 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            }
-            @keyframes modalReveal {
-              from { opacity: 0; transform: scale(0.9) translateY(20px); }
-              to { opacity: 1; transform: scale(1) translateY(0); }
-            }
-            .vibrant-header {
-              background: linear-gradient(135deg, #071628 0%, #1361c4 100%);
-              padding: 50px 40px;
-              display: flex;
-              gap: 30px;
-              align-items: center;
-              color: #fff;
-              position: relative;
-            }
-            .vibrant-img-wrapper { position: relative; flex-shrink: 0; width: 150px; height: 150px; }
-            .vibrant-img-wrapper::after { content: ''; position: absolute; inset: -5px; border: 3px solid var(--gold); border-radius: 20px; animation: spin 8s linear infinite; }
-            @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-            .vibrant-img-wrapper img { width: 100%; height: 100%; border-radius: 18px; object-fit: cover; border: 4px solid #fff; position: relative; z-index: 2; }
-            .vibrant-close-btn { position: absolute; top: 20px; right: 20px; background: rgba(255,255,255,0.15); border: none; color: #fff; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; z-index: 10; transition: all 0.3s; }
-            .vibrant-close-btn:hover { background: #ff0000; transform: rotate(90deg); }
-            .vibrant-body { padding: 40px; color: var(--muted); line-height: 1.8; font-size: 16px; }
-            .vibrant-name h3 { color: var(--gold); margin: 0; font-size: 32px; }
-            .vibrant-role { color: var(--cyan); text-transform: uppercase; letter-spacing: 1px; font-weight: 600; font-size: 14px; margin-top: 5px; }
-          `}</style>
-          <div className="modal-content vibrant-modal" style={{ maxWidth: '650px' }}>
-            <button className="vibrant-close-btn" onClick={() => setTeamModal(null)}>✕</button>
-            <div className="vibrant-header">
-              <div className="vibrant-img-wrapper pop-item">
-                <img src={teamModal.img} alt={teamModal.name} />
-              </div>
-              <div className="vibrant-info pop-item" style={{ animationDelay: '0.1s' }}>
-                <div className="vibrant-name"><h3 className="oswald">{teamModal.name}</h3></div>
-                <div className="vibrant-role">{teamModal.role}</div>
-                <div className="modal-social-flex" style={{ marginTop: '15px' }}>
-                  <a href="#" className="modal-social-btn" onClick={(e) => e.preventDefault()} style={{ background: '#fff', color: 'var(--blue)', border: 'none', width: '32px', height: '32px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '12px', fontWeight: 700 }}>in</a>
-                  <a href="#" className="modal-social-btn" onClick={(e) => e.preventDefault()} style={{ background: '#fff', color: 'var(--blue)', border: 'none', width: '32px', height: '32px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '12px', fontWeight: 700 }}>ig</a>
-                  <a href="#" className="modal-social-btn" onClick={(e) => e.preventDefault()} style={{ background: '#fff', color: 'var(--blue)', border: 'none', width: '32px', height: '32px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '12px', fontWeight: 700 }}>tw</a>
+        <div
+          onClick={(e) => { if (e?.target === e?.currentTarget) setTeamModal(null); }}
+          style={{
+            position: 'fixed', inset: 0,
+            background: 'rgba(4,14,29,0.88)',
+            backdropFilter: 'blur(10px)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            zIndex: 100000,
+            padding: '24px 20px',
+            overflowY: 'auto',
+          }}
+        >
+          <div style={{
+            background: '#fff',
+            width: '100%', maxWidth: '650px',
+            borderRadius: '20px',
+            overflow: 'hidden',
+            boxShadow: '0 32px 80px rgba(4,14,29,0.35)',
+            borderTop: '4px solid #FFC107',
+            animation: 'bmIn 0.38s cubic-bezier(0.16,1,0.3,1)',
+            margin: 'auto',
+            position: 'relative',
+          }}>
+            {/* Header */}
+            <div style={{
+              background: 'linear-gradient(135deg,#071628 0%,#0b2d56 55%,#1261c0 100%)',
+              padding: '32px 28px',
+              display: 'flex', gap: '22px', alignItems: 'center',
+              position: 'relative', overflow: 'hidden',
+            }}>
+              <div style={{ position:'absolute',inset:0, backgroundImage:'linear-gradient(rgba(0,180,216,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(0,180,216,0.06) 1px,transparent 1px)', backgroundSize:'24px 24px', pointerEvents:'none' }} />
+              <div style={{ position:'absolute',bottom:0,left:0,right:0,height:2, background:'linear-gradient(90deg,#FFC107,#00b4d8,#FFC107)' }} />
+              <button
+                onClick={() => setTeamModal(null)}
+                style={{ position:'absolute',top:12,right:12, background:'rgba(255,255,255,0.12)', border:'1px solid rgba(255,255,255,0.2)', color:'#fff', width:32,height:32, borderRadius:'50%', cursor:'pointer', display:'flex',alignItems:'center',justifyContent:'center', fontSize:14, zIndex:10 }}
+              >✕</button>
+              <img src={teamModal.img} alt={teamModal.name} style={{ width:110,height:110, borderRadius:14, objectFit:'cover', border:'3px solid rgba(255,255,255,0.2)', flexShrink:0, boxShadow:'0 8px 28px rgba(0,0,0,0.3)', position:'relative', zIndex:1 }} />
+              <div style={{ position:'relative', zIndex:1 }}>
+                <h3 style={{ fontFamily:"'Oswald',sans-serif", fontSize:26, fontWeight:700, color:'#FFC107', margin:0 }}>{teamModal.name}</h3>
+                <div style={{ color:'#00b4d8', fontWeight:700, fontSize:12, letterSpacing:'1.2px', textTransform:'uppercase', marginTop:5 }}>{teamModal.role}</div>
+                <div style={{ display:'flex', gap:8, marginTop:12 }}>
+                  {['in','ig','tw'].map(s=>(
+                    <span key={s} style={{ width:28,height:28, background:'rgba(255,255,255,0.15)', border:'1px solid rgba(255,255,255,0.2)', borderRadius:6, display:'flex',alignItems:'center',justifyContent:'center', color:'#fff', fontSize:11, fontWeight:700 }}>{s}</span>
+                  ))}
                 </div>
               </div>
             </div>
-            <div className="vibrant-body pop-item" style={{ animationDelay: '0.2s' }}>
+            <div style={{ padding:'28px 32px', color:'#5a7186', lineHeight:1.82, fontSize:15 }}>
               {teamModal.fullBio}
             </div>
           </div>

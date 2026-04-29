@@ -417,24 +417,64 @@ export default function HomePage() {
 
       {/* Team Modal */}
       {teamModal && (
-        <div className="modal open" onClick={(e) => { if (e.target === e.currentTarget) setTeamModal(null); }}>
-          <div className="modal-content vibrant-modal" style={{ maxWidth: '640px' }}>
-            <div className="vibrant-header">
-              <button className="vibrant-close-btn" onClick={() => setTeamModal(null)}>✕</button>
-              <div className="vibrant-img-wrapper">
-                <img src={teamModal.img} alt={teamModal.name} />
-              </div>
-              <div className="vibrant-info">
-                <div className="vibrant-name"><h3>{teamModal.name}</h3></div>
-                <div className="vibrant-role">{teamModal.role}</div>
-                <div style={{ display: 'flex', gap: '8px', marginTop: '14px', position: 'relative', zIndex: 1 }}>
-                  {['in', 'ig', 'tw'].map((s) => (
-                    <a key={s} href="#" onClick={(e) => e.preventDefault()} style={{ width: 30, height: 30, background: 'rgba(255,255,255,0.15)', border: '1px solid rgba(255,255,255,0.2)', borderRadius: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontSize: '11px', fontWeight: 700, textDecoration: 'none', transition: 'background 0.2s' }}>{s}</a>
+        <div
+          onClick={(e) => { if (e.target === e.currentTarget) setTeamModal(null); }}
+          style={{
+            position: 'fixed', inset: 0,
+            background: 'rgba(4,14,29,0.88)',
+            backdropFilter: 'blur(10px)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            zIndex: 100000,
+            padding: '24px 20px',
+            overflowY: 'auto',
+          }}
+        >
+          <div style={{
+            background: '#fff',
+            width: '100%', maxWidth: '640px',
+            borderRadius: '20px',
+            overflow: 'hidden',
+            boxShadow: '0 32px 80px rgba(4,14,29,0.35)',
+            borderTop: '4px solid #FFC107',
+            animation: 'bmIn 0.38s cubic-bezier(0.16,1,0.3,1)',
+            margin: 'auto',
+            position: 'relative',
+          }}>
+            {/* Header */}
+            <div style={{
+              background: 'linear-gradient(135deg,#040e1d 0%,#0b2d56 55%,#1261c0 100%)',
+              padding: '32px 28px',
+              display: 'flex', gap: '22px', alignItems: 'center',
+              position: 'relative', overflow: 'hidden',
+            }}>
+              {/* grid overlay */}
+              <div style={{ position:'absolute',inset:0, backgroundImage:'linear-gradient(rgba(0,180,216,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(0,180,216,0.06) 1px,transparent 1px)', backgroundSize:'24px 24px', pointerEvents:'none' }} />
+              {/* bottom accent line */}
+              <div style={{ position:'absolute',bottom:0,left:0,right:0,height:2, background:'linear-gradient(90deg,#FFC107,#00b4d8,#FFC107)' }} />
+              {/* close */}
+              <button
+                onClick={() => setTeamModal(null)}
+                style={{ position:'absolute',top:12,right:12, background:'rgba(255,255,255,0.12)', border:'1px solid rgba(255,255,255,0.2)', color:'#fff', width:32,height:32, borderRadius:'50%', cursor:'pointer', display:'flex',alignItems:'center',justifyContent:'center', fontSize:14, zIndex:10, transition:'all 0.25s' }}
+                onMouseEnter={e=>(e.currentTarget.style.background='rgba(220,38,38,0.7)')}
+                onMouseLeave={e=>(e.currentTarget.style.background='rgba(255,255,255,0.12)')}
+              >✕</button>
+              {/* avatar */}
+              <img src={teamModal.img} alt={teamModal.name} style={{ width:110,height:110, borderRadius:14, objectFit:'cover', border:'3px solid rgba(255,255,255,0.2)', flexShrink:0, boxShadow:'0 8px 28px rgba(0,0,0,0.3)', position:'relative', zIndex:1 }} />
+              {/* info */}
+              <div style={{ position:'relative', zIndex:1 }}>
+                <h3 style={{ fontFamily:"'Oswald',sans-serif", fontSize:26, fontWeight:700, color:'#FFC107', margin:0 }}>{teamModal.name}</h3>
+                <div style={{ color:'#00b4d8', fontWeight:700, fontSize:12.5, letterSpacing:'1.2px', textTransform:'uppercase', marginTop:5 }}>{teamModal.role}</div>
+                <div style={{ display:'flex', gap:8, marginTop:12 }}>
+                  {['in','ig','tw'].map(s=>(
+                    <span key={s} style={{ width:28,height:28, background:'rgba(255,255,255,0.15)', border:'1px solid rgba(255,255,255,0.2)', borderRadius:6, display:'flex',alignItems:'center',justifyContent:'center', color:'#fff', fontSize:11, fontWeight:700, cursor:'default' }}>{s}</span>
                   ))}
                 </div>
               </div>
             </div>
-            <div className="vibrant-body">{teamModal.fullBio}</div>
+            {/* Body */}
+            <div style={{ padding:'28px 32px', color:'#5a7186', lineHeight:1.82, fontSize:15 }}>
+              {teamModal.fullBio}
+            </div>
           </div>
         </div>
       )}
@@ -560,29 +600,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Case Studies Marquee ── */}
-      <section className="cases">
-        <div className="wrap">
-          <div style={{ textAlign: 'center' }} className="reveal">
-            <span className="tag" style={{ justifyContent: 'center' }}>Success Stories</span>
-            <h2 className="section-title">Our Finished <em>Processes</em></h2>
-            <p className="section-sub" style={{ margin: '12px auto 0', textAlign: 'center' }}>Explore how we deliver integrated solutions across our diverse service pillars.</p>
-          </div>
-          <div className="cases-marquee">
-            <div className="cases-track">
-              {[...caseStudies, ...caseStudies].map((c, i) => (
-                <div key={i} className="case-card">
-                  <div className="case-img"><img src={c.img} alt={c.alt} /></div>
-                  <span className="tag">{c.tag}</span>
-                  <h3>{c.title}</h3>
-                  <p>{c.desc}</p>
-                  <div className="case-solution"><strong>Solution:</strong> {c.solution}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+    
 
       {/* ── Clients Logos ── */}
       <div className="clients">
@@ -834,48 +852,169 @@ export default function HomePage() {
         </div>
       </section> */}
 
-      {/* ── Project Spotlight — Innovative Overlapping Boxes ── */}
+      {/* ── Project Spotlight — Horizontal Scroll Marquee ── */}
       <section style={{ padding: '100px 0', background: 'var(--white)', overflow: 'hidden' }}>
         <style>{`
-          .ps-header{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:64px}
-          .ps-row{position:relative;min-height:360px;margin-bottom:48px;cursor:pointer}
-          .ps-row:last-child{margin-bottom:0}
-          .ps-img-block{position:absolute;top:0;width:60%;height:100%;border-radius:20px;overflow:hidden;box-shadow:0 24px 60px rgba(7,22,40,0.18)}
-          .ps-img-block img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s ease;display:block}
-          .ps-row:hover .ps-img-block img{transform:scale(1.05)}
-          .ps-img-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(7,22,40,0.25),transparent)}
-          .ps-badge-img{position:absolute;top:18px;left:18px;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:5px 13px;border-radius:20px;background:linear-gradient(135deg,var(--gold),var(--gold-d));color:var(--navy)}
-          .ps-num-wm{position:absolute;bottom:-16px;right:16px;font-family:'Oswald',sans-serif;font-size:110px;font-weight:700;line-height:1;color:rgba(255,255,255,0.07);pointer-events:none;user-select:none}
-          .ps-row:nth-child(odd) .ps-img-block{left:0}
-          .ps-row:nth-child(odd) .ps-info-wrap{margin-left:auto}
-          .ps-row:nth-child(even) .ps-img-block{right:0}
-          .ps-row:nth-child(even) .ps-info-wrap{margin-right:auto}
-          .ps-info-wrap{position:relative;z-index:2;width:52%;padding-top:36px;padding-bottom:36px}
-          .ps-info-box{background:#fff;border-radius:20px;padding:32px 32px 28px;box-shadow:0 20px 64px rgba(7,22,40,0.13),0 0 0 1px rgba(212,160,23,0.1);border-top:4px solid var(--gold);transition:transform 0.35s cubic-bezier(0.16,1,0.3,1),box-shadow 0.35s}
-          .ps-row:hover .ps-info-box{transform:translateY(-8px);box-shadow:0 32px 80px rgba(7,22,40,0.2),0 0 0 1.5px rgba(212,160,23,0.25)}
-          .ps-eyebrow{display:inline-flex;align-items:center;gap:7px;font-size:10.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold-d);margin-bottom:12px}
-          .ps-eyebrow::before{content:'';display:block;width:18px;height:2px;background:linear-gradient(90deg,var(--gold),var(--gold-d));border-radius:2px}
-          .ps-info-box h3{font-family:'Oswald',sans-serif;font-size:clamp(17px,2vw,22px);font-weight:700;color:var(--navy);line-height:1.22;margin-bottom:10px}
-          .ps-info-box p{font-size:13.5px;color:var(--muted);line-height:1.72;margin-bottom:18px}
-          .ps-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
-          .ps-chip{display:flex;flex-direction:column;background:var(--off);border:1px solid var(--border);border-radius:10px;padding:8px 13px;transition:border-color 0.2s}
-          .ps-chip strong{font-size:12.5px;color:var(--text);font-weight:700;margin-bottom:1px}
-          .ps-chip span{font-size:10.5px;color:var(--muted)}
-          .ps-row:hover .ps-chip{border-color:rgba(212,160,23,0.28)}
-          .ps-link{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:var(--gold-d);transition:gap 0.2s}
-          .ps-link:hover{gap:14px}
-          .ps-link-dot{width:28px;height:28px;border-radius:50%;background:var(--gold-l);border:1px solid rgba(212,160,23,0.3);display:inline-flex;align-items:center;justify-content:center;transition:all 0.25s}
-          .ps-row:hover .ps-link-dot{background:var(--gold-d);color:#fff;border-color:transparent}
-          .ps-divider{display:flex;align-items:center;justify-content:center;height:48px;position:relative;margin:-4px 0}
-          .ps-divider::before{content:'';position:absolute;top:0;left:50%;width:1px;height:100%;background:linear-gradient(to bottom,var(--border),rgba(212,160,23,0.4),var(--border))}
-          .ps-divider-dot{width:11px;height:11px;border-radius:50%;background:var(--gold);border:3px solid #fff;box-shadow:0 0 0 2px rgba(212,160,23,0.25);position:relative;z-index:1}
-          @media(max-width:860px){
-            .ps-img-block{position:relative!important;width:100%!important;height:220px!important;left:auto!important;right:auto!important}
-            .ps-info-wrap{width:100%!important;margin:0!important;padding:0!important;margin-top:-28px!important}
-            .ps-row{display:flex;flex-direction:column;min-height:auto}
-            .ps-num-wm{display:none}
+          .ps-header{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:56px}
+
+          /* Marquee track */
+          .ps-marquee-outer{
+            overflow:hidden;
+            position:relative;
+            width:100%;
+            mask-image:linear-gradient(to right,transparent,black 6%,black 94%,transparent);
+            -webkit-mask-image:linear-gradient(to right,transparent,black 6%,black 94%,transparent);
+          }
+          .ps-marquee-track{
+            display:flex;
+            gap:28px;
+            width:max-content;
+            animation:ps-scroll 60s linear infinite;
+          }
+          .ps-marquee-track:hover{ animation-play-state:paused; }
+          @keyframes ps-scroll{
+            from{ transform:translateX(0); }
+            to  { transform:translateX(calc(-50% - 14px)); }
+          }
+
+          /* Individual card */
+          .ps-card{
+            flex:0 0 360px;
+            background:#fff;
+            border-radius:20px;
+            overflow:hidden;
+            border:1px solid var(--border);
+            box-shadow:0 8px 32px rgba(7,22,40,0.08);
+            transition:transform 0.35s cubic-bezier(0.16,1,0.3,1),box-shadow 0.35s,border-color 0.25s;
+            text-decoration:none;
+            display:flex;
+            flex-direction:column;
+            white-space:normal;
+            cursor:pointer;
+          }
+          .ps-card:hover{
+            transform:translateY(-10px);
+            box-shadow:0 28px 64px rgba(7,22,40,0.16);
+            border-color:var(--gold);
+          }
+
+          /* Card image */
+          .ps-card-img{
+            position:relative;
+            height:210px;
+            overflow:hidden;
+            flex-shrink:0;
+          }
+          .ps-card-img img{
+            width:100%;height:100%;
+            object-fit:cover;
+            transition:transform 0.55s ease;
+            display:block;
+          }
+          .ps-card:hover .ps-card-img img{ transform:scale(1.07); }
+          .ps-card-img-overlay{
+            position:absolute;inset:0;
+            background:linear-gradient(to top,rgba(7,22,40,0.55) 0%,transparent 60%);
+          }
+          .ps-card-badge{
+            position:absolute;
+            top:14px;left:14px;
+            font-size:9.5px;font-weight:700;
+            letter-spacing:1.5px;text-transform:uppercase;
+            padding:4px 12px;border-radius:20px;
+            background:linear-gradient(135deg,var(--gold),var(--gold-d));
+            color:var(--navy);
+          }
+          .ps-card-num{
+            position:absolute;
+            bottom:10px;right:14px;
+            font-family:'Oswald',sans-serif;
+            font-size:52px;font-weight:700;line-height:1;
+            color:rgba(255,255,255,0.12);
+            pointer-events:none;user-select:none;
+          }
+
+          /* Card body */
+          .ps-card-body{
+            padding:22px 22px 20px;
+            display:flex;
+            flex-direction:column;
+            flex:1;
+            border-top:3px solid var(--gold);
+          }
+          .ps-card-eyebrow{
+            display:inline-flex;align-items:center;gap:6px;
+            font-size:10px;font-weight:700;
+            letter-spacing:1.5px;text-transform:uppercase;
+            color:var(--gold-d);
+            margin-bottom:10px;
+          }
+          .ps-card-eyebrow::before{
+            content:'';
+            display:block;width:14px;height:2px;
+            background:var(--gold-d);border-radius:2px;
+          }
+          .ps-card-body h3{
+            font-family:'Oswald',sans-serif;
+            font-size:17px;font-weight:700;
+            color:var(--navy);line-height:1.22;
+            margin-bottom:8px;
+          }
+          .ps-card:hover .ps-card-body h3{ color:var(--gold-d); }
+          .ps-card-body p{
+            font-size:12.5px;color:var(--muted);
+            line-height:1.68;margin-bottom:16px;
+            flex:1;
+            display:-webkit-box;
+            -webkit-line-clamp:3;
+            -webkit-box-orient:vertical;
+            overflow:hidden;
+          }
+
+          /* Stat chips */
+          .ps-card-chips{
+            display:flex;flex-wrap:wrap;gap:6px;
+            margin-bottom:16px;
+          }
+          .ps-card-chip{
+            display:flex;flex-direction:column;
+            background:var(--off);
+            border:1px solid var(--border);
+            border-radius:8px;
+            padding:6px 11px;
+            transition:border-color 0.2s;
+          }
+          .ps-card:hover .ps-card-chip{ border-color:rgba(212,160,23,0.3); }
+          .ps-card-chip strong{
+            font-size:12px;color:var(--text);font-weight:700;
+          }
+          .ps-card-chip span{
+            font-size:10px;color:var(--muted);
+          }
+
+          /* CTA row */
+          .ps-card-cta{
+            display:inline-flex;align-items:center;gap:7px;
+            font-size:12.5px;font-weight:700;
+            color:var(--gold-d);
+            padding-top:12px;
+            border-top:1px solid var(--border);
+            transition:gap 0.2s;
+          }
+          .ps-card:hover .ps-card-cta{ gap:12px; }
+          .ps-card-cta-arrow{
+            width:26px;height:26px;border-radius:50%;
+            background:var(--gold-l);
+            border:1px solid rgba(212,160,23,0.3);
+            display:inline-flex;align-items:center;justify-content:center;
+            font-size:12px;
+            transition:all 0.25s;
+          }
+          .ps-card:hover .ps-card-cta-arrow{
+            background:var(--gold-d);color:#fff;border-color:transparent;
           }
         `}</style>
+
         <div className="wrap">
           <div className="ps-header reveal">
             <div>
@@ -884,41 +1023,39 @@ export default function HomePage() {
             </div>
             <Link href="/portfolio" className="btn btn-outline" style={{ alignSelf: 'flex-end' }}>View All Projects →</Link>
           </div>
+        </div>
 
-          {projects.map((proj, i) => (
-            <div key={i}>
-              <Link href="/portfolio" className="ps-row reveal" style={{ display: 'block', textDecoration: 'none' }}>
-                <div className="ps-img-block">
+        {/* Full-width marquee — outside .wrap so it bleeds edge to edge */}
+        <div className="ps-marquee-outer">
+          <div className="ps-marquee-track">
+            {[...projects, ...projects].map((proj, i) => (
+              <Link key={i} href="/portfolio" className="ps-card">
+                <div className="ps-card-img">
                   <img src={proj.img} alt={proj.alt} />
-                  <div className="ps-img-overlay" />
-                  <div className="ps-badge-img">{proj.badge}</div>
-                  <div className="ps-num-wm">{String(i + 1).padStart(2, '0')}</div>
+                  <div className="ps-card-img-overlay" />
+                  <div className="ps-card-badge">{proj.badge}</div>
+                  <div className="ps-card-num">{String((i % projects.length) + 1).padStart(2, '0')}</div>
                 </div>
-                <div className="ps-info-wrap">
-                  <div className="ps-info-box">
-                    <div className="ps-eyebrow">{proj.badge}</div>
-                    <h3>{proj.title}</h3>
-                    <p>{proj.desc}</p>
-                    <div className="ps-chips">
-                      {proj.meta.map((m, j) => (
-                        <div key={j} className="ps-chip">
-                          <strong>{m.val}</strong>
-                          <span>{m.label}</span>
-                        </div>
-                      ))}
-                    </div>
-                    <span className="ps-link">
-                      View Project
-                      <span className="ps-link-dot">→</span>
-                    </span>
+                <div className="ps-card-body">
+                  <div className="ps-card-eyebrow">{proj.badge}</div>
+                  <h3>{proj.title}</h3>
+                  <p>{proj.desc}</p>
+                  <div className="ps-card-chips">
+                    {proj.meta.map((m, j) => (
+                      <div key={j} className="ps-card-chip">
+                        <strong>{m.val}</strong>
+                        <span>{m.label}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="ps-card-cta">
+                    View Project
+                    <span className="ps-card-cta-arrow">→</span>
                   </div>
                 </div>
               </Link>
-              {i < projects.length - 1 && (
-                <div className="ps-divider"><div className="ps-divider-dot" /></div>
-              )}
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
 
