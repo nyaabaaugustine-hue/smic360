@@ -85,11 +85,11 @@ export default function AboutPage() {
             <button className="vibrant-close-btn" onClick={() => setTeamModal(null)}>✕</button>
             <div className="vibrant-header">
               <div className="vibrant-img-wrapper pop-item">
-                <img src={teamModal?.img} alt={teamModal?.name} />
+                <img src={teamModal.img} alt={teamModal.name} />
               </div>
               <div className="vibrant-info pop-item" style={{ animationDelay: '0.1s' }}>
-                <div className="vibrant-name"><h3 className="oswald">{teamModal?.name}</h3></div>
-                <div className="vibrant-role">{teamModal?.role}</div>
+                <div className="vibrant-name"><h3 className="oswald">{teamModal.name}</h3></div>
+                <div className="vibrant-role">{teamModal.role}</div>
                 <div className="modal-social-flex" style={{ marginTop: '15px' }}>
                   <a href="#" className="modal-social-btn" onClick={(e) => e.preventDefault()} style={{ background: '#fff', color: 'var(--blue)', border: 'none', width: '32px', height: '32px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '12px', fontWeight: 700 }}>in</a>
                   <a href="#" className="modal-social-btn" onClick={(e) => e.preventDefault()} style={{ background: '#fff', color: 'var(--blue)', border: 'none', width: '32px', height: '32px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '12px', fontWeight: 700 }}>ig</a>
@@ -98,7 +98,7 @@ export default function AboutPage() {
               </div>
             </div>
             <div className="vibrant-body pop-item" style={{ animationDelay: '0.2s' }}>
-              {teamModal?.fullBio}
+              {teamModal.fullBio}
             </div>
           </div>
         </div>
@@ -140,13 +140,13 @@ export default function AboutPage() {
                 { icon: '🚀', title: 'Innovative Strategies', desc: 'Data-driven campaigns and forward-thinking solutions tailored to your market.' },
                 { icon: '🏗️', title: 'Premium Developments', desc: 'Quality-built spaces designed for modern Ghanaian living and investment.' },
                 { icon: '📦', title: 'End-to-End Procurement', desc: 'Efficient sourcing and supply chain management for every business need.' },
-                { icon: '🤝', title: 'Client-Centric', desc: 'Partnerships built on trust, transparency, and measurable results.' }]?.
-                map((pt, i) =>
-                <div key={i} className="apoint">
-                    <div className="apoint-icon">{pt?.icon}</div>
-                    <div><h4>{pt?.title}</h4><p>{pt?.desc}</p></div>
+                { icon: '🤝', title: 'Client-Centric', desc: 'Partnerships built on trust, transparency, and measurable results.' }
+                ].map((pt, i) => (
+                  <div key={i} className="apoint">
+                    <div className="apoint-icon">{pt.icon}</div>
+                    <div><h4>{pt.title}</h4><p>{pt.desc}</p></div>
                   </div>
-                )}
+                ))}
               </div>
               <div style={{ marginTop: '28px', display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
                 <Link href="/contact" className="btn btn-primary">Let&apos;s Discuss Your Project</Link>
@@ -164,15 +164,15 @@ export default function AboutPage() {
             { num: '150', suffix: '+', label: 'Projects Delivered' },
             { num: '80', suffix: '+', label: 'Happy Clients' },
             { num: '10', suffix: '+', label: 'Years of Excellence' },
-            { num: '3', suffix: '', label: 'Core Divisions' }]?.
-            map((stat, i) =>
-            <div key={i}>
+            { num: '3', suffix: '', label: 'Core Divisions' }
+            ].map((stat, i) => (
+              <div key={i}>
                 <div style={{ fontFamily: 'Oswald,sans-serif', fontSize: 'clamp(32px,4vw,52px)', fontWeight: 700, color: '#fff', lineHeight: 1 }}>
-                  {stat?.num}<span style={{ color: 'var(--gold)' }}>{stat?.suffix}</span>
+                  {stat.num}<span style={{ color: 'var(--gold)' }}>{stat.suffix}</span>
                 </div>
-                <div style={{ fontSize: '12px', color: 'rgba(255,255,255,.5)', textTransform: 'uppercase', letterSpacing: '.8px', marginTop: '8px' }}>{stat?.label}</div>
+                <div style={{ fontSize: '12px', color: 'rgba(255,255,255,.5)', textTransform: 'uppercase', letterSpacing: '.8px', marginTop: '8px' }}>{stat.label}</div>
               </div>
-            )}
+            ))}
           </div>
         </div>
       </div>
@@ -187,14 +187,38 @@ export default function AboutPage() {
             {[
             { icon: '🎯', title: 'Strategy First', desc: 'Every solution starts with a tailored strategy built around your unique goals, market context, and growth ambitions.' },
             { icon: '🏆', title: 'Excellence in Delivery', desc: 'We hold ourselves to the highest standards of quality, precision, and professionalism in every project we undertake.' },
-            { icon: '🌍', title: 'Ghana-Rooted Vision', desc: 'Built in Accra with deep local expertise and a pan-African perspective for everything we build and create.' }]?.
-            map((val, i) =>
-            <div key={i} style={{ background: '#fff', borderRadius: 'var(--r-lg)', padding: '36px 28px', textAlign: 'center', boxShadow: 'var(--sh)', border: '1px solid var(--border)', transition: 'all .3s' }}>
-                <div style={{ fontSize: '40px', marginBottom: '16px' }}>{val?.icon}</div>
-                <h3 style={{ fontFamily: 'Oswald,sans-serif', fontSize: '22px', fontWeight: 700, color: 'var(--navy)', marginBottom: '12px' }}>{val?.title}</h3>
-                <p style={{ fontSize: '14px', color: 'var(--muted)', lineHeight: 1.7 }}>{val?.desc}</p>
+            { icon: '🌍', title: 'Ghana-Rooted Vision', desc: 'Built in Accra with deep local expertise and a pan-African perspective for everything we build and create.' }
+            ].map((val, i) => (
+              <div key={i} style={{ background: '#fff', borderRadius: 'var(--r-lg)', padding: '36px 28px', textAlign: 'center', boxShadow: 'var(--sh)', border: '1px solid var(--border)', transition: 'all .3s' }}>
+                <div style={{ fontSize: '40px', marginBottom: '16px' }}>{val.icon}</div>
+                <h3 style={{ fontFamily: 'Oswald,sans-serif', fontSize: '22px', fontWeight: 700, color: 'var(--navy)', marginBottom: '12px' }}>{val.title}</h3>
+                <p style={{ fontSize: '14px', color: 'var(--muted)', lineHeight: 1.7 }}>{val.desc}</p>
               </div>
-            )}
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SDGs Section */}
+      <section id="sdgs" style={{ padding: '90px 0', background: 'var(--white)' }}>
+        <div className="wrap">
+          <div style={{ textAlign: 'center', marginBottom: '48px' }} className="reveal">
+            <span className="tag" style={{ justifyContent: 'center' }}>Our Impact</span>
+            <h2 className="section-title">Committed to <em>Sustainable Development</em></h2>
+            <p className="section-sub" style={{ margin: '12px auto 0', textAlign: 'center' }}>At SMIC360, we align our operations with the UN Sustainable Development Goals to create lasting impact in Ghana.</p>
+          </div>
+          <div className="values-grid stagger">
+            {[
+              { icon: '🏗️', title: 'Goal 9: Industry & Innovation', desc: 'Developing resilient infrastructure through The Phoenix Enclave and fostering innovation in marketing.' },
+              { icon: '💼', title: 'Goal 8: Decent Work', desc: 'Providing professional growth opportunities and contributing to Ghanaian economic growth.' },
+              { icon: '🤝', title: 'Goal 17: Partnerships', desc: 'Collaborating across sectors—from banking to state enterprises—to achieve integrated success.' }
+            ].map((sdg, i) => (
+              <div key={i} style={{ background: 'var(--off)', borderRadius: 'var(--r-lg)', padding: '36px 28px', textAlign: 'center', border: '1px solid var(--border)' }}>
+                <div style={{ fontSize: '40px', marginBottom: '16px' }}>{sdg.icon}</div>
+                <h3 style={{ fontFamily: 'Oswald,sans-serif', fontSize: '20px', fontWeight: 700, color: 'var(--navy)', marginBottom: '12px' }}>{sdg.title}</h3>
+                <p style={{ fontSize: '14px', color: 'var(--muted)', lineHeight: 1.7 }}>{sdg.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -218,23 +242,23 @@ export default function AboutPage() {
             <p className="section-sub" style={{ margin: '12px auto 0', textAlign: 'center' }}>A dedicated team of strategists, creatives, and specialists united by one goal — your success.</p>
           </div>
           <div className="team-grid stagger">
-            {teamMembers?.map((member, i) =>
-            <div 
-              key={i} 
-              className="team-card" 
-              onClick={() => setTeamModal(member)} 
-              style={{ cursor: 'pointer', transitionDelay: `${i * 0.15}s` }}
-            >
+            {teamMembers.map((member, i) => (
+              <div 
+                key={i} 
+                className="team-card" 
+                onClick={() => setTeamModal(member)} 
+                style={{ cursor: 'pointer', transitionDelay: `${i * 0.15}s` }}
+              >
                 <div className="team-img">
-                  <img src={member?.img} alt={member?.name} />
+                  <img src={member.img} alt={member.name} />
                 </div>
                 <div className="team-body">
-                  <h3>{member?.name}</h3>
-                  <div className="team-role">{member?.role}</div>
-                  <p>{member?.bio}</p>
+                  <h3>{member.name}</h3>
+                  <div className="team-role">{member.role}</div>
+                  <p>{member.bio}</p>
                 </div>
               </div>
-            )}
+            ))}
           </div>
         </div>
       </section>
