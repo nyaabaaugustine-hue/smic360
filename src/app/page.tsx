@@ -1,5 +1,6 @@
 'use client';
 import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import Link from 'next/link';
 import Topbar from '@/components/Topbar';
 import Navbar from '@/components/Navbar';
@@ -8,6 +9,7 @@ import BookingModal from '@/components/BookingModal';
 import ChatPanel from '@/components/ChatPanel';
 import ScrollReveal from '@/components/ScrollReveal';
 import HeroSlider from '@/components/HeroSlider';
+import ProjectSpotlight from '@/components/ProjectSpotlight';
 
 /* ─── Data ─────────────────────────────────────── */
 const caseStudies = [
@@ -70,38 +72,50 @@ function AnimCounter({ target, suffix = '' }: { target: number; suffix?: string 
 export default function HomePage() {
   const [bookOpen, setBookOpen] = useState(false);
   const [teamModal, setTeamModal] = useState<typeof teamMembers[0] | null>(null);
+  const [mounted, setMounted] = useState(false);
   const [consultEmail, setConsultEmail] = useState('');
   const [consultDone, setConsultDone] = useState(false);
   const [consultLoading, setConsultLoading] = useState(false);
   const [activeProcess, setActiveProcess] = useState(0);
 
-  // Lock body scroll whenever any modal is open (team modal or booking)
-  const anyModalOpen = !!(teamModal || bookOpen);
+  useEffect(() => { setMounted(true); }, []);
+
+  // Lock body scroll whenever team modal is open
   useEffect(() => {
-    if (anyModalOpen) {
-      const y = window.scrollY;
-      document.body.style.position = 'fixed';
-      document.body.style.top = `-${y}px`;
-      document.body.style.left = '0';
-      document.body.style.right = '0';
-      document.body.style.overflowY = 'scroll';
-    } else {
-      const top = document.body.style.top;
-      document.body.style.position = '';
-      document.body.style.top = '';
-      document.body.style.left = '';
-      document.body.style.right = '';
-      document.body.style.overflowY = '';
-      if (top) window.scrollTo(0, -parseInt(top, 10));
+    if (!mounted) return;
+    if (!teamModal) {
+      if (document.body.style.position === 'fixed') {
+        const y = parseInt(document.body.dataset.scrollY || '0', 10);
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.left = '';
+        document.body.style.right = '';
+        document.body.style.overflowY = '';
+        delete document.body.dataset.scrollY;
+        window.scrollTo(0, y);
+      }
+      return;
     }
+    const y = window.scrollY;
+    document.body.dataset.scrollY = String(y);
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${y}px`;
+    document.body.style.left = '0';
+    document.body.style.right = '0';
+    document.body.style.overflowY = 'scroll';
     return () => {
-      document.body.style.position = '';
-      document.body.style.top = '';
-      document.body.style.left = '';
-      document.body.style.right = '';
-      document.body.style.overflowY = '';
+      if (document.body.style.position === 'fixed') {
+        const savedY = parseInt(document.body.dataset.scrollY || '0', 10);
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.left = '';
+        document.body.style.right = '';
+        document.body.style.overflowY = '';
+        delete document.body.dataset.scrollY;
+        window.scrollTo(0, savedY);
+      }
     };
-  }, [anyModalOpen]);
+  }, [teamModal, mounted]);
 
   const handleConsult = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -443,34 +457,36 @@ export default function HomePage() {
       <Navbar onBookClick={() => setBookOpen(true)} />
       <BookingModal isOpen={bookOpen} onClose={() => setBookOpen(false)} />
 
-      {/* Team Modal */}
-      {teamModal && (
+      {/* Team Profile Modal — portal so it always renders above everything */}
+      {mounted && teamModal && createPortal(
         <div
           onClick={(e) => { if (e.target === e.currentTarget) setTeamModal(null); }}
-          ref={(el) => { if (el) el.scrollTop = 0; }}
           style={{
             position: 'fixed', inset: 0,
             background: 'rgba(4,14,29,0.88)',
             backdropFilter: 'blur(10px)',
+            WebkitBackdropFilter: 'blur(10px)',
             display: 'flex',
-            alignItems: 'flex-start',
+            alignItems: 'center',
             justifyContent: 'center',
-            zIndex: 100000,
+            zIndex: 2147483646,
             padding: '20px 16px 40px',
             overflowY: 'auto',
             WebkitOverflowScrolling: 'touch',
           }}
         >
+          <style>{`
+            @keyframes tmIn { from{opacity:0;transform:translateY(28px) scale(0.95);} to{opacity:1;transform:none;} }
+          `}</style>
           <div style={{
             background: '#fff',
             width: '100%', maxWidth: '640px',
             borderRadius: '20px',
             overflow: 'hidden',
-            boxShadow: '0 32px 80px rgba(4,14,29,0.35)',
+            boxShadow: '0 32px 80px rgba(4,14,29,0.45)',
             borderTop: '4px solid #FFC107',
-            animation: 'bmIn 0.38s cubic-bezier(0.16,1,0.3,1)',
+            animation: 'tmIn 0.38s cubic-bezier(0.16,1,0.3,1) both',
             margin: '0 auto',
-            alignSelf: 'flex-start',
             position: 'relative',
           }}>
             {/* Header */}
@@ -480,20 +496,15 @@ export default function HomePage() {
               display: 'flex', gap: '22px', alignItems: 'center',
               position: 'relative', overflow: 'hidden',
             }}>
-              {/* grid overlay */}
               <div style={{ position:'absolute',inset:0, backgroundImage:'linear-gradient(rgba(0,180,216,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(0,180,216,0.06) 1px,transparent 1px)', backgroundSize:'24px 24px', pointerEvents:'none' }} />
-              {/* bottom accent line */}
               <div style={{ position:'absolute',bottom:0,left:0,right:0,height:2, background:'linear-gradient(90deg,#FFC107,#00b4d8,#FFC107)' }} />
-              {/* close */}
               <button
                 onClick={() => setTeamModal(null)}
-                style={{ position:'absolute',top:12,right:12, background:'rgba(255,255,255,0.12)', border:'1px solid rgba(255,255,255,0.2)', color:'#fff', width:32,height:32, borderRadius:'50%', cursor:'pointer', display:'flex',alignItems:'center',justifyContent:'center', fontSize:14, zIndex:10, transition:'all 0.25s' }}
+                style={{ position:'absolute',top:12,right:12, background:'rgba(255,255,255,0.12)', border:'1px solid rgba(255,255,255,0.2)', color:'#fff', width:36,height:36, borderRadius:'50%', cursor:'pointer', display:'flex',alignItems:'center',justifyContent:'center', fontSize:16, zIndex:10, transition:'all 0.25s' }}
                 onMouseEnter={e=>(e.currentTarget.style.background='rgba(220,38,38,0.7)')}
                 onMouseLeave={e=>(e.currentTarget.style.background='rgba(255,255,255,0.12)')}
               >✕</button>
-              {/* avatar */}
               <img src={teamModal.img} alt={teamModal.name} style={{ width:110,height:110, borderRadius:14, objectFit:'cover', border:'3px solid rgba(255,255,255,0.2)', flexShrink:0, boxShadow:'0 8px 28px rgba(0,0,0,0.3)', position:'relative', zIndex:1 }} />
-              {/* info */}
               <div style={{ position:'relative', zIndex:1 }}>
                 <h3 style={{ fontFamily:"'Oswald',sans-serif", fontSize:26, fontWeight:700, color:'#FFC107', margin:0 }}>{teamModal.name}</h3>
                 <div style={{ color:'#00b4d8', fontWeight:700, fontSize:12.5, letterSpacing:'1.2px', textTransform:'uppercase', marginTop:5 }}>{teamModal.role}</div>
@@ -509,7 +520,8 @@ export default function HomePage() {
               {teamModal.fullBio}
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
 
       {/* ── Hero ── */}
@@ -612,23 +624,327 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* ── Video Tour ── */}
-      <section style={{ padding: '90px 0', background: 'var(--off)' }}>
-        <div className="wrap">
-          <div style={{ textAlign: 'center', marginBottom: '44px' }} className="reveal">
-            <span className="tag" style={{ justifyContent: 'center' }}>Property Tour</span>
-            <h2 className="section-title">The <em>Phoenix Enclave</em> Tour</h2>
-            <p className="section-sub" style={{ margin: '12px auto 0', textAlign: 'center' }}>Take a virtual walk through our premier gated community and see the SMIC360 quality first-hand.</p>
+      {/* ── Video Tour — Cinematic Premium ── */}
+      <section style={{ padding: '100px 0', background: 'var(--navy)', position: 'relative', overflow: 'hidden' }}>
+        <style>{`
+          /* Cinematic video section */
+          .vt-section {
+            position: relative;
+          }
+          .vt-section::before {
+            content: '';
+            position: absolute; inset: 0;
+            background-image:
+              linear-gradient(rgba(0,180,216,0.04) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(0,180,216,0.04) 1px, transparent 1px);
+            background-size: 64px 64px;
+            pointer-events: none;
+          }
+          /* Glow blobs */
+          .vt-blob-l {
+            position: absolute;
+            left: -120px; top: 50%; transform: translateY(-50%);
+            width: 400px; height: 400px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255,193,7,0.1) 0%, transparent 70%);
+            pointer-events: none;
+          }
+          .vt-blob-r {
+            position: absolute;
+            right: -120px; top: 50%; transform: translateY(-50%);
+            width: 400px; height: 400px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0,180,216,0.1) 0%, transparent 70%);
+            pointer-events: none;
+          }
+
+          /* Header layout */
+          .vt-header {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 52px;
+            position: relative; z-index: 1;
+          }
+          .vt-header-left .tag { color: var(--cyan); }
+          .vt-header-left .tag::before { background: var(--cyan); }
+          .vt-header-left h2 { color: #fff; }
+          .vt-header-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 14px;
+          }
+          .vt-play-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255,193,7,0.1);
+            border: 1px solid rgba(255,193,7,0.25);
+            color: var(--gold);
+            font-size: 12px; font-weight: 700;
+            letter-spacing: 1.5px; text-transform: uppercase;
+            padding: 8px 18px;
+            border-radius: 30px;
+          }
+          .vt-play-dot {
+            width: 8px; height: 8px;
+            background: var(--gold);
+            border-radius: 50%;
+            animation: vt-blink 1.8s ease-in-out infinite;
+          }
+          @keyframes vt-blink { 0%,100%{opacity:1;} 50%{opacity:0.25;} }
+
+          /* Outer frame — gold border gradient */
+          .vt-frame-outer {
+            position: relative;
+            border-radius: 28px;
+            padding: 3px;
+            background: linear-gradient(135deg, #FFC107 0%, #00b4d8 50%, #FFC107 100%);
+            background-size: 200% 200%;
+            animation: vt-border 6s linear infinite;
+            box-shadow:
+              0 0 0 1px rgba(255,193,7,0.15),
+              0 32px 80px rgba(0,0,0,0.5),
+              0 0 120px rgba(255,193,7,0.08);
+            max-width: 980px;
+            margin: 0 auto;
+            position: relative; z-index: 1;
+          }
+          @keyframes vt-border {
+            0%   { background-position: 0% 50%; }
+            50%  { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+          }
+
+          /* Inner bezel — mimics a device */
+          .vt-frame-inner {
+            background: #060e1c;
+            border-radius: 26px;
+            overflow: hidden;
+            position: relative;
+          }
+
+          /* Fake browser/device bar */
+          .vt-bar {
+            background: #0a1628;
+            padding: 10px 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+          }
+          .vt-bar-dots { display: flex; gap: 6px; }
+          .vt-bar-dot {
+            width: 10px; height: 10px;
+            border-radius: 50%;
+          }
+          .vt-bar-dot:nth-child(1) { background: #ff5f57; }
+          .vt-bar-dot:nth-child(2) { background: #ffbd2e; }
+          .vt-bar-dot:nth-child(3) { background: #28c840; }
+          .vt-bar-url {
+            flex: 1;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 6px;
+            padding: 5px 12px;
+            font-size: 11px;
+            color: rgba(255,255,255,0.35);
+            font-family: monospace;
+          }
+          .vt-bar-badge {
+            font-size: 10px; font-weight: 700;
+            letter-spacing: 1px; text-transform: uppercase;
+            color: var(--gold);
+            background: rgba(255,193,7,0.1);
+            border: 1px solid rgba(255,193,7,0.2);
+            border-radius: 4px;
+            padding: 3px 9px;
+          }
+
+          /* Responsive embed */
+          .vt-embed {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+          }
+          .vt-embed iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            border: 0;
+            display: block;
+          }
+
+          /* Bottom caption bar */
+          .vt-caption {
+            background: linear-gradient(135deg, #040e1d 0%, #0b2d56 100%);
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+            border-top: 1px solid rgba(255,193,7,0.12);
+          }
+          .vt-caption-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+          }
+          .vt-caption-icon {
+            width: 36px; height: 36px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #FFC107, #D4A017);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 16px; flex-shrink: 0;
+          }
+          .vt-caption-text strong {
+            display: block;
+            font-size: 13px; font-weight: 700; color: #fff;
+            font-family: 'Oswald', sans-serif;
+          }
+          .vt-caption-text span {
+            font-size: 11px; color: rgba(255,255,255,0.42);
+          }
+          .vt-caption-stats {
+            display: flex; gap: 20px;
+          }
+          .vt-stat {
+            text-align: right;
+          }
+          .vt-stat strong {
+            display: block;
+            font-family: 'Oswald', sans-serif;
+            font-size: 16px; font-weight: 700;
+            color: var(--gold);
+            line-height: 1;
+          }
+          .vt-stat span {
+            font-size: 10px; color: rgba(255,255,255,0.38);
+            text-transform: uppercase; letter-spacing: 0.8px;
+          }
+
+          /* Tags row below */
+          .vt-tags {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 28px;
+            flex-wrap: wrap;
+            position: relative; z-index: 1;
+          }
+          .vt-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.55);
+            font-size: 11.5px; font-weight: 600;
+            padding: 7px 16px;
+            border-radius: 30px;
+            letter-spacing: 0.3px;
+            transition: all 0.22s;
+          }
+          .vt-tag:hover { border-color: rgba(255,193,7,0.4); color: var(--gold); background: rgba(255,193,7,0.07); }
+          .vt-tag-icon { font-size: 13px; }
+
+          @media (max-width: 768px) {
+            .vt-header { flex-direction: column; align-items: flex-start; }
+            .vt-header-right { align-items: flex-start; }
+            .vt-caption-stats { display: none; }
+          }
+        `}</style>
+
+        <div className="vt-blob-l" />
+        <div className="vt-blob-r" />
+
+        <div className="wrap vt-section">
+          <div className="vt-header reveal">
+            <div className="vt-header-left">
+              <span className="tag">Property Tour</span>
+              <h2 className="section-title">The <em>Phoenix Enclave</em></h2>
+              <p className="section-sub" style={{ color: 'rgba(255,255,255,0.5)', marginTop: 8 }}>
+                Walk through Ghana&apos;s most anticipated gated community — filmed on-site.
+              </p>
+            </div>
+            <div className="vt-header-right">
+              <div className="vt-play-pill">
+                <span className="vt-play-dot" />
+                Now Playing
+              </div>
+              <a
+                href="https://www.youtube.com/watch?v=56ZbiZGh0SM"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-outline-white"
+                style={{ fontSize: '12px', padding: '9px 18px' }}
+              >
+                Watch on YouTube →
+              </a>
+            </div>
           </div>
-          <div className="reveal" style={{ position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden', borderRadius: '20px', boxShadow: '0 24px 80px rgba(7,22,40,0.18)', border: '1px solid var(--border)', maxWidth: '960px', margin: '0 auto' }}>
-            <iframe
-              style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', border: 0 }}
-              src="https://www.youtube.com/embed/56ZbiZGh0SM?si=EjwaDtu3YTE4AUGU&autoplay=1&mute=1"
-              title="The Phoenix Enclave Tour"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerPolicy="strict-origin-when-cross-origin"
-              allowFullScreen
-            />
+
+          {/* Premium frame */}
+          <div className="vt-frame-outer reveal">
+            <div className="vt-frame-inner">
+              {/* Browser bar */}
+              <div className="vt-bar">
+                <div className="vt-bar-dots">
+                  <div className="vt-bar-dot" />
+                  <div className="vt-bar-dot" />
+                  <div className="vt-bar-dot" />
+                </div>
+                <div className="vt-bar-url">youtube.com/watch — The Phoenix Enclave Virtual Tour</div>
+                <div className="vt-bar-badge">LIVE TOUR</div>
+              </div>
+              {/* Video */}
+              <div className="vt-embed">
+                <iframe
+                  src="https://www.youtube.com/embed/56ZbiZGh0SM?si=EjwaDtu3YTE4AUGU&autoplay=1&mute=1"
+                  title="The Phoenix Enclave Tour"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                />
+              </div>
+              {/* Caption bar */}
+              <div className="vt-caption">
+                <div className="vt-caption-left">
+                  <div className="vt-caption-icon">🏡</div>
+                  <div className="vt-caption-text">
+                    <strong>The Phoenix Enclave — Phase II</strong>
+                    <span>Spintex Road, Accra, Ghana · SMIC360 Real Estate Division</span>
+                  </div>
+                </div>
+                <div className="vt-caption-stats">
+                  <div className="vt-stat"><strong>24</strong><span>Units Phase I</span></div>
+                  <div className="vt-stat"><strong>GH₵850k</strong><span>From</span></div>
+                  <div className="vt-stat"><strong>Now Open</strong><span>Phase II</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Feature tags */}
+          <div className="vt-tags">
+            {[
+              { icon: '🔒', label: 'Gated & Secured' },
+              { icon: '🌿', label: 'Landscaped Gardens' },
+              { icon: '⚡', label: '24/7 Power' },
+              { icon: '💧', label: 'Water Supply' },
+              { icon: '📍', label: 'Spintex Road' },
+              { icon: '🏊', label: 'Pool Access' },
+            ].map((t) => (
+              <div key={t.label} className="vt-tag">
+                <span className="vt-tag-icon">{t.icon}</span>
+                {t.label}
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -885,212 +1201,8 @@ export default function HomePage() {
         </div>
       </section> */}
 
-      {/* ── Project Spotlight — Horizontal Scroll Marquee ── */}
-      <section style={{ padding: '100px 0', background: 'var(--white)', overflow: 'hidden' }}>
-        <style>{`
-          .ps-header{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:56px}
-
-          /* Marquee track */
-          .ps-marquee-outer{
-            overflow:hidden;
-            position:relative;
-            width:100%;
-            mask-image:linear-gradient(to right,transparent,black 6%,black 94%,transparent);
-            -webkit-mask-image:linear-gradient(to right,transparent,black 6%,black 94%,transparent);
-          }
-          .ps-marquee-track{
-            display:flex;
-            gap:28px;
-            width:max-content;
-            animation:ps-scroll 60s linear infinite;
-          }
-          .ps-marquee-track:hover{ animation-play-state:paused; }
-          @keyframes ps-scroll{
-            from{ transform:translateX(0); }
-            to  { transform:translateX(calc(-50% - 14px)); }
-          }
-
-          /* Individual card */
-          .ps-card{
-            flex:0 0 360px;
-            background:#fff;
-            border-radius:20px;
-            overflow:hidden;
-            border:1px solid var(--border);
-            box-shadow:0 8px 32px rgba(7,22,40,0.08);
-            transition:transform 0.35s cubic-bezier(0.16,1,0.3,1),box-shadow 0.35s,border-color 0.25s;
-            text-decoration:none;
-            display:flex;
-            flex-direction:column;
-            white-space:normal;
-            cursor:pointer;
-          }
-          .ps-card:hover{
-            transform:translateY(-10px);
-            box-shadow:0 28px 64px rgba(7,22,40,0.16);
-            border-color:var(--gold);
-          }
-
-          /* Card image */
-          .ps-card-img{
-            position:relative;
-            height:210px;
-            overflow:hidden;
-            flex-shrink:0;
-          }
-          .ps-card-img img{
-            width:100%;height:100%;
-            object-fit:cover;
-            transition:transform 0.55s ease;
-            display:block;
-          }
-          .ps-card:hover .ps-card-img img{ transform:scale(1.07); }
-          .ps-card-img-overlay{
-            position:absolute;inset:0;
-            background:linear-gradient(to top,rgba(7,22,40,0.55) 0%,transparent 60%);
-          }
-          .ps-card-badge{
-            position:absolute;
-            top:14px;left:14px;
-            font-size:9.5px;font-weight:700;
-            letter-spacing:1.5px;text-transform:uppercase;
-            padding:4px 12px;border-radius:20px;
-            background:linear-gradient(135deg,var(--gold),var(--gold-d));
-            color:var(--navy);
-          }
-          .ps-card-num{
-            position:absolute;
-            bottom:10px;right:14px;
-            font-family:'Oswald',sans-serif;
-            font-size:52px;font-weight:700;line-height:1;
-            color:rgba(255,255,255,0.12);
-            pointer-events:none;user-select:none;
-          }
-
-          /* Card body */
-          .ps-card-body{
-            padding:22px 22px 20px;
-            display:flex;
-            flex-direction:column;
-            flex:1;
-            border-top:3px solid var(--gold);
-          }
-          .ps-card-eyebrow{
-            display:inline-flex;align-items:center;gap:6px;
-            font-size:10px;font-weight:700;
-            letter-spacing:1.5px;text-transform:uppercase;
-            color:var(--gold-d);
-            margin-bottom:10px;
-          }
-          .ps-card-eyebrow::before{
-            content:'';
-            display:block;width:14px;height:2px;
-            background:var(--gold-d);border-radius:2px;
-          }
-          .ps-card-body h3{
-            font-family:'Oswald',sans-serif;
-            font-size:17px;font-weight:700;
-            color:var(--navy);line-height:1.22;
-            margin-bottom:8px;
-          }
-          .ps-card:hover .ps-card-body h3{ color:var(--gold-d); }
-          .ps-card-body p{
-            font-size:12.5px;color:var(--muted);
-            line-height:1.68;margin-bottom:16px;
-            flex:1;
-            display:-webkit-box;
-            -webkit-line-clamp:3;
-            -webkit-box-orient:vertical;
-            overflow:hidden;
-          }
-
-          /* Stat chips */
-          .ps-card-chips{
-            display:flex;flex-wrap:wrap;gap:6px;
-            margin-bottom:16px;
-          }
-          .ps-card-chip{
-            display:flex;flex-direction:column;
-            background:var(--off);
-            border:1px solid var(--border);
-            border-radius:8px;
-            padding:6px 11px;
-            transition:border-color 0.2s;
-          }
-          .ps-card:hover .ps-card-chip{ border-color:rgba(212,160,23,0.3); }
-          .ps-card-chip strong{
-            font-size:12px;color:var(--text);font-weight:700;
-          }
-          .ps-card-chip span{
-            font-size:10px;color:var(--muted);
-          }
-
-          /* CTA row */
-          .ps-card-cta{
-            display:inline-flex;align-items:center;gap:7px;
-            font-size:12.5px;font-weight:700;
-            color:var(--gold-d);
-            padding-top:12px;
-            border-top:1px solid var(--border);
-            transition:gap 0.2s;
-          }
-          .ps-card:hover .ps-card-cta{ gap:12px; }
-          .ps-card-cta-arrow{
-            width:26px;height:26px;border-radius:50%;
-            background:var(--gold-l);
-            border:1px solid rgba(212,160,23,0.3);
-            display:inline-flex;align-items:center;justify-content:center;
-            font-size:12px;
-            transition:all 0.25s;
-          }
-          .ps-card:hover .ps-card-cta-arrow{
-            background:var(--gold-d);color:#fff;border-color:transparent;
-          }
-        `}</style>
-
-        <div className="wrap">
-          <div className="ps-header reveal">
-            <div>
-              <span className="tag">Our Work</span>
-              <h2 className="section-title">Project <em>Spotlight</em></h2>
-            </div>
-            <Link href="/portfolio" className="btn btn-outline" style={{ alignSelf: 'flex-end' }}>View All Projects →</Link>
-          </div>
-        </div>
-
-        {/* Full-width marquee — outside .wrap so it bleeds edge to edge */}
-        <div className="ps-marquee-outer">
-          <div className="ps-marquee-track">
-            {[...projects, ...projects].map((proj, i) => (
-              <Link key={i} href="/portfolio" className="ps-card">
-                <div className="ps-card-img">
-                  <img src={proj.img} alt={proj.alt} />
-                  <div className="ps-card-img-overlay" />
-                  <div className="ps-card-badge">{proj.badge}</div>
-                  <div className="ps-card-num">{String((i % projects.length) + 1).padStart(2, '0')}</div>
-                </div>
-                <div className="ps-card-body">
-                  <div className="ps-card-eyebrow">{proj.badge}</div>
-                  <h3>{proj.title}</h3>
-                  <p>{proj.desc}</p>
-                  <div className="ps-card-chips">
-                    {proj.meta.map((m, j) => (
-                      <div key={j} className="ps-card-chip">
-                        <strong>{m.val}</strong>
-                        <span>{m.label}</span>
-                      </div>
-                    ))}
-                  </div>
-                  <div className="ps-card-cta">
-                    View Project
-                    <span className="ps-card-cta-arrow">→</span>
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* ── Project Spotlight — Tabbed Grid ── */}
+      <ProjectSpotlight projects={projects} onBook={() => setBookOpen(true)} />
 
       {/* ── Team ── */}
       <section className="team">

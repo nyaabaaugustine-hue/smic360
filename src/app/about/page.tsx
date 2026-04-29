@@ -39,6 +39,26 @@ export default function AboutPage() {
   const [bookOpen, setBookOpen] = useState(false);
   const [teamModal, setTeamModal] = useState<typeof teamMembers[0] | null>(null);
 
+  // Lock body scroll while team modal open
+  React.useEffect(() => {
+    if (!teamModal) return;
+    const y = window.scrollY;
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${y}px`;
+    document.body.style.left = '0';
+    document.body.style.right = '0';
+    document.body.style.overflowY = 'scroll';
+    return () => {
+      const top = document.body.style.top;
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.left = '';
+      document.body.style.right = '';
+      document.body.style.overflowY = '';
+      if (top) window.scrollTo(0, -parseInt(top, 10));
+    };
+  }, [teamModal]);
+
   return (
     <>
       <ScrollReveal />

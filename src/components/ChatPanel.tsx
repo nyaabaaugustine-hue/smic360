@@ -82,17 +82,27 @@ export default function ChatPanel() {
   const floatingUI = (
     <>
       <style>{`
-        /* ── PORTAL FLOATS — rendered directly in body, no stacking context issues ── */
+        /* ── PORTAL FLOATS — centered at bottom, no stacking context issues ── */
         #smic-floats {
           position: fixed;
           bottom: 28px;
-          right: 22px;
+          left: 50%;
+          transform: translateX(-50%);
           z-index: 99999;
           display: flex;
-          flex-direction: column;
-          gap: 12px;
-          align-items: flex-end;
+          flex-direction: row;
+          gap: 14px;
+          align-items: center;
+          justify-content: center;
           pointer-events: none;
+          /* pill container */
+          background: rgba(7,22,40,0.82);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          border: 1px solid rgba(255,193,7,0.2);
+          border-radius: 50px;
+          padding: 10px 20px;
+          box-shadow: 0 8px 40px rgba(4,14,29,0.35), 0 0 0 1px rgba(255,193,7,0.1);
         }
         #smic-floats > * {
           pointer-events: all;
@@ -100,51 +110,50 @@ export default function ChatPanel() {
 
         /* WhatsApp button */
         .sf-wa {
-          width: 56px; height: 56px;
+          width: 46px; height: 46px;
           border-radius: 50%;
           background: #25D366;
           display: flex; align-items: center; justify-content: center;
-          box-shadow: 0 8px 28px rgba(37,211,102,0.45);
+          box-shadow: 0 4px 16px rgba(37,211,102,0.4);
           cursor: pointer;
-          border: 2.5px solid #fff;
+          border: 2.5px solid rgba(255,255,255,0.25);
           text-decoration: none;
-          animation: sf-bob 4s ease-in-out infinite;
           position: relative;
           transition: transform 0.25s, box-shadow 0.25s;
         }
-        .sf-wa:hover { transform: scale(1.1) translateY(-3px); box-shadow: 0 14px 40px rgba(37,211,102,0.6); }
-        .sf-wa svg { width: 28px; height: 28px; fill: #fff; }
-        @keyframes sf-bob { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-6px);} }
+        .sf-wa:hover { transform: scale(1.12) translateY(-2px); box-shadow: 0 8px 24px rgba(37,211,102,0.55); }
+        .sf-wa svg { width: 24px; height: 24px; fill: #fff; }
 
         /* Theme + AI buttons */
         .sf-btn {
-          width: 58px; height: 58px;
+          width: 46px; height: 46px;
           border-radius: 50%;
-          background: #071628;
+          background: rgba(255,255,255,0.08);
           display: flex; align-items: center; justify-content: center;
-          box-shadow: 0 0 0 0 rgba(255,193,7,0.4), 0 8px 28px rgba(7,22,40,0.5);
+          box-shadow: none;
           cursor: pointer;
-          border: 2.5px solid #FFC107;
-          animation: sf-pulse 3.5s ease-in-out infinite;
+          border: 2px solid rgba(255,193,7,0.4);
           position: relative;
           overflow: hidden;
-          transition: transform 0.25s;
+          transition: transform 0.25s, background 0.25s;
         }
-        .sf-btn:hover { transform: scale(1.1) translateY(-3px); }
-        .sf-btn img { width: 42px; height: 42px; object-fit: contain; border-radius: 50%; }
-        .sf-btn .sf-emoji { font-size: 22px; }
-        @keyframes sf-pulse {
-          0%  { box-shadow: 0 0 0 0   rgba(255,193,7,0.45), 0 8px 28px rgba(7,22,40,0.5); }
-          50% { box-shadow: 0 0 0 12px rgba(255,193,7,0),   0 8px 28px rgba(7,22,40,0.5); }
-          100%{ box-shadow: 0 0 0 0   rgba(255,193,7,0.45), 0 8px 28px rgba(7,22,40,0.5); }
+        .sf-btn:hover { transform: scale(1.12) translateY(-2px); background: rgba(255,193,7,0.15); }
+        .sf-btn img { width: 36px; height: 36px; object-fit: contain; border-radius: 50%; }
+        .sf-btn .sf-emoji { font-size: 20px; }
+
+        /* Divider between buttons */
+        .sf-divider {
+          width: 1px; height: 28px;
+          background: rgba(255,255,255,0.12);
+          flex-shrink: 0;
         }
 
-        /* Tooltip labels */
+        /* Tooltip labels — now appear above */
         .sf-label {
           position: absolute;
-          right: calc(100% + 10px);
-          top: 50%; transform: translateY(-50%) translateX(6px);
-          background: #071628;
+          bottom: calc(100% + 10px);
+          left: 50%; transform: translateX(-50%) translateY(4px);
+          background: rgba(7,22,40,0.95);
           color: #fff;
           font-size: 11px; font-weight: 600;
           white-space: nowrap;
@@ -155,9 +164,17 @@ export default function ChatPanel() {
           transition: opacity 0.2s, transform 0.2s;
           border: 1px solid rgba(255,255,255,0.08);
           font-family: 'Outfit', sans-serif;
+          z-index: 10;
+        }
+        .sf-label::after {
+          content: '';
+          position: absolute;
+          top: 100%; left: 50%; transform: translateX(-50%);
+          border: 4px solid transparent;
+          border-top-color: rgba(7,22,40,0.95);
         }
         .sf-wa:hover .sf-label,
-        .sf-btn:hover .sf-label { opacity: 1; transform: translateY(-50%) translateX(0); }
+        .sf-btn:hover .sf-label { opacity: 1; transform: translateX(-50%) translateY(0); }
 
         /* ── SCROLL TOP — portal, fixed bottom-left ── */
         #smic-scroll-top {
@@ -178,13 +195,14 @@ export default function ChatPanel() {
         }
         #smic-scroll-top:hover { background: #FFC107; color: #071628; transform: translateY(-4px); }
 
-        /* ── CHAT PANEL — portal, fixed ── */
+        /* ── CHAT PANEL — portal, opens above center pill ── */
         #smic-chat-panel {
           position: fixed;
           bottom: 110px;
-          right: 22px;
+          left: 50%;
+          transform: translateX(-50%);
           z-index: 99998;
-          width: min(350px, calc(100vw - 44px));
+          width: min(380px, calc(100vw - 32px));
           background: #fff;
           border-radius: 20px;
           box-shadow: 0 24px 72px rgba(0,0,0,0.22), 0 0 0 1px rgba(255,193,7,0.12);
@@ -195,7 +213,7 @@ export default function ChatPanel() {
           border: 1px solid rgba(255,193,7,0.15);
           animation: chatSlide 0.32s cubic-bezier(0.16,1,0.3,1) both;
         }
-        @keyframes chatSlide { from{opacity:0;transform:translateY(20px) scale(0.96);} to{opacity:1;transform:none;} }
+        @keyframes chatSlide { from{opacity:0;transform:translateX(-50%) translateY(20px) scale(0.96);} to{opacity:1;transform:translateX(-50%) translateY(0) scale(1);} }
 
         /* Chat overlay */
         #smic-chat-overlay {
@@ -206,9 +224,9 @@ export default function ChatPanel() {
         }
 
         @media(max-width:640px){
-          #smic-chat-panel { right:12px; bottom:100px; width:calc(100vw - 24px); }
-          #smic-floats { right:14px; bottom:20px; gap:10px; }
-          #smic-scroll-top { left:14px; bottom:20px; width:42px; height:42px; }
+          #smic-chat-panel { width: calc(100vw - 24px); bottom: 100px; }
+          #smic-floats { padding: 8px 14px; gap: 10px; }
+          #smic-scroll-top { left: 14px; bottom: 20px; width: 42px; height: 42px; }
         }
       `}</style>
 

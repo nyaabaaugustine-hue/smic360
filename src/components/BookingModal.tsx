@@ -1,58 +1,72 @@
 'use client';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { createPortal } from 'react-dom';
 
 interface BookingModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
+/* ── Unified scroll-lock helper ── */
+function lockScroll() {
+  const y = window.scrollY;
+  document.body.dataset.scrollY = String(y);
+  document.body.style.position = 'fixed';
+  document.body.style.top = `-${y}px`;
+  document.body.style.left = '0';
+  document.body.style.right = '0';
+  document.body.style.overflowY = 'scroll';
+}
+
+function unlockScroll() {
+  const y = parseInt(document.body.dataset.scrollY || '0', 10);
+  document.body.style.position = '';
+  document.body.style.top = '';
+  document.body.style.left = '';
+  document.body.style.right = '';
+  document.body.style.overflowY = '';
+  delete document.body.dataset.scrollY;
+  window.scrollTo(0, y);
+}
+
 export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [selectedService, setSelectedService] = useState('');
+  const [mounted, setMounted] = useState(false);
+  const overlayRef = useRef<HTMLDivElement>(null);
 
-  // Forcefully reset state whenever the modal opens
+  useEffect(() => { setMounted(true); }, []);
+
+  // Reset form on open
   useEffect(() => {
     if (isOpen) {
       setSubmitted(false);
       setSelectedService('');
+      // Scroll overlay to top after a tick
+      requestAnimationFrame(() => {
+        if (overlayRef.current) overlayRef.current.scrollTop = 0;
+      });
     }
   }, [isOpen]);
 
-  // Lock body scroll while modal is open; restore on close
+  // Scroll lock — unified approach
   useEffect(() => {
+    if (!mounted) return;
     if (isOpen) {
-      const y = window.scrollY;
-      document.body.style.position = 'fixed';
-      document.body.style.top = `-${y}px`;
-      document.body.style.left = '0';
-      document.body.style.right = '0';
-      document.body.style.overflowY = 'scroll';
+      lockScroll();
     } else {
-      const top = document.body.style.top;
-      document.body.style.position = '';
-      document.body.style.top = '';
-      document.body.style.left = '';
-      document.body.style.right = '';
-      document.body.style.overflowY = '';
-      if (top) window.scrollTo(0, -parseInt(top, 10));
+      // Only unlock if no other modal is locking
+      if (document.body.style.position === 'fixed') {
+        unlockScroll();
+      }
     }
     return () => {
-      document.body.style.position = '';
-      document.body.style.top = '';
-      document.body.style.left = '';
-      document.body.style.right = '';
-      document.body.style.overflowY = '';
+      if (document.body.style.position === 'fixed') {
+        unlockScroll();
+      }
     };
-  }, [isOpen]);
-
-  // Scroll modal overlay to top whenever it opens
-  const overlayRef = React.useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    if (isOpen && overlayRef.current) {
-      overlayRef.current.scrollTop = 0;
-    }
-  }, [isOpen]);
+  }, [isOpen, mounted]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -66,7 +80,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
       });
       if (response.ok) {
         setSubmitted(true);
-        setTimeout(() => { onClose(); setTimeout(() => setSubmitted(false), 300); }, 5000);
+        setTimeout(() => { onClose(); }, 5000);
       }
     } catch (error) {
       console.error('Formspree error:', error);
@@ -79,30 +93,30 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
     setTimeout(() => { setSubmitted(false); setSelectedService(''); }, 300);
   };
 
-  if (!isOpen) return null;
-
   const services = [
     { icon: '📣', label: 'Marketing',   value: 'Advertising & Marketing' },
     { icon: '🏡', label: 'Real Estate', value: 'Real Estate Development' },
     { icon: '📦', label: 'Procurement', value: 'Procurement & Supply' },
   ];
 
-  return (
+  const modalContent = (
     <div
       ref={overlayRef}
+      onClick={(e) => { if (e.target === e.currentTarget) handleClose(); }}
       style={{
-        position: 'fixed', inset: 0,
+        position: 'fixed',
+        inset: 0,
         background: 'rgba(4,14,29,0.88)',
         display: 'flex',
         alignItems: 'flex-start',
         justifyContent: 'center',
-        zIndex: 100001,
+        zIndex: 2147483647, /* Max z-index */
         padding: '20px 16px 40px',
         backdropFilter: 'blur(10px)',
+        WebkitBackdropFilter: 'blur(10px)',
         overflowY: 'auto',
-        WebkitOverflowScrolling: 'touch',
+        WebkitOverflowScrolling: 'touch' as React.CSSProperties['WebkitOverflowScrolling'],
       }}
-      onClick={(e) => { if (e.target === e.currentTarget) handleClose(); }}
     >
       <style>{`
         .bm-wrap {
@@ -112,14 +126,13 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
           border-radius: 20px;
           position: relative;
           overflow: hidden;
-          box-shadow: 0 32px 80px rgba(4,14,29,0.35);
-          animation: bmIn 0.38s cubic-bezier(0.16,1,0.3,1);
+          box-shadow: 0 32px 80px rgba(4,14,29,0.45);
+          animation: bmIn 0.38s cubic-bezier(0.16,1,0.3,1) both;
           border-top: 4px solid #FFC107;
           margin: 0 auto;
-          align-self: flex-start;
+          flex-shrink: 0;
         }
         @keyframes bmIn { from{opacity:0;transform:translateY(30px) scale(0.94);} to{opacity:1;transform:none;} }
-
         .bm-header {
           background: linear-gradient(135deg, #040e1d 0%, #0b2d56 55%, #1261c0 100%);
           padding: 28px 36px 24px;
@@ -156,17 +169,14 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
           background: rgba(255,255,255,0.12);
           border: 1px solid rgba(255,255,255,0.2);
           color: #fff;
-          width: 32px; height: 32px;
+          width: 36px; height: 36px;
           border-radius: 50%; cursor: pointer;
           display: flex; align-items: center; justify-content: center;
-          font-size: 14px; z-index: 2;
+          font-size: 16px; z-index: 2;
           transition: all 0.25s;
         }
         .bm-close:hover { background: rgba(220,38,38,0.7); transform: rotate(90deg); }
-
         .bm-body { padding: 28px 36px; }
-
-        /* Service selector */
         .bm-services {
           display: grid; grid-template-columns: repeat(3,1fr);
           gap: 10px; margin-bottom: 22px;
@@ -174,7 +184,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
         .bm-svc {
           border: 2px solid #dce8f7;
           border-radius: 12px;
-          padding: 12px 8px;
+          padding: 14px 8px;
           text-align: center;
           cursor: pointer;
           transition: all 0.2s;
@@ -183,11 +193,9 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
         }
         .bm-svc:hover { border-color: #D4A017; background: #FFF9E6; }
         .bm-svc.selected { border-color: #FFC107; background: #FFF9E6; box-shadow: 0 0 0 3px rgba(255,193,7,0.2); }
-        .bm-svc-icon { font-size: 22px; display: block; margin-bottom: 5px; }
+        .bm-svc-icon { font-size: 24px; display: block; margin-bottom: 6px; }
         .bm-svc-label { font-size: 12px; font-weight: 700; color: #5a7186; }
         .bm-svc.selected .bm-svc-label { color: #D4A017; }
-
-        /* Form fields */
         .bm-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 14px; }
         .bm-group { display: flex; flex-direction: column; gap: 5px; margin-bottom: 14px; }
         .bm-group label {
@@ -195,9 +203,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
           color: #071628; letter-spacing: 0.5px;
           text-transform: uppercase;
         }
-        .bm-group input,
-        .bm-group select,
-        .bm-group textarea {
+        .bm-group input, .bm-group select, .bm-group textarea {
           padding: 11px 15px;
           border-radius: 10px;
           border: 1.5px solid #dce8f7;
@@ -209,15 +215,12 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
           width: 100%;
           box-sizing: border-box;
         }
-        .bm-group input:focus,
-        .bm-group select:focus,
-        .bm-group textarea:focus {
+        .bm-group input:focus, .bm-group select:focus, .bm-group textarea:focus {
           border-color: #FFC107;
           box-shadow: 0 0 0 3px rgba(255,193,7,0.15);
           background: #fff;
         }
         .bm-group textarea { resize: none; height: 88px; }
-
         .bm-submit {
           width: 100%; padding: 14px;
           background: linear-gradient(135deg, #FFC107, #D4A017);
@@ -232,13 +235,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
         }
         .bm-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(255,193,7,0.5); }
         .bm-submit:disabled { opacity: 0.7; cursor: not-allowed; transform: none; }
-
-        .bm-secure {
-          text-align: center; margin-top: 12px;
-          font-size: 12px; color: #5a7186;
-        }
-
-        /* Success state */
+        .bm-secure { text-align: center; margin-top: 12px; font-size: 12px; color: #5a7186; }
         .bm-success { text-align: center; padding: 52px 36px; }
         .bm-success-icon {
           width: 72px; height: 72px;
@@ -249,19 +246,14 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
           box-shadow: 0 8px 28px rgba(22,163,74,0.3);
           font-size: 30px; color: #fff;
         }
-        .bm-success h3 {
-          font-family: 'Oswald', sans-serif;
-          font-size: 28px; color: #071628; margin-bottom: 10px;
-        }
+        .bm-success h3 { font-family: 'Oswald', sans-serif; font-size: 28px; color: #071628; margin-bottom: 10px; }
         .bm-success p { color: #5a7186; font-size: 14.5px; line-height: 1.7; max-width: 320px; margin: 0 auto; }
         .bm-success-btns { display: flex; gap: 10px; justify-content: center; margin-top: 24px; }
-
         @media (max-width: 540px) {
-          .bm-header, .bm-body { padding-left: 22px; padding-right: 22px; }
+          .bm-header, .bm-body { padding-left: 20px; padding-right: 20px; }
           .bm-row { grid-template-columns: 1fr; }
           .bm-services { grid-template-columns: 1fr 1fr; }
         }
-
         @keyframes spin { from{transform:rotate(0deg);} to{transform:rotate(360deg);} }
       `}</style>
 
@@ -269,17 +261,13 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
         {!submitted ? (
           <>
             <div className="bm-header">
-              <button className="bm-close" onClick={handleClose}>✕</button>
+              <button className="bm-close" onClick={handleClose} type="button">✕</button>
               <div className="bm-title">Book A Consultation</div>
               <div className="bm-sub">Our team responds within 2 business hours — no obligation.</div>
             </div>
-
             <div className="bm-body">
               <form onSubmit={handleSubmit}>
-                {/* Hidden service field */}
                 <input type="hidden" name="service" value={selectedService} />
-
-                {/* Service selector */}
                 <div style={{ marginBottom: '6px' }}>
                   <label style={{ fontSize: '12px', fontWeight: 700, color: '#071628', letterSpacing: '0.5px', textTransform: 'uppercase', display: 'block', marginBottom: '10px' }}>
                     What can we help you with? *
@@ -297,12 +285,9 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                     ))}
                   </div>
                   {!selectedService && (
-                    <p style={{ fontSize: '11px', color: '#9ca3af', marginBottom: '8px' }}>
-                      Please select a service above
-                    </p>
+                    <p style={{ fontSize: '11px', color: '#9ca3af', marginBottom: '8px' }}>Please select a service above</p>
                   )}
                 </div>
-
                 <div className="bm-row">
                   <div className="bm-group">
                     <label>Full Name *</label>
@@ -313,7 +298,6 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                     <input type="email" name="email" placeholder="your@email.com" required />
                   </div>
                 </div>
-
                 <div className="bm-row">
                   <div className="bm-group">
                     <label>Phone Number</label>
@@ -324,17 +308,11 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                     <input type="text" name="company" placeholder="Your company name" />
                   </div>
                 </div>
-
                 <div className="bm-group">
                   <label>Message</label>
                   <textarea name="message" placeholder="Tell us briefly about your project or need..." />
                 </div>
-
-                <button
-                  type="submit"
-                  className="bm-submit"
-                  disabled={loading || !selectedService}
-                >
+                <button type="submit" className="bm-submit" disabled={loading || !selectedService}>
                   {loading ? (
                     <>
                       <span style={{ display: 'inline-block', width: 16, height: 16, border: '2px solid rgba(7,22,40,0.3)', borderTopColor: '#071628', borderRadius: '50%', animation: 'spin 0.7s linear infinite' }} />
@@ -342,7 +320,6 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                     </>
                   ) : 'Submit Request →'}
                 </button>
-
                 <p className="bm-secure">🔒 Your details are secure and will never be shared.</p>
               </form>
             </div>
@@ -371,4 +348,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
       </div>
     </div>
   );
+
+  if (!mounted || !isOpen) return null;
+  return createPortal(modalContent, document.body);
 }

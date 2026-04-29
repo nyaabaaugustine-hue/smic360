@@ -16,10 +16,14 @@ export default function Navbar({ onBookClick }: NavbarProps) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Lock body scroll when mobile menu open
+  // Lock body scroll when mobile menu open — use class to avoid conflicting with modal scroll-lock
   useEffect(() => {
-    document.body.style.overflow = mobileOpen ? 'hidden' : '';
-    return () => { document.body.style.overflow = ''; };
+    if (mobileOpen) {
+      document.documentElement.classList.add('mobile-menu-open');
+    } else {
+      document.documentElement.classList.remove('mobile-menu-open');
+    }
+    return () => { document.documentElement.classList.remove('mobile-menu-open'); };
   }, [mobileOpen]);
 
   return (

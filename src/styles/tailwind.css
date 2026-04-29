@@ -1750,7 +1750,10 @@ footer {
 [data-theme="midnight"] .chat-input-area input { background:var(--off); border-color:var(--border); color:var(--text); }
 [data-theme="midnight"] .proj-body h3, [data-theme="midnight"] .cap-body h3, [data-theme="midnight"] .team-body h3 { color:var(--navy); }
 
-/* ── Utility animations ── */
+/* Mobile menu open — only locks html scroll, not body (avoids conflict with modals) */
+html.mobile-menu-open { overflow: hidden; }
+
+/* Utility animations */
 @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 @keyframes modalIn { from { opacity: 0; transform: translateY(30px) scale(0.94); } to { opacity: 1; transform: none; } }
 
