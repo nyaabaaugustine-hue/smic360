@@ -59,29 +59,64 @@ export default function PrivacyPage() {
       <div className="page-hero">
         <div className="page-hero-inner">
           <div className="page-hero-tag">Legal</div>
-          <h1>Privacy <em>Policy</em></h1>
+          <h1>
+            Privacy <em>Policy</em>
+          </h1>
           <p>Effective Date: January 1, 2025 &nbsp;|&nbsp; Last Updated: April 2025</p>
         </div>
       </div>
 
       <section style={{ padding: '80px 0', background: 'var(--white)' }}>
         <div className="wrap" style={{ maxWidth: '820px' }}>
-          <p style={{ fontSize: '16px', color: 'var(--muted)', lineHeight: 1.8, marginBottom: '44px', padding: '20px 24px', background: 'var(--off)', borderLeft: '4px solid var(--gold)', borderRadius: '0 var(--r) var(--r) 0' }}>
-            SMIC360 Limited (&quot;we&quot;, &quot;our&quot;, or &quot;us&quot;) is committed to protecting your personal information and your right to privacy. This policy explains how we collect, use, and protect data when you visit our website or engage with our services.
+          <p
+            style={{
+              fontSize: '16px',
+              color: 'var(--muted)',
+              lineHeight: 1.8,
+              marginBottom: '44px',
+              padding: '20px 24px',
+              background: 'var(--off)',
+              borderLeft: '4px solid var(--gold)',
+              borderRadius: '0 var(--r) var(--r) 0',
+            }}
+          >
+            SMIC360 Limited (&quot;we&quot;, &quot;our&quot;, or &quot;us&quot;) is committed to
+            protecting your personal information and your right to privacy. This policy explains how
+            we collect, use, and protect data when you visit our website or engage with our
+            services.
           </p>
           {sections.map((sec, i) => (
             <div key={i} style={{ marginBottom: '36px' }}>
-              <h2 style={{ fontFamily: 'Oswald,sans-serif', fontSize: '20px', fontWeight: 700, color: 'var(--navy)', marginBottom: '10px' }}>
+              <h2
+                style={{
+                  fontFamily: 'Oswald,sans-serif',
+                  fontSize: '20px',
+                  fontWeight: 700,
+                  color: 'var(--navy)',
+                  marginBottom: '10px',
+                }}
+              >
                 {sec.title}
               </h2>
-              <p style={{ fontSize: '15px', color: 'var(--muted)', lineHeight: 1.8, whiteSpace: 'pre-line' }}>
+              <p
+                style={{
+                  fontSize: '15px',
+                  color: 'var(--muted)',
+                  lineHeight: 1.8,
+                  whiteSpace: 'pre-line',
+                }}
+              >
                 {sec.body}
               </p>
             </div>
           ))}
           <div style={{ marginTop: '48px', display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-            <Link href="/terms" className="btn btn-outline">Terms of Service</Link>
-            <Link href="/contact" className="btn btn-primary">Contact Us</Link>
+            <Link href="/terms" className="btn btn-outline">
+              Terms of Service
+            </Link>
+            <Link href="/contact" className="btn btn-primary">
+              Contact Us
+            </Link>
           </div>
         </div>
       </section>

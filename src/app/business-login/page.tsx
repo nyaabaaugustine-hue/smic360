@@ -42,41 +42,66 @@ export default function BusinessLoginPage() {
     setError('');
     await new Promise((r) => setTimeout(r, 1200));
     setLoading(false);
-    setError('This portal is being configured. Contact info@smic360.com or call 024 478 3099 for access.');
+    setError(
+      'This portal is being configured. Contact info@smic360.com or call 024 478 3099 for access.'
+    );
   };
 
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (regPassword !== regConfirm) { setError('Passwords do not match.'); return; }
-    setLoading(true); setError('');
+    if (regPassword !== regConfirm) {
+      setError('Passwords do not match.');
+      return;
+    }
+    setLoading(true);
+    setError('');
     const fd = new FormData();
-    fd.append('name', regName); fd.append('company', regCompany);
-    fd.append('email', regEmail); fd.append('phone', regPhone);
+    fd.append('name', regName);
+    fd.append('company', regCompany);
+    fd.append('email', regEmail);
+    fd.append('phone', regPhone);
     fd.append('service', regService);
     fd.append('_subject', 'New Business Portal Registration Request');
     try {
-      const res = await fetch('https://formspree.io/f/xdayrral', { method: 'POST', body: fd, headers: { Accept: 'application/json' } });
+      const res = await fetch('https://formspree.io/f/xdayrral', {
+        method: 'POST',
+        body: fd,
+        headers: { Accept: 'application/json' },
+      });
       if (res.ok) setDone(true);
       else setError('Registration failed. Please try again or contact us directly.');
-    } catch { setError('Connection error. Please try again.'); }
+    } catch {
+      setError('Connection error. Please try again.');
+    }
     setLoading(false);
   };
 
   const handleForgot = async (e: React.FormEvent) => {
     e.preventDefault();
-    setLoading(true); setError('');
+    setLoading(true);
+    setError('');
     const fd = new FormData();
     fd.append('email', forgotEmail);
     fd.append('_subject', 'Business Portal Password Reset Request');
     try {
-      const res = await fetch('https://formspree.io/f/xdayrral', { method: 'POST', body: fd, headers: { Accept: 'application/json' } });
+      const res = await fetch('https://formspree.io/f/xdayrral', {
+        method: 'POST',
+        body: fd,
+        headers: { Accept: 'application/json' },
+      });
       if (res.ok) setDone(true);
       else setError('Failed to send reset email. Please contact info@smic360.com.');
-    } catch { setError('Connection error. Please try again.'); }
+    } catch {
+      setError('Connection error. Please try again.');
+    }
     setLoading(false);
   };
 
-  const switchMode = (m: AuthMode) => { setMode(m); setError(''); setDone(false); };
+  const switchMode = (m: AuthMode) => {
+    setMode(m);
+    setError('');
+    setDone(false);
+  };
 
   return (
     <>
@@ -365,13 +390,14 @@ export default function BusinessLoginPage() {
             />
             SMIC360
           </Link>
-          <Link href="/" className="blp-back">← Back to Website</Link>
+          <Link href="/" className="blp-back">
+            ← Back to Website
+          </Link>
         </div>
 
         {/* ── Card ── */}
         <div className="blp-stage">
           <div className="blp-card">
-
             {/* Card header */}
             <div className="blp-ch">
               <div className="blp-ch-row">
@@ -395,12 +421,21 @@ export default function BusinessLoginPage() {
 
             {/* Card body */}
             <div className="blp-cb">
-
               {/* Tabs */}
               {mode !== 'forgot' && (
                 <div className="blp-tabs">
-                  <button className={`blp-tab${mode === 'login' ? ' active' : ''}`} onClick={() => switchMode('login')}>Sign In</button>
-                  <button className={`blp-tab${mode === 'register' ? ' active' : ''}`} onClick={() => switchMode('register')}>Request Access</button>
+                  <button
+                    className={`blp-tab${mode === 'login' ? ' active' : ''}`}
+                    onClick={() => switchMode('login')}
+                  >
+                    Sign In
+                  </button>
+                  <button
+                    className={`blp-tab${mode === 'register' ? ' active' : ''}`}
+                    onClick={() => switchMode('register')}
+                  >
+                    Request Access
+                  </button>
                 </div>
               )}
 
@@ -411,29 +446,80 @@ export default function BusinessLoginPage() {
                 <form onSubmit={handleLogin}>
                   <div className="blp-fg">
                     <label>Email Address</label>
-                    <input type="email" placeholder="you@company.com" value={loginEmail} onChange={e => setLoginEmail(e.target.value)} required autoComplete="email" />
+                    <input
+                      type="email"
+                      placeholder="you@company.com"
+                      value={loginEmail}
+                      onChange={(e) => setLoginEmail(e.target.value)}
+                      required
+                      autoComplete="email"
+                    />
                   </div>
                   <div className="blp-fg">
                     <label>Password</label>
                     <div className="blp-pw">
-                      <input type={showPassword ? 'text' : 'password'} placeholder="Enter your password" value={loginPassword} onChange={e => setLoginPassword(e.target.value)} required autoComplete="current-password" />
-                      <button type="button" className="blp-eye" onClick={() => setShowPassword(!showPassword)}>{showPassword ? '🙈' : '👁'}</button>
+                      <input
+                        type={showPassword ? 'text' : 'password'}
+                        placeholder="Enter your password"
+                        value={loginPassword}
+                        onChange={(e) => setLoginPassword(e.target.value)}
+                        required
+                        autoComplete="current-password"
+                      />
+                      <button
+                        type="button"
+                        className="blp-eye"
+                        onClick={() => setShowPassword(!showPassword)}
+                      >
+                        {showPassword ? '🙈' : '👁'}
+                      </button>
                     </div>
                   </div>
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '14px' }}>
+                  <div
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      marginBottom: '14px',
+                    }}
+                  >
                     <label className="blp-remember" style={{ marginBottom: 0 }}>
-                      <input type="checkbox" checked={rememberMe} onChange={e => setRememberMe(e.target.checked)} />
+                      <input
+                        type="checkbox"
+                        checked={rememberMe}
+                        onChange={(e) => setRememberMe(e.target.checked)}
+                      />
                       Remember me
                     </label>
-                    <button type="button" className="blp-link-btn" onClick={() => switchMode('forgot')}>Forgot password?</button>
+                    <button
+                      type="button"
+                      className="blp-link-btn"
+                      onClick={() => switchMode('forgot')}
+                    >
+                      Forgot password?
+                    </button>
                   </div>
                   <button type="submit" className="blp-btn" disabled={loading}>
-                    {loading ? <><span className="blp-spin" /> Signing In…</> : 'Sign In →'}
+                    {loading ? (
+                      <>
+                        <span className="blp-spin" /> Signing In…
+                      </>
+                    ) : (
+                      'Sign In →'
+                    )}
                   </button>
                   <div className="blp-divider">or</div>
-                  <p style={{ textAlign: 'center', fontSize: '12.5px', color: '#5a7186', margin: 0 }}>
+                  <p
+                    style={{ textAlign: 'center', fontSize: '12.5px', color: '#5a7186', margin: 0 }}
+                  >
                     Need access?{' '}
-                    <button type="button" className="blp-link-btn" onClick={() => switchMode('register')}>Request portal access →</button>
+                    <button
+                      type="button"
+                      className="blp-link-btn"
+                      onClick={() => switchMode('register')}
+                    >
+                      Request portal access →
+                    </button>
                   </p>
                 </form>
               )}
@@ -444,26 +530,54 @@ export default function BusinessLoginPage() {
                   <div className="blp-row">
                     <div className="blp-fg">
                       <label>Full Name *</label>
-                      <input type="text" placeholder="John Doe" value={regName} onChange={e => setRegName(e.target.value)} required />
+                      <input
+                        type="text"
+                        placeholder="John Doe"
+                        value={regName}
+                        onChange={(e) => setRegName(e.target.value)}
+                        required
+                      />
                     </div>
                     <div className="blp-fg">
                       <label>Company *</label>
-                      <input type="text" placeholder="Company Ltd" value={regCompany} onChange={e => setRegCompany(e.target.value)} required />
+                      <input
+                        type="text"
+                        placeholder="Company Ltd"
+                        value={regCompany}
+                        onChange={(e) => setRegCompany(e.target.value)}
+                        required
+                      />
                     </div>
                   </div>
                   <div className="blp-row">
                     <div className="blp-fg">
                       <label>Email *</label>
-                      <input type="email" placeholder="you@company.com" value={regEmail} onChange={e => setRegEmail(e.target.value)} required />
+                      <input
+                        type="email"
+                        placeholder="you@company.com"
+                        value={regEmail}
+                        onChange={(e) => setRegEmail(e.target.value)}
+                        required
+                      />
                     </div>
                     <div className="blp-fg">
                       <label>Phone *</label>
-                      <input type="tel" placeholder="024 XXX XXXX" value={regPhone} onChange={e => setRegPhone(e.target.value)} required />
+                      <input
+                        type="tel"
+                        placeholder="024 XXX XXXX"
+                        value={regPhone}
+                        onChange={(e) => setRegPhone(e.target.value)}
+                        required
+                      />
                     </div>
                   </div>
                   <div className="blp-fg">
                     <label>Service Interest *</label>
-                    <select value={regService} onChange={e => setRegService(e.target.value)} required>
+                    <select
+                      value={regService}
+                      onChange={(e) => setRegService(e.target.value)}
+                      required
+                    >
                       <option value="">Select a service…</option>
                       <option>Advertising &amp; Marketing</option>
                       <option>Real Estate Development</option>
@@ -475,17 +589,47 @@ export default function BusinessLoginPage() {
                     <div className="blp-fg">
                       <label>Password *</label>
                       <div className="blp-pw">
-                        <input type={showPassword ? 'text' : 'password'} placeholder="Min 8 chars" value={regPassword} onChange={e => setRegPassword(e.target.value)} required minLength={8} />
-                        <button type="button" className="blp-eye" onClick={() => setShowPassword(!showPassword)}>{showPassword ? '🙈' : '👁'}</button>
+                        <input
+                          type={showPassword ? 'text' : 'password'}
+                          placeholder="Min 8 chars"
+                          value={regPassword}
+                          onChange={(e) => setRegPassword(e.target.value)}
+                          required
+                          minLength={8}
+                        />
+                        <button
+                          type="button"
+                          className="blp-eye"
+                          onClick={() => setShowPassword(!showPassword)}
+                        >
+                          {showPassword ? '🙈' : '👁'}
+                        </button>
                       </div>
                     </div>
                     <div className="blp-fg">
                       <label>Confirm *</label>
-                      <input type={showPassword ? 'text' : 'password'} placeholder="Repeat" value={regConfirm} onChange={e => setRegConfirm(e.target.value)} required />
+                      <input
+                        type={showPassword ? 'text' : 'password'}
+                        placeholder="Repeat"
+                        value={regConfirm}
+                        onChange={(e) => setRegConfirm(e.target.value)}
+                        required
+                      />
                     </div>
                   </div>
-                  <button type="submit" className="blp-btn" disabled={loading} style={{ marginTop: '4px' }}>
-                    {loading ? <><span className="blp-spin" /> Submitting…</> : 'Request Access →'}
+                  <button
+                    type="submit"
+                    className="blp-btn"
+                    disabled={loading}
+                    style={{ marginTop: '4px' }}
+                  >
+                    {loading ? (
+                      <>
+                        <span className="blp-spin" /> Submitting…
+                      </>
+                    ) : (
+                      'Request Access →'
+                    )}
                   </button>
                 </form>
               )}
@@ -495,13 +639,39 @@ export default function BusinessLoginPage() {
                 <form onSubmit={handleForgot}>
                   <div className="blp-fg">
                     <label>Registered Email Address</label>
-                    <input type="email" placeholder="you@company.com" value={forgotEmail} onChange={e => setForgotEmail(e.target.value)} required autoComplete="email" />
+                    <input
+                      type="email"
+                      placeholder="you@company.com"
+                      value={forgotEmail}
+                      onChange={(e) => setForgotEmail(e.target.value)}
+                      required
+                      autoComplete="email"
+                    />
                   </div>
                   <button type="submit" className="blp-btn" disabled={loading}>
-                    {loading ? <><span className="blp-spin" /> Sending…</> : 'Send Reset Link →'}
+                    {loading ? (
+                      <>
+                        <span className="blp-spin" /> Sending…
+                      </>
+                    ) : (
+                      'Send Reset Link →'
+                    )}
                   </button>
-                  <p style={{ textAlign: 'center', marginTop: '12px', fontSize: '12.5px', color: '#5a7186' }}>
-                    <button type="button" className="blp-link-btn" onClick={() => switchMode('login')}>← Back to Sign In</button>
+                  <p
+                    style={{
+                      textAlign: 'center',
+                      marginTop: '12px',
+                      fontSize: '12.5px',
+                      color: '#5a7186',
+                    }}
+                  >
+                    <button
+                      type="button"
+                      className="blp-link-btn"
+                      onClick={() => switchMode('login')}
+                    >
+                      ← Back to Sign In
+                    </button>
                   </p>
                 </form>
               )}
@@ -509,27 +679,58 @@ export default function BusinessLoginPage() {
               {/* ── SUCCESS ── */}
               {done && (
                 <div className="blp-ok">
-                  <div style={{ fontSize: '36px', marginBottom: '8px' }}>{mode === 'register' ? '🎉' : '📧'}</div>
+                  <div style={{ fontSize: '36px', marginBottom: '8px' }}>
+                    {mode === 'register' ? '🎉' : '📧'}
+                  </div>
                   {mode === 'register' ? (
-                    <><strong>Request received!</strong>Our team will review your application and contact you within 1 business day.</>
+                    <>
+                      <strong>Request received!</strong>Our team will review your application and
+                      contact you within 1 business day.
+                    </>
                   ) : (
-                    <><strong>Reset link sent!</strong>Check your inbox — or contact <a href="mailto:info@smic360.com" style={{ color: '#16a34a', fontWeight: 700 }}>info@smic360.com</a>.</>
+                    <>
+                      <strong>Reset link sent!</strong>Check your inbox — or contact{' '}
+                      <a
+                        href="mailto:info@smic360.com"
+                        style={{ color: '#16a34a', fontWeight: 700 }}
+                      >
+                        info@smic360.com
+                      </a>
+                      .
+                    </>
                   )}
                   <div style={{ marginTop: '14px' }}>
-                    <button onClick={() => { setDone(false); setMode('login'); }} style={{ background: 'none', border: '1.5px solid #16a34a', color: '#16a34a', borderRadius: '8px', padding: '7px 18px', cursor: 'pointer', fontWeight: 700, fontSize: '12.5px', fontFamily: 'Outfit, sans-serif' }}>
+                    <button
+                      onClick={() => {
+                        setDone(false);
+                        setMode('login');
+                      }}
+                      style={{
+                        background: 'none',
+                        border: '1.5px solid #16a34a',
+                        color: '#16a34a',
+                        borderRadius: '8px',
+                        padding: '7px 18px',
+                        cursor: 'pointer',
+                        fontWeight: 700,
+                        fontSize: '12.5px',
+                        fontFamily: 'Outfit, sans-serif',
+                      }}
+                    >
                       Back to Sign In
                     </button>
                   </div>
                 </div>
               )}
-
             </div>
           </div>
         </div>
 
         {/* ── Footer ── */}
         <div className="blp-foot">
-          © 2025 SMIC360 Limited · <a href="/privacy">Privacy</a> · <a href="/terms">Terms</a> · <a href="mailto:info@smic360.com">info@smic360.com</a> · <a href="tel:0244783099">024 478 3099</a>
+          © 2025 SMIC360 Limited · <a href="/privacy">Privacy</a> · <a href="/terms">Terms</a> ·{' '}
+          <a href="mailto:info@smic360.com">info@smic360.com</a> ·{' '}
+          <a href="tel:0244783099">024 478 3099</a>
         </div>
       </div>
     </>

@@ -13,42 +13,201 @@ import ProjectSpotlight from '@/components/ProjectSpotlight';
 
 /* ─── Data ─────────────────────────────────────── */
 const caseStudies = [
-  { img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777114247/kkkl_nhdczf.avif', alt: 'Marketing Case', tag: 'Marketing', title: 'National Brand Relaunch', desc: 'The Challenge: A legacy brand losing market share. Our Process: Deep market research followed by a 360° creative pivot and digital expansion.', solution: '+38% awareness & record sales growth.' },
-  { img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777111208/WhatsApp-Image-2025-08-18-at-14.16.35_e93040d9l_gwfnmu.jpg', alt: 'Real Estate Case', tag: 'Real Estate', title: 'The Phoenix Enclave Phase I', desc: 'The Challenge: High demand for secure housing in Accra. Our Process: Strategic land acquisition and precision construction management.', solution: '24 premium units delivered on schedule.' },
-  { img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777106950/ec234641a21a9e03c50b708351c53603_vl5piv.jpg', alt: 'Procurement Case', tag: 'Procurement', title: 'Industrial Supply for GNPC', desc: 'The Challenge: Critical equipment needed with high specs. Our Process: Global vendor negotiation and logistics optimization.', solution: '18% cost saving on technical consumables.' },
-  { img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1776533939/ab942b64_f6uozz.jpg', alt: 'Integrated Solution', tag: 'Integrated', title: 'Corporate HQ Transformation', desc: 'The Challenge: New office needed branding and interior supply. Our Process: Unified brand identity paired with precision procurement.', solution: 'Complete move-in and brand launch in 60 days.' },
+  {
+    img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777114247/kkkl_nhdczf.avif',
+    alt: 'Marketing Case',
+    tag: 'Marketing',
+    title: 'National Brand Relaunch',
+    desc: 'The Challenge: A legacy brand losing market share. Our Process: Deep market research followed by a 360° creative pivot and digital expansion.',
+    solution: '+38% awareness & record sales growth.',
+  },
+  {
+    img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777111208/WhatsApp-Image-2025-08-18-at-14.16.35_e93040d9l_gwfnmu.jpg',
+    alt: 'Real Estate Case',
+    tag: 'Real Estate',
+    title: 'The Phoenix Enclave Phase I',
+    desc: 'The Challenge: High demand for secure housing in Accra. Our Process: Strategic land acquisition and precision construction management.',
+    solution: '24 premium units delivered on schedule.',
+  },
+  {
+    img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777106950/ec234641a21a9e03c50b708351c53603_vl5piv.jpg',
+    alt: 'Procurement Case',
+    tag: 'Procurement',
+    title: 'Industrial Supply for GNPC',
+    desc: 'The Challenge: Critical equipment needed with high specs. Our Process: Global vendor negotiation and logistics optimization.',
+    solution: '18% cost saving on technical consumables.',
+  },
+  {
+    img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1776533939/ab942b64_f6uozz.jpg',
+    alt: 'Integrated Solution',
+    tag: 'Integrated',
+    title: 'Corporate HQ Transformation',
+    desc: 'The Challenge: New office needed branding and interior supply. Our Process: Unified brand identity paired with precision procurement.',
+    solution: 'Complete move-in and brand launch in 60 days.',
+  },
 ];
 
 const clientLogos = [
-  { src: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777112814/a2_az567s.jpg', alt: 'GCB Bank' },
-  { src: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777112816/a3_y1xfq2.jpg', alt: 'MTN Ghana' },
-  { src: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777112818/a5_kpnhnw.jpg', alt: 'Cocobod' },
-  { src: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777112820/a6_gelulp.jpg', alt: 'GNPC' },
-  { src: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777112823/a7_bta0e1.jpg', alt: 'Stanbic' },
-  { src: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777112830/a8_uhzxz6.jpg', alt: 'ECG' },
-  { src: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777112843/a17_l3mpki.jpg', alt: 'Ashfoam' },
+  {
+    src: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777112814/a2_az567s.jpg',
+    alt: 'GCB Bank',
+  },
+  {
+    src: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777112816/a3_y1xfq2.jpg',
+    alt: 'MTN Ghana',
+  },
+  {
+    src: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777112818/a5_kpnhnw.jpg',
+    alt: 'Cocobod',
+  },
+  {
+    src: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777112820/a6_gelulp.jpg',
+    alt: 'GNPC',
+  },
+  {
+    src: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777112823/a7_bta0e1.jpg',
+    alt: 'Stanbic',
+  },
+  {
+    src: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777112830/a8_uhzxz6.jpg',
+    alt: 'ECG',
+  },
+  {
+    src: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777112843/a17_l3mpki.jpg',
+    alt: 'Ashfoam',
+  },
 ];
 
 const projects = [
-  { img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777199309/VCC_dl6ehf.jpg', alt: 'Rebranding Campaign', badge: 'Marketing', title: 'National Brand Relaunch Campaign', desc: 'Full 360° rebranding for a leading Ghanaian consumer goods company — new identity, packaging, and digital campaign launch.', meta: [{ label: 'Industry', val: 'Consumer Goods' }, { label: 'Duration', val: '4 months' }, { label: 'Result', val: '+38% awareness' }] },
-  { img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777196963/1_j6fe4u.jpg', alt: 'Phoenix Enclave', badge: 'Real Estate', title: 'The Phoenix Enclave — Phase 1', desc: 'Delivery of Phase 1 of our flagship gated community — 24 residential units, landscaping, and full utilities infrastructure.', meta: [{ label: 'Units', val: '24 Homes' }, { label: 'Location', val: 'Greater Accra' }, { label: 'Status', val: 'Completed' }] },
-  { img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1776422246/abz_3_hp78qi.jpg', alt: 'Procurement Project', badge: 'Procurement', title: 'Industrial Procurement — GNPC Supply', desc: 'End-to-end procurement of technical equipment and consumables for a major state-owned enterprise — on time, on spec.', meta: [{ label: 'Value', val: '$2.4M GHS' }, { label: 'Timeline', val: '6 weeks' }, { label: 'Saving', val: '18% cost saving' }] },
-  { img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777196963/1_j6fe4u.jpg', alt: 'Residential Apartments', badge: 'Real Estate', title: 'Modern Residential Apartments — Phase 2', desc: 'Successfully delivered the second phase of a modern residential complex, adding 30 new luxury apartment units.', meta: [{ label: 'Units', val: '30 Apartments' }, { label: 'Location', val: 'Urban Accra' }, { label: 'Features', val: 'Smart Home Ready' }] },
-  { img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1776422246/abz_3_hp78qi.jpg', alt: 'Office Supply', badge: 'Procurement', title: 'Office Furniture & IT Equipment Supply', desc: "Managed the complete procurement and installation of office furniture and IT infrastructure for a new corporate headquarters.", meta: [{ label: 'Type', val: 'Office Fit-out' }, { label: 'Items', val: 'Furniture & IT' }, { label: 'Cost', val: 'Optimised by 12%' }] },
-  { img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777223498/medb_kngcnc.jpg', alt: 'Integrated Campaign', badge: 'Marketing', title: 'Integrated Campaign for Local Retailer', desc: 'Orchestrated a multi-channel campaign combining social media advertising, ATL, and local media outreach.', meta: [{ label: 'Sector', val: 'Retail' }, { label: 'Channels', val: 'Digital & OOH' }, { label: 'Sales', val: '+25% increase' }] },
+  {
+    img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777199309/VCC_dl6ehf.jpg',
+    alt: 'Rebranding Campaign',
+    badge: 'Marketing',
+    title: 'National Brand Relaunch Campaign',
+    desc: 'Full 360° rebranding for a leading Ghanaian consumer goods company — new identity, packaging, and digital campaign launch.',
+    meta: [
+      { label: 'Industry', val: 'Consumer Goods' },
+      { label: 'Duration', val: '4 months' },
+      { label: 'Result', val: '+38% awareness' },
+    ],
+  },
+  {
+    img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777196963/1_j6fe4u.jpg',
+    alt: 'Phoenix Enclave',
+    badge: 'Real Estate',
+    title: 'The Phoenix Enclave — Phase 1',
+    desc: 'Delivery of Phase 1 of our flagship gated community — 24 residential units, landscaping, and full utilities infrastructure.',
+    meta: [
+      { label: 'Units', val: '24 Homes' },
+      { label: 'Location', val: 'Greater Accra' },
+      { label: 'Status', val: 'Completed' },
+    ],
+  },
+  {
+    img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1776422246/abz_3_hp78qi.jpg',
+    alt: 'Procurement Project',
+    badge: 'Procurement',
+    title: 'Industrial Procurement — GNPC Supply',
+    desc: 'End-to-end procurement of technical equipment and consumables for a major state-owned enterprise — on time, on spec.',
+    meta: [
+      { label: 'Value', val: '$2.4M GHS' },
+      { label: 'Timeline', val: '6 weeks' },
+      { label: 'Saving', val: '18% cost saving' },
+    ],
+  },
+  {
+    img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777196963/1_j6fe4u.jpg',
+    alt: 'Residential Apartments',
+    badge: 'Real Estate',
+    title: 'Modern Residential Apartments — Phase 2',
+    desc: 'Successfully delivered the second phase of a modern residential complex, adding 30 new luxury apartment units.',
+    meta: [
+      { label: 'Units', val: '30 Apartments' },
+      { label: 'Location', val: 'Urban Accra' },
+      { label: 'Features', val: 'Smart Home Ready' },
+    ],
+  },
+  {
+    img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1776422246/abz_3_hp78qi.jpg',
+    alt: 'Office Supply',
+    badge: 'Procurement',
+    title: 'Office Furniture & IT Equipment Supply',
+    desc: 'Managed the complete procurement and installation of office furniture and IT infrastructure for a new corporate headquarters.',
+    meta: [
+      { label: 'Type', val: 'Office Fit-out' },
+      { label: 'Items', val: 'Furniture & IT' },
+      { label: 'Cost', val: 'Optimised by 12%' },
+    ],
+  },
+  {
+    img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777223498/medb_kngcnc.jpg',
+    alt: 'Integrated Campaign',
+    badge: 'Marketing',
+    title: 'Integrated Campaign for Local Retailer',
+    desc: 'Orchestrated a multi-channel campaign combining social media advertising, ATL, and local media outreach.',
+    meta: [
+      { label: 'Sector', val: 'Retail' },
+      { label: 'Channels', val: 'Digital & OOH' },
+      { label: 'Sales', val: '+25% increase' },
+    ],
+  },
 ];
 
 const teamMembers = [
-  { id: 'christiana', img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777112403/CHRISTIANA_pmwgsx.jpg', name: 'Christiana', role: 'Founder & CEO', bio: 'Over 20 years of industry experience excelling in Advertising, Marketing, and Business Management.', fullBio: 'Christiana is the Founder and CEO of SMIC360 Limited. With over 20 years of industry experience, she has excelled in Advertising, Marketing, Business Management, and Hospitality. She also serves as the Managing Director of Moonlight Shipping, Facility Manager of Christie\'s Homestay, Project Manager of The Phoenix Enclave, and Business Manager for Eagle EL Salt Ghana Limited and Osabusquare.' },
-  { id: 'alberta', img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777112403/ALBERTA_jbrc1f.jpg', name: 'Alberta', role: 'Finance Manager', bio: 'Strategic insight and financial acumen with an MBA in Finance from UGBS and 9+ years of experience.', fullBio: 'Alberta holds a background in Sociology & Linguistics and an MBA in Finance from UGBS. She brings a unique blend of strategic insight and financial acumen to SMIC360. With over nine years of experience in administration and finance, she ensures the seamless execution of all projects, oversees financial operations, and manages budgeting to guarantee the company\'s financial health.' },
-  { id: 'samuel', img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777112169/NII-BOYE_mixzve.jpg', name: 'Samuel', role: 'Creative & Production Manager', bio: 'Creative lead with 15+ years of experience crafting visually captivating and impactful marketing campaigns.', fullBio: 'Samuel is a dynamic Creative & Production Manager with over 15 years of experience and a BFA in Publishing. He leads the creative team in delivering innovative and impactful marketing solutions. Leveraging his deep expertise in design and creative direction, Samuel crafts visually captivating campaigns that resonate with target audiences and effectively drive client success.' },
+  {
+    id: 'christiana',
+    img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777112403/CHRISTIANA_pmwgsx.jpg',
+    name: 'Christiana',
+    role: 'Founder & CEO',
+    bio: 'Over 20 years of industry experience excelling in Advertising, Marketing, and Business Management.',
+    fullBio:
+      "Christiana is the Founder and CEO of SMIC360 Limited. With over 20 years of industry experience, she has excelled in Advertising, Marketing, Business Management, and Hospitality. She also serves as the Managing Director of Moonlight Shipping, Facility Manager of Christie's Homestay, Project Manager of The Phoenix Enclave, and Business Manager for Eagle EL Salt Ghana Limited and Osabusquare.",
+  },
+  {
+    id: 'alberta',
+    img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777112403/ALBERTA_jbrc1f.jpg',
+    name: 'Alberta',
+    role: 'Finance Manager',
+    bio: 'Strategic insight and financial acumen with an MBA in Finance from UGBS and 9+ years of experience.',
+    fullBio:
+      "Alberta holds a background in Sociology & Linguistics and an MBA in Finance from UGBS. She brings a unique blend of strategic insight and financial acumen to SMIC360. With over nine years of experience in administration and finance, she ensures the seamless execution of all projects, oversees financial operations, and manages budgeting to guarantee the company's financial health.",
+  },
+  {
+    id: 'samuel',
+    img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777112169/NII-BOYE_mixzve.jpg',
+    name: 'Samuel',
+    role: 'Creative & Production Manager',
+    bio: 'Creative lead with 15+ years of experience crafting visually captivating and impactful marketing campaigns.',
+    fullBio:
+      'Samuel is a dynamic Creative & Production Manager with over 15 years of experience and a BFA in Publishing. He leads the creative team in delivering innovative and impactful marketing solutions. Leveraging his deep expertise in design and creative direction, Samuel crafts visually captivating campaigns that resonate with target audiences and effectively drive client success.',
+  },
 ];
 
 const testimonials = [
-  { text: '"SMIC360 transformed our brand from a regional player to a nationally recognised name. Their strategic approach and creative execution were exceptional — we saw a 40% increase in brand recall within three months."', avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80', name: 'Kofi Agyemang', company: 'CEO, Agyemang Foods Ltd' },
-  { text: '"The procurement team at SMIC360 saved us 22% on our annual supply budget without compromising quality. Their vendor network and negotiation skills are truly world-class for a Ghanaian firm."', avatar: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=100&q=80', name: 'Ama Darkwa', company: 'Operations Director, BuildRight Ghana' },
-  { text: '"Investing in a unit at the Phoenix Enclave was one of the best decisions we made. The quality of construction, the location, and the SMIC360 team\'s support throughout the process were all outstanding."', avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80', name: 'Emmanuel Osei-Bonsu', company: 'Property Investor, Accra' },
-  { text: '"Their digital marketing team completely transformed our online presence. In just 60 days, our social media engagement tripled and we started getting qualified leads from across Ghana."', avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80', name: 'Abena Mensah', company: 'Managing Director, Zenith Services' },
+  {
+    text: '"SMIC360 transformed our brand from a regional player to a nationally recognised name. Their strategic approach and creative execution were exceptional — we saw a 40% increase in brand recall within three months."',
+    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80',
+    name: 'Kofi Agyemang',
+    company: 'CEO, Agyemang Foods Ltd',
+  },
+  {
+    text: '"The procurement team at SMIC360 saved us 22% on our annual supply budget without compromising quality. Their vendor network and negotiation skills are truly world-class for a Ghanaian firm."',
+    avatar: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=100&q=80',
+    name: 'Ama Darkwa',
+    company: 'Operations Director, BuildRight Ghana',
+  },
+  {
+    text: '"Investing in a unit at the Phoenix Enclave was one of the best decisions we made. The quality of construction, the location, and the SMIC360 team\'s support throughout the process were all outstanding."',
+    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80',
+    name: 'Emmanuel Osei-Bonsu',
+    company: 'Property Investor, Accra',
+  },
+  {
+    text: '"Their digital marketing team completely transformed our online presence. In just 60 days, our social media engagement tripled and we started getting qualified leads from across Ghana."',
+    avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80',
+    name: 'Abena Mensah',
+    company: 'Managing Director, Zenith Services',
+  },
 ];
 
 /* ─── Inline stat counter ───────────────────────── */
@@ -60,25 +219,34 @@ function AnimCounter({ target, suffix = '' }: { target: number; suffix?: string 
     const step = target / (duration / 16);
     const timer = setInterval(() => {
       start += step;
-      if (start >= target) { setCount(target); clearInterval(timer); }
-      else setCount(Math.floor(start));
+      if (start >= target) {
+        setCount(target);
+        clearInterval(timer);
+      } else setCount(Math.floor(start));
     }, 16);
     return () => clearInterval(timer);
   }, [target]);
-  return <>{count}{suffix}</>;
+  return (
+    <>
+      {count}
+      {suffix}
+    </>
+  );
 }
 
 /* ─── Page component ────────────────────────────── */
 export default function HomePage() {
   const [bookOpen, setBookOpen] = useState(false);
-  const [teamModal, setTeamModal] = useState<typeof teamMembers[0] | null>(null);
+  const [teamModal, setTeamModal] = useState<(typeof teamMembers)[0] | null>(null);
   const [mounted, setMounted] = useState(false);
   const [consultEmail, setConsultEmail] = useState('');
   const [consultDone, setConsultDone] = useState(false);
   const [consultLoading, setConsultLoading] = useState(false);
   const [activeProcess, setActiveProcess] = useState(0);
 
-  useEffect(() => { setMounted(true); }, []);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Lock body scroll whenever team modal is open — reuse same pattern as BookingModal
   useEffect(() => {
@@ -106,8 +274,15 @@ export default function HomePage() {
     const form = e.currentTarget as HTMLFormElement;
     const formData = new FormData(form);
     try {
-      const response = await fetch('https://formspree.io/f/xdayrral', { method: 'POST', body: formData, headers: { Accept: 'application/json' } });
-      if (response.ok) { setConsultDone(true); setConsultEmail(''); }
+      const response = await fetch('https://formspree.io/f/xdayrral', {
+        method: 'POST',
+        body: formData,
+        headers: { Accept: 'application/json' },
+      });
+      if (response.ok) {
+        setConsultDone(true);
+        setConsultEmail('');
+      }
     } catch (error) {
       console.error('Formspree error:', error);
     }
@@ -115,16 +290,66 @@ export default function HomePage() {
   };
 
   const processSteps = [
-    { icon: '🔍', title: 'Discovery', subtitle: 'We Listen First', desc: 'Every engagement starts with a deep-dive session to understand your goals, challenges, market position, and success metrics.' },
-    { icon: '🧠', title: 'Strategy', subtitle: 'Blueprint for Growth', desc: 'Our multi-discipline team builds a bespoke strategy — marketing plan, property brief, or procurement framework tailored to you.' },
-    { icon: '⚡', title: 'Execution', subtitle: 'Precision Delivery', desc: 'We execute with speed and precision across all three service lines, with dedicated project managers ensuring quality at every step.' },
-    { icon: '📈', title: 'Results', subtitle: 'Measurable Impact', desc: 'We track and report against agreed KPIs — giving you full visibility into ROI, project milestones, and growth metrics.' },
+    {
+      icon: '🔍',
+      title: 'Discovery',
+      subtitle: 'We Listen First',
+      desc: 'Every engagement starts with a deep-dive session to understand your goals, challenges, market position, and success metrics.',
+    },
+    {
+      icon: '🧠',
+      title: 'Strategy',
+      subtitle: 'Blueprint for Growth',
+      desc: 'Our multi-discipline team builds a bespoke strategy — marketing plan, property brief, or procurement framework tailored to you.',
+    },
+    {
+      icon: '⚡',
+      title: 'Execution',
+      subtitle: 'Precision Delivery',
+      desc: 'We execute with speed and precision across all three service lines, with dedicated project managers ensuring quality at every step.',
+    },
+    {
+      icon: '📈',
+      title: 'Results',
+      subtitle: 'Measurable Impact',
+      desc: 'We track and report against agreed KPIs — giving you full visibility into ROI, project milestones, and growth metrics.',
+    },
   ];
 
   const properties = [
-    { img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777111208/WhatsApp-Image-2025-08-18-at-14.16.35_e93040d9l_gwfnmu.jpg', title: 'Phoenix Enclave — Phase II', type: 'Residential', beds: 3, baths: 2, area: '180 m²', price: 'From GH₵ 850,000', status: 'Available', location: 'Spintex, Accra' },
-    { img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777196963/1_j6fe4u.jpg', title: 'Executive Villa — Cantonments', type: 'Luxury Villa', beds: 5, baths: 4, area: '380 m²', price: 'From GH₵ 2,200,000', status: 'Limited', location: 'Cantonments, Accra' },
-    { img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777106950/Foxcooling-website-cover_p5grjz.jpg', title: 'Commercial Space — East Legon', type: 'Commercial', beds: 0, baths: 2, area: '260 m²', price: 'From GH₵ 1,100,000', status: 'New', location: 'East Legon, Accra' },
+    {
+      img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777111208/WhatsApp-Image-2025-08-18-at-14.16.35_e93040d9l_gwfnmu.jpg',
+      title: 'Phoenix Enclave — Phase II',
+      type: 'Residential',
+      beds: 3,
+      baths: 2,
+      area: '180 m²',
+      price: 'From GH₵ 850,000',
+      status: 'Available',
+      location: 'Spintex, Accra',
+    },
+    {
+      img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777196963/1_j6fe4u.jpg',
+      title: 'Executive Villa — Cantonments',
+      type: 'Luxury Villa',
+      beds: 5,
+      baths: 4,
+      area: '380 m²',
+      price: 'From GH₵ 2,200,000',
+      status: 'Limited',
+      location: 'Cantonments, Accra',
+    },
+    {
+      img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777106950/Foxcooling-website-cover_p5grjz.jpg',
+      title: 'Commercial Space — East Legon',
+      type: 'Commercial',
+      beds: 0,
+      baths: 2,
+      area: '260 m²',
+      price: 'From GH₵ 1,100,000',
+      status: 'New',
+      location: 'East Legon, Accra',
+    },
   ];
 
   return (
@@ -447,13 +672,25 @@ export default function HomePage() {
       <div className="stats-ribbon">
         <div className="stats-ribbon-inner stagger">
           {[
-            { num: 150, suffix: '+', label: 'Projects Delivered', desc: 'Across all three divisions' },
-            { num: 80,  suffix: '+', label: 'Happy Clients',      desc: 'Across Ghana & West Africa' },
-            { num: 8,   suffix: '',  label: 'Years of Excellence', desc: 'Established in Accra' },
-            { num: 3,   suffix: '',  label: 'Core Divisions',      desc: 'Marketing · Real Estate · Procurement' },
+            {
+              num: 150,
+              suffix: '+',
+              label: 'Projects Delivered',
+              desc: 'Across all three divisions',
+            },
+            { num: 80, suffix: '+', label: 'Happy Clients', desc: 'Across Ghana & West Africa' },
+            { num: 8, suffix: '', label: 'Years of Excellence', desc: 'Established in Accra' },
+            {
+              num: 3,
+              suffix: '',
+              label: 'Core Divisions',
+              desc: 'Marketing · Real Estate · Procurement',
+            },
           ].map((s, i) => (
             <div key={i} className="stats-item">
-              <div className="stats-num"><AnimCounter target={s.num} suffix={s.suffix} /></div>
+              <div className="stats-num">
+                <AnimCounter target={s.num} suffix={s.suffix} />
+              </div>
               <div className="stats-label">{s.label}</div>
               <div className="stats-desc">{s.desc}</div>
             </div>
@@ -461,18 +698,35 @@ export default function HomePage() {
         </div>
       </div>
 
-     
       <div className="ribbon">
         <div className="wrap">
           <div className="ribbon-head">
             <span className="ribbon-head-label">Our Three Main Services</span>
-            <Link href="/solutions" className="btn btn-outline" style={{ fontSize: '12px', padding: '8px 16px' }}>View All Solutions →</Link>
+            <Link
+              href="/solutions"
+              className="btn btn-outline"
+              style={{ fontSize: '12px', padding: '8px 16px' }}
+            >
+              View All Solutions →
+            </Link>
           </div>
           <div className="ribbon-grid stagger">
             {[
-              { icon: '📣', title: 'Advertising & Marketing Solutions', desc: '360 Marketing & Branding Solutions for your brand and business.' },
-              { icon: '🏗️', title: 'Real Estate Development',           desc: 'A mini gated community strategically developed in a serene and secured locality.' },
-              { icon: '📦', title: 'Procurement & Supply Services',      desc: 'Tailormade Procurement and supply services designed to give you value for money.' },
+              {
+                icon: '📣',
+                title: 'Advertising & Marketing Solutions',
+                desc: '360 Marketing & Branding Solutions for your brand and business.',
+              },
+              {
+                icon: '🏗️',
+                title: 'Real Estate Development',
+                desc: 'A mini gated community strategically developed in a serene and secured locality.',
+              },
+              {
+                icon: '📦',
+                title: 'Procurement & Supply Services',
+                desc: 'Tailormade Procurement and supply services designed to give you value for money.',
+              },
             ].map((s, i) => (
               <Link key={i} href="/solutions" className="ribbon-card">
                 <div className="ribbon-card-icon">{s.icon}</div>
@@ -487,13 +741,16 @@ export default function HomePage() {
         </div>
       </div>
 
-
-        {/* ── About Section ── */}
+      {/* ── About Section ── */}
       <section className="about">
         <div className="wrap">
           <div className="about-grid">
             <div className="about-img-wrap reveal-left">
-              <img className="about-img-main" src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800&q=80" alt="SMIC360 team meeting" />
+              <img
+                className="about-img-main"
+                src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800&q=80"
+                alt="SMIC360 team meeting"
+              />
               <div className="about-badge">
                 <span className="about-badge-num">8+</span>
                 <span className="about-badge-sub">Years of Excellence</span>
@@ -501,47 +758,103 @@ export default function HomePage() {
             </div>
             <div className="about-text reveal-right">
               <span className="tag">Who We Are</span>
-              <h2 className="section-title">Dedicated to <em>360° Excellence</em></h2>
-              <p className="section-sub">SMIC360 Limited is a Ghanaian multi-sector company built on one conviction: great businesses deserve great partners. We integrate marketing brilliance, real estate development, and smart procurement into one seamless ecosystem — so you spend less time managing vendors and more time scaling.</p>
-              <p className="section-sub" style={{ marginTop: '10px' }}>From crafting bold brand identities to delivering the Phoenix Enclave and sourcing mission-critical supplies, every service we offer carries the same standard of care: meticulous, transparent, and results-driven.</p>
+              <h2 className="section-title">
+                Dedicated to <em>360° Excellence</em>
+              </h2>
+              <p className="section-sub">
+                SMIC360 Limited is a Ghanaian multi-sector company built on one conviction: great
+                businesses deserve great partners. We integrate marketing brilliance, real estate
+                development, and smart procurement into one seamless ecosystem — so you spend less
+                time managing vendors and more time scaling.
+              </p>
+              <p className="section-sub" style={{ marginTop: '10px' }}>
+                From crafting bold brand identities to delivering the Phoenix Enclave and sourcing
+                mission-critical supplies, every service we offer carries the same standard of care:
+                meticulous, transparent, and results-driven.
+              </p>
               <div className="about-points">
                 {[
-                  { icon: '🎯', title: 'Strategy First',         desc: 'Every solution starts with a tailored strategy built around your goals.' },
-                  { icon: '🤝', title: 'Client-Centric',        desc: 'We are always available — your success is our benchmark.' },
-                  { icon: '🏆', title: 'Proven Track Record',   desc: '150+ projects across marketing, real estate and supply chains.' },
-                  { icon: '🌍', title: 'Ghana-Rooted, Pan-African', desc: 'Built in Accra with a vision that extends across the continent.' },
+                  {
+                    icon: '🎯',
+                    title: 'Strategy First',
+                    desc: 'Every solution starts with a tailored strategy built around your goals.',
+                  },
+                  {
+                    icon: '🤝',
+                    title: 'Client-Centric',
+                    desc: 'We are always available — your success is our benchmark.',
+                  },
+                  {
+                    icon: '🏆',
+                    title: 'Proven Track Record',
+                    desc: '150+ projects across marketing, real estate and supply chains.',
+                  },
+                  {
+                    icon: '🌍',
+                    title: 'Ghana-Rooted, Pan-African',
+                    desc: 'Built in Accra with a vision that extends across the continent.',
+                  },
                 ].map((pt, i) => (
                   <div key={i} className="apoint">
                     <div className="apoint-icon">{pt.icon}</div>
-                    <div><h4>{pt.title}</h4><p>{pt.desc}</p></div>
+                    <div>
+                      <h4>{pt.title}</h4>
+                      <p>{pt.desc}</p>
+                    </div>
                   </div>
                 ))}
               </div>
               <div style={{ marginTop: '28px', display: 'flex', gap: '12px' }}>
-                <Link href="/about" className="btn btn-primary">Our Story</Link>
-                <Link href="/about" className="btn btn-outline">Meet The Team</Link>
+                <Link href="/about" className="btn btn-primary">
+                  Our Story
+                </Link>
+                <Link href="/about" className="btn btn-outline">
+                  Meet The Team
+                </Link>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-       {/* ── NEW: Ghana Pride Strip ── */}
+      {/* ── NEW: Ghana Pride Strip ── */}
       <div className="ghana-strip">
         <div className="ghana-strip-inner">
           <div className="ghana-strip-text">
             <h3>Proudly Ghanaian. Built to Pan-African Standards.</h3>
-            <p>SMIC360 is headquartered in Accra — deeply rooted in Ghana&apos;s business culture with a vision that extends across Africa.</p>
+            <p>
+              SMIC360 is headquartered in Accra — deeply rooted in Ghana&apos;s business culture
+              with a vision that extends across Africa.
+            </p>
           </div>
-          <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', position: 'relative', zIndex: 1 }}>
-            <Link href="/about" className="btn btn-white">Our Story →</Link>
-            <button onClick={() => setBookOpen(true)} className="btn btn-outline-white">Partner With Us</button>
+          <div
+            style={{
+              display: 'flex',
+              gap: '12px',
+              flexWrap: 'wrap',
+              position: 'relative',
+              zIndex: 1,
+            }}
+          >
+            <Link href="/about" className="btn btn-white">
+              Our Story →
+            </Link>
+            <button onClick={() => setBookOpen(true)} className="btn btn-outline-white">
+              Partner With Us
+            </button>
           </div>
         </div>
       </div>
 
       {/* ── Video Tour — Cinematic Premium ── */}
-      <section style={{ padding: '100px 0', background: 'var(--navy)', position: 'relative', overflow: 'hidden' }}>
+      <section
+        style={{
+          padding: '100px 0',
+          background: 'var(--navy)',
+          position: 'relative',
+          overflow: 'hidden',
+        }}
+      >
         <style>{`
           /* Cinematic video section */
           .vt-section {
@@ -783,7 +1096,9 @@ export default function HomePage() {
           <div className="vt-header reveal">
             <div className="vt-header-left">
               <span className="tag">Property Tour</span>
-              <h2 className="section-title">The <em>Phoenix Enclave</em></h2>
+              <h2 className="section-title">
+                The <em>Phoenix Enclave</em>
+              </h2>
               <p className="section-sub" style={{ color: 'rgba(255,255,255,0.5)', marginTop: 8 }}>
                 Walk through Ghana&apos;s most anticipated gated community — filmed on-site.
               </p>
@@ -815,7 +1130,9 @@ export default function HomePage() {
                   <div className="vt-bar-dot" />
                   <div className="vt-bar-dot" />
                 </div>
-                <div className="vt-bar-url">youtube.com/watch — The Phoenix Enclave Virtual Tour</div>
+                <div className="vt-bar-url">
+                  youtube.com/watch — The Phoenix Enclave Virtual Tour
+                </div>
                 <div className="vt-bar-badge">LIVE TOUR</div>
               </div>
               {/* Video */}
@@ -838,9 +1155,18 @@ export default function HomePage() {
                   </div>
                 </div>
                 <div className="vt-caption-stats">
-                  <div className="vt-stat"><strong>24</strong><span>Units Phase I</span></div>
-                  <div className="vt-stat"><strong>GH₵850k</strong><span>From</span></div>
-                  <div className="vt-stat"><strong>Now Open</strong><span>Phase II</span></div>
+                  <div className="vt-stat">
+                    <strong>24</strong>
+                    <span>Units Phase I</span>
+                  </div>
+                  <div className="vt-stat">
+                    <strong>GH₵850k</strong>
+                    <span>From</span>
+                  </div>
+                  <div className="vt-stat">
+                    <strong>Now Open</strong>
+                    <span>Phase II</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -865,8 +1191,6 @@ export default function HomePage() {
         </div>
       </section>
 
-    
-
       {/* ── Clients Logos ── */}
       <div className="clients">
         <div className="wrap">
@@ -887,21 +1211,51 @@ export default function HomePage() {
       <section className="capabilities">
         <div className="wrap">
           <div style={{ textAlign: 'center' }} className="reveal">
-            <span className="tag" style={{ justifyContent: 'center' }}>What We Do Best</span>
-            <h2 className="section-title">Our Three Core <em>Services</em></h2>
+            <span className="tag" style={{ justifyContent: 'center' }}>
+              What We Do Best
+            </span>
+            <h2 className="section-title">
+              Our Three Core <em>Services</em>
+            </h2>
           </div>
           <div className="cap-grid stagger">
             {[
-              { img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777114247/kkkl_nhdczf.avif',                                                                                                  alt: 'Brand Strategy', title: 'Advertising & Marketing Solutions', desc: '360 Marketing & Branding Solutions for your brand and business.', href: '/solutions' },
-              { img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777111208/WhatsApp-Image-2025-08-18-at-14.16.35_e93040d9l_gwfnmu.jpg',                                                    alt: 'Real Estate',    title: 'Real Estate Development',           desc: 'A mini gated community strategically developed in a serene and secured locality.', href: '/solutions' },
-              { img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777110562/A-Guide-to-Media-Buying-Definition-Importance-Impact-and-Benefits-scaled-copy_uidwzc.jpg', alt: 'Procurement',    title: 'Procurement & Supply Services',      desc: 'Tailormade Procurement and supply services designed to give you value for money.', href: '/solutions' },
+              {
+                img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777114247/kkkl_nhdczf.avif',
+                alt: 'Brand Strategy',
+                title: 'Advertising & Marketing Solutions',
+                desc: '360 Marketing & Branding Solutions for your brand and business.',
+                href: '/solutions',
+              },
+              {
+                img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777111208/WhatsApp-Image-2025-08-18-at-14.16.35_e93040d9l_gwfnmu.jpg',
+                alt: 'Real Estate',
+                title: 'Real Estate Development',
+                desc: 'A mini gated community strategically developed in a serene and secured locality.',
+                href: '/solutions',
+              },
+              {
+                img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777110562/A-Guide-to-Media-Buying-Definition-Importance-Impact-and-Benefits-scaled-copy_uidwzc.jpg',
+                alt: 'Procurement',
+                title: 'Procurement & Supply Services',
+                desc: 'Tailormade Procurement and supply services designed to give you value for money.',
+                href: '/solutions',
+              },
             ].map((cap, i) => (
               <div key={i} className="cap-card">
-                <div className="cap-img"><img src={cap.img} alt={cap.alt} /></div>
+                <div className="cap-img">
+                  <img src={cap.img} alt={cap.alt} />
+                </div>
                 <div className="cap-body">
                   <h3>{cap.title}</h3>
                   <p>{cap.desc}</p>
-                  <Link href={cap.href} className="btn btn-outline" style={{ marginTop: '20px', width: '100%', justifyContent: 'center' }}>Learn More</Link>
+                  <Link
+                    href={cap.href}
+                    className="btn btn-outline"
+                    style={{ marginTop: '20px', width: '100%', justifyContent: 'center' }}
+                  >
+                    Learn More
+                  </Link>
                 </div>
               </div>
             ))}
@@ -909,18 +1263,35 @@ export default function HomePage() {
         </div>
       </section>
 
-      
       {/* ── NEW: Our Process Section ── */}
       <section className="process-section">
         <div className="wrap">
           <div style={{ textAlign: 'center', marginBottom: '52px' }} className="reveal">
             <span className="tag" style={{ justifyContent: 'center', color: 'var(--cyan)' }}>
-              <span style={{ display: 'block', width: '22px', height: '2px', background: 'var(--cyan)', borderRadius: '2px' }}></span>
+              <span
+                style={{
+                  display: 'block',
+                  width: '22px',
+                  height: '2px',
+                  background: 'var(--cyan)',
+                  borderRadius: '2px',
+                }}
+              ></span>
               How We Work
             </span>
-            <h2 className="section-title" style={{ color: '#fff' }}>Our <em>4-Step</em> Process</h2>
-            <p className="section-sub" style={{ margin: '12px auto 0', textAlign: 'center', color: 'rgba(255,255,255,0.52)' }}>
-              From first conversation to final delivery — a seamless, transparent process that puts your goals first.
+            <h2 className="section-title" style={{ color: '#fff' }}>
+              Our <em>4-Step</em> Process
+            </h2>
+            <p
+              className="section-sub"
+              style={{
+                margin: '12px auto 0',
+                textAlign: 'center',
+                color: 'rgba(255,255,255,0.52)',
+              }}
+            >
+              From first conversation to final delivery — a seamless, transparent process that puts
+              your goals first.
             </p>
           </div>
           <div className="process-grid reveal">
@@ -933,7 +1304,9 @@ export default function HomePage() {
                 >
                   <div className="process-step-num">{String(i + 1).padStart(2, '0')}</div>
                   <div className="process-step-text">
-                    <h4>{step.icon} {step.title}</h4>
+                    <h4>
+                      {step.icon} {step.title}
+                    </h4>
                     <p>{step.subtitle}</p>
                   </div>
                 </div>
@@ -954,18 +1327,31 @@ export default function HomePage() {
         </div>
       </section>
 
-    
-
       {/* ── NEW: Property Listings Preview ── */}
       <section className="properties-section">
         <div className="wrap">
-          <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', flexWrap: 'wrap', gap: '16px' }} className="reveal">
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'flex-end',
+              justifyContent: 'space-between',
+              flexWrap: 'wrap',
+              gap: '16px',
+            }}
+            className="reveal"
+          >
             <div>
               <span className="tag">Real Estate</span>
-              <h2 className="section-title">Featured <em>Properties</em></h2>
-              <p className="section-sub">Explore our current residential and commercial listings in prime Accra locations.</p>
+              <h2 className="section-title">
+                Featured <em>Properties</em>
+              </h2>
+              <p className="section-sub">
+                Explore our current residential and commercial listings in prime Accra locations.
+              </p>
             </div>
-            <Link href="/solutions" className="btn btn-outline" style={{ alignSelf: 'flex-end' }}>View All Properties →</Link>
+            <Link href="/solutions" className="btn btn-outline" style={{ alignSelf: 'flex-end' }}>
+              View All Properties →
+            </Link>
           </div>
           <div className="prop-grid stagger">
             {properties.map((prop, i) => (
@@ -985,8 +1371,30 @@ export default function HomePage() {
                   </div>
                   <div className="prop-price">{prop.price}</div>
                   <div className="prop-cta">
-                    <button onClick={() => setBookOpen(true)} className="btn btn-primary" style={{ flex: 1, justifyContent: 'center', fontSize: '13px', padding: '10px' }}>Enquire Now</button>
-                    <Link href="/solutions" className="btn btn-outline" style={{ flex: 1, justifyContent: 'center', fontSize: '13px', padding: '10px' }}>Details</Link>
+                    <button
+                      onClick={() => setBookOpen(true)}
+                      className="btn btn-primary"
+                      style={{
+                        flex: 1,
+                        justifyContent: 'center',
+                        fontSize: '13px',
+                        padding: '10px',
+                      }}
+                    >
+                      Enquire Now
+                    </button>
+                    <Link
+                      href="/solutions"
+                      className="btn btn-outline"
+                      style={{
+                        flex: 1,
+                        justifyContent: 'center',
+                        fontSize: '13px',
+                        padding: '10px',
+                      }}
+                    >
+                      Details
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -995,7 +1403,7 @@ export default function HomePage() {
         </div>
       </section>
 
-{/*      
+      {/*      
       <section className="compare">
         <div className="wrap">
           <div style={{ textAlign: 'center' }} className="reveal">
@@ -1034,7 +1442,10 @@ export default function HomePage() {
         <div className="wrap">
           <div className="feat-grid">
             <div className="feat-img reveal-left">
-              <img src="https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777111208/WhatsApp-Image-2025-08-18-at-14.16.35_e93040d9l_gwfnmu.jpg" alt="Phoenix Enclave Real Estate" />
+              <img
+                src="https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777111208/WhatsApp-Image-2025-08-18-at-14.16.35_e93040d9l_gwfnmu.jpg"
+                alt="Phoenix Enclave Real Estate"
+              />
               <div className="feat-img-caption">
                 <h3>The Phoenix Enclave</h3>
                 <p>A modern mini gated community — serene, secured, and strategically located.</p>
@@ -1042,51 +1453,99 @@ export default function HomePage() {
             </div>
             <div className="reveal-right">
               <span className="tag">Flagship Development</span>
-              <h2 className="section-title">Built for <em>Ghana</em></h2>
-              <p className="section-sub">The Phoenix Enclave is SMIC360's premier real estate offering — thoughtfully designed residential and commercial spaces built with modern architecture and premium finishes for the Ghanaian market.</p>
+              <h2 className="section-title">
+                Built for <em>Ghana</em>
+              </h2>
+              <p className="section-sub">
+                The Phoenix Enclave is SMIC360&apos;s premier real estate offering — thoughtfully
+                designed residential and commercial spaces built with modern architecture and
+                premium finishes for the Ghanaian market.
+              </p>
               <div className="feat-items">
                 {[
-                  { icon: '🏡', title: 'Gated & Secured Community', desc: '24/7 security, controlled access, and a peaceful neighbourhood environment for families and professionals.' },
-                  { icon: '🏛️', title: 'Modern Architecture',       desc: 'Contemporary designs that blend aesthetics with functionality — built to last and built to impress.' },
-                  { icon: '📍', title: 'Strategic Location',         desc: 'Positioned in a serene locality with convenient access to Accra\'s key commercial and social hubs.' },
-                  { icon: '💼', title: 'Investment Opportunity',     desc: 'High ROI potential in one of Ghana\'s fastest-growing real estate corridors — for homebuyers and investors alike.' },
+                  {
+                    icon: '🏡',
+                    title: 'Gated & Secured Community',
+                    desc: '24/7 security, controlled access, and a peaceful neighbourhood environment for families and professionals.',
+                  },
+                  {
+                    icon: '🏛️',
+                    title: 'Modern Architecture',
+                    desc: 'Contemporary designs that blend aesthetics with functionality — built to last and built to impress.',
+                  },
+                  {
+                    icon: '📍',
+                    title: 'Strategic Location',
+                    desc: "Positioned in a serene locality with convenient access to Accra's key commercial and social hubs.",
+                  },
+                  {
+                    icon: '💼',
+                    title: 'Investment Opportunity',
+                    desc: "High ROI potential in one of Ghana's fastest-growing real estate corridors — for homebuyers and investors alike.",
+                  },
                 ].map((item, i) => (
                   <div key={i} className="feat-item">
                     <div className="feat-item-icon">{item.icon}</div>
-                    <div><h4>{item.title}</h4><p>{item.desc}</p></div>
+                    <div>
+                      <h4>{item.title}</h4>
+                      <p>{item.desc}</p>
+                    </div>
                   </div>
                 ))}
               </div>
               <div style={{ marginTop: '28px', display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-                <Link href="/solutions" className="btn btn-primary">Explore The Enclave</Link>
-                <button onClick={() => setBookOpen(true)} className="btn btn-outline">Book a Site Visit</button>
+                <Link href="/solutions" className="btn btn-primary">
+                  Explore The Enclave
+                </Link>
+                <button onClick={() => setBookOpen(true)} className="btn btn-outline">
+                  Book a Site Visit
+                </button>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-     
-
-      
-
       {/* ── CTA Banner ── */}
       <div className="cta-banner">
         <div className="cta-inner">
           <div>
             <span className="tag" style={{ color: 'var(--cyan)' }}>
-              <span style={{ display: 'block', width: '22px', height: '2px', background: 'var(--cyan)', borderRadius: '2px' }}></span>
+              <span
+                style={{
+                  display: 'block',
+                  width: '22px',
+                  height: '2px',
+                  background: 'var(--cyan)',
+                  borderRadius: '2px',
+                }}
+              ></span>
               2025 Service Catalogue
             </span>
-            <h2 className="cta-title">Scale Your Business<br />with Our <em>2025 Catalogue</em></h2>
-            <p className="cta-sub">Download the full SMIC360 solutions catalogue — complete service listings, pricing tiers, real estate specs, and procurement frameworks all in one place.</p>
+            <h2 className="cta-title">
+              Scale Your Business
+              <br />
+              with Our <em>2025 Catalogue</em>
+            </h2>
+            <p className="cta-sub">
+              Download the full SMIC360 solutions catalogue — complete service listings, pricing
+              tiers, real estate specs, and procurement frameworks all in one place.
+            </p>
           </div>
           <div className="cta-actions">
-            <a href="mailto:info@smic360.com?subject=Catalogue%20Request&body=Hi%20SMIC360%2C%20please%20send%20me%20your%202025%20solutions%20catalogue." className="btn btn-white">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 16l-4-4h3V4h2v8h3l-4 4z"/><path d="M4 20h16"/></svg>
+            <a
+              href="mailto:info@smic360.com?subject=Catalogue%20Request&body=Hi%20SMIC360%2C%20please%20send%20me%20your%202025%20solutions%20catalogue."
+              className="btn btn-white"
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M12 16l-4-4h3V4h2v8h3l-4 4z" />
+                <path d="M4 20h16" />
+              </svg>
               Download Catalogue
             </a>
-            <button onClick={() => setBookOpen(true)} className="btn btn-outline-white">Book A Call</button>
+            <button onClick={() => setBookOpen(true)} className="btn btn-outline-white">
+              Book A Call
+            </button>
           </div>
         </div>
       </div>
@@ -1124,9 +1583,16 @@ export default function HomePage() {
       <section className="team">
         <div className="wrap">
           <div style={{ textAlign: 'center' }} className="reveal">
-            <span className="tag" style={{ justifyContent: 'center' }}>The People</span>
-            <h2 className="section-title">Meet <em>The Experts</em></h2>
-            <p className="section-sub" style={{ margin: '12px auto 0', textAlign: 'center' }}>A dedicated team of strategists, creatives, engineers, and industry specialists — united by one goal: your success.</p>
+            <span className="tag" style={{ justifyContent: 'center' }}>
+              The People
+            </span>
+            <h2 className="section-title">
+              Meet <em>The Experts</em>
+            </h2>
+            <p className="section-sub" style={{ margin: '12px auto 0', textAlign: 'center' }}>
+              A dedicated team of strategists, creatives, engineers, and industry specialists —
+              united by one goal: your success.
+            </p>
           </div>
           <div className="team-grid stagger">
             {teamMembers.map((member, i) => (
@@ -1138,10 +1604,19 @@ export default function HomePage() {
               >
                 <div className="team-card-socials">
                   {['in', 'ig', 'tw'].map((s) => (
-                    <a key={s} href="#" className="team-social-icon" onClick={(e) => e.stopPropagation()}>{s}</a>
+                    <a
+                      key={s}
+                      href="#"
+                      className="team-social-icon"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      {s}
+                    </a>
                   ))}
                 </div>
-                <div className="team-img"><img src={member.img} alt={`${member.name} — ${member.role}`} /></div>
+                <div className="team-img">
+                  <img src={member.img} alt={`${member.name} — ${member.role}`} />
+                </div>
                 <div className="team-body">
                   <h3>{member.name}</h3>
                   <div className="team-role">{member.role}</div>
@@ -1159,12 +1634,34 @@ export default function HomePage() {
           <div className="testi-head reveal">
             <div>
               <span className="tag">Client Feedback</span>
-              <h2 className="section-title">Trusted <em>Across Ghana</em></h2>
+              <h2 className="section-title">
+                Trusted <em>Across Ghana</em>
+              </h2>
             </div>
             <div style={{ textAlign: 'right' }}>
-              <p style={{ fontSize: '14px', color: 'var(--muted)', maxWidth: '280px', lineHeight: '1.6', marginBottom: '12px' }}>Real results. Real clients. Real growth stories from businesses across Ghana.</p>
-              <a href="https://www.google.com/search?q=SMIC360+LIMITED#lrd=0xfdf8402e54ac0bd:0x37c47d7434f4203c,3" target="_blank" rel="noopener noreferrer" className="btn btn-outline" style={{ fontSize: '12px', padding: '8px 16px' }}>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" style={{ width: '14px', display: 'inline-block', verticalAlign: 'middle' }} alt="Google" />
+              <p
+                style={{
+                  fontSize: '14px',
+                  color: 'var(--muted)',
+                  maxWidth: '280px',
+                  lineHeight: '1.6',
+                  marginBottom: '12px',
+                }}
+              >
+                Real results. Real clients. Real growth stories from businesses across Ghana.
+              </p>
+              <a
+                href="https://www.google.com/search?q=SMIC360+LIMITED#lrd=0xfdf8402e54ac0bd:0x37c47d7434f4203c,3"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-outline"
+                style={{ fontSize: '12px', padding: '8px 16px' }}
+              >
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
+                  style={{ width: '14px', display: 'inline-block', verticalAlign: 'middle' }}
+                  alt="Google"
+                />
                 &nbsp;Write a Review
               </a>
             </div>
@@ -1174,7 +1671,11 @@ export default function HomePage() {
               {[...testimonials, ...testimonials].map((t, i) => (
                 <div key={i} className="testi-card">
                   <div className="testi-stars">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" className="google-icon" alt="Google" />
+                    <img
+                      src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
+                      className="google-icon"
+                      alt="Google"
+                    />
                     ★★★★★
                   </div>
                   <p className="testi-text">{t.text}</p>
@@ -1198,28 +1699,61 @@ export default function HomePage() {
           <div className="hq-grid">
             <div className="reveal-left">
               <span className="tag">Where To Find Us</span>
-              <h2 className="section-title">Our <em>Headquarters</em></h2>
-              <p className="section-sub">We are based in the heart of Accra and always available to serve you. Walk in, call us, or drop us a message — we respond fast.</p>
+              <h2 className="section-title">
+                Our <em>Headquarters</em>
+              </h2>
+              <p className="section-sub">
+                We are based in the heart of Accra and always available to serve you. Walk in, call
+                us, or drop us a message — we respond fast.
+              </p>
               <div className="hq-details">
                 {[
-                  { icon: '📍', title: 'Office Address', desc: '1st Floor, Verostina House, Opp. DSTV Office, Community 18, Off Spintex Road, Accra' },
-                  { icon: '📞', title: 'Phone',          desc: '024 478 3099 — We are always available to serve you' },
-                  { icon: '✉️', title: 'Email',          desc: 'info@smic360.com — Expect a reply within 2 business hours' },
-                  { icon: '🕐', title: 'Office Hours',   desc: 'Monday – Friday: 8:00 AM – 6:00 PM | Saturday: 9:00 AM – 2:00 PM' },
+                  {
+                    icon: '📍',
+                    title: 'Office Address',
+                    desc: '1st Floor, Verostina House, Opp. DSTV Office, Community 18, Off Spintex Road, Accra',
+                  },
+                  {
+                    icon: '📞',
+                    title: 'Phone',
+                    desc: '024 478 3099 — We are always available to serve you',
+                  },
+                  {
+                    icon: '✉️',
+                    title: 'Email',
+                    desc: 'info@smic360.com — Expect a reply within 2 business hours',
+                  },
+                  {
+                    icon: '🕐',
+                    title: 'Office Hours',
+                    desc: 'Monday – Friday: 8:00 AM – 6:00 PM | Saturday: 9:00 AM – 2:00 PM',
+                  },
                 ].map((item, i) => (
                   <div key={i} className="hq-detail-item">
                     <div className="hq-detail-icon">{item.icon}</div>
-                    <div className="hq-detail-text"><h4>{item.title}</h4><p>{item.desc}</p></div>
+                    <div className="hq-detail-text">
+                      <h4>{item.title}</h4>
+                      <p>{item.desc}</p>
+                    </div>
                   </div>
                 ))}
               </div>
-              <a href="https://maps.google.com/?q=SMIC360+LIMITED" target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{ marginTop: '24px' }}>Get Directions →</a>
+              <a
+                href="https://maps.google.com/?q=SMIC360+LIMITED"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-primary"
+                style={{ marginTop: '24px' }}
+              >
+                Get Directions →
+              </a>
             </div>
             <div className="reveal-right">
               <div className="hq-map">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d63528.36050131504!2d-0.076514!3d5.637253!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdf8402e54ac0bd%3A0x37c47d7434f4203c!2sSMIC360%20LIMITED!5e0!3m2!1sen!2sus!4v1777199771968!5m2!1sen!2sus"
-                  width="600" height="450"
+                  width="600"
+                  height="450"
                   style={{ border: 0 }}
                   allowFullScreen
                   loading="lazy"
@@ -1236,20 +1770,41 @@ export default function HomePage() {
       <section className="consult">
         <div className="consult-inner reveal">
           <span className="tag">Let&apos;s Work Together</span>
-          <h2 className="consult-title">Get A <em>Free Consultation</em></h2>
-          <p className="consult-sub">Tell us about your business challenge. Whether it&apos;s a brand refresh, a property investment, or a procurement need — our team will put together a bespoke solution for you within 24 hours.</p>
+          <h2 className="consult-title">
+            Get A <em>Free Consultation</em>
+          </h2>
+          <p className="consult-sub">
+            Tell us about your business challenge. Whether it&apos;s a brand refresh, a property
+            investment, or a procurement need — our team will put together a bespoke solution for
+            you within 24 hours.
+          </p>
           {!consultDone ? (
             <form className="consult-form" onSubmit={handleConsult}>
-              <input type="email" name="email" placeholder="Enter your email address" value={consultEmail} onChange={(e) => setConsultEmail(e.target.value)} required />
+              <input
+                type="email"
+                name="email"
+                placeholder="Enter your email address"
+                value={consultEmail}
+                onChange={(e) => setConsultEmail(e.target.value)}
+                required
+              />
               <button type="submit" className="btn btn-primary" disabled={consultLoading}>
                 {consultLoading ? 'Sending...' : 'Get Started →'}
               </button>
             </form>
           ) : (
-            <p style={{ color: 'var(--cyan)', fontWeight: 700, fontSize: '16px', marginTop: '8px' }}>✔ Thank you! We&apos;ll be in touch within 2 business hours.</p>
+            <p
+              style={{ color: 'var(--cyan)', fontWeight: 700, fontSize: '16px', marginTop: '8px' }}
+            >
+              ✔ Thank you! We&apos;ll be in touch within 2 business hours.
+            </p>
           )}
           <p style={{ marginTop: '14px', fontSize: '12px', color: 'rgba(255,255,255,.32)' }}>
-            Or call us: <a href="tel:0244783099" style={{ color: 'var(--cyan)', fontWeight: 700 }}>024 478 3099</a> — No obligation, no spam.
+            Or call us:{' '}
+            <a href="tel:0244783099" style={{ color: 'var(--cyan)', fontWeight: 700 }}>
+              024 478 3099
+            </a>{' '}
+            — No obligation, no spam.
           </p>
         </div>
       </section>
@@ -1272,7 +1827,9 @@ function TeamModal({
   onClose: () => void;
 }) {
   const [mounted, setMounted] = React.useState(false);
-  React.useEffect(() => { setMounted(true); }, []);
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
 
   /* scroll lock — uses html overflow so fixed floats stay visible */
   React.useEffect(() => {
@@ -1296,9 +1853,12 @@ function TeamModal({
 
   return createPortal(
     <div
-      onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
+      onClick={(e) => {
+        if (e.target === e.currentTarget) onClose();
+      }}
       style={{
-        position: 'fixed', inset: 0,
+        position: 'fixed',
+        inset: 0,
         background: 'rgba(4,14,29,0.92)',
         backdropFilter: 'blur(12px)',
         WebkitBackdropFilter: 'blur(12px)',
@@ -1316,50 +1876,150 @@ function TeamModal({
           to   { opacity: 1; transform: none; }
         }
       `}</style>
-      <div style={{
-        background: '#fff',
-        width: '100%',
-        maxWidth: '640px',
-        borderRadius: '20px',
-        overflow: 'hidden',
-        boxShadow: '0 40px 100px rgba(4,14,29,0.55)',
-        borderTop: '4px solid #FFC107',
-        animation: 'tmSlideIn 0.38s cubic-bezier(0.16,1,0.3,1) both',
-      }}>
+      <div
+        style={{
+          background: '#fff',
+          width: '100%',
+          maxWidth: '640px',
+          borderRadius: '20px',
+          overflow: 'hidden',
+          boxShadow: '0 40px 100px rgba(4,14,29,0.55)',
+          borderTop: '4px solid #FFC107',
+          animation: 'tmSlideIn 0.38s cubic-bezier(0.16,1,0.3,1) both',
+        }}
+      >
         {/* Header */}
-        <div style={{
-          background: 'linear-gradient(135deg,#040e1d 0%,#0b2d56 55%,#1261c0 100%)',
-          padding: '32px 28px',
-          display: 'flex', gap: '22px', alignItems: 'center',
-          position: 'relative', overflow: 'hidden',
-        }}>
-          <div style={{ position:'absolute',inset:0, backgroundImage:'linear-gradient(rgba(0,180,216,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(0,180,216,0.06) 1px,transparent 1px)', backgroundSize:'24px 24px', pointerEvents:'none' }} />
-          <div style={{ position:'absolute',bottom:0,left:0,right:0,height:2, background:'linear-gradient(90deg,#FFC107,#00b4d8,#FFC107)' }} />
+        <div
+          style={{
+            background: 'linear-gradient(135deg,#040e1d 0%,#0b2d56 55%,#1261c0 100%)',
+            padding: '32px 28px',
+            display: 'flex',
+            gap: '22px',
+            alignItems: 'center',
+            position: 'relative',
+            overflow: 'hidden',
+          }}
+        >
+          <div
+            style={{
+              position: 'absolute',
+              inset: 0,
+              backgroundImage:
+                'linear-gradient(rgba(0,180,216,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(0,180,216,0.06) 1px,transparent 1px)',
+              backgroundSize: '24px 24px',
+              pointerEvents: 'none',
+            }}
+          />
+          <div
+            style={{
+              position: 'absolute',
+              bottom: 0,
+              left: 0,
+              right: 0,
+              height: 2,
+              background: 'linear-gradient(90deg,#FFC107,#00b4d8,#FFC107)',
+            }}
+          />
           {/* Close btn */}
           <button
             type="button"
             onClick={onClose}
-            style={{ position:'absolute',top:14,right:14, background:'rgba(255,255,255,0.12)', border:'1px solid rgba(255,255,255,0.22)', color:'#fff', width:36,height:36, borderRadius:'50%', cursor:'pointer', display:'flex',alignItems:'center',justifyContent:'center', fontSize:16, zIndex:10, transition:'background 0.2s', fontFamily:'inherit' }}
-            onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.background='rgba(220,38,38,0.75)'; }}
-            onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.background='rgba(255,255,255,0.12)'; }}
-          >✕</button>
+            style={{
+              position: 'absolute',
+              top: 14,
+              right: 14,
+              background: 'rgba(255,255,255,0.12)',
+              border: '1px solid rgba(255,255,255,0.22)',
+              color: '#fff',
+              width: 36,
+              height: 36,
+              borderRadius: '50%',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontSize: 16,
+              zIndex: 10,
+              transition: 'background 0.2s',
+              fontFamily: 'inherit',
+            }}
+            onMouseEnter={(e) => {
+              (e.currentTarget as HTMLButtonElement).style.background = 'rgba(220,38,38,0.75)';
+            }}
+            onMouseLeave={(e) => {
+              (e.currentTarget as HTMLButtonElement).style.background = 'rgba(255,255,255,0.12)';
+            }}
+          >
+            ✕
+          </button>
           <img
             src={member.img}
             alt={member.name}
-            style={{ width:110,height:110, borderRadius:14, objectFit:'cover', border:'3px solid rgba(255,255,255,0.25)', flexShrink:0, boxShadow:'0 8px 28px rgba(0,0,0,0.35)', position:'relative', zIndex:1 }}
+            style={{
+              width: 110,
+              height: 110,
+              borderRadius: 14,
+              objectFit: 'cover',
+              border: '3px solid rgba(255,255,255,0.25)',
+              flexShrink: 0,
+              boxShadow: '0 8px 28px rgba(0,0,0,0.35)',
+              position: 'relative',
+              zIndex: 1,
+            }}
           />
-          <div style={{ position:'relative', zIndex:1 }}>
-            <h3 style={{ fontFamily:"'Oswald',sans-serif", fontSize:26, fontWeight:700, color:'#FFC107', margin:0, lineHeight:1.1 }}>{member.name}</h3>
-            <div style={{ color:'#00b4d8', fontWeight:700, fontSize:12.5, letterSpacing:'1.2px', textTransform:'uppercase', marginTop:6 }}>{member.role}</div>
-            <div style={{ display:'flex', gap:8, marginTop:14 }}>
-              {['in','ig','tw'].map(s => (
-                <span key={s} style={{ width:30,height:30, background:'rgba(255,255,255,0.15)', border:'1px solid rgba(255,255,255,0.22)', borderRadius:7, display:'flex',alignItems:'center',justifyContent:'center', color:'#fff', fontSize:11, fontWeight:700 }}>{s}</span>
+          <div style={{ position: 'relative', zIndex: 1 }}>
+            <h3
+              style={{
+                fontFamily: "'Oswald',sans-serif",
+                fontSize: 26,
+                fontWeight: 700,
+                color: '#FFC107',
+                margin: 0,
+                lineHeight: 1.1,
+              }}
+            >
+              {member.name}
+            </h3>
+            <div
+              style={{
+                color: '#00b4d8',
+                fontWeight: 700,
+                fontSize: 12.5,
+                letterSpacing: '1.2px',
+                textTransform: 'uppercase',
+                marginTop: 6,
+              }}
+            >
+              {member.role}
+            </div>
+            <div style={{ display: 'flex', gap: 8, marginTop: 14 }}>
+              {['in', 'ig', 'tw'].map((s) => (
+                <span
+                  key={s}
+                  style={{
+                    width: 30,
+                    height: 30,
+                    background: 'rgba(255,255,255,0.15)',
+                    border: '1px solid rgba(255,255,255,0.22)',
+                    borderRadius: 7,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    color: '#fff',
+                    fontSize: 11,
+                    fontWeight: 700,
+                  }}
+                >
+                  {s}
+                </span>
               ))}
             </div>
           </div>
         </div>
         {/* Body */}
-        <div style={{ padding:'28px 32px 36px', color:'#5a7186', lineHeight:1.85, fontSize:15.5 }}>
+        <div
+          style={{ padding: '28px 32px 36px', color: '#5a7186', lineHeight: 1.85, fontSize: 15.5 }}
+        >
           {member.fullBio}
         </div>
       </div>
@@ -1367,4 +2027,3 @@ function TeamModal({
     document.body
   );
 }
-

@@ -35,7 +35,9 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
   const [mounted, setMounted] = useState(false);
   const overlayRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => { setMounted(true); }, []);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Reset form on open
   useEffect(() => {
@@ -59,7 +61,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
     }
     return () => {
       // Only unlock on unmount if this modal is the active lock owner
-    if (!isOpen && document.documentElement.style.overflow === 'hidden') {
+      if (!isOpen && document.documentElement.style.overflow === 'hidden') {
         unlockScroll();
       }
     };
@@ -77,7 +79,9 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
       });
       if (response.ok) {
         setSubmitted(true);
-        setTimeout(() => { onClose(); }, 5000);
+        setTimeout(() => {
+          onClose();
+        }, 5000);
       }
     } catch (error) {
       console.error('Formspree error:', error);
@@ -87,11 +91,14 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
 
   const handleClose = () => {
     onClose();
-    setTimeout(() => { setSubmitted(false); setSelectedService(''); }, 300);
+    setTimeout(() => {
+      setSubmitted(false);
+      setSelectedService('');
+    }, 300);
   };
 
   const services = [
-    { icon: '📣', label: 'Marketing',   value: 'Advertising & Marketing' },
+    { icon: '📣', label: 'Marketing', value: 'Advertising & Marketing' },
     { icon: '🏡', label: 'Real Estate', value: 'Real Estate Development' },
     { icon: '📦', label: 'Procurement', value: 'Procurement & Supply' },
   ];
@@ -99,7 +106,9 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
   const modalContent = (
     <div
       ref={overlayRef}
-      onClick={(e) => { if (e.target === e.currentTarget) handleClose(); }}
+      onClick={(e) => {
+        if (e.target === e.currentTarget) handleClose();
+      }}
       style={{
         position: 'fixed',
         inset: 0,
@@ -256,15 +265,29 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
         {!submitted ? (
           <>
             <div className="bm-header">
-              <button className="bm-close" onClick={handleClose} type="button">✕</button>
+              <button className="bm-close" onClick={handleClose} type="button">
+                ✕
+              </button>
               <div className="bm-title">Book A Consultation</div>
-              <div className="bm-sub">Our team responds within 2 business hours — no obligation.</div>
+              <div className="bm-sub">
+                Our team responds within 2 business hours — no obligation.
+              </div>
             </div>
             <div className="bm-body">
               <form onSubmit={handleSubmit}>
                 <input type="hidden" name="service" value={selectedService} />
                 <div style={{ marginBottom: '6px' }}>
-                  <label style={{ fontSize: '12px', fontWeight: 700, color: '#071628', letterSpacing: '0.5px', textTransform: 'uppercase', display: 'block', marginBottom: '10px' }}>
+                  <label
+                    style={{
+                      fontSize: '12px',
+                      fontWeight: 700,
+                      color: '#071628',
+                      letterSpacing: '0.5px',
+                      textTransform: 'uppercase',
+                      display: 'block',
+                      marginBottom: '10px',
+                    }}
+                  >
                     What can we help you with? *
                   </label>
                   <div className="bm-services">
@@ -280,7 +303,9 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                     ))}
                   </div>
                   {!selectedService && (
-                    <p style={{ fontSize: '11px', color: '#9ca3af', marginBottom: '8px' }}>Please select a service above</p>
+                    <p style={{ fontSize: '11px', color: '#9ca3af', marginBottom: '8px' }}>
+                      Please select a service above
+                    </p>
                   )}
                 </div>
                 <div className="bm-row">
@@ -305,15 +330,30 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                 </div>
                 <div className="bm-group">
                   <label>Message</label>
-                  <textarea name="message" placeholder="Tell us briefly about your project or need..." />
+                  <textarea
+                    name="message"
+                    placeholder="Tell us briefly about your project or need..."
+                  />
                 </div>
                 <button type="submit" className="bm-submit" disabled={loading || !selectedService}>
                   {loading ? (
                     <>
-                      <span style={{ display: 'inline-block', width: 16, height: 16, border: '2px solid rgba(7,22,40,0.3)', borderTopColor: '#071628', borderRadius: '50%', animation: 'spin 0.7s linear infinite' }} />
+                      <span
+                        style={{
+                          display: 'inline-block',
+                          width: 16,
+                          height: 16,
+                          border: '2px solid rgba(7,22,40,0.3)',
+                          borderTopColor: '#071628',
+                          borderRadius: '50%',
+                          animation: 'spin 0.7s linear infinite',
+                        }}
+                      />
                       Sending…
                     </>
-                  ) : 'Submit Request →'}
+                  ) : (
+                    'Submit Request →'
+                  )}
                 </button>
                 <p className="bm-secure">🔒 Your details are secure and will never be shared.</p>
               </form>
@@ -323,17 +363,38 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
           <div className="bm-success">
             <div className="bm-success-icon">✓</div>
             <h3>Request Received!</h3>
-            <p>Thank you for reaching out to SMIC360. A member of our team will contact you within 2 business hours.</p>
+            <p>
+              Thank you for reaching out to SMIC360. A member of our team will contact you within 2
+              business hours.
+            </p>
             <div className="bm-success-btns">
               <button
                 onClick={handleClose}
-                style={{ padding: '11px 24px', background: 'linear-gradient(135deg,#FFC107,#D4A017)', color: '#071628', fontWeight: 700, border: 'none', borderRadius: 10, cursor: 'pointer', fontFamily: 'Outfit,sans-serif' }}
+                style={{
+                  padding: '11px 24px',
+                  background: 'linear-gradient(135deg,#FFC107,#D4A017)',
+                  color: '#071628',
+                  fontWeight: 700,
+                  border: 'none',
+                  borderRadius: 10,
+                  cursor: 'pointer',
+                  fontFamily: 'Outfit,sans-serif',
+                }}
               >
                 Close
               </button>
               <a
                 href="tel:0244783099"
-                style={{ padding: '11px 24px', border: '1.5px solid #D4A017', color: '#D4A017', fontWeight: 700, borderRadius: 10, fontFamily: 'Outfit,sans-serif', display: 'inline-flex', alignItems: 'center' }}
+                style={{
+                  padding: '11px 24px',
+                  border: '1.5px solid #D4A017',
+                  color: '#D4A017',
+                  fontWeight: 700,
+                  borderRadius: 10,
+                  fontFamily: 'Outfit,sans-serif',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                }}
               >
                 Call Us Now
               </a>
