@@ -1377,10 +1377,98 @@ footer {
 .footer-bottom-links { display:flex; gap:20px; }
 
 /* =============================================
-   FLOATING BUTTONS — handled by ChatPanel portal (#smic-floats)
-   Legacy classes kept only for any other usage
+   FLOATING BUTTONS — Always Fixed Bottom Right
    ============================================= */
-/* .floats, .float-wa, .float-ai, .float-label — now managed via portal CSS in ChatPanel.tsx */
+#smic-floating-system {
+  position: fixed !important;
+  bottom: 20px !important;
+  right: 20px !important;
+  z-index: 99999 !important;
+  pointer-events: none;
+}
+
+.floats {
+  position: fixed !important;
+  right: 20px !important;
+  bottom: 20px !important;
+  top: auto !important;
+  left: auto !important;
+  transform: none !important;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  z-index: 99999 !important;
+  pointer-events: all;
+}
+
+.float-ai, .float-wa {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--sh-md);
+  cursor: pointer;
+  transition: all 0.3s var(--ease);
+  position: relative;
+  background: #fff;
+  border: 1.5px solid var(--border);
+  overflow: visible;
+}
+
+.float-wa {
+  background: #25D366;
+  border-color: #128C7E;
+  color: #fff;
+  animation: wa-pulse 2s infinite;
+}
+
+.float-ai img {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.float-wa svg {
+  width: 28px;
+  height: 28px;
+  fill: currentColor;
+}
+
+.float-label {
+  position: absolute;
+  right: 100%;
+  margin-right: 15px;
+  background: var(--navy);
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(10px);
+  transition: all 0.3s var(--ease);
+  pointer-events: none;
+  box-shadow: var(--sh-md);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.float-ai:hover .float-label,
+.float-wa:hover .float-label {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+}
+
+.float-ai:hover, .float-wa:hover {
+  transform: scale(1.1);
+  box-shadow: var(--sh-lg);
+}
 
 /* Scroll top — now managed via portal CSS in ChatPanel.tsx */
 /* .scroll-top — handled by #smic-scroll-top in ChatPanel portal */
@@ -1388,13 +1476,40 @@ footer {
 /* =============================================
    CHAT PANEL — styles consumed by #smic-chat-panel portal elements
    ============================================= */
-/* Overlay and panel positioning handled by ChatPanel.tsx portal */
+.chat-panel {
+  position: fixed !important;
+  right: 20px !important;
+  bottom: 100px !important;
+  width: 380px;
+  max-height: calc(100vh - 120px);
+  background: #fff;
+  border-radius: 24px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+  display: flex;
+  flex-direction: column;
+  z-index: 99999 !important;
+  overflow: hidden;
+  animation: chatIn 0.4s var(--ease) both;
+}
+
+@keyframes chatIn {
+  from { opacity: 0; transform: translateY(20px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
 
 /* Chat head */
 .chat-head {
   padding: 18px 20px;
   display: flex; align-items:center; gap:12px;
   position: relative;
+  background: linear-gradient(135deg, #040e1d 0%, #0b2d56 55%, #1261c0 100%);
+  border-radius: 24px 24px 0 0;
+}
+
+@keyframes wa-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+  70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
 }
 .chat-head::before {
   content: '';
@@ -1750,7 +1865,7 @@ footer {
 [data-theme="midnight"] .chat-input-area input { background:var(--off); border-color:var(--border); color:var(--text); }
 [data-theme="midnight"] .proj-body h3, [data-theme="midnight"] .cap-body h3, [data-theme="midnight"] .team-body h3 { color:var(--navy); }
 
-/* Mobile menu open — only locks html scroll, not body (avoids conflict with modals) */
+/* Mobile menu open — lock html scroll */
 html.mobile-menu-open { overflow: hidden; }
 
 /* Utility animations */
@@ -1801,10 +1916,10 @@ html.mobile-menu-open { overflow: hidden; }
 }
 @media (max-width:640px) {
   .topbar-hours { display:none; }
-  .chat-panel { right:14px; bottom:94px; width:calc(100vw - 28px); }
-  .floats { right:16px; bottom:24px; gap:10px; }
+  .chat-panel { right:12px !important; bottom:88px !important; width:calc(100vw - 24px); max-height:calc(100vh - 108px); }
+  .floats { right: 12px !important; left: auto !important; gap: 10px; }
   .float-label { display:none; }
-  .blog-grid { grid-template-columns:1fr; }
+  .float-ai, .float-wa { width: 48px; height: 48px; }
 }
 @media (max-width:1024px) {
   .blog-grid { grid-template-columns:repeat(2,1fr); }

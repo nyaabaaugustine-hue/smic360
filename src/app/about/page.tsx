@@ -1,5 +1,6 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import Link from 'next/link';
 import Topbar from '@/components/Topbar';
 import Navbar from '@/components/Navbar';
@@ -38,24 +39,23 @@ const teamMembers = [
 export default function AboutPage() {
   const [bookOpen, setBookOpen] = useState(false);
   const [teamModal, setTeamModal] = useState<typeof teamMembers[0] | null>(null);
+  const [mounted, setMounted] = useState(false);
 
-  // Lock body scroll while team modal open
+  useEffect(() => { setMounted(true); }, []);
+
+  // Lock html scroll (not body) — keeps fixed elements (floats) working
   React.useEffect(() => {
     if (!teamModal) return;
     const y = window.scrollY;
-    document.body.style.position = 'fixed';
-    document.body.style.top = `-${y}px`;
-    document.body.style.left = '0';
-    document.body.style.right = '0';
-    document.body.style.overflowY = 'scroll';
+    document.documentElement.dataset.scrollY = String(y);
+    const scrollbarW = window.innerWidth - document.documentElement.clientWidth;
+    document.documentElement.style.overflow = 'hidden';
+    document.documentElement.style.paddingRight = `${scrollbarW}px`;
     return () => {
-      const top = document.body.style.top;
-      document.body.style.position = '';
-      document.body.style.top = '';
-      document.body.style.left = '';
-      document.body.style.right = '';
-      document.body.style.overflowY = '';
-      if (top) window.scrollTo(0, -parseInt(top, 10));
+      document.documentElement.style.overflow = '';
+      document.documentElement.style.paddingRight = '';
+      delete document.documentElement.dataset.scrollY;
+      window.scrollTo(0, y);
     };
   }, [teamModal]);
 
@@ -65,9 +65,11 @@ export default function AboutPage() {
       <Topbar />
       <Navbar onBookClick={() => setBookOpen(true)} />
       <BookingModal isOpen={bookOpen} onClose={() => setBookOpen(false)} />
-      {/* Team Modal — self-contained inline styles, no CSS class conflicts */}
-      {teamModal &&
-        <div
+      {/* Team Modal — portal so it always renders above all z-index layers */}
+      {mounted && teamModal && createPortal(
+        <>
+          <style>{`@keyframes bmIn { from{opacity:0;transform:translateY(28px) scale(0.95);} to{opacity:1;transform:none;} }`}</style>
+          <div
           onClick={(e) => { if (e?.target === e?.currentTarget) setTeamModal(null); }}
           ref={(el) => { if (el) el.scrollTop = 0; }}
           style={{
@@ -75,10 +77,10 @@ export default function AboutPage() {
             background: 'rgba(4,14,29,0.88)',
             backdropFilter: 'blur(10px)',
             display: 'flex',
-            alignItems: 'flex-start',
+            alignItems: 'center',
             justifyContent: 'center',
             zIndex: 100000,
-            padding: '20px 16px 40px',
+            padding: '20px 16px',
             overflowY: 'auto',
             WebkitOverflowScrolling: 'touch',
           }}
@@ -91,8 +93,6 @@ export default function AboutPage() {
             boxShadow: '0 32px 80px rgba(4,14,29,0.35)',
             borderTop: '4px solid #FFC107',
             animation: 'bmIn 0.38s cubic-bezier(0.16,1,0.3,1)',
-            margin: '0 auto',
-            alignSelf: 'flex-start',
             position: 'relative',
           }}>
             {/* Header */}
@@ -123,8 +123,9 @@ export default function AboutPage() {
               {teamModal.fullBio}
             </div>
           </div>
-        </div>
-      }
+          </div>
+        </>
+      , document.body)}
       {/* Page Hero */}
       <div className="page-hero">
         <div className="page-hero-inner">

@@ -1,5 +1,6 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import Link from 'next/link';
 
 /* ─── Types ────────────────────────────────────── */
@@ -53,11 +54,12 @@ function ProjectDetailModal({
         backdropFilter: 'blur(12px)',
         WebkitBackdropFilter: 'blur(12px)',
         display: 'flex',
-        alignItems: 'center',
+        alignItems: 'flex-start',
         justifyContent: 'center',
         zIndex: 999999,
-        padding: '20px 16px',
+        padding: '20px 16px 40px',
         overflowY: 'auto',
+        WebkitOverflowScrolling: 'touch' as React.CSSProperties['WebkitOverflowScrolling'],
       }}
     >
       <div style={{
@@ -69,6 +71,8 @@ function ProjectDetailModal({
         borderTop: `4px solid ${bc.dot}`,
         animation: 'psIn 0.38s cubic-bezier(0.16,1,0.3,1)',
         position: 'relative',
+        margin: '0 auto',
+        alignSelf: 'flex-start',
       }}>
         <style>{`
           @keyframes psIn {
@@ -205,6 +209,29 @@ export default function ProjectSpotlight({ projects, onBook }: ProjectSpotlightP
   const [activeTab, setActiveTab] = useState('All');
   const [detailProject, setDetailProject] = useState<Project | null>(null);
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => { setMounted(true); }, []);
+
+  // Scroll lock for project detail modal — html overflow, keeps floats fixed
+  useEffect(() => {
+    if (!mounted) return;
+    if (detailProject) {
+      const y = window.scrollY;
+      document.documentElement.dataset.psY = String(y);
+      const sw = window.innerWidth - document.documentElement.clientWidth;
+      document.documentElement.style.overflow = 'hidden';
+      document.documentElement.style.paddingRight = `${sw}px`;
+    } else {
+      if (document.documentElement.style.overflow === 'hidden') {
+        const savedY = parseInt(document.documentElement.dataset.psY || '0', 10);
+        document.documentElement.style.overflow = '';
+        document.documentElement.style.paddingRight = '';
+        delete document.documentElement.dataset.psY;
+        window.scrollTo(0, savedY);
+      }
+    }
+  }, [detailProject, mounted]);
 
   const filtered = activeTab === 'All'
     ? projects
@@ -212,13 +239,14 @@ export default function ProjectSpotlight({ projects, onBook }: ProjectSpotlightP
 
   return (
     <>
-      {/* ─── Project Detail Modal ─── */}
-      {detailProject && (
+      {/* ─── Project Detail Modal – portal ─── */}
+      {mounted && detailProject && createPortal(
         <ProjectDetailModal
           project={detailProject}
           onClose={() => setDetailProject(null)}
           onBook={onBook}
-        />
+        />,
+        document.body
       )}
 
       <section style={{ padding: '100px 0', background: '#f6f8fd', position: 'relative', overflow: 'hidden' }}>

@@ -7,25 +7,24 @@ interface BookingModalProps {
   onClose: () => void;
 }
 
-/* ── Unified scroll-lock helper ── */
+/* ── Unified scroll-lock helper ──
+   Uses overflow:hidden on <html> so position:fixed elements (floats, chat)
+   remain visible and don't shift position when a modal is open.
+── */
 function lockScroll() {
   const y = window.scrollY;
-  document.body.dataset.scrollY = String(y);
-  document.body.style.position = 'fixed';
-  document.body.style.top = `-${y}px`;
-  document.body.style.left = '0';
-  document.body.style.right = '0';
-  document.body.style.overflowY = 'scroll';
+  document.documentElement.dataset.scrollY = String(y);
+  // Compensate for scrollbar width so content doesn't jump
+  const scrollbarW = window.innerWidth - document.documentElement.clientWidth;
+  document.documentElement.style.overflow = 'hidden';
+  document.documentElement.style.paddingRight = `${scrollbarW}px`;
 }
 
 function unlockScroll() {
-  const y = parseInt(document.body.dataset.scrollY || '0', 10);
-  document.body.style.position = '';
-  document.body.style.top = '';
-  document.body.style.left = '';
-  document.body.style.right = '';
-  document.body.style.overflowY = '';
-  delete document.body.dataset.scrollY;
+  const y = parseInt(document.documentElement.dataset.scrollY || '0', 10);
+  document.documentElement.style.overflow = '';
+  document.documentElement.style.paddingRight = '';
+  delete document.documentElement.dataset.scrollY;
   window.scrollTo(0, y);
 }
 
@@ -56,13 +55,11 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
     if (isOpen) {
       lockScroll();
     } else {
-      // Only unlock if no other modal is locking
-      if (document.body.style.position === 'fixed') {
-        unlockScroll();
-      }
+      unlockScroll();
     }
     return () => {
-      if (document.body.style.position === 'fixed') {
+      // Only unlock on unmount if this modal is the active lock owner
+    if (!isOpen && document.documentElement.style.overflow === 'hidden') {
         unlockScroll();
       }
     };
@@ -108,10 +105,10 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
         inset: 0,
         background: 'rgba(4,14,29,0.88)',
         display: 'flex',
-        alignItems: 'flex-start',
         justifyContent: 'center',
-        zIndex: 2147483647, /* Max z-index */
-        padding: '20px 16px 40px',
+        alignItems: 'center',
+        zIndex: 2147483647,
+        padding: '20px 16px',
         backdropFilter: 'blur(10px)',
         WebkitBackdropFilter: 'blur(10px)',
         overflowY: 'auto',
@@ -129,8 +126,6 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
           box-shadow: 0 32px 80px rgba(4,14,29,0.45);
           animation: bmIn 0.38s cubic-bezier(0.16,1,0.3,1) both;
           border-top: 4px solid #FFC107;
-          margin: 0 auto;
-          flex-shrink: 0;
         }
         @keyframes bmIn { from{opacity:0;transform:translateY(30px) scale(0.94);} to{opacity:1;transform:none;} }
         .bm-header {

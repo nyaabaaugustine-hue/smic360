@@ -80,41 +80,24 @@ export default function HomePage() {
 
   useEffect(() => { setMounted(true); }, []);
 
-  // Lock body scroll whenever team modal is open
+  // Lock body scroll whenever team modal is open — reuse same pattern as BookingModal
   useEffect(() => {
     if (!mounted) return;
-    if (!teamModal) {
-      if (document.body.style.position === 'fixed') {
-        const y = parseInt(document.body.dataset.scrollY || '0', 10);
-        document.body.style.position = '';
-        document.body.style.top = '';
-        document.body.style.left = '';
-        document.body.style.right = '';
-        document.body.style.overflowY = '';
-        delete document.body.dataset.scrollY;
-        window.scrollTo(0, y);
-      }
-      return;
-    }
-    const y = window.scrollY;
-    document.body.dataset.scrollY = String(y);
-    document.body.style.position = 'fixed';
-    document.body.style.top = `-${y}px`;
-    document.body.style.left = '0';
-    document.body.style.right = '0';
-    document.body.style.overflowY = 'scroll';
-    return () => {
-      if (document.body.style.position === 'fixed') {
-        const savedY = parseInt(document.body.dataset.scrollY || '0', 10);
-        document.body.style.position = '';
-        document.body.style.top = '';
-        document.body.style.left = '';
-        document.body.style.right = '';
-        document.body.style.overflowY = '';
-        delete document.body.dataset.scrollY;
+    if (teamModal) {
+      const y = window.scrollY;
+      document.documentElement.dataset.scrollY = String(y);
+      const scrollbarW = window.innerWidth - document.documentElement.clientWidth;
+      document.documentElement.style.overflow = 'hidden';
+      document.documentElement.style.paddingRight = `${scrollbarW}px`;
+    } else {
+      if (document.documentElement.style.overflow === 'hidden') {
+        const savedY = parseInt(document.documentElement.dataset.scrollY || '0', 10);
+        document.documentElement.style.overflow = '';
+        document.documentElement.style.paddingRight = '';
+        delete document.documentElement.dataset.scrollY;
         window.scrollTo(0, savedY);
       }
-    };
+    }
   }, [teamModal, mounted]);
 
   const handleConsult = async (e: React.FormEvent) => {
@@ -456,73 +439,6 @@ export default function HomePage() {
       <Topbar />
       <Navbar onBookClick={() => setBookOpen(true)} />
       <BookingModal isOpen={bookOpen} onClose={() => setBookOpen(false)} />
-
-      {/* Team Profile Modal — portal so it always renders above everything */}
-      {mounted && teamModal && createPortal(
-        <div
-          onClick={(e) => { if (e.target === e.currentTarget) setTeamModal(null); }}
-          style={{
-            position: 'fixed', inset: 0,
-            background: 'rgba(4,14,29,0.88)',
-            backdropFilter: 'blur(10px)',
-            WebkitBackdropFilter: 'blur(10px)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            zIndex: 2147483646,
-            padding: '20px 16px 40px',
-            overflowY: 'auto',
-            WebkitOverflowScrolling: 'touch',
-          }}
-        >
-          <style>{`
-            @keyframes tmIn { from{opacity:0;transform:translateY(28px) scale(0.95);} to{opacity:1;transform:none;} }
-          `}</style>
-          <div style={{
-            background: '#fff',
-            width: '100%', maxWidth: '640px',
-            borderRadius: '20px',
-            overflow: 'hidden',
-            boxShadow: '0 32px 80px rgba(4,14,29,0.45)',
-            borderTop: '4px solid #FFC107',
-            animation: 'tmIn 0.38s cubic-bezier(0.16,1,0.3,1) both',
-            margin: '0 auto',
-            position: 'relative',
-          }}>
-            {/* Header */}
-            <div style={{
-              background: 'linear-gradient(135deg,#040e1d 0%,#0b2d56 55%,#1261c0 100%)',
-              padding: '32px 28px',
-              display: 'flex', gap: '22px', alignItems: 'center',
-              position: 'relative', overflow: 'hidden',
-            }}>
-              <div style={{ position:'absolute',inset:0, backgroundImage:'linear-gradient(rgba(0,180,216,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(0,180,216,0.06) 1px,transparent 1px)', backgroundSize:'24px 24px', pointerEvents:'none' }} />
-              <div style={{ position:'absolute',bottom:0,left:0,right:0,height:2, background:'linear-gradient(90deg,#FFC107,#00b4d8,#FFC107)' }} />
-              <button
-                onClick={() => setTeamModal(null)}
-                style={{ position:'absolute',top:12,right:12, background:'rgba(255,255,255,0.12)', border:'1px solid rgba(255,255,255,0.2)', color:'#fff', width:36,height:36, borderRadius:'50%', cursor:'pointer', display:'flex',alignItems:'center',justifyContent:'center', fontSize:16, zIndex:10, transition:'all 0.25s' }}
-                onMouseEnter={e=>(e.currentTarget.style.background='rgba(220,38,38,0.7)')}
-                onMouseLeave={e=>(e.currentTarget.style.background='rgba(255,255,255,0.12)')}
-              >✕</button>
-              <img src={teamModal.img} alt={teamModal.name} style={{ width:110,height:110, borderRadius:14, objectFit:'cover', border:'3px solid rgba(255,255,255,0.2)', flexShrink:0, boxShadow:'0 8px 28px rgba(0,0,0,0.3)', position:'relative', zIndex:1 }} />
-              <div style={{ position:'relative', zIndex:1 }}>
-                <h3 style={{ fontFamily:"'Oswald',sans-serif", fontSize:26, fontWeight:700, color:'#FFC107', margin:0 }}>{teamModal.name}</h3>
-                <div style={{ color:'#00b4d8', fontWeight:700, fontSize:12.5, letterSpacing:'1.2px', textTransform:'uppercase', marginTop:5 }}>{teamModal.role}</div>
-                <div style={{ display:'flex', gap:8, marginTop:12 }}>
-                  {['in','ig','tw'].map(s=>(
-                    <span key={s} style={{ width:28,height:28, background:'rgba(255,255,255,0.15)', border:'1px solid rgba(255,255,255,0.2)', borderRadius:6, display:'flex',alignItems:'center',justifyContent:'center', color:'#fff', fontSize:11, fontWeight:700, cursor:'default' }}>{s}</span>
-                  ))}
-                </div>
-              </div>
-            </div>
-            {/* Body */}
-            <div style={{ padding:'28px 32px', color:'#5a7186', lineHeight:1.82, fontSize:15 }}>
-              {teamModal.fullBio}
-            </div>
-          </div>
-        </div>,
-        document.body
-      )}
 
       {/* ── Hero ── */}
       <HeroSlider onBookClick={() => setBookOpen(true)} />
@@ -1166,7 +1082,7 @@ export default function HomePage() {
             <p className="cta-sub">Download the full SMIC360 solutions catalogue — complete service listings, pricing tiers, real estate specs, and procurement frameworks all in one place.</p>
           </div>
           <div className="cta-actions">
-            <a href="#" className="btn btn-white">
+            <a href="mailto:info@smic360.com?subject=Catalogue%20Request&body=Hi%20SMIC360%2C%20please%20send%20me%20your%202025%20solutions%20catalogue." className="btn btn-white">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 16l-4-4h3V4h2v8h3l-4 4z"/><path d="M4 20h16"/></svg>
               Download Catalogue
             </a>
@@ -1340,7 +1256,115 @@ export default function HomePage() {
 
       <Footer onBookClick={() => setBookOpen(true)} />
       <ChatPanel />
+
+      {/* ── TEAM MODAL — bulletproof standalone portal ── */}
+      <TeamModal member={teamModal} onClose={() => setTeamModal(null)} />
     </>
+  );
+}
+
+/* ─── TeamModal extracted as standalone so portal always works ── */
+function TeamModal({
+  member,
+  onClose,
+}: {
+  member: { img: string; name: string; role: string; fullBio: string } | null;
+  onClose: () => void;
+}) {
+  const [mounted, setMounted] = React.useState(false);
+  React.useEffect(() => { setMounted(true); }, []);
+
+  /* scroll lock — uses html overflow so fixed floats stay visible */
+  React.useEffect(() => {
+    if (!mounted) return;
+    if (member) {
+      const y = window.scrollY;
+      document.documentElement.dataset.tmY = String(y);
+      const scrollbarW = window.innerWidth - document.documentElement.clientWidth;
+      document.documentElement.style.overflow = 'hidden';
+      document.documentElement.style.paddingRight = `${scrollbarW}px`;
+    } else {
+      const savedY = parseInt(document.documentElement.dataset.tmY || '0', 10);
+      document.documentElement.style.overflow = '';
+      document.documentElement.style.paddingRight = '';
+      delete document.documentElement.dataset.tmY;
+      window.scrollTo(0, savedY);
+    }
+  }, [member, mounted]);
+
+  if (!mounted || !member) return null;
+
+  return createPortal(
+    <div
+      onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
+      style={{
+        position: 'fixed', inset: 0,
+        background: 'rgba(4,14,29,0.92)',
+        backdropFilter: 'blur(12px)',
+        WebkitBackdropFilter: 'blur(12px)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        zIndex: 2147483647,
+        padding: '20px 16px',
+        overflowY: 'auto',
+      }}
+    >
+      <style>{`
+        @keyframes tmSlideIn {
+          from { opacity: 0; transform: translateY(32px) scale(0.95); }
+          to   { opacity: 1; transform: none; }
+        }
+      `}</style>
+      <div style={{
+        background: '#fff',
+        width: '100%',
+        maxWidth: '640px',
+        borderRadius: '20px',
+        overflow: 'hidden',
+        boxShadow: '0 40px 100px rgba(4,14,29,0.55)',
+        borderTop: '4px solid #FFC107',
+        animation: 'tmSlideIn 0.38s cubic-bezier(0.16,1,0.3,1) both',
+      }}>
+        {/* Header */}
+        <div style={{
+          background: 'linear-gradient(135deg,#040e1d 0%,#0b2d56 55%,#1261c0 100%)',
+          padding: '32px 28px',
+          display: 'flex', gap: '22px', alignItems: 'center',
+          position: 'relative', overflow: 'hidden',
+        }}>
+          <div style={{ position:'absolute',inset:0, backgroundImage:'linear-gradient(rgba(0,180,216,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(0,180,216,0.06) 1px,transparent 1px)', backgroundSize:'24px 24px', pointerEvents:'none' }} />
+          <div style={{ position:'absolute',bottom:0,left:0,right:0,height:2, background:'linear-gradient(90deg,#FFC107,#00b4d8,#FFC107)' }} />
+          {/* Close btn */}
+          <button
+            type="button"
+            onClick={onClose}
+            style={{ position:'absolute',top:14,right:14, background:'rgba(255,255,255,0.12)', border:'1px solid rgba(255,255,255,0.22)', color:'#fff', width:36,height:36, borderRadius:'50%', cursor:'pointer', display:'flex',alignItems:'center',justifyContent:'center', fontSize:16, zIndex:10, transition:'background 0.2s', fontFamily:'inherit' }}
+            onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.background='rgba(220,38,38,0.75)'; }}
+            onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.background='rgba(255,255,255,0.12)'; }}
+          >✕</button>
+          <img
+            src={member.img}
+            alt={member.name}
+            style={{ width:110,height:110, borderRadius:14, objectFit:'cover', border:'3px solid rgba(255,255,255,0.25)', flexShrink:0, boxShadow:'0 8px 28px rgba(0,0,0,0.35)', position:'relative', zIndex:1 }}
+          />
+          <div style={{ position:'relative', zIndex:1 }}>
+            <h3 style={{ fontFamily:"'Oswald',sans-serif", fontSize:26, fontWeight:700, color:'#FFC107', margin:0, lineHeight:1.1 }}>{member.name}</h3>
+            <div style={{ color:'#00b4d8', fontWeight:700, fontSize:12.5, letterSpacing:'1.2px', textTransform:'uppercase', marginTop:6 }}>{member.role}</div>
+            <div style={{ display:'flex', gap:8, marginTop:14 }}>
+              {['in','ig','tw'].map(s => (
+                <span key={s} style={{ width:30,height:30, background:'rgba(255,255,255,0.15)', border:'1px solid rgba(255,255,255,0.22)', borderRadius:7, display:'flex',alignItems:'center',justifyContent:'center', color:'#fff', fontSize:11, fontWeight:700 }}>{s}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+        {/* Body */}
+        <div style={{ padding:'28px 32px 36px', color:'#5a7186', lineHeight:1.85, fontSize:15.5 }}>
+          {member.fullBio}
+        </div>
+      </div>
+    </div>,
+    document.body
   );
 }
 

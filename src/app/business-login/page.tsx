@@ -10,14 +10,14 @@ export default function BusinessLoginPage() {
   const [done, setDone] = useState(false);
   const [error, setError] = useState('');
 
-  // Lock body scroll only while on this page, clean up on unmount
+  // Lock html scroll — keeps fixed elements (floats) intact
   React.useEffect(() => {
-    const prev = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
+    const scrollbarW = window.innerWidth - document.documentElement.clientWidth;
     document.documentElement.style.overflow = 'hidden';
+    document.documentElement.style.paddingRight = `${scrollbarW}px`;
     return () => {
-      document.body.style.overflow = prev;
       document.documentElement.style.overflow = '';
+      document.documentElement.style.paddingRight = '';
     };
   }, []);
 
