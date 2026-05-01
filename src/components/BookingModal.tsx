@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 
 interface BookingModalProps {
@@ -7,33 +7,11 @@ interface BookingModalProps {
   onClose: () => void;
 }
 
-/* ── Unified scroll-lock helper ──
-   Uses overflow:hidden on <html> so position:fixed elements (floats, chat)
-   remain visible and don't shift position when a modal is open.
-── */
-function lockScroll() {
-  const y = window.scrollY;
-  document.documentElement.dataset.scrollY = String(y);
-  // Compensate for scrollbar width so content doesn't jump
-  const scrollbarW = window.innerWidth - document.documentElement.clientWidth;
-  document.documentElement.style.overflow = 'hidden';
-  document.documentElement.style.paddingRight = `${scrollbarW}px`;
-}
-
-function unlockScroll() {
-  const y = parseInt(document.documentElement.dataset.scrollY || '0', 10);
-  document.documentElement.style.overflow = '';
-  document.documentElement.style.paddingRight = '';
-  delete document.documentElement.dataset.scrollY;
-  window.scrollTo(0, y);
-}
-
 export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [selectedService, setSelectedService] = useState('');
   const [mounted, setMounted] = useState(false);
-  const overlayRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => { setMounted(true); }, []);
 
@@ -42,26 +20,23 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
     if (isOpen) {
       setSubmitted(false);
       setSelectedService('');
-      // Scroll overlay to top after a tick
-      requestAnimationFrame(() => {
-        if (overlayRef.current) overlayRef.current.scrollTop = 0;
-      });
     }
   }, [isOpen]);
 
-  // Scroll lock — unified approach
+  // Scroll lock — lock html overflow (same technique as TeamModal)
   useEffect(() => {
     if (!mounted) return;
     if (isOpen) {
-      lockScroll();
+      const w = window.innerWidth - document.documentElement.clientWidth;
+      document.documentElement.style.overflow = 'hidden';
+      document.documentElement.style.paddingRight = w + 'px';
     } else {
-      unlockScroll();
+      document.documentElement.style.overflow = '';
+      document.documentElement.style.paddingRight = '';
     }
     return () => {
-      // Only unlock on unmount if this modal is the active lock owner
-    if (!isOpen && document.documentElement.style.overflow === 'hidden') {
-        unlockScroll();
-      }
+      document.documentElement.style.overflow = '';
+      document.documentElement.style.paddingRight = '';
     };
   }, [isOpen, mounted]);
 
@@ -98,7 +73,6 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
 
   const modalContent = (
     <div
-      ref={overlayRef}
       onClick={(e) => { if (e.target === e.currentTarget) handleClose(); }}
       style={{
         position: 'fixed',

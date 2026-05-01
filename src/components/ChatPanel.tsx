@@ -9,29 +9,8 @@ interface Message {
 }
 
 /* ─────────────────────────────────────────────────────────────
-   FLOATING BUTTONS — rendered in a SEPARATE portal, zero wrapper.
-   All positioning is inline style only. No class, no parent div,
-   no stacking-context ancestor. Directly appended to <body>.
+   FLOATING BUTTONS — rendered via portal into body
 ───────────────────────────────────────────────────────────── */
-
-// Shared button shape
-const BTN: React.CSSProperties = {
-  width: 52,
-  height: 52,
-  borderRadius: '50%',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  cursor: 'pointer',
-  border: 'none',
-  outline: 'none',
-  boxShadow: '0 4px 20px rgba(0,0,0,0.22)',
-  flexShrink: 0,
-  transition: 'transform 0.2s, box-shadow 0.2s',
-  textDecoration: 'none',
-  position: 'relative' as const,
-  overflow: 'visible' as const,
-};
 
 function FloatingButtons({
   onChatToggle,
@@ -42,41 +21,23 @@ function FloatingButtons({
   chatOpen: boolean;
   onThemeToggle: () => void;
 }) {
-  /* True viewport-fixed container — inline only, no CSS class */
-  const containerStyle: React.CSSProperties = {
-    position: 'fixed',
-    bottom: 24,
-    right: 24,
-    display: 'flex',
-    flexDirection: 'column',
-    gap: 12,
-    zIndex: 999999,
-    // Guarantee NO stacking-context-breaking properties:
-    transform: 'none',
-    filter: 'none',
-    perspective: 'none',
-    willChange: 'auto',
-    contain: 'none' as React.CSSProperties['contain'],
-    isolation: 'auto' as React.CSSProperties['isolation'],
-  };
-
   return (
-    <div style={containerStyle}>
+    <div className="floats">
       {/* Theme toggle */}
       <button
         type="button"
         onClick={onThemeToggle}
         aria-label="Switch Theme"
         title="Switch Theme"
-        style={{
-          ...BTN,
-          background: '#071628',
-          border: '1.5px solid #FFC107',
-          color: '#FFC107',
-        }}
+        className="float-ai"
+        style={{ background: '#071628', border: '1.5px solid #FFC107', color: '#FFC107', overflow: 'hidden' }}
       >
+        <span className="float-label">Theme</span>
         <span style={{ fontSize: 22, lineHeight: 1, pointerEvents: 'none' }}>🎨</span>
       </button>
+
+      {/* Divider */}
+      <div style={{ width: 1, height: 28, background: 'rgba(255,255,255,0.15)', margin: '0 6px', flexShrink: 0 }} />
 
       {/* WhatsApp */}
       <a
@@ -85,18 +46,17 @@ function FloatingButtons({
         rel="noopener noreferrer"
         aria-label="Chat on WhatsApp"
         title="Chat on WhatsApp"
-        style={{
-          ...BTN,
-          background: '#25D366',
-          border: '1.5px solid #128C7E',
-          color: '#fff',
-          animation: 'smic-wa-pulse 2s infinite',
-        }}
+        className="float-wa"
+        style={{ textDecoration: 'none', animation: 'smic-wa-pulse 2s infinite' }}
       >
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="#fff" style={{ pointerEvents: 'none' }}>
+        <span className="float-label">WhatsApp</span>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="#fff" style={{ pointerEvents: 'none' }}>
           <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
         </svg>
       </a>
+
+      {/* Divider */}
+      <div style={{ width: 1, height: 28, background: 'rgba(255,255,255,0.15)', margin: '0 6px', flexShrink: 0 }} />
 
       {/* AI Chat toggle */}
       <button
@@ -105,18 +65,14 @@ function FloatingButtons({
         aria-label="Toggle Chat Assistant"
         title="Chat with SMIC AI"
         aria-expanded={chatOpen}
-        style={{
-          ...BTN,
-          background: '#fff',
-          border: '1.5px solid #dce8f7',
-          padding: 0,
-          overflow: 'hidden',
-        }}
+        className="float-ai"
+        style={{ background: '#fff', border: '1.5px solid #dce8f7', padding: 0, overflow: 'hidden' }}
       >
+        <span className="float-label">Chat with us</span>
         <img
           src="https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777107241/cropped-SMIC-01-180x180_pffxe7.jpg"
           alt="SMIC AI"
-          style={{ width: 52, height: 52, objectFit: 'cover', borderRadius: '50%', display: 'block', pointerEvents: 'none' }}
+          style={{ width: 46, height: 46, objectFit: 'cover', borderRadius: '50%', display: 'block', pointerEvents: 'none' }}
         />
       </button>
     </div>
