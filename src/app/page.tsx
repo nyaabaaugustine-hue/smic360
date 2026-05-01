@@ -401,7 +401,7 @@ export default function HomePage() {
             {[
               { img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777114247/kkkl_nhdczf.avif',                                                                                                  alt: 'Brand Strategy', title: 'Advertising & Marketing Solutions', desc: '360 Marketing & Branding Solutions for your brand and business.', href: '/solutions' },
               { img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777111208/WhatsApp-Image-2025-08-18-at-14.16.35_e93040d9l_gwfnmu.jpg',                                                    alt: 'Real Estate',    title: 'Real Estate Development',           desc: 'A mini gated community strategically developed in a serene and secured locality.', href: '/solutions' },
-              { img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777110562/A-Guide-to-Media-Buying-Definition-Importance-Impact-and-Benefits-scaled-copy_uidwzc.jpg', alt: 'Procurement',    title: 'Procurement & Supply Services',      desc: 'Tailormade Procurement and supply services designed to give you value for money.', href: '/solutions' },
+              { img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777655037/360sm_mqzf0p.png', alt: 'Procurement',    title: 'Procurement & Supply Services',      desc: 'Tailormade Procurement and supply services designed to give you value for money.', href: '/solutions' },
             ].map((cap, i) => (
               <div key={i} className="cap-card">
                 <div className="cap-img"><img src={cap.img} alt={cap.alt} /></div>
@@ -415,35 +415,98 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Process ── */}
-      <section className="process-section">
-        <div className="wrap">
-          <div style={{ textAlign: 'center', marginBottom: '52px' }} className="reveal">
-            <span className="tag" style={{ justifyContent: 'center', color: 'var(--cyan)' }}>How We Work</span>
-            <h2 className="section-title" style={{ color: '#fff' }}>Our <em>4-Step</em> Process</h2>
-            <p className="section-sub" style={{ margin: '12px auto 0', textAlign: 'center', color: 'rgba(255,255,255,0.52)' }}>From first conversation to final delivery — a seamless, transparent process that puts your goals first.</p>
-          </div>
-          <div className="process-grid reveal">
-            <div className="process-steps">
-              {processSteps.map((step, i) => (
-                <div key={i} className={`process-step${activeProcess === i ? ' active' : ''}`} onClick={() => setActiveProcess(i)}>
-                  <div className="process-step-num">{String(i + 1).padStart(2, '0')}</div>
-                  <div className="process-step-text"><h4>{step.icon} {step.title}</h4><p>{step.subtitle}</p></div>
-                </div>
-              ))}
+      
+{/* ── Process ── */}
+<section
+  className="process-section"
+  style={{
+    position: 'relative',
+    padding: '100px 0',
+    backgroundImage: `
+      linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.85)),
+      url('https://res.cloudinary.com/dwsl2ktt2/image/upload/v1776533938/e21881a3_vb8pcu.jpg')
+    `,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat'
+  }}
+>
+  <div className="wrap">
+    <div
+      style={{ textAlign: 'center', marginBottom: '52px' }}
+      className="reveal"
+    >
+      <span
+        className="tag"
+        style={{ justifyContent: 'center', color: 'var(--cyan)' }}
+      >
+        How We Work
+      </span>
+
+      <h2 className="section-title" style={{ color: '#fff' }}>
+        Our <em>4-Step</em> Process
+      </h2>
+
+      <p
+        className="section-sub"
+        style={{
+          margin: '12px auto 0',
+          textAlign: 'center',
+          color: 'rgba(255,255,255,0.52)'
+        }}
+      >
+        From first conversation to final delivery — a seamless, transparent
+        process that puts your goals first.
+      </p>
+    </div>
+
+    <div className="process-grid reveal">
+      <div className="process-steps">
+        {processSteps.map((step, i) => (
+          <div
+            key={i}
+            className={`process-step${
+              activeProcess === i ? ' active' : ''
+            }`}
+            onClick={() => setActiveProcess(i)}
+          >
+            <div className="process-step-num">
+              {String(i + 1).padStart(2, '0')}
             </div>
-            <div className="process-detail">
-              <span className="process-detail-icon">{processSteps[activeProcess].icon}</span>
-              <div className="process-detail-sub">Step {activeProcess + 1} of 4</div>
-              <h3>{processSteps[activeProcess].title}</h3>
-              <p>{processSteps[activeProcess].desc}</p>
-              <div style={{ marginTop: '28px' }}>
-                <button onClick={openBook} className="btn btn-primary">Start Your Journey →</button>
-              </div>
+
+            <div className="process-step-text">
+              <h4>
+                {step.icon} {step.title}
+              </h4>
+              <p>{step.subtitle}</p>
             </div>
           </div>
+        ))}
+      </div>
+
+      <div className="process-detail">
+        <span className="process-detail-icon">
+          {processSteps[activeProcess].icon}
+        </span>
+
+        <div className="process-detail-sub">
+          Step {activeProcess + 1} of 4
         </div>
-      </section>
+
+        <h3>{processSteps[activeProcess].title}</h3>
+        <p>{processSteps[activeProcess].desc}</p>
+
+        <div style={{ marginTop: '28px' }}>
+          <button onClick={openBook} className="btn btn-primary">
+            Start Your Journey →
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
 
       {/* ── Property Listings ── */}
       <section className="properties-section">

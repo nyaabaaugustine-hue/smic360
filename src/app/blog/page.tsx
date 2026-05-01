@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import Topbar from '@/components/Topbar';
 import Navbar from '@/components/Navbar';
@@ -80,6 +80,9 @@ export default function BlogPage() {
   const [newsletterEmail, setNewsletterEmail] = useState('');
   const [newsletterDone, setNewsletterDone] = useState(false);
   const [newsletterLoading, setNewsletterLoading] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => { setMounted(true); }, []);
 
   // Scroll lock for article modal
   React.useEffect(() => {
@@ -271,8 +274,7 @@ export default function BlogPage() {
       <ChatPanel />
 
       {/* Article Reader Modal */}
-      {readPost &&
-        typeof window !== 'undefined' &&
+      {mounted && readPost &&
         createPortal(
           <div
             onClick={(e) => {
