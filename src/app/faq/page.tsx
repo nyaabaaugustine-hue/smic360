@@ -48,7 +48,7 @@ const faqs = [
     items: [
       {
         q: 'What is The Phoenix Enclave?',
-        a: 'The Phoenix Enclave is SMIC360\'s flagship real estate development — a modern, gated mini-community offering premium residential units in a serene, secured locality in Greater Accra. Phase 1 delivered 24 homes and further phases are underway.',
+        a: "The Phoenix Enclave is SMIC360's flagship real estate development — a modern, gated mini-community offering premium residential units in a serene, secured locality in Greater Accra. Phase 1 delivered 24 homes and further phases are underway.",
       },
       {
         q: 'Can I purchase a unit as an investment?',
@@ -112,8 +112,13 @@ export default function FAQPage() {
       <div className="page-hero">
         <div className="page-hero-inner">
           <div className="page-hero-tag">Help Centre</div>
-          <h1>Frequently Asked <em>Questions</em></h1>
-          <p>Everything you need to know about SMIC360 and our services. Can&apos;t find the answer? Contact us directly.</p>
+          <h1>
+            Frequently Asked <em>Questions</em>
+          </h1>
+          <p>
+            Everything you need to know about SMIC360 and our services. Can&apos;t find the answer?
+            Contact us directly.
+          </p>
         </div>
       </div>
 
@@ -121,7 +126,18 @@ export default function FAQPage() {
         <div className="wrap" style={{ maxWidth: '860px' }}>
           {faqs.map((group, gi) => (
             <div key={gi} style={{ marginBottom: '52px' }}>
-              <h2 style={{ fontFamily: 'Oswald,sans-serif', fontSize: '22px', fontWeight: 700, color: 'var(--navy)', marginBottom: '20px', paddingBottom: '10px', borderBottom: '2px solid var(--gold)', display: 'inline-block' }}>
+              <h2
+                style={{
+                  fontFamily: 'Oswald,sans-serif',
+                  fontSize: '22px',
+                  fontWeight: 700,
+                  color: 'var(--navy)',
+                  marginBottom: '20px',
+                  paddingBottom: '10px',
+                  borderBottom: '2px solid var(--gold)',
+                  display: 'inline-block',
+                }}
+              >
                 {group.category}
               </h2>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
@@ -155,13 +171,39 @@ export default function FAQPage() {
                           transition: 'background .2s',
                         }}
                       >
-                        <span style={{ fontFamily: 'Oswald,sans-serif', fontWeight: 600, fontSize: '16px', color: 'var(--navy)', lineHeight: 1.3 }}>
+                        <span
+                          style={{
+                            fontFamily: 'Oswald,sans-serif',
+                            fontWeight: 600,
+                            fontSize: '16px',
+                            color: 'var(--navy)',
+                            lineHeight: 1.3,
+                          }}
+                        >
                           {item.q}
                         </span>
-                        <span style={{ fontSize: '20px', color: 'var(--gold-d)', flexShrink: 0, transition: 'transform .2s', transform: isOpen ? 'rotate(45deg)' : 'none', fontWeight: 300 }}>+</span>
+                        <span
+                          style={{
+                            fontSize: '20px',
+                            color: 'var(--gold-d)',
+                            flexShrink: 0,
+                            transition: 'transform .2s',
+                            transform: isOpen ? 'rotate(45deg)' : 'none',
+                            fontWeight: 300,
+                          }}
+                        >
+                          +
+                        </span>
                       </button>
                       {isOpen && (
-                        <div style={{ padding: '0 22px 20px', fontSize: '15px', color: 'var(--muted)', lineHeight: 1.75 }}>
+                        <div
+                          style={{
+                            padding: '0 22px 20px',
+                            fontSize: '15px',
+                            color: 'var(--muted)',
+                            lineHeight: 1.75,
+                          }}
+                        >
                           {item.a}
                         </div>
                       )}
@@ -173,16 +215,38 @@ export default function FAQPage() {
           ))}
 
           {/* Still have questions */}
-          <div style={{ background: 'var(--navy)', borderRadius: 'var(--r-lg)', padding: '40px 36px', textAlign: 'center', marginTop: '20px' }}>
-            <h3 style={{ fontFamily: 'Oswald,sans-serif', fontSize: '26px', color: '#fff', marginBottom: '10px' }}>
+          <div
+            style={{
+              background: 'var(--navy)',
+              borderRadius: 'var(--r-lg)',
+              padding: '40px 36px',
+              textAlign: 'center',
+              marginTop: '20px',
+            }}
+          >
+            <h3
+              style={{
+                fontFamily: 'Oswald,sans-serif',
+                fontSize: '26px',
+                color: '#fff',
+                marginBottom: '10px',
+              }}
+            >
               Still have a question?
             </h3>
             <p style={{ color: 'rgba(255,255,255,.55)', fontSize: '15px', marginBottom: '24px' }}>
-              Our team is available Monday–Friday, 8AM–6PM. We&apos;ll get back to you within 2 business hours.
+              Our team is available Monday–Friday, 8AM–6PM. We&apos;ll get back to you within 2
+              business hours.
             </p>
-            <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
-              <button onClick={() => setBookOpen(true)} className="btn btn-primary">Book A Consultation</button>
-              <Link href="/contact" className="btn btn-outline-white">Send Us a Message</Link>
+            <div
+              style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}
+            >
+              <button onClick={() => setBookOpen(true)} className="btn btn-primary">
+                Book A Consultation
+              </button>
+              <Link href="/contact" className="btn btn-outline-white">
+                Send Us a Message
+              </Link>
             </div>
           </div>
         </div>

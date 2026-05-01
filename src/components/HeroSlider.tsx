@@ -25,7 +25,8 @@ const slides: HeroSlide[] = [
     desc: 'SMIC360 delivers end-to-end business solutions — from creative marketing and real estate development to precision procurement — all under one roof, engineered for your growth.',
     btn1: 'Explore Solutions',
     btn2: 'Book A Consultation',
-    cardImg: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777110562/A-Guide-to-Media-Buying-Definition-Importance-Impact-and-Benefits-scaled-copy_uidwzc.jpg',
+    cardImg:
+      'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777110562/A-Guide-to-Media-Buying-Definition-Importance-Impact-and-Benefits-scaled-copy_uidwzc.jpg',
     cardTitle: '360° Business Solutions',
     cardDesc: 'Strategy, execution, and growth — all from one trusted partner in Ghana.',
     cardTags: ['Marketing', 'Real Estate', 'Procurement'],
@@ -64,7 +65,8 @@ const slides: HeroSlide[] = [
     desc: 'Tailor-made procurement solutions designed to give you maximum value for money. We source and supply with precision, engineered for your growth.',
     btn1: 'Supply Services',
     btn2: 'Get a Quote',
-    cardImg: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777106950/ec234641a21a9e03c50b708351c53603_vl5piv.jpg',
+    cardImg:
+      'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777106950/ec234641a21a9e03c50b708351c53603_vl5piv.jpg',
     cardTitle: 'Procurement & Supply',
     cardDesc: 'End-to-end supply chain management and expert vendor negotiation.',
     cardTags: ['Logistics', 'Sourcing'],
@@ -92,10 +94,7 @@ export default function HeroSlider({ onBookClick }: HeroProps) {
       <div className="hero-slides">
         {slides.map((slide, i) => (
           <div key={i} className={`hero-slide${activeIdx === i ? ' active' : ''}`}>
-            <div
-              className="hero-slide-bg"
-              style={{ backgroundImage: `url('${slide.bg}')` }}
-            ></div>
+            <div className="hero-slide-bg" style={{ backgroundImage: `url('${slide.bg}')` }}></div>
             <div className="hero-grid"></div>
             <div className="hero-glow"></div>
             <div className="hero-content">
@@ -131,13 +130,15 @@ export default function HeroSlider({ onBookClick }: HeroProps) {
                   <div className="hero-stats">
                     <div className="hero-stat">
                       <div className="hero-stat-num">
-                        <Counter target={150} /><span>+</span>
+                        <Counter target={150} />
+                        <span>+</span>
                       </div>
                       <div className="hero-stat-label">Projects Delivered</div>
                     </div>
                     <div className="hero-stat">
                       <div className="hero-stat-num">
-                        <Counter target={80} /><span>+</span>
+                        <Counter target={80} />
+                        <span>+</span>
                       </div>
                       <div className="hero-stat-label">Happy Clients</div>
                     </div>
@@ -157,11 +158,7 @@ export default function HeroSlider({ onBookClick }: HeroProps) {
                 )}
               </div>
               <div className="hero-card">
-                <img
-                  className="hero-card-img"
-                  src={slide.cardImg}
-                  alt={slide.cardTitle}
-                />
+                <img className="hero-card-img" src={slide.cardImg} alt={slide.cardTitle} />
                 <div className="hero-card-body">
                   <h3>{slide.cardTitle}</h3>
                   <p>{slide.cardDesc}</p>

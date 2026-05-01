@@ -63,29 +63,54 @@ export default function TermsPage() {
       <div className="page-hero">
         <div className="page-hero-inner">
           <div className="page-hero-tag">Legal</div>
-          <h1>Terms of <em>Service</em></h1>
+          <h1>
+            Terms of <em>Service</em>
+          </h1>
           <p>Effective Date: January 1, 2025 &nbsp;|&nbsp; Last Updated: April 2025</p>
         </div>
       </div>
 
       <section style={{ padding: '80px 0', background: 'var(--white)' }}>
         <div className="wrap" style={{ maxWidth: '820px' }}>
-          <p style={{ fontSize: '16px', color: 'var(--muted)', lineHeight: 1.8, marginBottom: '44px', padding: '20px 24px', background: 'var(--off)', borderLeft: '4px solid var(--gold)', borderRadius: '0 var(--r) var(--r) 0' }}>
-            Please read these Terms of Service carefully before engaging SMIC360 Limited for any services. These terms form a binding legal agreement between you and SMIC360 Limited, a company registered under the laws of Ghana.
+          <p
+            style={{
+              fontSize: '16px',
+              color: 'var(--muted)',
+              lineHeight: 1.8,
+              marginBottom: '44px',
+              padding: '20px 24px',
+              background: 'var(--off)',
+              borderLeft: '4px solid var(--gold)',
+              borderRadius: '0 var(--r) var(--r) 0',
+            }}
+          >
+            Please read these Terms of Service carefully before engaging SMIC360 Limited for any
+            services. These terms form a binding legal agreement between you and SMIC360 Limited, a
+            company registered under the laws of Ghana.
           </p>
           {sections.map((sec, i) => (
             <div key={i} style={{ marginBottom: '36px' }}>
-              <h2 style={{ fontFamily: 'Oswald,sans-serif', fontSize: '20px', fontWeight: 700, color: 'var(--navy)', marginBottom: '10px' }}>
+              <h2
+                style={{
+                  fontFamily: 'Oswald,sans-serif',
+                  fontSize: '20px',
+                  fontWeight: 700,
+                  color: 'var(--navy)',
+                  marginBottom: '10px',
+                }}
+              >
                 {sec.title}
               </h2>
-              <p style={{ fontSize: '15px', color: 'var(--muted)', lineHeight: 1.8 }}>
-                {sec.body}
-              </p>
+              <p style={{ fontSize: '15px', color: 'var(--muted)', lineHeight: 1.8 }}>{sec.body}</p>
             </div>
           ))}
           <div style={{ marginTop: '48px', display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-            <Link href="/privacy" className="btn btn-outline">Privacy Policy</Link>
-            <Link href="/contact" className="btn btn-primary">Contact Us</Link>
+            <Link href="/privacy" className="btn btn-outline">
+              Privacy Policy
+            </Link>
+            <Link href="/contact" className="btn btn-primary">
+              Contact Us
+            </Link>
           </div>
         </div>
       </section>

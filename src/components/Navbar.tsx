@@ -23,7 +23,9 @@ export default function Navbar({ onBookClick }: NavbarProps) {
     } else {
       document.documentElement.classList.remove('mobile-menu-open');
     }
-    return () => { document.documentElement.classList.remove('mobile-menu-open'); };
+    return () => {
+      document.documentElement.classList.remove('mobile-menu-open');
+    };
   }, [mobileOpen]);
 
   return (
@@ -38,7 +40,9 @@ export default function Navbar({ onBookClick }: NavbarProps) {
           </Link>
 
           <ul className="nav-links">
-            <li><Link href="/">Home</Link></li>
+            <li>
+              <Link href="/">Home</Link>
+            </li>
 
             <li className="has-drop">
               <Link href="/solutions">Solutions</Link>
@@ -46,23 +50,43 @@ export default function Navbar({ onBookClick }: NavbarProps) {
                 <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '8px' }}>
                   <div style={{ borderRight: '1px solid var(--border)', paddingRight: '8px' }}>
                     <div className="drop-group-label">Marketing Solutions</div>
-                    <Link href="/solutions/marketing/branding-works"      className="drop-link-sm">Branding Works</Link>
-                    <Link href="/solutions/marketing/corporate-branding"  className="drop-link-sm">Corporate Branding</Link>
-                    <Link href="/solutions/marketing/digital-marketing"   className="drop-link-sm">Digital Marketing</Link>
-                    <Link href="/solutions/marketing/digital-work"        className="drop-link-sm">Digital Work</Link>
-                    <Link href="/solutions/marketing/media-buying"        className="drop-link-sm">Media Buying</Link>
-                    <Link href="/solutions/marketing/print-management"    className="drop-link-sm">Print Management</Link>
-                    <Link href="/solutions/marketing/website-development" className="drop-link-sm">Website Development</Link>
+                    <Link href="/solutions/marketing/branding-works" className="drop-link-sm">
+                      Branding Works
+                    </Link>
+                    <Link href="/solutions/marketing/corporate-branding" className="drop-link-sm">
+                      Corporate Branding
+                    </Link>
+                    <Link href="/solutions/marketing/digital-marketing" className="drop-link-sm">
+                      Digital Marketing
+                    </Link>
+                    <Link href="/solutions/marketing/digital-work" className="drop-link-sm">
+                      Digital Work
+                    </Link>
+                    <Link href="/solutions/marketing/media-buying" className="drop-link-sm">
+                      Media Buying
+                    </Link>
+                    <Link href="/solutions/marketing/print-management" className="drop-link-sm">
+                      Print Management
+                    </Link>
+                    <Link href="/solutions/marketing/website-development" className="drop-link-sm">
+                      Website Development
+                    </Link>
                   </div>
                   <div>
                     <div className="drop-group-label">Core Divisions</div>
                     <Link href="/solutions#realestate" className="drop-item">
                       <div className="drop-icon">🏗️</div>
-                      <div className="drop-text"><h4>Real Estate</h4><p>Phoenix Enclave</p></div>
+                      <div className="drop-text">
+                        <h4>Real Estate</h4>
+                        <p>Phoenix Enclave</p>
+                      </div>
                     </Link>
                     <Link href="/solutions#procurement" className="drop-item">
                       <div className="drop-icon">📦</div>
-                      <div className="drop-text"><h4>Procurement</h4><p>Value Sourcing</p></div>
+                      <div className="drop-text">
+                        <h4>Procurement</h4>
+                        <p>Value Sourcing</p>
+                      </div>
                     </Link>
                   </div>
                 </div>
@@ -74,22 +98,37 @@ export default function Navbar({ onBookClick }: NavbarProps) {
               <div className="dropdown">
                 <Link href="/about" className="drop-item">
                   <div className="drop-icon">🏢</div>
-                  <div className="drop-text"><h4>Our Story</h4><p>Who we are and our mission</p></div>
+                  <div className="drop-text">
+                    <h4>Our Story</h4>
+                    <p>Who we are and our mission</p>
+                  </div>
                 </Link>
                 <Link href="/about#team" className="drop-item">
                   <div className="drop-icon">👥</div>
-                  <div className="drop-text"><h4>Our Team</h4><p>Meet the experts behind SMIC360</p></div>
+                  <div className="drop-text">
+                    <h4>Our Team</h4>
+                    <p>Meet the experts behind SMIC360</p>
+                  </div>
                 </Link>
                 <Link href="/about#sdgs" className="drop-item">
                   <div className="drop-icon">🌱</div>
-                  <div className="drop-text"><h4>Our SDGs</h4><p>Sustainability &amp; Impact</p></div>
+                  <div className="drop-text">
+                    <h4>Our SDGs</h4>
+                    <p>Sustainability &amp; Impact</p>
+                  </div>
                 </Link>
               </div>
             </li>
 
-            <li><Link href="/portfolio">Portfolio</Link></li>
-            <li><Link href="/blog">Blog</Link></li>
-            <li><Link href="/contact">Contact</Link></li>
+            <li>
+              <Link href="/portfolio">Portfolio</Link>
+            </li>
+            <li>
+              <Link href="/blog">Blog</Link>
+            </li>
+            <li>
+              <Link href="/contact">Contact</Link>
+            </li>
 
             {/* Business Login — gold accent */}
             <li>
@@ -135,7 +174,9 @@ export default function Navbar({ onBookClick }: NavbarProps) {
             onClick={() => setMobileOpen(true)}
             aria-label="Open menu"
           >
-            <span></span><span></span><span></span>
+            <span></span>
+            <span></span>
+            <span></span>
           </div>
         </div>
       </nav>
@@ -144,7 +185,8 @@ export default function Navbar({ onBookClick }: NavbarProps) {
       {mobileOpen && (
         <div
           style={{
-            position: 'fixed', inset: 0,
+            position: 'fixed',
+            inset: 0,
             background: 'rgba(4,14,29,0.6)',
             zIndex: 490,
             backdropFilter: 'blur(4px)',
@@ -162,28 +204,71 @@ export default function Navbar({ onBookClick }: NavbarProps) {
               alt="SMIC360"
             />
           </Link>
-          <button className="mobile-close" onClick={() => setMobileOpen(false)} aria-label="Close menu">✕</button>
+          <button
+            className="mobile-close"
+            onClick={() => setMobileOpen(false)}
+            aria-label="Close menu"
+          >
+            ✕
+          </button>
         </div>
 
         <div className="mobile-links">
-          <Link href="/"          onClick={() => setMobileOpen(false)}>Home</Link>
-          <Link href="/solutions" onClick={() => setMobileOpen(false)}>Solutions</Link>
+          <Link href="/" onClick={() => setMobileOpen(false)}>
+            Home
+          </Link>
+          <Link href="/solutions" onClick={() => setMobileOpen(false)}>
+            Solutions
+          </Link>
 
           <div className="mobile-sublinks">
-            <Link href="/solutions/marketing/branding-works"      onClick={() => setMobileOpen(false)}>Branding Works</Link>
-            <Link href="/solutions/marketing/corporate-branding"  onClick={() => setMobileOpen(false)}>Corporate Branding</Link>
-            <Link href="/solutions/marketing/digital-marketing"   onClick={() => setMobileOpen(false)}>Digital Marketing</Link>
-            <Link href="/solutions/marketing/digital-work"        onClick={() => setMobileOpen(false)}>Digital Work</Link>
-            <Link href="/solutions/marketing/media-buying"        onClick={() => setMobileOpen(false)}>Media Buying</Link>
-            <Link href="/solutions/marketing/print-management"    onClick={() => setMobileOpen(false)}>Print Management</Link>
-            <Link href="/solutions/marketing/website-development" onClick={() => setMobileOpen(false)}>Website Development</Link>
+            <Link href="/solutions/marketing/branding-works" onClick={() => setMobileOpen(false)}>
+              Branding Works
+            </Link>
+            <Link
+              href="/solutions/marketing/corporate-branding"
+              onClick={() => setMobileOpen(false)}
+            >
+              Corporate Branding
+            </Link>
+            <Link
+              href="/solutions/marketing/digital-marketing"
+              onClick={() => setMobileOpen(false)}
+            >
+              Digital Marketing
+            </Link>
+            <Link href="/solutions/marketing/digital-work" onClick={() => setMobileOpen(false)}>
+              Digital Work
+            </Link>
+            <Link href="/solutions/marketing/media-buying" onClick={() => setMobileOpen(false)}>
+              Media Buying
+            </Link>
+            <Link href="/solutions/marketing/print-management" onClick={() => setMobileOpen(false)}>
+              Print Management
+            </Link>
+            <Link
+              href="/solutions/marketing/website-development"
+              onClick={() => setMobileOpen(false)}
+            >
+              Website Development
+            </Link>
           </div>
 
-          <Link href="/about"     onClick={() => setMobileOpen(false)}>About Us</Link>
-          <Link href="/contact"   onClick={() => setMobileOpen(false)}>Contact Us</Link>
-          <Link href="/portfolio" onClick={() => setMobileOpen(false)}>Portfolio</Link>
-          <Link href="/blog"      onClick={() => setMobileOpen(false)}>Blog &amp; News</Link>
-          <Link href="/faq"       onClick={() => setMobileOpen(false)}>FAQ</Link>
+          <Link href="/about" onClick={() => setMobileOpen(false)}>
+            About Us
+          </Link>
+          <Link href="/contact" onClick={() => setMobileOpen(false)}>
+            Contact Us
+          </Link>
+          <Link href="/portfolio" onClick={() => setMobileOpen(false)}>
+            Portfolio
+          </Link>
+          <Link href="/blog" onClick={() => setMobileOpen(false)}>
+            Blog &amp; News
+          </Link>
+          <Link href="/faq" onClick={() => setMobileOpen(false)}>
+            FAQ
+          </Link>
 
           {/* Business Login in mobile menu */}
           <Link
@@ -208,18 +293,59 @@ export default function Navbar({ onBookClick }: NavbarProps) {
 
           <button
             className="mobile-book"
-            onClick={() => { onBookClick(); setMobileOpen(false); }}
+            onClick={() => {
+              onBookClick();
+              setMobileOpen(false);
+            }}
           >
             📅 Book Us Today
           </button>
 
           {/* Mobile contact info */}
-          <div style={{ marginTop: '28px', padding: '20px', background: 'rgba(255,255,255,0.05)', borderRadius: '14px', border: '1px solid rgba(255,255,255,0.08)' }}>
-            <div style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '2px', textTransform: 'uppercase', color: 'rgba(255,193,7,0.7)', marginBottom: '12px' }}>Get In Touch</div>
-            <a href="tel:0244783099" style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'rgba(255,255,255,0.7)', fontSize: '14px', marginBottom: '8px' }}>
+          <div
+            style={{
+              marginTop: '28px',
+              padding: '20px',
+              background: 'rgba(255,255,255,0.05)',
+              borderRadius: '14px',
+              border: '1px solid rgba(255,255,255,0.08)',
+            }}
+          >
+            <div
+              style={{
+                fontSize: '11px',
+                fontWeight: 700,
+                letterSpacing: '2px',
+                textTransform: 'uppercase',
+                color: 'rgba(255,193,7,0.7)',
+                marginBottom: '12px',
+              }}
+            >
+              Get In Touch
+            </div>
+            <a
+              href="tel:0244783099"
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px',
+                color: 'rgba(255,255,255,0.7)',
+                fontSize: '14px',
+                marginBottom: '8px',
+              }}
+            >
               📞 024 478 3099
             </a>
-            <a href="mailto:info@smic360.com" style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'rgba(255,255,255,0.7)', fontSize: '14px' }}>
+            <a
+              href="mailto:info@smic360.com"
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px',
+                color: 'rgba(255,255,255,0.7)',
+                fontSize: '14px',
+              }}
+            >
               ✉️ info@smic360.com
             </a>
           </div>

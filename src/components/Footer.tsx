@@ -20,7 +20,10 @@ export default function Footer({ onBookClick }: FooterProps) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email }),
       });
-      if (res.ok) { setDone(true); setEmail(''); }
+      if (res.ok) {
+        setDone(true);
+        setEmail('');
+      }
     } catch (err) {
       console.error(err);
     }
@@ -122,7 +125,10 @@ export default function Footer({ onBookClick }: FooterProps) {
           <React.Fragment key={i}>
             <div className="footer-award-item">
               <span>{item.icon}</span>
-              <span><strong>{item.label}</strong>{item.year ? ` — ${item.year}` : ''}</span>
+              <span>
+                <strong>{item.label}</strong>
+                {item.year ? ` — ${item.year}` : ''}
+              </span>
             </div>
             {i < arr.length - 1 && <div className="footer-award-dot" />}
           </React.Fragment>
@@ -141,15 +147,37 @@ export default function Footer({ onBookClick }: FooterProps) {
           </Link>
           <p style={{ marginTop: '14px' }}>
             Building Foundations. Branding Futures. Connecting Markets.
-            <br /><br />
-            Ghana&apos;s most complete business solutions partner — Marketing, Real Estate &amp; Procurement under one roof.
+            <br />
+            <br />
+            Ghana&apos;s most complete business solutions partner — Marketing, Real Estate &amp;
+            Procurement under one roof.
           </p>
           {/* Contact quick */}
           <div style={{ marginTop: '20px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
-            <a href="tel:0244783099" style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'rgba(255,255,255,0.55)', fontSize: '13px', transition: 'color 0.2s' }}>
+            <a
+              href="tel:0244783099"
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px',
+                color: 'rgba(255,255,255,0.55)',
+                fontSize: '13px',
+                transition: 'color 0.2s',
+              }}
+            >
               <span style={{ color: 'var(--gold)', fontSize: '12px' }}>📞</span> 024 478 3099
             </a>
-            <a href="mailto:info@smic360.com" style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'rgba(255,255,255,0.55)', fontSize: '13px', transition: 'color 0.2s' }}>
+            <a
+              href="mailto:info@smic360.com"
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px',
+                color: 'rgba(255,255,255,0.55)',
+                fontSize: '13px',
+                transition: 'color 0.2s',
+              }}
+            >
               <span style={{ color: 'var(--gold)', fontSize: '12px' }}>✉️</span> info@smic360.com
             </a>
           </div>
@@ -159,13 +187,27 @@ export default function Footer({ onBookClick }: FooterProps) {
         <div className="footer-col">
           <h4>Other Pages</h4>
           <ul>
-            <li><Link href="/">Home</Link></li>
-            <li><Link href="/about">About Us</Link></li>
-            <li><Link href="/solutions">Solutions</Link></li>
-            <li><Link href="/blog">Blog &amp; News</Link></li>
-            <li><Link href="/contact">Contact Us</Link></li>
-            <li><Link href="/portfolio">Portfolio</Link></li>
-            <li><Link href="/faq">FAQ</Link></li>
+            <li>
+              <Link href="/">Home</Link>
+            </li>
+            <li>
+              <Link href="/about">About Us</Link>
+            </li>
+            <li>
+              <Link href="/solutions">Solutions</Link>
+            </li>
+            <li>
+              <Link href="/blog">Blog &amp; News</Link>
+            </li>
+            <li>
+              <Link href="/contact">Contact Us</Link>
+            </li>
+            <li>
+              <Link href="/portfolio">Portfolio</Link>
+            </li>
+            <li>
+              <Link href="/faq">FAQ</Link>
+            </li>
           </ul>
         </div>
 
@@ -173,17 +215,38 @@ export default function Footer({ onBookClick }: FooterProps) {
         <div className="footer-col">
           <h4>Quick Links</h4>
           <ul>
-            <li><Link href="/privacy">Privacy Policy</Link></li>
-            <li><Link href="/terms">Terms of Service</Link></li>
-            <li><Link href="/faq">FAQ</Link></li>
-            <li><a href="#">The Phoenix Enclave</a></li>
-            <li><a href="#">Christie&apos;s Homestay</a></li>
-            <li><a href="#">Moonlight Shipping</a></li>
+            <li>
+              <Link href="/privacy">Privacy Policy</Link>
+            </li>
+            <li>
+              <Link href="/terms">Terms of Service</Link>
+            </li>
+            <li>
+              <Link href="/faq">FAQ</Link>
+            </li>
+            <li>
+              <a href="#">The Phoenix Enclave</a>
+            </li>
+            <li>
+              <a href="#">Christie&apos;s Homestay</a>
+            </li>
+            <li>
+              <a href="#">Moonlight Shipping</a>
+            </li>
             {onBookClick && (
               <li>
                 <button
                   onClick={onBookClick}
-                  style={{ background: 'none', border: 'none', color: 'rgba(255,255,255,0.55)', cursor: 'pointer', fontSize: '13.5px', padding: 0, textAlign: 'left', transition: 'color 0.2s' }}
+                  style={{
+                    background: 'none',
+                    border: 'none',
+                    color: 'rgba(255,255,255,0.55)',
+                    cursor: 'pointer',
+                    fontSize: '13.5px',
+                    padding: 0,
+                    textAlign: 'left',
+                    transition: 'color 0.2s',
+                  }}
                 >
                   Book Us
                 </button>
@@ -196,23 +259,46 @@ export default function Footer({ onBookClick }: FooterProps) {
         <div className="footer-col">
           <h4>Our Services</h4>
           <ul>
-            <li><Link href="/solutions">All Services</Link></li>
-            <li><Link href="/solutions/marketing/branding-works">Branding Works</Link></li>
-            <li><Link href="/solutions/marketing/corporate-branding">Corporate Branding</Link></li>
-            <li><Link href="/solutions/marketing/digital-marketing">Digital Marketing</Link></li>
-            <li><Link href="/solutions/marketing/media-buying">Media Buying</Link></li>
-            <li><Link href="/solutions/marketing/print-management">Print Management</Link></li>
-            <li><Link href="/solutions/marketing/website-development">Web Development</Link></li>
-            <li><Link href="/solutions#procurement">Procurement</Link></li>
+            <li>
+              <Link href="/solutions">All Services</Link>
+            </li>
+            <li>
+              <Link href="/solutions/marketing/branding-works">Branding Works</Link>
+            </li>
+            <li>
+              <Link href="/solutions/marketing/corporate-branding">Corporate Branding</Link>
+            </li>
+            <li>
+              <Link href="/solutions/marketing/digital-marketing">Digital Marketing</Link>
+            </li>
+            <li>
+              <Link href="/solutions/marketing/media-buying">Media Buying</Link>
+            </li>
+            <li>
+              <Link href="/solutions/marketing/print-management">Print Management</Link>
+            </li>
+            <li>
+              <Link href="/solutions/marketing/website-development">Web Development</Link>
+            </li>
+            <li>
+              <Link href="/solutions#procurement">Procurement</Link>
+            </li>
           </ul>
         </div>
 
         {/* Newsletter */}
         <div className="footer-col">
           <h4>Newsletter</h4>
-          <p>Stay ahead with SMIC360 insights, property launches, and business tips delivered to your inbox.</p>
+          <p>
+            Stay ahead with SMIC360 insights, property launches, and business tips delivered to your
+            inbox.
+          </p>
           {!done ? (
-            <form className="newsletter-form" onSubmit={handleNewsletter} style={{ marginTop: '16px' }}>
+            <form
+              className="newsletter-form"
+              onSubmit={handleNewsletter}
+              style={{ marginTop: '16px' }}
+            >
               <input
                 type="email"
                 name="email"
@@ -231,15 +317,36 @@ export default function Footer({ onBookClick }: FooterProps) {
               </button>
             </form>
           ) : (
-            <p style={{ color: 'var(--cyan)', fontSize: '13px', marginTop: '14px', fontWeight: 700 }}>
+            <p
+              style={{ color: 'var(--cyan)', fontSize: '13px', marginTop: '14px', fontWeight: 700 }}
+            >
               ✔ You&apos;re subscribed!
             </p>
           )}
 
           {/* Address */}
-          <div style={{ marginTop: '22px', fontSize: '12.5px', color: 'rgba(255,255,255,0.4)', lineHeight: '1.72' }}>
-            <div style={{ fontWeight: 700, color: 'rgba(255,255,255,0.6)', marginBottom: '4px', fontSize: '11px', letterSpacing: '1.5px', textTransform: 'uppercase' }}>Office</div>
-            1st Floor, Verostina House, Opp. DSTV Office,<br />
+          <div
+            style={{
+              marginTop: '22px',
+              fontSize: '12.5px',
+              color: 'rgba(255,255,255,0.4)',
+              lineHeight: '1.72',
+            }}
+          >
+            <div
+              style={{
+                fontWeight: 700,
+                color: 'rgba(255,255,255,0.6)',
+                marginBottom: '4px',
+                fontSize: '11px',
+                letterSpacing: '1.5px',
+                textTransform: 'uppercase',
+              }}
+            >
+              Office
+            </div>
+            1st Floor, Verostina House, Opp. DSTV Office,
+            <br />
             Community 18, Off Spintex Road, Accra, Ghana
           </div>
         </div>

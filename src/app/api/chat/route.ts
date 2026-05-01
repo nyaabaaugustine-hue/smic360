@@ -97,7 +97,10 @@ INSTRUCTIONS:
 
       if (!response.ok) {
         const err = await response.json().catch(() => ({}));
-        return NextResponse.json({ error: err?.error?.message || 'Anthropic API error' }, { status: response.status });
+        return NextResponse.json(
+          { error: err?.error?.message || 'Anthropic API error' },
+          { status: response.status }
+        );
       }
 
       const data = await response.json();
@@ -130,7 +133,10 @@ INSTRUCTIONS:
 
       if (!response.ok) {
         const err = await response.json().catch(() => ({}));
-        return NextResponse.json({ error: err?.error?.message || 'AI service error' }, { status: response.status });
+        return NextResponse.json(
+          { error: err?.error?.message || 'AI service error' },
+          { status: response.status }
+        );
       }
 
       const data = await response.json();
