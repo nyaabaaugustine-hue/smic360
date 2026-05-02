@@ -369,7 +369,7 @@ export default function Footer({ onBookClick }: FooterProps) {
             <span style={{ color: 'rgba(255,255,255,0.2)', margin: '0 10px' }}>|</span>
             All Rights Reserved
             <span style={{ color: 'rgba(255,255,255,0.2)', margin: '0 10px' }}>|</span>
-            Built in 🇬🇭 Ghana
+            
           </span>
           <div className="footer-bottom-links">
             <Link href="/privacy">Privacy</Link>
