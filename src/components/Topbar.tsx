@@ -91,15 +91,15 @@ export default function Topbar() {
           </a> */}
           <div className="topbar-socials">
             <a
-              href="https://linkedin.com"
+              href="https://web.facebook.com/smic360limited"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="LinkedIn"
+              aria-label="Facebook"
             >
-              in
+              fb
             </a>
             <a
-              href="https://instagram.com"
+              href="https://www.instagram.com/explore/locations/1015916517/smic360-limited/"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Instagram"
@@ -107,12 +107,12 @@ export default function Topbar() {
               ig
             </a>
             <a
-              href="https://facebook.com"
+              href="https://web.facebook.com/smic360limited"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Facebook"
+              aria-label="LinkedIn"
             >
-              fb
+              in
             </a>
           </div>
         </div>

@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Topbar from '@/components/Topbar';
 import Navbar from '@/components/Navbar';
@@ -7,6 +7,9 @@ import Footer from '@/components/Footer';
 import BookingModal from '@/components/BookingModal';
 import ChatPanel from '@/components/ChatPanel';
 import ScrollReveal from '@/components/ScrollReveal';
+
+const PAGE_TITLE = 'Portfolio | SMIC360 Limited';
+const PAGE_DESC = 'Explore SMIC360’s portfolio of completed projects across marketing, real estate development, and procurement in Ghana.';
 
 const allProjects = [
   {
@@ -82,6 +85,11 @@ const categories = ['All Projects', 'Marketing', 'Real Estate', 'Procurement'];
 export default function PortfolioPage() {
   const [bookOpen, setBookOpen] = useState(false);
   const [activeFilter, setActiveFilter] = useState('All Projects');
+
+  useEffect(() => {
+    document.title = PAGE_TITLE;
+    document.querySelector('meta[name="description"]')?.setAttribute('content', PAGE_DESC);
+  }, []);
 
   const filtered =
     activeFilter === 'All Projects'

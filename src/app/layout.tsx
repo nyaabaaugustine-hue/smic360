@@ -2,6 +2,7 @@ import React from 'react';
 import type { Metadata, Viewport } from 'next';
 import '../styles/index.css';
 import '../styles/tailwind.css';
+import CookieBanner from '@/components/CookieBanner';
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -84,7 +85,10 @@ const jsonLd = {
     contactType: 'customer service',
     availableLanguage: 'English',
   },
-  sameAs: [],
+  sameAs: [
+    'https://web.facebook.com/smic360limited',
+    'https://www.instagram.com/explore/locations/1015916517/smic360-limited/',
+  ],
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
@@ -108,7 +112,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         />
         <script type="module" defer src="https://static.rocket.new/rocket-shot.js?v=0.0.2" />
       </head>
-      <body>{children}</body>
+      <body>{children}<CookieBanner /></body>
     </html>
   );
 }

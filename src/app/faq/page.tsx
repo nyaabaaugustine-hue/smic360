@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Topbar from '@/components/Topbar';
 import Navbar from '@/components/Navbar';
@@ -7,6 +7,9 @@ import Footer from '@/components/Footer';
 import BookingModal from '@/components/BookingModal';
 import ChatPanel from '@/components/ChatPanel';
 import ScrollReveal from '@/components/ScrollReveal';
+
+const PAGE_TITLE = 'FAQ | SMIC360 Limited';
+const PAGE_DESC = 'Answers to your questions about SMIC360 — our marketing, real estate, and procurement services, how to work with us, and more.';
 
 const faqs = [
   {
@@ -99,6 +102,11 @@ const faqs = [
 export default function FAQPage() {
   const [bookOpen, setBookOpen] = useState(false);
   const [openIndex, setOpenIndex] = useState<string | null>(null);
+
+  useEffect(() => {
+    document.title = PAGE_TITLE;
+    document.querySelector('meta[name="description"]')?.setAttribute('content', PAGE_DESC);
+  }, []);
 
   const toggle = (key: string) => setOpenIndex(openIndex === key ? null : key);
 

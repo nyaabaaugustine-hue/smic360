@@ -45,6 +45,9 @@ export default function Footer({ onBookClick }: FooterProps) {
           flex-wrap: wrap;
           margin-bottom: 0;
         }
+        @media (max-width: 768px) {
+          .footer-award-strip { display: none !important; }
+        }
         .footer-award-item {
           display: flex;
           align-items: center;
@@ -152,31 +155,37 @@ export default function Footer({ onBookClick }: FooterProps) {
             Ghana&apos;s most complete business solutions partner — Marketing, Real Estate &amp;
             Procurement under one roof.
           </p>
+          {/* Social links */}
+          <div style={{ display: 'flex', gap: '10px', marginTop: '20px' }}>
+            {[
+              { href: 'https://web.facebook.com/smic360limited', label: 'Facebook', icon: 'fb' },
+              { href: 'https://www.instagram.com/explore/locations/1015916517/smic360-limited/', label: 'Instagram', icon: 'ig' },
+              { href: 'https://web.facebook.com/smic360limited', label: 'LinkedIn', icon: 'in' },
+              { href: 'https://wa.me/233244783099', label: 'WhatsApp', icon: 'wa' },
+            ].map((s) => (
+              <a
+                key={s.icon}
+                href={s.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={s.label}
+                className="social-btn"
+              >
+                {s.icon}
+              </a>
+            ))}
+          </div>
           {/* Contact quick */}
-          <div style={{ marginTop: '20px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+          <div style={{ marginTop: '12px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
             <a
               href="tel:0244783099"
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '8px',
-                color: 'rgba(255,255,255,0.55)',
-                fontSize: '13px',
-                transition: 'color 0.2s',
-              }}
+              style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'rgba(255,255,255,0.55)', fontSize: '13px', transition: 'color 0.2s' }}
             >
               <span style={{ color: 'var(--gold)', fontSize: '12px' }}>📞</span> 024 478 3099
             </a>
             <a
               href="mailto:info@smic360.com"
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '8px',
-                color: 'rgba(255,255,255,0.55)',
-                fontSize: '13px',
-                transition: 'color 0.2s',
-              }}
+              style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'rgba(255,255,255,0.55)', fontSize: '13px', transition: 'color 0.2s' }}
             >
               <span style={{ color: 'var(--gold)', fontSize: '12px' }}>✉️</span> info@smic360.com
             </a>

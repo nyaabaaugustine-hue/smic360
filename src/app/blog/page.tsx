@@ -8,6 +8,10 @@ import BookingModal from '@/components/BookingModal';
 import ChatPanel from '@/components/ChatPanel';
 import ScrollReveal from '@/components/ScrollReveal';
 
+// Page-level SEO — injected via useEffect for client pages
+const PAGE_TITLE = 'Blog & Insights | SMIC360 Limited';
+const PAGE_DESC = 'Expert insights on marketing, real estate investment, and procurement in Ghana. Actionable strategies from the SMIC360 team.';
+
 const posts = [
   {
     img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777114247/kkkl_nhdczf.avif',
@@ -82,7 +86,11 @@ export default function BlogPage() {
   const [newsletterLoading, setNewsletterLoading] = useState(false);
   const [mounted, setMounted] = useState(false);
 
-  useEffect(() => { setMounted(true); }, []);
+  useEffect(() => {
+    setMounted(true);
+    document.title = PAGE_TITLE;
+    document.querySelector('meta[name="description"]')?.setAttribute('content', PAGE_DESC);
+  }, []);
 
   // Scroll lock for article modal
   React.useEffect(() => {
