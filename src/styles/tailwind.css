@@ -75,7 +75,7 @@ body {
   animation: page-fade-in 0.45s ease-out both;
 }
 
-@keyframes page-fade-in { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:translateY(0); } }
+@keyframes page-fade-in { from { opacity:0; } to { opacity:1; } }
 
 a { text-decoration:none; color:inherit; }
 img { display:block; max-width:100%; }
