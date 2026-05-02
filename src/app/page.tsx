@@ -773,7 +773,7 @@ export default function HomePage() {
               <div className="hq-details">
                 {[
                   { icon: '📍', title: 'Office Address', desc: '1st Floor, Verostina House, Opp. DSTV Office, Community 18, Off Spintex Road, Accra' },
-                  { icon: '📞', title: 'Phone',          desc: '024 478 3099 — We are always available to serve you' },
+                  { icon: '📞', title: 'Phone',          desc: '+233 20 336 1155 — We are always available to serve you' },
                   { icon: '✉️', title: 'Email',          desc: 'info@smic360.com — Expect a reply within 2 business hours' },
                   { icon: '🕐', title: 'Office Hours',   desc: 'Monday – Friday: 8:00 AM – 6:00 PM | Saturday: 9:00 AM – 2:00 PM' },
                 ].map((item, i) => (
@@ -813,7 +813,7 @@ export default function HomePage() {
             <p style={{ color: 'var(--cyan)', fontWeight: 700, fontSize: '16px', marginTop: '8px' }}>✔ Thank you! We&apos;ll be in touch within 2 business hours.</p>
           )}
           <p style={{ marginTop: '14px', fontSize: '12px', color: 'rgba(255,255,255,.32)' }}>
-            Or call us: <a href="tel:0244783099" style={{ color: 'var(--cyan)', fontWeight: 700 }}>024 478 3099</a> — No obligation, no spam.
+            Or call us: <a href="tel:+233203361155" style={{ color: 'var(--cyan)', fontWeight: 700 }}>+233 20 336 1155</a> — No obligation, no spam.
           </p>
         </div>
       </section>
