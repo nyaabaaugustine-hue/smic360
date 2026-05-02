@@ -148,6 +148,112 @@ function TeamModal({
   );
 }
 
+/* ── CTA Banner with background image + download animation ── */
+function CtaBanner({ onBook }: { onBook: () => void }) {
+  const [dlState, setDlState] = useState<'idle'|'loading'|'done'>('idle');
+
+  const handleDownload = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    setDlState('loading');
+    setTimeout(() => {
+      setDlState('done');
+      window.open('https://drive.google.com/file/d/1wrGYrHFkH5t9H4DT0B_rnDYkdFifEqvn/view?usp=sharing', '_blank');
+      setTimeout(() => setDlState('idle'), 3000);
+    }, 1400);
+  };
+
+  return (
+    <div style={{
+      position: 'relative',
+      overflow: 'hidden',
+      backgroundImage: [
+        'linear-gradient(135deg, rgba(4,14,50,0.93) 0%, rgba(10,40,110,0.88) 50%, rgba(18,97,192,0.82) 100%)',
+        `url('https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777694366/hp_nukt5i.jpg')`,
+      ].join(', '),
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      backgroundBlendMode: 'luminosity',
+    }}>
+      <style>{`
+        @keyframes cta-spin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+        @keyframes cta-pop  { 0%{transform:scale(1)} 40%{transform:scale(1.08)} 100%{transform:scale(1)} }
+        .cta-dl-btn {
+          display:inline-flex; align-items:center; gap:9px;
+          background:#fff; color:#071628;
+          font-family:'Outfit',sans-serif; font-weight:700; font-size:14.5px;
+          padding:13px 26px; border-radius:12px; border:none; cursor:pointer;
+          text-decoration:none;
+          transition:all 0.25s;
+          box-shadow:0 4px 18px rgba(255,255,255,0.15);
+          white-space:nowrap;
+        }
+        .cta-dl-btn:hover { transform:translateY(-2px); box-shadow:0 10px 32px rgba(255,255,255,0.2); }
+        .cta-dl-btn.loading { background:rgba(255,255,255,0.85); cursor:wait; }
+        .cta-dl-btn.done { background:#16a34a; color:#fff; animation:cta-pop 0.4s ease; }
+        .cta-spinner {
+          width:18px; height:18px;
+          border:2.5px solid rgba(7,22,40,0.2);
+          border-top-color:#071628;
+          border-radius:50%;
+          animation:cta-spin 0.7s linear infinite;
+          flex-shrink:0;
+        }
+        .cta-spinner.white {
+          border-color:rgba(255,255,255,0.2);
+          border-top-color:#fff;
+        }
+      `}</style>
+
+      {/* Overlay grid pattern */}
+      <div style={{ position:'absolute', inset:0, backgroundImage:'linear-gradient(rgba(255,255,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.03) 1px,transparent 1px)', backgroundSize:'32px 32px', pointerEvents:'none' }} />
+      {/* Top accent line */}
+      <div style={{ position:'absolute', top:0, left:0, right:0, height:3, background:'linear-gradient(90deg,#FFC107,#00b4d8,#FFC107)' }} />
+
+      <div style={{ maxWidth:1200, margin:'0 auto', padding:'72px 28px', display:'flex', alignItems:'center', justifyContent:'space-between', gap:40, flexWrap:'wrap', position:'relative', zIndex:1 }}>
+        <div style={{ flex:'1 1 400px' }}>
+          <span style={{ display:'inline-flex', alignItems:'center', gap:8, fontSize:11, fontWeight:700, letterSpacing:'1.8px', textTransform:'uppercase', color:'#00b4d8', marginBottom:14 }}>
+            <span style={{ display:'block', width:20, height:2, background:'#00b4d8', borderRadius:2 }} />
+            2025 Service Catalogue
+          </span>
+          <h2 style={{ fontFamily:"'Oswald',sans-serif", fontSize:'clamp(26px,3.5vw,40px)', fontWeight:700, color:'#fff', lineHeight:1.15, marginBottom:14 }}>
+            Scale Your Business<br />with Our <em style={{ fontStyle:'normal', color:'#FFC107' }}>2025 Catalogue</em>
+          </h2>
+          <p style={{ color:'rgba(255,255,255,0.6)', fontSize:15, lineHeight:1.75, maxWidth:480 }}>
+            Download the full SMIC360 solutions catalogue — complete service listings, pricing tiers, real estate specs, and procurement frameworks all in one place.
+          </p>
+        </div>
+
+        <div style={{ display:'flex', flexDirection:'column', gap:12, alignItems:'flex-start', flexShrink:0 }}>
+          <a
+            href="https://drive.google.com/file/d/1wrGYrHFkH5t9H4DT0B_rnDYkdFifEqvn/view?usp=sharing"
+            onClick={handleDownload}
+            className={`cta-dl-btn${dlState === 'loading' ? ' loading' : dlState === 'done' ? ' done' : ''}`}
+          >
+            {dlState === 'idle' && (
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M12 16l-4-4h3V4h2v8h3l-4 4z"/><path d="M4 20h16"/>
+              </svg>
+            )}
+            {dlState === 'loading' && <span className="cta-spinner" />}
+            {dlState === 'done' && <span>✓</span>}
+            {dlState === 'idle'   && 'Download Catalogue'}
+            {dlState === 'loading'&& 'Opening...'}
+            {dlState === 'done'   && 'Opened! Check new tab'}
+          </a>
+          <button
+            onClick={onBook}
+            style={{ display:'inline-flex', alignItems:'center', gap:8, background:'transparent', color:'rgba(255,255,255,0.8)', fontFamily:"'Outfit',sans-serif", fontWeight:700, fontSize:14, padding:'12px 24px', borderRadius:12, border:'1.5px solid rgba(255,255,255,0.25)', cursor:'pointer', transition:'all 0.25s', whiteSpace:'nowrap' }}
+            onMouseEnter={e=>{(e.currentTarget as HTMLButtonElement).style.background='rgba(255,255,255,0.08)'; (e.currentTarget as HTMLButtonElement).style.borderColor='rgba(255,255,255,0.5)';}}
+            onMouseLeave={e=>{(e.currentTarget as HTMLButtonElement).style.background='transparent'; (e.currentTarget as HTMLButtonElement).style.borderColor='rgba(255,255,255,0.25)';}}
+          >
+            Book A Call
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 /* ── PAGE ── */
 export default function HomePage() {
   const [bookOpen, setBookOpen]     = useState(false);
@@ -582,22 +688,7 @@ export default function HomePage() {
       </section>
 
       {/* ── CTA Banner ── */}
-      <div className="cta-banner">
-        <div className="cta-inner">
-          <div>
-            <span className="tag" style={{ color: 'var(--cyan)' }}>2025 Service Catalogue</span>
-            <h2 className="cta-title">Scale Your Business<br />with Our <em>2025 Catalogue</em></h2>
-            <p className="cta-sub">Download the full SMIC360 solutions catalogue — complete service listings, pricing tiers, real estate specs, and procurement frameworks all in one place.</p>
-          </div>
-          <div className="cta-actions">
-            <a href="https://drive.google.com/file/d/1wrGYrHFkH5t9H4DT0B_rnDYkdFifEqvn/view?usp=sharing" className="btn btn-white">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 16l-4-4h3V4h2v8h3l-4 4z"/><path d="M4 20h16"/></svg>
-              Download Catalogue
-            </a>
-            <button onClick={openBook} className="btn btn-outline-white">Book A Call</button>
-          </div>
-        </div>
-      </div>
+      <CtaBanner onBook={openBook} />
 
       {/* ── Project Spotlight ── */}
       <ProjectSpotlight projects={projects} onBook={openBook} />

@@ -80,26 +80,28 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
         background: 'rgba(4,14,29,0.88)',
         display: 'flex',
         justifyContent: 'center',
-        alignItems: 'center',
+        alignItems: 'flex-start',
         zIndex: 2147483647,
-        padding: '20px 16px',
+        padding: '48px 16px 24px',
         backdropFilter: 'blur(10px)',
         WebkitBackdropFilter: 'blur(10px)',
         overflowY: 'auto',
-        WebkitOverflowScrolling: 'touch' as React.CSSProperties['WebkitOverflowScrolling'],
       }}
     >
       <style>{`
         .bm-wrap {
           background: #fff;
-          width: 100%;
-          max-width: 580px;
+          width: 90%;
+          max-width: 540px;
+          max-height: 90vh;
+          overflow-y: auto;
           border-radius: 20px;
           position: relative;
-          overflow: hidden;
           box-shadow: 0 32px 80px rgba(4,14,29,0.45);
           animation: bmIn 0.38s cubic-bezier(0.16,1,0.3,1) both;
           border-top: 4px solid #FFC107;
+          margin: auto;
+          -webkit-overflow-scrolling: touch;
         }
         @keyframes bmIn { from{opacity:0;transform:translateY(30px) scale(0.94);} to{opacity:1;transform:none;} }
         .bm-header {
