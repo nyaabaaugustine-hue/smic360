@@ -1954,3 +1954,181 @@ html.mobile-menu-open { overflow: hidden; }
 @media (max-width:1024px) {
   .blog-grid { grid-template-columns:repeat(2,1fr); }
 }
+
+/* ============================================================
+   COMPREHENSIVE MOBILE RESPONSIVENESS — SMIC360
+   Covers all pages at all breakpoints
+============================================================ */
+
+/* Wrap padding */
+@media (max-width:768px) {
+  .wrap { padding-left:18px !important; padding-right:18px !important; }
+}
+@media (max-width:480px) {
+  .wrap { padding-left:14px !important; padding-right:14px !important; }
+}
+
+/* Section padding */
+@media (max-width:768px) {
+  section, .ribbon, .clients, .capabilities, .featured, .testimonials, .team, .hq, .consult {
+    padding-top: 52px !important; padding-bottom: 52px !important;
+  }
+}
+
+/* Typography scale */
+@media (max-width:600px) {
+  .section-title { font-size: clamp(26px,7vw,36px) !important; }
+  .section-sub { font-size: 14px !important; }
+  h1 { font-size: clamp(30px,8vw,48px) !important; }
+}
+
+/* Navbar mobile fixes */
+@media (max-width:768px) {
+  .navbar { padding: 0 18px !important; }
+  .navbar-logo img { height: 44px !important; }
+}
+
+/* Hero mobile */
+@media (max-width:768px) {
+  .hero-slide { min-height:85vh !important; }
+  .hero-left h1 { font-size:clamp(30px,8vw,48px) !important; }
+  .hero-btns { flex-direction:column; gap:10px !important; }
+  .hero-btns .btn { width:100% !important; justify-content:center !important; }
+  .hero-stats { display:grid !important; grid-template-columns:repeat(2,1fr) !important; }
+  .hero-dots { gap:7px !important; }
+}
+
+/* Stats ribbon */
+@media (max-width:480px) {
+  .stats-ribbon-inner { grid-template-columns:repeat(2,1fr) !important; gap:12px !important; }
+  .stats-num { font-size:34px !important; }
+}
+
+/* Ribbon cards */
+@media (max-width:600px) {
+  .ribbon-grid { grid-template-columns:1fr !important; }
+  .ribbon-card { flex-direction:row; gap:14px; align-items:center; }
+  .ribbon-card-icon { font-size:28px !important; }
+}
+
+/* About section */
+@media (max-width:768px) {
+  .about-grid { grid-template-columns:1fr !important; gap:36px !important; }
+  .about-img-main { height:280px !important; }
+  .about-badge { position:relative !important; bottom:0 !important; right:0 !important; margin-top:16px !important; display:inline-block !important; }
+  .about-points { grid-template-columns:1fr !important; }
+}
+
+/* Capabilities */
+@media (max-width:768px) {
+  .cap-grid { grid-template-columns:1fr !important; }
+}
+
+/* Featured / feat-grid */
+@media (max-width:900px) {
+  .feat-grid { grid-template-columns:1fr !important; gap:36px !important; }
+  .feat-img img { height:300px !important; }
+}
+
+/* Team */
+@media (max-width:900px) {
+  .team-grid { grid-template-columns:repeat(2,1fr) !important; }
+}
+@media (max-width:520px) {
+  .team-grid { grid-template-columns:1fr !important; }
+  .team-img { height:260px !important; }
+}
+
+/* Testimonials */
+@media (max-width:768px) {
+  .testi-head { flex-direction:column !important; gap:18px !important; }
+  .testi-card { min-width:280px !important; }
+}
+
+/* HQ map */
+@media (max-width:900px) {
+  .hq-grid { grid-template-columns:1fr !important; gap:36px !important; }
+  .hq-map { height:260px !important; }
+  .hq-map iframe { height:260px !important; }
+}
+
+/* CTA banner */
+@media (max-width:768px) {
+  .cta-inner { grid-template-columns:1fr !important; gap:28px !important; }
+  .cta-actions { flex-direction:column !important; }
+  .cta-actions .btn { width:100% !important; justify-content:center !important; }
+}
+
+/* Solutions page */
+@media (max-width:900px) {
+  .solutions-section-grid { grid-template-columns:1fr !important; gap:36px !important; }
+  .solutions-section-grid img { height:280px !important; }
+  .img-order-first { order:-1 !important; }
+}
+
+/* Contact */
+@media (max-width:900px) {
+  .contact-grid { grid-template-columns:1fr !important; }
+}
+
+/* About page hero grid */
+@media (max-width:900px) {
+  .about-hero-grid { grid-template-columns:1fr !important; gap:36px !important; }
+}
+
+/* Values grid */
+@media (max-width:600px) {
+  .values-grid { grid-template-columns:1fr !important; }
+}
+
+/* Page hero */
+@media (max-width:600px) {
+  .page-hero { padding:52px 0 36px !important; }
+  .page-hero-inner { padding:0 18px !important; }
+  .page-hero h1 { font-size:clamp(28px,8vw,40px) !important; }
+}
+
+/* Footer */
+@media (max-width:768px) {
+  .footer-top { grid-template-columns:1fr !important; gap:32px !important; }
+  .footer-bottom { flex-direction:column !important; gap:12px !important; text-align:center !important; }
+}
+
+/* Consult form */
+@media (max-width:600px) {
+  .consult-form { flex-direction:column !important; gap:12px !important; }
+  .consult-form input, .consult-form .btn { width:100% !important; }
+}
+
+/* Booking modal */
+@media (max-width:540px) {
+  .bm-wrap { border-radius:16px !important; margin:0 !important; }
+  .bm-header, .bm-body { padding-left:18px !important; padding-right:18px !important; }
+  .bm-row { grid-template-columns:1fr !important; }
+  .bm-services { grid-template-columns:repeat(3,1fr) !important; }
+  .bm-title { font-size:20px !important; }
+}
+
+/* PS grid (project spotlight) */
+@media (max-width:900px) {
+  .ps-grid { grid-template-columns:repeat(2,1fr) !important; }
+}
+@media (max-width:580px) {
+  .ps-grid { grid-template-columns:1fr !important; }
+}
+
+/* Float buttons — always centered bottom on mobile */
+@media (max-width:768px) {
+  .floats { bottom:16px !important; padding:8px 16px !important; gap:10px !important; }
+}
+
+/* Topbar */
+@media (max-width:480px) {
+  .topbar-left { font-size:10px !important; gap:6px !important; }
+  .topbar-phone, .topbar-email { display:none; }
+}
+
+/* Blog grid */
+@media (max-width:640px) {
+  .blog-grid { grid-template-columns:1fr !important; }
+}

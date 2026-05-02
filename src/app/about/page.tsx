@@ -48,21 +48,22 @@ export default function AboutPage() {
     setMounted(true);
   }, []);
 
-  // Lock html scroll (not body) — keeps fixed elements (floats) working
+  // Lock html overflow — same pattern as page.tsx TeamModal
   React.useEffect(() => {
-    if (!teamModal) return;
-    const y = window.scrollY;
-    document.documentElement.dataset.scrollY = String(y);
-    const scrollbarW = window.innerWidth - document.documentElement.clientWidth;
-    document.documentElement.style.overflow = 'hidden';
-    document.documentElement.style.paddingRight = `${scrollbarW}px`;
+    if (!mounted) return;
+    if (teamModal) {
+      const w = window.innerWidth - document.documentElement.clientWidth;
+      document.documentElement.style.overflow = 'hidden';
+      document.documentElement.style.paddingRight = w + 'px';
+    } else {
+      document.documentElement.style.overflow = '';
+      document.documentElement.style.paddingRight = '';
+    }
     return () => {
       document.documentElement.style.overflow = '';
       document.documentElement.style.paddingRight = '';
-      delete document.documentElement.dataset.scrollY;
-      window.scrollTo(0, y);
     };
-  }, [teamModal]);
+  }, [teamModal, mounted]);
 
   return (
     <>
@@ -91,13 +92,14 @@ export default function AboutPage() {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                zIndex: 100000,
+                zIndex: 999999,
                 padding: '20px 16px',
                 overflowY: 'auto',
                 WebkitOverflowScrolling: 'touch',
               }}
             >
               <div
+                onClick={(e) => e.stopPropagation()}
                 style={{
                   background: '#fff',
                   width: '100%',

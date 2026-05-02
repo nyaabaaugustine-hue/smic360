@@ -150,13 +150,14 @@ export default function SolutionsPage() {
                   </div>
                 ))}
               </div>
-              <button
-                onClick={() => setBookOpen(true)}
-                className="btn btn-primary"
-                style={{ marginTop: '28px' }}
-              >
-                Inquire About Properties →
-              </button>
+              <div style={{ marginTop: '28px', display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+                <Link href="/the-phoenix-enclave" className="btn btn-primary">
+                  🏡 The Phoenix Enclave →
+                </Link>
+                <button onClick={() => setBookOpen(true)} className="btn btn-outline">
+                  Inquire About Properties
+                </button>
+              </div>
             </div>
           </div>
         </div>
