@@ -18,14 +18,20 @@ const QUICK_REPLIES = [
 ];
 
 export default function ChatPanel() {
-  const [mounted, setMounted]     = useState(false);
-  const [chatOpen, setChatOpen]   = useState(false);
-  const [scrollShow, setScrollShow] = useState(false);
-  const [unread, setUnread]       = useState(0);
-  const [messages, setMessages]   = useState<Message[]>([WELCOME]);
-  const [inputVal, setInputVal]   = useState('');
-  const [isTyping, setIsTyping]   = useState(false);
+  const [mounted, setMounted]         = useState(false);
+  const [chatOpen, setChatOpen]       = useState(false);
+  const [scrollShow, setScrollShow]   = useState(false);
+  const [unread, setUnread]           = useState(0);
+  const [messages, setMessages]       = useState<Message[]>([WELCOME]);
+  const [inputVal, setInputVal]       = useState('');
+  const [isTyping, setIsTyping]       = useState(false);
+  const [waModal, setWaModal]         = useState(false);
+  const [waPhone, setWaPhone]         = useState('');
+  const [waName, setWaName]           = useState('');
+  const [waStep, setWaStep]           = useState<'form'|'submitting'|'done'>('form');
+  const [waError, setWaError]         = useState('');
   const endRef = useRef<HTMLDivElement>(null);
+  const phoneRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     setMounted(true);
@@ -88,6 +94,55 @@ export default function ChatPanel() {
       setIsTyping(false);
       addMsg("I'm having trouble connecting. Please call 📞 024 478 3099 or tap WhatsApp below!", 'bot');
     }
+  };
+
+  /* ── WhatsApp lead capture ── */
+  const handleWaClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    // If already captured this session, go straight through
+    const saved = sessionStorage.getItem('smic_wa_phone');
+    if (saved) {
+      window.open(`https://wa.me/233244783099?text=Hi%20SMIC360!%20My%20number%20is%20${encodeURIComponent(saved)}`, '_blank');
+      return;
+    }
+    setWaStep('form');
+    setWaError('');
+    setWaModal(true);
+    setTimeout(() => phoneRef.current?.focus(), 120);
+  };
+
+  const handleWaSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const phone = waPhone.trim();
+    const name  = waName.trim();
+    // Basic Ghana phone validation (starts with 0 or +233, 10 digits local)
+    const cleaned = phone.replace(/\s|-/g, '');
+    const valid = /^(\+233|0)[0-9]{9}$/.test(cleaned);
+    if (!valid) {
+      setWaError('Please enter a valid Ghana phone number (e.g. 024 478 3099)');
+      return;
+    }
+    setWaStep('submitting');
+    // Save to session so repeat clicks skip the modal
+    sessionStorage.setItem('smic_wa_phone', cleaned);
+    // Send lead to Formspree silently
+    try {
+      await fetch('https://formspree.io/f/xdayrral', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+        body: JSON.stringify({ _subject: 'WhatsApp Lead', name: name || 'Not provided', phone: cleaned, source: 'WhatsApp Button' }),
+      });
+    } catch { /* silent — don't block user */ }
+    setWaStep('done');
+    // After 1.2s show success then open WhatsApp
+    setTimeout(() => {
+      setWaModal(false);
+      setWaStep('form');
+      const msg = name
+        ? `Hi SMIC360! I'm ${encodeURIComponent(name)}. Please reach me on ${encodeURIComponent(cleaned)}.`
+        : `Hi SMIC360! Please reach me on ${encodeURIComponent(cleaned)}.`;
+      window.open(`https://wa.me/233244783099?text=${msg}`, '_blank');
+    }, 1200);
   };
 
   const toggleTheme = () => {
@@ -426,10 +481,11 @@ export default function ChatPanel() {
         </svg>
       </button>
 
-      {/* ── WhatsApp — ALWAYS VISIBLE, standalone ── */}
+      {/* ── WhatsApp ── */}
       <a
         id="s360-wa"
         href="https://wa.me/233244783099"
+        onClick={handleWaClick}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat on WhatsApp"
@@ -572,6 +628,242 @@ export default function ChatPanel() {
           </div>
 
         </div>
+      )}
+
+      {/* ── WhatsApp Lead Capture Modal ── */}
+      {waModal && (
+        <>
+          <style>{`
+            @keyframes waModalIn {
+              from { opacity:0; transform:translateY(20px) scale(0.96); }
+              to   { opacity:1; transform:none; }
+            }
+            #wa-modal-overlay {
+              position:fixed; inset:0; z-index:2147483647;
+              background:rgba(4,14,29,0.82);
+              backdrop-filter:blur(10px);
+              display:flex; align-items:center; justify-content:center;
+              padding:20px;
+            }
+            #wa-modal {
+              background:#fff; width:100%; max-width:420px;
+              border-radius:22px; overflow:hidden;
+              box-shadow:0 40px 100px rgba(4,14,29,0.55);
+              animation:waModalIn 0.36s cubic-bezier(0.16,1,0.3,1) both;
+            }
+            #wa-modal-head {
+              background:linear-gradient(135deg,#075E54 0%,#128C7E 55%,#25D366 100%);
+              padding:28px 28px 24px;
+              position:relative; overflow:hidden;
+            }
+            #wa-modal-head::before {
+              content:''; position:absolute; inset:0;
+              background-image:linear-gradient(rgba(255,255,255,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.06) 1px,transparent 1px);
+              background-size:20px 20px; pointer-events:none;
+            }
+            #wa-modal-head::after {
+              content:''; position:absolute; bottom:0; left:0; right:0;
+              height:2px; background:rgba(255,255,255,0.25);
+            }
+            .wam-close {
+              position:absolute; top:14px; right:14px;
+              background:rgba(255,255,255,0.18); border:1px solid rgba(255,255,255,0.28);
+              color:#fff; width:32px; height:32px; border-radius:50%;
+              display:flex; align-items:center; justify-content:center;
+              cursor:pointer; font-size:14px; transition:background 0.2s;
+              font-family:inherit; z-index:2;
+            }
+            .wam-close:hover { background:rgba(220,38,38,0.7); }
+            .wam-icon {
+              width:54px; height:54px; border-radius:50%;
+              background:rgba(255,255,255,0.18);
+              display:flex; align-items:center; justify-content:center;
+              margin-bottom:14px; position:relative; z-index:1;
+              border:2px solid rgba(255,255,255,0.3);
+            }
+            .wam-icon svg { width:30px; height:30px; fill:#fff; }
+            #wa-modal-head h3 {
+              font-family:'Oswald',sans-serif; font-size:20px; font-weight:700;
+              color:#fff; margin:0 0 4px; position:relative; z-index:1;
+            }
+            #wa-modal-head p {
+              font-size:13px; color:rgba(255,255,255,0.78);
+              line-height:1.5; position:relative; z-index:1;
+            }
+            #wa-modal-body { padding:24px 28px 28px; }
+            .wam-notice {
+              background:#f0fdf4; border:1px solid #bbf7d0;
+              border-radius:10px; padding:10px 14px;
+              font-size:12px; color:#166534; line-height:1.6;
+              margin-bottom:20px; display:flex; gap:8px; align-items:flex-start;
+            }
+            .wam-notice-icon { font-size:15px; flex-shrink:0; margin-top:1px; }
+            .wam-field { margin-bottom:14px; }
+            .wam-label {
+              display:block; font-size:11.5px; font-weight:700;
+              color:#0f1e30; margin-bottom:6px;
+              text-transform:uppercase; letter-spacing:0.8px;
+            }
+            .wam-label span { color:#ef4444; margin-left:2px; }
+            .wam-input {
+              width:100%; padding:11px 14px;
+              border:1.5px solid #dce8f7; border-radius:10px;
+              font-family:'Outfit',sans-serif; font-size:14px;
+              outline:none; transition:border-color 0.2s, box-shadow 0.2s;
+              color:#0f1e30; background:#f9fbff;
+            }
+            .wam-input:focus {
+              border-color:#25D366;
+              box-shadow:0 0 0 3px rgba(37,211,102,0.12);
+              background:#fff;
+            }
+            .wam-input::placeholder { color:#9bb4cc; }
+            .wam-error {
+              font-size:12px; color:#dc2626;
+              margin-top:6px; display:flex; gap:5px; align-items:center;
+            }
+            .wam-submit {
+              width:100%; padding:13px;
+              background:linear-gradient(135deg,#25D366,#128C7E);
+              color:#fff; border:none; border-radius:12px;
+              font-family:'Outfit',sans-serif; font-weight:700; font-size:15px;
+              cursor:pointer; display:flex; align-items:center;
+              justify-content:center; gap:9px;
+              transition:all 0.25s; margin-top:4px;
+              box-shadow:0 4px 18px rgba(37,211,102,0.38);
+            }
+            .wam-submit:hover:not(:disabled) {
+              transform:translateY(-2px);
+              box-shadow:0 10px 32px rgba(37,211,102,0.55);
+            }
+            .wam-submit:disabled { opacity:0.7; cursor:not-allowed; }
+            .wam-submit.done { background:linear-gradient(135deg,#16a34a,#15803d); }
+            .wam-spinner {
+              width:18px; height:18px; border-radius:50%;
+              border:2.5px solid rgba(255,255,255,0.35);
+              border-top-color:#fff;
+              animation:wam-spin 0.7s linear infinite;
+            }
+            @keyframes wam-spin { to { transform:rotate(360deg); } }
+            .wam-skip {
+              display:block; text-align:center;
+              font-size:12px; color:#7a9ab8;
+              margin-top:14px; cursor:pointer;
+              transition:color 0.2s; background:none; border:none;
+              font-family:'Outfit',sans-serif; width:100%;
+            }
+            .wam-skip:hover { color:#25D366; }
+            .wam-privacy {
+              font-size:11px; color:#9bb4cc; text-align:center;
+              margin-top:12px; line-height:1.5;
+            }
+          `}</style>
+
+          <div
+            id="wa-modal-overlay"
+            onClick={(e) => { if (e.target === e.currentTarget) setWaModal(false); }}
+            role="dialog"
+            aria-modal="true"
+            aria-label="WhatsApp contact"
+          >
+            <div id="wa-modal">
+
+              {/* Header */}
+              <div id="wa-modal-head">
+                <button type="button" className="wam-close" onClick={() => setWaModal(false)} aria-label="Close">✕</button>
+                <div className="wam-icon">
+                  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                </div>
+                <h3>Connect on WhatsApp</h3>
+                <p>Drop your number and we&apos;ll reach out — or chat with us right now.</p>
+              </div>
+
+              {/* Body */}
+              <div id="wa-modal-body">
+
+                {waStep === 'done' ? (
+                  <div style={{ textAlign:'center', padding:'20px 0 8px' }}>
+                    <div style={{ fontSize:52, marginBottom:12 }}>✅</div>
+                    <p style={{ fontFamily:"'Oswald',sans-serif", fontSize:18, fontWeight:700, color:'#15803d' }}>Opening WhatsApp…</p>
+                    <p style={{ fontSize:13, color:'#5a7186', marginTop:6 }}>We&apos;ve saved your number. We&apos;ll be in touch soon!</p>
+                  </div>
+                ) : (
+                  <form onSubmit={handleWaSubmit} noValidate>
+
+                    {/* Privacy notice */}
+                    <div className="wam-notice">
+                      <span className="wam-notice-icon">🔒</span>
+                      <span>Your number is used <strong>only</strong> to open WhatsApp and so our team can follow up. We never share it.</span>
+                    </div>
+
+                    {/* Name field */}
+                    <div className="wam-field">
+                      <label className="wam-label" htmlFor="wam-name">Your Name</label>
+                      <input
+                        id="wam-name"
+                        type="text"
+                        className="wam-input"
+                        placeholder="e.g. Kofi Mensah"
+                        value={waName}
+                        onChange={e => setWaName(e.target.value)}
+                        autoComplete="name"
+                        disabled={waStep === 'submitting'}
+                      />
+                    </div>
+
+                    {/* Phone field */}
+                    <div className="wam-field">
+                      <label className="wam-label" htmlFor="wam-phone">WhatsApp Number <span>*</span></label>
+                      <input
+                        id="wam-phone"
+                        ref={phoneRef}
+                        type="tel"
+                        className="wam-input"
+                        placeholder="e.g. 024 478 3099"
+                        value={waPhone}
+                        onChange={e => { setWaPhone(e.target.value); setWaError(''); }}
+                        autoComplete="tel"
+                        inputMode="tel"
+                        required
+                        disabled={waStep === 'submitting'}
+                      />
+                      {waError && (
+                        <div className="wam-error">
+                          <span>⚠️</span> {waError}
+                        </div>
+                      )}
+                    </div>
+
+                    <button
+                      type="submit"
+                      className={`wam-submit${waStep === 'done' ? ' done' : ''}`}
+                      disabled={waStep === 'submitting'}
+                    >
+                      {waStep === 'submitting' ? (
+                        <><span className="wam-spinner" /> Saving &amp; Opening…</>
+                      ) : (
+                        <><svg viewBox="0 0 24 24" width="18" height="18" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Chat on WhatsApp Now</>
+                      )}
+                    </button>
+
+                    <button
+                      type="button"
+                      className="wam-skip"
+                      onClick={() => {
+                        setWaModal(false);
+                        window.open('https://wa.me/233244783099', '_blank');
+                      }}
+                    >
+                      Skip &amp; open WhatsApp directly →
+                    </button>
+
+                    <p className="wam-privacy">🔐 Your number is kept private and never shared with third parties.</p>
+                  </form>
+                )}
+              </div>
+            </div>
+          </div>
+        </>
       )}
     </>,
     document.body

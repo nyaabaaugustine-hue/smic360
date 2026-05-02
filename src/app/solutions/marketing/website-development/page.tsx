@@ -345,7 +345,7 @@ export default function WebsiteDevelopmentPage() {
             </div>
             <div style={{ position: 'relative' }}>
               <img
-                src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80"
+                src="https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777106950/Foxcooling-website-cover_p5grjz.jpg"
                 alt="Website Development"
                 style={{
                   width: '100%',

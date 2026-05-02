@@ -112,7 +112,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         />
         <script type="module" defer src="https://static.rocket.new/rocket-shot.js?v=0.0.2" />
       </head>
-      <body>{children}<CookieBanner /></body>
+      <body><div className="page-root">{children}</div><CookieBanner /></body>
     </html>
   );
 }

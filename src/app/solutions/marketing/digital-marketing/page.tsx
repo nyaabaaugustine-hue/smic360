@@ -9,7 +9,7 @@ export default function DigitalMarketingPage() {
       heroTitle="Digital"
       heroEm="Marketing"
       heroDesc="Data-driven digital campaigns that reach your audience where they are — on search, social, and across the web — with measurable results."
-      heroImg="https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777110562/A-Guide-to-Media-Buying-Definition-Importance-Impact-and-Benefits-scaled-copy_uidwzc.jpg"
+      heroImg="https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777716368/digiatmarket_nvyszh.avif"
       overview="In Ghana's rapidly evolving digital landscape, businesses that master online marketing gain a decisive competitive edge. SMIC360's digital marketing team combines creative strategy with data analytics to build campaigns that drive traffic, generate quality leads, and convert audiences into loyal customers. We manage every layer of your digital presence — from SEO and paid ads to content marketing and social media — so you can focus on running your business."
       services={[
         {

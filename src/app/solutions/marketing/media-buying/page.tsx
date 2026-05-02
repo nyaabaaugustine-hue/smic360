@@ -9,7 +9,7 @@ export default function MediaBuyingPage() {
       heroTitle="Media"
       heroEm="Buying"
       heroDesc="Strategic media placement that puts your brand in front of the right audience — at the right time, on the right channels — for maximum impact and ROI."
-      heroImg="https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777110562/A-Guide-to-Media-Buying-Definition-Importance-Impact-and-Benefits-scaled-copy_uidwzc.jpg"
+      heroImg="https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777716529/mbuying_j3xzsw.avif"
       overview="Media buying is one of the most powerful levers in your marketing mix — and one of the most easily wasted without the right expertise. SMIC360's media buying team combines deep knowledge of Ghana's media landscape (TV, radio, print, outdoor, and digital) with hard-won vendor relationships to negotiate the best rates, optimal placements, and maximum reach for your budget. We plan, buy, manage, and report on all media spend so every cedi works harder."
       services={[
         {

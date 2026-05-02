@@ -9,7 +9,7 @@ export default function CorporateBrandingPage() {
       heroTitle="Corporate"
       heroEm="Branding"
       heroDesc="Shape how your organisation is perceived by clients, investors, talent, and the public — with a corporate identity built for credibility and growth."
-      heroImg="https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777114247/kkkl_nhdczf.avif"
+      heroImg="https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777716251/coporatebranding_zj6toc.avif"
       overview="Your corporate brand is the face of your organisation in every boardroom, pitch deck, and public forum. SMIC360 helps businesses — from SMEs to large enterprises — build cohesive corporate identities that communicate professionalism, inspire trust, and support long-term business development. We align your internal culture with your external presentation to create brands that attract the right clients, partners, and talent."
       services={[
         {

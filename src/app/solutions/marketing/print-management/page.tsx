@@ -9,7 +9,7 @@ export default function PrintManagementPage() {
       heroTitle="Print"
       heroEm="Management"
       heroDesc="End-to-end print procurement and management — from design and artwork to production and delivery — with quality assurance at every stage."
-      heroImg="https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777106950/ec234641a21a9e03c50b708351c53603_vl5piv.jpg"
+      heroImg="https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777717817/PRINT_hvqppt.avif"
       overview="Great print materials still command attention and build credibility in ways digital cannot fully replicate. SMIC360's print management service handles the entire print supply chain — from creative design and press-ready artwork preparation to supplier sourcing, quality management, logistics, and on-time delivery. We work with Ghana's best print vendors and manage all print procurement so you get outstanding quality at the most competitive prices, every time."
       services={[
         {
