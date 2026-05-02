@@ -25,9 +25,10 @@ export const metadata: Metadata = {
     'branding Ghana',
     'media buying Ghana',
   ],
-  authors: [{ name: 'SMIC360 Limited', url: 'https://smic360.netlify.app' }],
+  authors: [{ name: 'SMIC360 Limited', url: 'https://www.smic360.com' }],
   creator: 'SMIC360 Limited',
   publisher: 'SMIC360 Limited',
+  metadataBase: new URL('https://www.smic360.com'),
   robots: { index: true, follow: true },
   icons: {
     icon: [
@@ -45,7 +46,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'SMIC360 — Building Foundations. Branding Futures.',
     description: "Ghana's leading partner for Strategic Marketing, Real Estate, and Procurement.",
-    url: 'https://smic360.netlify.app',
+    url: 'https://www.smic360.com',
     siteName: 'SMIC360 Limited',
     images: [
       {
@@ -70,7 +71,7 @@ const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
   name: 'SMIC360 Limited',
-  url: 'https://smic360.netlify.app',
+  url: 'https://www.smic360.com',
   logo: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777107241/cropped-SMIC-01-180x180_pffxe7.jpg',
   description: "Ghana's leading multi-sector business solutions company",
   address: {

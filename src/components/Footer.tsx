@@ -138,7 +138,7 @@ export default function Footer({ onBookClick }: FooterProps) {
             <li><Link href="/terms">Terms of Service</Link></li>
             <li><Link href="/faq">FAQ</Link></li>
             <li><Link href="/the-phoenix-enclave">The Phoenix Enclave</Link></li>
-            <li><a href="#">Christie&apos;s Homestay</a></li>
+            <li><Link href="/christies-homestay">Christie&apos;s Homestay</Link></li>
             <li><a href="#">Moonlight Shipping</a></li>
             {onBookClick && (
               <li>

@@ -369,7 +369,7 @@ export default function HomePage() {
           {[
             { num: 150, suffix: '+', label: 'Projects Delivered', desc: 'Across all three divisions' },
             { num: 80,  suffix: '+', label: 'Happy Clients',      desc: 'Across Ghana & West Africa' },
-            { num: 8,   suffix: '',  label: 'Years of Excellence', desc: 'Established in Accra' },
+            { num: 20,  suffix: '',  label: 'Years of Excellence', desc: 'Established in Accra' },
             { num: 3,   suffix: '',  label: 'Core Divisions',      desc: 'Marketing · Real Estate · Procurement' },
           ].map((s, i) => (
             <div key={i} className="stats-item">
