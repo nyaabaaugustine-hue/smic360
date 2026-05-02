@@ -127,9 +127,7 @@ export default function ContactPage() {
                     title: 'Office Hours',
                     content: (
                       <p style={{ fontSize: '14px', color: 'var(--muted)', lineHeight: 1.7 }}>
-                        Mon – Fri: 8:00 AM – 6:00 PM
-                        <br />
-                        Saturday: 9:00 AM – 2:00 PM
+                        Mon – Fri: 8:00 AM – 4:00 PM
                       </p>
                     ),
                   },

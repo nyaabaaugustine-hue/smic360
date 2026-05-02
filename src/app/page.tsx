@@ -413,7 +413,7 @@ export default function HomePage() {
             <div className="about-img-wrap reveal-left">
               <img className="about-img-main" src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800&q=80" alt="SMIC360 team meeting" />
               <div className="about-badge">
-                <span className="about-badge-num">8+</span>
+                <span className="about-badge-num">20+</span>
                 <span className="about-badge-sub">Years of Excellence</span>
               </div>
             </div>

@@ -448,40 +448,55 @@ export default function ChatPanel() {
 /* ────────────────────────────────────────────────────────
             MOBILE OVERRIDES
          ──────────────────────────────────────────────────────── */
-        @media (max-width: 600px) {
-          /* WhatsApp - ensure it's within viewport */
-          #s360-wa { 
-            width: 52px; height: 52px; 
-            bottom: calc(18px + env(safe-area-inset-bottom, 0px)) !important; 
-            right: 12px !important; 
+        /* ── MOBILE: keep everything inside the viewport ── */
+        @media (max-width: 480px) {
+          /* WhatsApp — bottom-right, small, no overflow */
+          #s360-wa {
+            width: 50px !important;
+            height: 50px !important;
+            bottom: 16px !important;
+            right: 14px !important;
+            border-width: 2px !important;
           }
-          #s360-wa svg { width: 26px; height: 26px; }
-          #s360-wa .wa-tip { display: none; }
-          /* FABs - move up to not overlap */
-          #s360-fabs { 
-            bottom: calc(70px + env(safe-area-inset-bottom, 0px)) !important; 
-            right: 12px !important; 
-            gap: 6px; 
+          #s360-wa svg { width: 26px !important; height: 26px !important; }
+          #s360-wa .wa-tip { display: none !important; }
+          #s360-wa::before { display: none !important; }
+
+          /* FABs — sit directly above WhatsApp */
+          #s360-fabs {
+            bottom: 74px !important;
+            right: 14px !important;
+            gap: 8px !important;
           }
-          .s360-fab { width: 40px; height: 40px; }
-          .s360-tip { display: none; }
-          /* Scroll top - move to left side */
-          #s360-top { 
-            bottom: calc(18px + env(safe-area-inset-bottom, 0px)) !important; 
-            left: 12px !important; 
-            width: 40px; height: 40px; 
+          .s360-fab {
+            width: 40px !important;
+            height: 40px !important;
           }
-          /* Chat panel */
+          .s360-tip { display: none !important; }
+
+          /* Scroll-to-top — bottom-left */
+          #s360-top {
+            bottom: 16px !important;
+            left: 14px !important;
+            right: auto !important;
+            width: 40px !important;
+            height: 40px !important;
+          }
+
+          /* Chat panel — full-width sheet from bottom */
           #s360-chat {
-            right: 8px !important; left: 8px !important; bottom: calc(85px + env(safe-area-inset-bottom, 0px)) !important;
-            width: 100%; max-width: 100%;
-            border-radius: 24px 24px 0 0;
-            max-height: 80dvh;
-            animation: chatInMobile .32s cubic-bezier(0.16,1,0.3,1) both;
+            left: 0 !important;
+            right: 0 !important;
+            bottom: 0 !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            border-radius: 20px 20px 0 0 !important;
+            max-height: 82dvh !important;
+            animation: chatInMob .3s cubic-bezier(0.16,1,0.3,1) both !important;
           }
-          @keyframes chatInMobile {
-            from { opacity:0; transform: translateY(100%); }
-            to   { opacity:1; transform: none; }
+          @keyframes chatInMob {
+            from { opacity: 0; transform: translateY(60px); }
+            to   { opacity: 1; transform: none; }
           }
         }
       `}</style>
