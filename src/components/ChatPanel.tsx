@@ -244,6 +244,11 @@ export default function ChatPanel() {
           position: fixed; bottom: 100px; right: 22px; z-index: 9998;
           display: flex; flex-direction: column; gap: 10px; align-items: flex-end;
         }
+        @media (max-width:640px) {
+          #s360-fabs { bottom: 80px; right: 16px; gap: 8px; }
+          #s360-wa { bottom: 16px; right: 16px; width: 52px; height: 52px; }
+          #s360-top { bottom: 16px; left: 16px; }
+        }
         .s360-fab {
           width: 48px; height: 48px; border-radius: 50%;
           background: #071628; border: 2px solid rgba(255,193,7,0.4);
