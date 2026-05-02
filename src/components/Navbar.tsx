@@ -74,6 +74,13 @@ export default function Navbar({ onBookClick }: NavbarProps) {
                   </div>
                   <div>
                     <div className="drop-group-label">Core Divisions</div>
+                    <Link href="/christies-homestay" className="drop-item" style={{borderTop:'1px solid rgba(0,180,216,0.15)',background:'rgba(0,180,216,0.03)'}}>
+                      <div className="drop-icon">🏡</div>
+                      <div className="drop-text">
+                        <h4 style={{color:'var(--cyan)'}}>Christie&apos;s Homestay</h4>
+                        <p>Airbnb Short-Stay Rentals</p>
+                      </div>
+                    </Link>
                     <Link href="/the-phoenix-enclave" className="drop-item" style={{borderTop:'1px solid rgba(255,193,7,0.2)',background:'rgba(255,193,7,0.04)'}}>
                       <div className="drop-icon">🏡</div>
                       <div className="drop-text">
@@ -229,6 +236,9 @@ export default function Navbar({ onBookClick }: NavbarProps) {
           </Link>
           <Link href="/the-phoenix-enclave" onClick={() => setMobileOpen(false)} style={{color:'var(--gold)',fontWeight:700}}>
             🏡 The Phoenix Enclave
+          </Link>
+          <Link href="/christies-homestay" onClick={() => setMobileOpen(false)} style={{color:'var(--cyan)',fontWeight:700}}>
+            🏡 Christie&apos;s Homestay
           </Link>
 
           <div className="mobile-sublinks">
