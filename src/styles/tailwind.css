@@ -1825,18 +1825,18 @@ html.mobile-menu-open { overflow: hidden; }
 }
 @media (max-width:640px) {
   .topbar-hours { display:none; }
-  .chat-panel { left: 12px !important; right: 12px !important; width: auto !important; transform: none !important; bottom: 130px !important; max-height: calc(100vh - 150px); }
+  .chat-panel { left: 12px !important; right: 12px !important; width: auto !important; transform: none !important; bottom: 140px !important; max-height: calc(100vh - 160px); }
   .floats { padding: 8px 14px !important; gap: 8px !important; }
   .float-label { display: none; }
   .float-ai, .float-wa { width: 42px; height: 42px; }
   
   /* Adjust chat panel for mobile when floating buttons are present */
   #s360-chat {
-    bottom: 90px !important;
+    bottom: calc(100px + env(safe-area-inset-bottom, 0px)) !important;
     right: 12px !important;
     left: 12px !important;
     width: auto !important;
-    max-height: calc(100vh - 110px) !important;
+    max-height: calc(100vh - 130px) !important;
   }
 }
 @media (max-width:1024px) {
@@ -2005,24 +2005,28 @@ html.mobile-menu-open { overflow: hidden; }
   .ps-grid { grid-template-columns:1fr !important; }
 }
 
-/* Float buttons — always centered bottom on mobile */
+/* Float buttons — push up significantly */
 @media (max-width:768px) {
-  .floats { bottom:16px !important; padding:8px 16px !important; gap:10px !important; }
-  
-  /* Mobile floating buttons - adjust positions to be visible */
   #s360-wa {
-    bottom: 16px !important;
-    right: 16px !important;
-    width: 52px !important;
-    height: 52px !important;
+    position: fixed !important;
+    bottom: 0px !important;
+    right: 10px !important;
+    transform: translateY(-35px) !important;
+    z-index: 99999 !important;
   }
   #s360-fabs {
-    bottom: 80px !important;
-    right: 16px !important;
+    position: fixed !important;
+    bottom: 0px !important;
+    right: 10px !important;
+    transform: translateY(-85px) !important;
+    z-index: 99998 !important;
   }
   #s360-top {
-    bottom: 16px !important;
-    left: 16px !important;
+    position: fixed !important;
+    bottom: 0px !important;
+    left: 10px !important;
+    transform: translateY(-35px) !important;
+    z-index: 99990 !important;
   }
 }
 

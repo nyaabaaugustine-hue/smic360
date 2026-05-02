@@ -445,23 +445,35 @@ export default function ChatPanel() {
         }
         .cp-send:hover { transform: scale(1.1) rotate(15deg); }
 
-        /* ────────────────────────────────────────────────────────
-           MOBILE OVERRIDES
-        ──────────────────────────────────────────────────────── */
+/* ────────────────────────────────────────────────────────
+            MOBILE OVERRIDES
+         ──────────────────────────────────────────────────────── */
         @media (max-width: 600px) {
-          /* WhatsApp */
-          #s360-wa { width: 56px; height: 56px; bottom: 18px; right: 16px; }
-          #s360-wa svg { width: 28px; height: 28px; }
+          /* WhatsApp - ensure it's within viewport */
+          #s360-wa { 
+            width: 52px; height: 52px; 
+            bottom: calc(18px + env(safe-area-inset-bottom, 0px)) !important; 
+            right: 12px !important; 
+          }
+          #s360-wa svg { width: 26px; height: 26px; }
           #s360-wa .wa-tip { display: none; }
-          /* FABs */
-          #s360-fabs { bottom: 86px; right: 16px; gap: 8px; }
-          .s360-fab { width: 44px; height: 44px; }
+          /* FABs - move up to not overlap */
+          #s360-fabs { 
+            bottom: calc(70px + env(safe-area-inset-bottom, 0px)) !important; 
+            right: 12px !important; 
+            gap: 6px; 
+          }
+          .s360-fab { width: 40px; height: 40px; }
           .s360-tip { display: none; }
-          /* Scroll top */
-          #s360-top { bottom: 18px; left: 16px; width: 40px; height: 40px; }
+          /* Scroll top - move to left side */
+          #s360-top { 
+            bottom: calc(18px + env(safe-area-inset-bottom, 0px)) !important; 
+            left: 12px !important; 
+            width: 40px; height: 40px; 
+          }
           /* Chat panel */
           #s360-chat {
-            right: 0; left: 0; bottom: 0;
+            right: 8px !important; left: 8px !important; bottom: calc(85px + env(safe-area-inset-bottom, 0px)) !important;
             width: 100%; max-width: 100%;
             border-radius: 24px 24px 0 0;
             max-height: 80dvh;

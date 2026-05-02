@@ -490,7 +490,7 @@ export default function HomePage() {
           <div className="clients-marquee">
             <div className="clients-track">
               {[...clientLogos, ...clientLogos].map((logo, i) => (
-                <div key={i} className="client-logo"><img src={logo.src} alt={logo.alt} /></div>
+                <div key={i} className="client-logo"><img src={logo.src} alt={logo.alt} loading="lazy" /></div>
               ))}
             </div>
           </div>
