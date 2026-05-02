@@ -1,6 +1,7 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import { Counter } from './Counter';
+import { clImg } from './ui/cloudinary';
 
 interface HeroSlide {
   bg: string;
@@ -94,7 +95,7 @@ export default function HeroSlider({ onBookClick }: HeroProps) {
       <div className="hero-slides">
         {slides.map((slide, i) => (
           <div key={i} className={`hero-slide${activeIdx === i ? ' active' : ''}`}>
-            <div className="hero-slide-bg" style={{ backgroundImage: `url('${slide.bg}')` }}></div>
+          <div className="hero-slide-bg" style={{ backgroundImage: `url('${clImg(slide.bg, 1600)}')` }}></div>
             <div className="hero-grid"></div>
             <div className="hero-glow"></div>
             <div className="hero-content">
@@ -158,7 +159,7 @@ export default function HeroSlider({ onBookClick }: HeroProps) {
                 )}
               </div>
               <div className="hero-card">
-                <img className="hero-card-img" src={slide.cardImg} alt={slide.cardTitle} />
+                <img className="hero-card-img" src={clImg(slide.cardImg, 600)} alt={slide.cardTitle} />
                 <div className="hero-card-body">
                   <h3>{slide.cardTitle}</h3>
                   <p>{slide.cardDesc}</p>

@@ -10,15 +10,16 @@ import ChatPanel from '@/components/ChatPanel';
 import ScrollReveal from '@/components/ScrollReveal';
 import HeroSlider from '@/components/HeroSlider';
 import ProjectSpotlight from '@/components/ProjectSpotlight';
+import { clImg } from '@/components/ui/cloudinary';
 
 const clientLogos = [
-  { src: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777112814/a2_az567s.jpg', alt: 'GCB Bank' },
-  { src: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777112816/a3_y1xfq2.jpg', alt: 'MTN Ghana' },
-  { src: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777112818/a5_kpnhnw.jpg', alt: 'Cocobod' },
-  { src: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777112820/a6_gelulp.jpg', alt: 'GNPC' },
-  { src: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777112823/a7_bta0e1.jpg', alt: 'Stanbic' },
-  { src: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777112830/a8_uhzxz6.jpg', alt: 'ECG' },
-  { src: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777112843/a17_l3mpki.jpg', alt: 'Ashfoam' },
+  { src: clImg('https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777112814/a2_az567s.jpg', 200), alt: 'GCB Bank' },
+  { src: clImg('https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777112816/a3_y1xfq2.jpg', 200), alt: 'MTN Ghana' },
+  { src: clImg('https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777112818/a5_kpnhnw.jpg', 200), alt: 'Cocobod' },
+  { src: clImg('https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777112820/a6_gelulp.jpg', 200), alt: 'GNPC' },
+  { src: clImg('https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777112823/a7_bta0e1.jpg', 200), alt: 'Stanbic' },
+  { src: clImg('https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777112830/a8_uhzxz6.jpg', 200), alt: 'ECG' },
+  { src: clImg('https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777112843/a17_l3mpki.jpg', 200), alt: 'Ashfoam' },
 ];
 
 const projects = [
@@ -31,9 +32,9 @@ const projects = [
 ];
 
 const teamMembers = [
-  { id: 'christiana', img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777112403/CHRISTIANA_pmwgsx.jpg', name: 'Christiana', role: 'Founder & CEO', bio: 'Over 20 years of industry experience excelling in Advertising, Marketing, and Business Management.', fullBio: "Christiana is the Founder and CEO of SMIC360 Limited. With over 20 years of industry experience, she has excelled in Advertising, Marketing, Business Management, and Hospitality. She also serves as Managing Director of Moonlight Shipping, Facility Manager of Christie's Homestay, Project Manager of The Phoenix Enclave, and Business Manager for Eagle EL Salt Ghana Limited and Osabusquare." },
-  { id: 'alberta', img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777112403/ALBERTA_jbrc1f.jpg', name: 'Alberta', role: 'Finance Manager', bio: 'Strategic insight and financial acumen with an MBA in Finance from UGBS and 9+ years of experience.', fullBio: "Alberta holds a background in Sociology & Linguistics and an MBA in Finance from UGBS. She brings a unique blend of strategic insight and financial acumen to SMIC360. With over nine years of experience in administration and finance, she ensures the seamless execution of all projects and manages budgeting to guarantee the company's financial health." },
-  { id: 'samuel', img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777112169/NII-BOYE_mixzve.jpg', name: 'Samuel', role: 'Creative & Production Manager', bio: 'Creative lead with 15+ years of experience crafting visually captivating and impactful marketing campaigns.', fullBio: 'Samuel is a dynamic Creative & Production Manager with over 15 years of experience and a BFA in Publishing. He leads the creative team in delivering innovative and impactful marketing solutions, crafting visually captivating campaigns that drive client success.' },
+  { id: 'christiana', img: clImg('https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777112403/CHRISTIANA_pmwgsx.jpg', 400), name: 'Christiana', role: 'Founder & CEO', bio: 'Over 20 years of industry experience excelling in Advertising, Marketing, and Business Management.', fullBio: "Christiana is the Founder and CEO of SMIC360 Limited. With over 20 years of industry experience, she has excelled in Advertising, Marketing, Business Management, and Hospitality. She also serves as Managing Director of Moonlight Shipping, Facility Manager of Christie's Homestay, Project Manager of The Phoenix Enclave, and Business Manager for Eagle EL Salt Ghana Limited and Osabusquare." },
+  { id: 'alberta', img: clImg('https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777112403/ALBERTA_jbrc1f.jpg', 400), name: 'Alberta', role: 'Finance Manager', bio: 'Strategic insight and financial acumen with an MBA in Finance from UGBS and 9+ years of experience.', fullBio: "Alberta holds a background in Sociology & Linguistics and an MBA in Finance from UGBS. She brings a unique blend of strategic insight and financial acumen to SMIC360. With over nine years of experience in administration and finance, she ensures the seamless execution of all projects and manages budgeting to guarantee the company's financial health." },
+  { id: 'samuel', img: clImg('https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777112169/NII-BOYE_mixzve.jpg', 400), name: 'Samuel', role: 'Creative & Production Manager', bio: 'Creative lead with 15+ years of experience crafting visually captivating and impactful marketing campaigns.', fullBio: 'Samuel is a dynamic Creative & Production Manager with over 15 years of experience and a BFA in Publishing. He leads the creative team in delivering innovative and impactful marketing solutions, crafting visually captivating campaigns that drive client success.' },
 ];
 
 const testimonials = [
@@ -129,7 +130,7 @@ function TeamModal({
             onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.background = 'rgba(220,38,38,0.75)'; }}
             onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.background = 'rgba(255,255,255,0.12)'; }}
           >✕</button>
-          <img src={member.img} alt={member.name} style={{ width: 110, height: 110, borderRadius: 14, objectFit: 'cover', border: '3px solid rgba(255,255,255,0.25)', flexShrink: 0, boxShadow: '0 8px 28px rgba(0,0,0,0.35)', position: 'relative', zIndex: 1 }} />
+          <img src={clImg(member.img, 400)} alt={member.name} style={{ width: 110, height: 110, borderRadius: 14, objectFit: 'cover', border: '3px solid rgba(255,255,255,0.25)', flexShrink: 0, boxShadow: '0 8px 28px rgba(0,0,0,0.35)', position: 'relative', zIndex: 1 }} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <h3 style={{ fontFamily: "'Oswald',sans-serif", fontSize: 26, fontWeight: 700, color: '#FFC107', margin: 0, lineHeight: 1.1 }}>{member.name}</h3>
             <div style={{ color: '#00b4d8', fontWeight: 700, fontSize: 12.5, letterSpacing: '1.2px', textTransform: 'uppercase', marginTop: 6 }}>{member.role}</div>
