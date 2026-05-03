@@ -340,29 +340,10 @@ export default function SDGsPage() {
               <p className="sdg-hero-sub">
                 At SMIC360 Limited, our work is guided by a commitment to creating lasting positive change. We align our business practices with key United Nations Sustainable Development Goals (SDGs), ensuring that our success contributes to a better world.
               </p>
-
-              {/* 3 SDG icons */}
-              <div className="sdg-hero-icons">
-                {SDGS.map((g, i) => (
-                  <div key={i} className="sdg-hero-icon" onClick={() => setActive(i)} title={`SDG ${g.num}: ${g.title}`}>
-                    <img src={g.img} alt={`SDG ${g.num} — ${g.title}`} loading="eager" />
-                  </div>
-                ))}
-              </div>
-
               <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
                 <Link href="/contact" className="btn btn-primary" style={{ fontSize: 14 }}>Contact Us →</Link>
                 <button onClick={() => setBookOpen(true)} className="btn btn-outline-white" style={{ fontSize: 14 }}>Partner With Us</button>
               </div>
-            </div>
-
-            {/* Right — 3 large stacked icons */}
-            <div className="sdg-hero-right">
-              {SDGS.map((g, i) => (
-                <div key={i} className="sdg-hero-right-icon" onClick={() => setActive(i)} title={`SDG ${g.num}`}>
-                  <img src={g.img} alt={`SDG ${g.num}`} loading="eager" />
-                </div>
-              ))}
             </div>
           </div>
         </section>
