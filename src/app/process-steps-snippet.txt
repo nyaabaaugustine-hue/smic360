@@ -1,0 +1,6 @@
+  const processSteps = [
+    { icon: '📚', title: 'Educate',  subtitle: 'Content — Week 1 & 2',     desc: 'We explain why traditional advertising still works and where businesses are getting it wrong. Videos on why billboards still work, boosted posts vs real advertising, and why your brand is invisible.' },
+    { icon: '🎯', title: 'Demonstrate', subtitle: 'Credibility — Week 2 & 3', desc: 'We show real strategic thinking using campaign breakdowns. Sample ₵50k campaign plans, top billboard locations, radio vs digital usage, and behind-the-scenes planning from our team.' },
+    { icon: '📞', title: 'Convert',  subtitle: 'Lead Generation — Week 4',   desc: 'Drive leads through a clear offer: Free 15-Minute Advertising Strategy Session or a Free Media Plan for your business. Limited strategy sessions available each month.' },
+    { icon: '🤝', title: 'Close',    subtitle: 'Retainer',                   desc: 'Strategy call → close retainer. By end of May, SMIC360 will be perceived as the agency that understands real advertising — not just social media.' },
+  ];

@@ -20,17 +20,16 @@ interface HeroSlide {
 const slides: HeroSlide[] = [
   {
     bg: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600&q=75',
-    live: 'Now Operating Across Ghana',
-    title: 'Building Foundations.',
-    titleEm: 'Branding Futures.',
-    desc: 'SMIC360 delivers end-to-end business solutions — from creative marketing and real estate development to precision procurement — all under one roof, engineered for your growth.',
-    btn1: 'Explore Solutions',
+    live: 'Advertising & Marketing',
+    title: 'We Create Campaigns',
+    titleEm: 'That Get Results.',
+    desc: 'From brand strategy to media buying, OOH, radio, and digital — we build full-funnel advertising that drives real, measurable outcomes for Ghanaian businesses.',
+    btn1: 'Free Strategy Session',
     btn2: 'Book A Consultation',
-    cardImg:
-      'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777110562/A-Guide-to-Media-Buying-Definition-Importance-Impact-and-Benefits-scaled-copy_uidwzc.jpg',
-    cardTitle: '360° Business Solutions',
-    cardDesc: 'Strategy, execution, and growth — all from one trusted partner in Ghana.',
-    cardTags: ['Marketing', 'Real Estate', 'Procurement'],
+    cardImg: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777110562/A-Guide-to-Media-Buying-Definition-Importance-Impact-and-Benefits-scaled-copy_uidwzc.jpg',
+    cardTitle: 'Advertising & Marketing',
+    cardDesc: 'Brand strategy, media buying, OOH, radio, print and digital — all under one roof.',
+    cardTags: ['Media Buying', 'OOH', 'Radio', 'Brand Strategy'],
   },
   {
     bg: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777111208/WhatsApp-Image-2025-08-18-at-14.16.35_e93040d9l_gwfnmu.jpg',
@@ -46,19 +45,6 @@ const slides: HeroSlide[] = [
     cardTags: ['Property', 'Investment'],
   },
   {
-    bg: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777110562/A-Guide-to-Media-Buying-Definition-Importance-Impact-and-Benefits-scaled-copy_uidwzc.jpg',
-    live: 'Strategic Marketing',
-    title: 'Branding',
-    titleEm: 'Futures.',
-    desc: 'Unlock growth with precision media buying and creative strategy. We position your brand exactly where it needs to be to win the market.',
-    btn1: 'View Portfolio',
-    btn2: 'Start a Campaign',
-    cardImg: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80',
-    cardTitle: 'Marketing & Media',
-    cardDesc: 'Full-funnel advertising and data-driven brand growth.',
-    cardTags: ['Media Buying', 'Branding'],
-  },
-  {
     bg: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777106950/Foxcooling-website-cover_p5grjz.jpg',
     live: 'Precision Supply',
     title: 'Connecting',
@@ -66,8 +52,7 @@ const slides: HeroSlide[] = [
     desc: 'Tailor-made procurement solutions designed to give you maximum value for money. We source and supply with precision, engineered for your growth.',
     btn1: 'Supply Services',
     btn2: 'Get a Quote',
-    cardImg:
-      'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777106950/ec234641a21a9e03c50b708351c53603_vl5piv.jpg',
+    cardImg: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777106950/ec234641a21a9e03c50b708351c53603_vl5piv.jpg',
     cardTitle: 'Procurement & Supply',
     cardDesc: 'End-to-end supply chain management and expert vendor negotiation.',
     cardTags: ['Logistics', 'Sourcing'],
@@ -95,7 +80,7 @@ export default function HeroSlider({ onBookClick }: HeroProps) {
       <div className="hero-slides">
         {slides.map((slide, i) => (
           <div key={i} className={`hero-slide${activeIdx === i ? ' active' : ''}`}>
-          <div className="hero-slide-bg" style={{ backgroundImage: `url('${clImg(slide.bg, 1600)}')` }}></div>
+            <div className="hero-slide-bg" style={{ backgroundImage: `url('${clImg(slide.bg, 1600)}')` }}></div>
             <div className="hero-grid"></div>
             <div className="hero-glow"></div>
             <div className="hero-content">
@@ -108,12 +93,6 @@ export default function HeroSlider({ onBookClick }: HeroProps) {
                   {slide.title}
                   <br />
                   <em>{slide.titleEm}</em>
-                  {i === 0 && (
-                    <>
-                      <br />
-                      Connecting Markets.
-                    </>
-                  )}
                 </h1>
                 <p className="hero-p">{slide.desc}</p>
                 <div className="hero-btns">
@@ -130,30 +109,24 @@ export default function HeroSlider({ onBookClick }: HeroProps) {
                 {i === 0 && (
                   <div className="hero-stats">
                     <div className="hero-stat">
-                      <div className="hero-stat-num">
-                        <Counter target={150} />
-                        <span>+</span>
-                      </div>
+                      <div className="hero-stat-num"><Counter target={150} /><span>+</span></div>
                       <div className="hero-stat-label">Projects Delivered</div>
+                      <div className="hero-stat-sub">Across all three divisions</div>
                     </div>
                     <div className="hero-stat">
-                      <div className="hero-stat-num">
-                        <Counter target={80} />
-                        <span>+</span>
-                      </div>
+                      <div className="hero-stat-num"><Counter target={80} /><span>+</span></div>
                       <div className="hero-stat-label">Happy Clients</div>
+                      <div className="hero-stat-sub">Across Ghana &amp; West Africa</div>
                     </div>
                     <div className="hero-stat">
-                      <div className="hero-stat-num">
-                        <Counter target={8} />
-                      </div>
+                      <div className="hero-stat-num"><Counter target={20} /></div>
                       <div className="hero-stat-label">Years of Excellence</div>
+                      <div className="hero-stat-sub">Established in Accra</div>
                     </div>
                     <div className="hero-stat">
-                      <div className="hero-stat-num">
-                        <Counter target={3} />
-                      </div>
-                      <div className="hero-stat-label">Core Divisions</div>
+                      <div className="hero-stat-num"><Counter target={3} /></div>
+                      <div className="hero-stat-label">Core Services</div>
+                      <div className="hero-stat-sub">Marketing &middot; Real Estate &middot; Procurement</div>
                     </div>
                   </div>
                 )}

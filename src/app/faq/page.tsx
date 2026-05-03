@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Topbar from '@/components/Topbar';
@@ -17,7 +17,7 @@ const faqs = [
     items: [
       {
         q: 'What is SMIC360 Limited?',
-        a: 'SMIC360 Limited is a Ghanaian multi-sector business solutions company specialising in three core divisions: Advertising & Marketing, Real Estate Development, and Procurement & Supply Chain Management. We operate as a single integrated partner so clients get seamless, cost-effective solutions under one roof.',
+        a: 'SMIC360 Limited is a full service advertising and integrated marketing company which offers comprehensive marketing communication support. Founded in 2006 and incorporated as a Limited Liability Company in 2011, we operate across three core divisions: Advertising & Marketing, Real Estate Development, and Procurement & Supply Services.',
       },
       {
         q: 'Where is SMIC360 based?',
@@ -25,7 +25,7 @@ const faqs = [
       },
       {
         q: 'How long has SMIC360 been operating?',
-        a: 'SMIC360 has been delivering integrated business solutions for over 10 years, with a track record of 150+ completed projects across marketing, real estate, and procurement.',
+        a: 'SMIC360 was registered in 2006 and started formal operations in April 2009. It was started as a Sole Proprietorship and later in 2011 converted to a Limited Liability Company — to ensure proper documentation and to grow the company beyond the founder. We have delivered 150+ projects across our three service divisions.',
       },
     ],
   },
@@ -34,11 +34,11 @@ const faqs = [
     items: [
       {
         q: 'What marketing services does SMIC360 offer?',
-        a: 'We provide a full suite of marketing services including Brand Identity Design, Corporate Branding, Digital Marketing & SEO, Social Media Management, Media Buying & Planning, Print Management, Content Production, and Website Development.',
+        a: 'We provide a full suite of advertising and marketing services including: Marketing & PR (branding, strategic planning, budgeting, sales growth strategies and general marketing advisory), Advertising (Print, Outdoor/Billboards, Broadcast — TV, Radio, Internet), Corporate Branding, Multimedia Graphics (3D Designs, Photography, Animation, Video Editing, Website Design), Media Buying & Planning, Print Management, Social Media Packages, and Corporate Apparel & PPE.',
       },
       {
         q: 'How long does a typical branding project take?',
-        a: 'A standard brand identity project (logo, brand guidelines, collateral) typically takes 4–6 weeks. Full 360° campaign launches including digital, print, and media buying can range from 6–16 weeks depending on scope.',
+        a: 'Timelines vary based on scope and budget. Our process begins with a consultancy meeting to assess your needs, agree on a budget and implementation schedule. Research is carried out, ideas and recommendations are presented, then we implement. A performance report is presented to client upon completion. Contact us for a specific project timeline.',
       },
       {
         q: 'Do you work with both startups and established companies?',
@@ -243,8 +243,7 @@ export default function FAQPage() {
               Still have a question?
             </h3>
             <p style={{ color: 'rgba(255,255,255,.55)', fontSize: '15px', marginBottom: '24px' }}>
-              Our team is available Monday–Friday, 8AM–6PM. We&apos;ll get back to you within 2
-              business hours.
+              Our team is available Monday–Friday, 8:00 AM – 4:00 PM. We will get back to you within 2 business hours. You can also reach us on 020 336 1155 | 054 166 5108 or email christie@smic360.com.
             </p>
             <div
               style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}

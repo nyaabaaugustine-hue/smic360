@@ -65,25 +65,6 @@ export default function Footer({ onBookClick }: FooterProps) {
 
       <hr className="footer-divider" />
 
-      {/* Award / trust strip */}
-      <div className="footer-award-strip">
-        {[
-          { icon: '🏆', label: 'Ghana Business Award', year: '2023' },
-          { icon: '⭐', label: '5-Star Client Rating' },
-          { icon: '📍', label: 'Based in Accra, Ghana' },
-          { icon: '🌍', label: 'Pan-African Vision' },
-          { icon: '🔒', label: 'ISO-Aligned Procurement' },
-        ].map((item, i, arr) => (
-          <React.Fragment key={i}>
-            <div className="footer-award-item">
-              <span>{item.icon}</span>
-              <span><strong>{item.label}</strong>{item.year ? ` — ${item.year}` : ''}</span>
-            </div>
-            {i < arr.length - 1 && <div className="footer-award-dot" />}
-          </React.Fragment>
-        ))}
-      </div>
-
       {/* Main footer body */}
       <div className="footer-top">
         {/* Brand col */}
@@ -122,6 +103,7 @@ export default function Footer({ onBookClick }: FooterProps) {
           <ul>
             <li><Link href="/">Home</Link></li>
             <li><Link href="/about">About Us</Link></li>
+            <li><Link href="/sdgs">Our SDGs</Link></li>
             <li><Link href="/solutions">Solutions</Link></li>
             <li><Link href="/blog">Blog &amp; News</Link></li>
             <li><Link href="/contact">Contact Us</Link></li>
@@ -138,8 +120,7 @@ export default function Footer({ onBookClick }: FooterProps) {
             <li><Link href="/terms">Terms of Service</Link></li>
             <li><Link href="/faq">FAQ</Link></li>
             <li><Link href="/the-phoenix-enclave">The Phoenix Enclave</Link></li>
-            <li><Link href="/christies-homestay">Christie&apos;s Homestay</Link></li>
-            <li><a href="#">Moonlight Shipping</a></li>
+            <li><Link href="/christies-homestay">Christie&apos;s Homestay</Link></li>          
             {onBookClick && (
               <li>
                 <button onClick={onBookClick} style={{ background: 'none', border: 'none', color: 'rgba(255,255,255,0.55)', cursor: 'pointer', fontSize: '13.5px', padding: 0, textAlign: 'left', transition: 'color 0.2s' }}>

@@ -23,23 +23,6 @@ export default function Topbar() {
             </svg>
             <span style={{ color: 'var(--gold)', fontWeight: 600 }}>+233 20 336 1155</span>
           </a>
-          {/* <a href="mailto:christie@smic360.com" className="topbar-item">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-              <polyline points="22,6 12,13 2,6" />
-            </svg>
-            christie@smic360.com
-          </a>
-          <span className="topbar-item topbar-hours">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <circle cx="12" cy="12" r="10" />
-              <polyline points="12 6 12 12 16 14" />
-            </svg>
-            Mon–Fri: 8AM – 6PM
-          </span>
-          <span className="topbar-item" style={{ color: 'rgba(255,193,7,0.7)', fontSize: '11px', letterSpacing: '1px' }}>
-            📍 Spintex Road, Accra — Ghana
-          </span> */}
         </div>
         <div className="topbar-right">
           <Link href="/about" className="topbar-item">About</Link>
