@@ -126,7 +126,7 @@ export default function AboutPage() {
                 style={{ width: '100%', height: '420px', objectFit: 'cover', borderRadius: 'var(--r-lg)', boxShadow: 'var(--sh-md)' }}
               />
               <div style={{ position: 'absolute', bottom: '-18px', right: '-18px', background: 'var(--blue)', color: '#fff', borderRadius: 'var(--r)', padding: '20px 24px', textAlign: 'center', boxShadow: '0 8px 28px rgba(19,97,196,.38)' }}>
-                <span style={{ fontFamily: 'Oswald,sans-serif', fontSize: '38px', fontWeight: 700, lineHeight: 1, display: 'block' }}>10+</span>
+                <span style={{ fontFamily: 'Oswald,sans-serif', fontSize: '38px', fontWeight: 700, lineHeight: 1, display: 'block' }}>20+</span>
                 <span style={{ fontSize: '12px', fontWeight: 500, opacity: 0.85, marginTop: '2px', display: 'block', textTransform: 'uppercase', letterSpacing: '1px' }}>Years Excellence</span>
               </div>
             </div>

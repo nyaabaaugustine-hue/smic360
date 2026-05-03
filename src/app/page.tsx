@@ -313,8 +313,8 @@ export default function HomePage() {
       <div className="ghana-strip">
         <div className="ghana-strip-inner">
           <div className="ghana-strip-text">
-            <h3>Proudly Ghanaian. Built to Pan-African Standards.</h3>
-            <p>SMIC360 is headquartered in Accra — deeply rooted in Ghana&apos;s business culture with a vision across Africa.</p>
+            <h3>Built to Global Standards.</h3>
+            <p>SMIC360 is headquartered in Accra — deeply rooted in Ghana&apos;s business culture with a vision across the globe.</p>
           </div>
           <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', position: 'relative', zIndex: 1 }}>
             <Link href="/about" className="btn btn-white">Our Story →</Link>
