@@ -165,13 +165,13 @@ export default function HomePage() {
   return (
     <>
       <style>{`
-        .stats-ribbon{background:linear-gradient(135deg,#040e1d 0%,#0b2d56 50%,#1261c0 100%);padding:40px 0;position:relative;overflow:hidden}
+        .stats-ribbon{background:#1a1a1a;padding:60px 0;position:relative;overflow:hidden}
         .stats-ribbon-inner{max-width:1200px;margin:0 auto;padding:0 28px;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;position:relative;z-index:1}
-        .stats-item{text-align:center;padding:20px 16px;border-radius:16px;border:1px solid rgba(255,255,255,0.07);background:rgba(255,255,255,0.04);transition:all 0.3s}
-        .stats-item:hover{background:rgba(255,255,255,0.08);border-color:rgba(255,193,7,0.2);transform:translateY(-3px)}
-        .stats-num{font-family:'Oswald',sans-serif;font-size:46px;font-weight:700;color:var(--gold);line-height:1}
-        .stats-label{font-size:12px;font-weight:600;color:rgba(255,255,255,0.55);margin-top:8px;text-transform:uppercase;letter-spacing:1px}
-        .stats-desc{font-size:11.5px;color:rgba(255,255,255,0.32);margin-top:4px;line-height:1.4}
+        .stats-item{text-align:center;padding:24px 16px;border-radius:16px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);transition:all 0.3s}
+        .stats-item:hover{background:rgba(255,255,255,0.08);border-color:rgba(255,193,7,0.3);transform:translateY(-3px)}
+        .stats-num{font-family:'Oswald',sans-serif;font-size:clamp(36px,4vw,52px);font-weight:700;color:#FFFFFF;line-height:1}
+        .stats-label{font-size:12px;font-weight:600;color:rgba(255,255,255,0.6);margin-top:8px;text-transform:uppercase;letter-spacing:1px}
+        .stats-desc{font-size:11.5px;color:rgba(255,255,255,0.35);margin-top:4px;line-height:1.4}
         .process-section{padding:100px 0;background:var(--navy);position:relative;overflow:hidden}
         .process-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;position:relative;z-index:1}
         .process-steps{display:flex;flex-direction:column;gap:4px}
@@ -235,11 +235,11 @@ export default function HomePage() {
           {[
             { num: 150, suffix: '+', label: 'Projects Delivered', desc: 'Across all three divisions' },
             { num: 80,  suffix: '+', label: 'Happy Clients',      desc: 'Across Ghana & West Africa' },
-            { num: 10,  suffix: '+', label: 'Years of Excellence', desc: 'Established since 2006, Accra' },
+            { num: 20,  suffix: '+', label: 'Years of Excellence', desc: 'Established since 2006, Accra' },
             { num: 3,   suffix: '',  label: 'Core Services',      desc: 'Marketing · Real Estate · Procurement' },
           ].map((s, i) => (
             <div key={i} className="stats-item">
-              <div className="stats-num"><AnimCounter target={s.num} suffix={s.suffix} /></div>
+              <div className="stats-num" style={{ color: '#fff' }}><AnimCounter target={s.num} suffix="" /><span style={{ color: '#FFC107' }}>{s.suffix}</span></div>
               <div className="stats-label">{s.label}</div>
               <div className="stats-desc">{s.desc}</div>
             </div>
@@ -323,22 +323,136 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* Video Tour */}
-      <section style={{ padding: '100px 0', background: 'var(--navy)', position: 'relative', overflow: 'hidden' }}>
-        <div className="wrap">
-          <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: 20, flexWrap: 'wrap', marginBottom: 52 }} className="reveal">
+      {/* ── Video Tour — Premium Cinematic ── */}
+      <section style={{ padding: '100px 0', background: '#0a0f1e', position: 'relative', overflow: 'hidden' }}>
+        <style>{`
+          /* ambient blobs */
+          .vt-blob{position:absolute;border-radius:50%;pointer-events:none;filter:blur(80px);opacity:0.55}
+          /* animated gradient border */
+          @keyframes vtBorder{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+          .vt-frame-outer{
+            position:relative;border-radius:28px;padding:3px;
+            background:linear-gradient(135deg,#FFC107 0%,#00b4d8 50%,#FFC107 100%);
+            background-size:200% 200%;
+            animation:vtBorder 6s linear infinite;
+            box-shadow:0 0 0 1px rgba(255,193,7,0.1),0 40px 100px rgba(0,0,0,0.65),0 0 140px rgba(255,193,7,0.06);
+            max-width:980px;margin:0 auto;
+          }
+          .vt-frame-inner{background:#060e1c;border-radius:26px;overflow:hidden}
+          /* macOS-style chrome bar */
+          .vt-chrome{background:#0c1828;padding:11px 18px;display:flex;align-items:center;gap:10px;border-bottom:1px solid rgba(255,255,255,0.06)}
+          .vt-dots{display:flex;gap:7px}
+          .vt-dot{width:11px;height:11px;border-radius:50%}
+          .vt-url{flex:1;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.07);border-radius:6px;padding:5px 13px;font-size:11.5px;color:rgba(255,255,255,0.3);font-family:monospace;letter-spacing:.2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+          .vt-live-pill{display:inline-flex;align-items:center;gap:7px;background:rgba(255,193,7,0.1);border:1px solid rgba(255,193,7,0.25);color:#FFC107;font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:5px 12px;border-radius:20px;flex-shrink:0}
+          .vt-live-dot{width:7px;height:7px;background:#FFC107;border-radius:50%;animation:vtBlink 1.8s ease-in-out infinite}
+          @keyframes vtBlink{0%,100%{opacity:1}50%{opacity:.2}}
+          /* 16:9 embed */
+          .vt-embed{position:relative;padding-bottom:56.25%;height:0;overflow:hidden}
+          .vt-embed iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0;display:block}
+          /* caption bar */
+          .vt-caption{background:linear-gradient(135deg,#040e1d,#0b2240);padding:16px 24px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;border-top:1px solid rgba(255,193,7,0.1)}
+          .vt-caption-l{display:flex;align-items:center;gap:12px}
+          .vt-cap-icon{width:36px;height:36px;border-radius:9px;background:linear-gradient(135deg,#FFC107,#D4A017);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+          .vt-cap-title{display:block;font-family:'Oswald',sans-serif;font-size:13.5px;font-weight:700;color:#fff}
+          .vt-cap-sub{font-size:11px;color:rgba(255,255,255,0.38)}
+          .vt-stats{display:flex;gap:22px}
+          .vt-stat strong{display:block;font-family:'Oswald',sans-serif;font-size:17px;font-weight:700;color:#FFC107;line-height:1}
+          .vt-stat span{font-size:10px;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:.8px}
+          /* feature tags */
+          .vt-tags{display:flex;gap:9px;justify-content:center;margin-top:28px;flex-wrap:wrap;position:relative;z-index:1}
+          .vt-tag{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.09);color:rgba(255,255,255,0.52);font-size:12px;font-weight:600;padding:7px 16px;border-radius:30px;letter-spacing:.3px;transition:all .22s;cursor:default}
+          .vt-tag:hover{border-color:rgba(255,193,7,0.4);color:#FFC107;background:rgba(255,193,7,0.07)}
+          @media(max-width:768px){
+            .vt-stats{display:none}
+            .vt-chrome .vt-url{display:none}
+          }
+        `}</style>
+
+        {/* Ambient glow blobs */}
+        <div className="vt-blob" style={{ width:500,height:500,background:'rgba(255,193,7,0.08)',top:'50%',left:'-120px',transform:'translateY(-50%)' }} />
+        <div className="vt-blob" style={{ width:500,height:500,background:'rgba(0,180,216,0.08)',top:'50%',right:'-120px',transform:'translateY(-50%)' }} />
+        {/* Grid overlay */}
+        <div style={{ position:'absolute',inset:0,backgroundImage:'linear-gradient(rgba(0,180,216,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,180,216,0.03) 1px,transparent 1px)',backgroundSize:'60px 60px',pointerEvents:'none' }} />
+
+        <div className="wrap" style={{ position:'relative',zIndex:1 }}>
+
+          {/* Header */}
+          <div className="reveal" style={{ display:'flex',alignItems:'flex-end',justifyContent:'space-between',gap:20,flexWrap:'wrap',marginBottom:52 }}>
             <div>
-              <span className="tag" style={{ color: 'var(--cyan)' }}>Property Tour</span>
-              <h2 className="section-title" style={{ color: '#fff' }}>The <em>Phoenix Enclave</em></h2>
-              <p className="section-sub" style={{ color: 'rgba(255,255,255,0.5)', marginTop: 8 }}>Walk through Ghana&apos;s most anticipated gated community — filmed on-site.</p>
+              <span className="tag" style={{ color:'var(--cyan)' }}>Property Tour</span>
+              <h2 className="section-title" style={{ color:'#fff' }}>The <em>Phoenix Enclave</em></h2>
+              <p style={{ color:'rgba(255,255,255,0.48)',fontSize:15,lineHeight:1.7,marginTop:8,maxWidth:460 }}>
+                Walk through Ghana&apos;s most anticipated gated community — filmed on-site.
+              </p>
             </div>
-            <a href="https://www.youtube.com/watch?v=56ZbiZGh0SM" target="_blank" rel="noopener noreferrer" className="btn btn-outline-white" style={{ fontSize: '12px', padding: '9px 18px' }}>Watch on YouTube →</a>
-          </div>
-          <div className="reveal" style={{ borderRadius: 24, overflow: 'hidden', border: '2px solid rgba(255,193,7,0.3)', boxShadow: '0 32px 80px rgba(0,0,0,0.5)' }}>
-            <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden' }}>
-              <iframe src="https://www.youtube.com/embed/56ZbiZGh0SM?si=EjwaDtu3YTE4AUGU&autoplay=1&mute=1" title="The Phoenix Enclave Tour" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', border: 0, display: 'block' }} />
+            <div style={{ display:'flex',flexDirection:'column',alignItems:'flex-end',gap:12,flexShrink:0 }}>
+              <div className="vt-live-pill">
+                <span className="vt-live-dot" />
+                Now Playing
+              </div>
+              <a href="https://www.youtube.com/watch?v=56ZbiZGh0SM" target="_blank" rel="noopener noreferrer" className="btn btn-outline-white" style={{ fontSize:'12px',padding:'9px 18px' }}>Watch on YouTube →</a>
             </div>
           </div>
+
+          {/* Premium video frame */}
+          <div className="vt-frame-outer reveal">
+            <div className="vt-frame-inner">
+              {/* macOS chrome */}
+              <div className="vt-chrome">
+                <div className="vt-dots">
+                  <div className="vt-dot" style={{ background:'#ff5f57' }} />
+                  <div className="vt-dot" style={{ background:'#ffbd2e' }} />
+                  <div className="vt-dot" style={{ background:'#28c840' }} />
+                </div>
+                <div className="vt-url">youtube.com — The Phoenix Enclave Virtual Tour · SMIC360 Real Estate</div>
+                <div className="vt-live-pill" style={{ padding:'4px 10px',fontSize:'9.5px' }}>
+                  <span className="vt-live-dot" style={{ width:6,height:6 }} />
+                  LIVE TOUR
+                </div>
+              </div>
+              {/* Embed */}
+              <div className="vt-embed">
+                <iframe
+                  src="https://www.youtube.com/embed/56ZbiZGh0SM?si=EjwaDtu3YTE4AUGU&autoplay=1&mute=1"
+                  title="The Phoenix Enclave Tour"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                />
+              </div>
+              {/* Caption */}
+              <div className="vt-caption">
+                <div className="vt-caption-l">
+                  <div className="vt-cap-icon">🏡</div>
+                  <div>
+                    <strong className="vt-cap-title">The Phoenix Enclave — Phase II</strong>
+                    <span className="vt-cap-sub">Spintex Road, Accra, Ghana · SMIC360 Real Estate Division</span>
+                  </div>
+                </div>
+                <div className="vt-stats">
+                  <div className="vt-stat"><strong>24</strong><span>Phase I Units</span></div>
+                  <div className="vt-stat"><strong>GH₵850k</strong><span>From</span></div>
+                  <div className="vt-stat"><strong>Open</strong><span>Phase II</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Feature tags */}
+          <div className="vt-tags">
+            {[
+              { icon:'🔒', label:'Gated & Secured' },
+              { icon:'🌿', label:'Landscaped Gardens' },
+              { icon:'⚡', label:'24/7 Power' },
+              { icon:'💧', label:'Water Supply' },
+              { icon:'📍', label:'Spintex Road' },
+              { icon:'🏊', label:'Pool Access' },
+            ].map(t => (
+              <div key={t.label} className="vt-tag">{t.icon} {t.label}</div>
+            ))}
+          </div>
+
         </div>
       </section>
 

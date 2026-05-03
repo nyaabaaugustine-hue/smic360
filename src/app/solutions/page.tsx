@@ -115,10 +115,44 @@ export default function SolutionsPage() {
                   </div>
                 ))}
               </div>
-              <div style={{ marginTop: '28px', display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-                <Link href="/the-phoenix-enclave" className="btn btn-primary">
+
+              {/* Hospitality sub-section */}
+              <div style={{ marginTop: '28px', background: '#fff', border: '1px solid var(--border)', borderLeft: '4px solid var(--gold)', borderRadius: '12px', padding: '20px 22px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px' }}>
+                  <span style={{ fontSize: '20px' }}>🏨</span>
+                  <span style={{ fontFamily: 'Oswald,sans-serif', fontSize: '16px', fontWeight: 700, color: 'var(--navy)', textTransform: 'uppercase', letterSpacing: '1px' }}>Hospitality</span>
+                </div>
+                <p style={{ fontSize: '13.5px', color: 'var(--muted)', lineHeight: 1.7, marginBottom: '12px' }}>
+                  SMIC360&apos;s hospitality arm offers premium short-stay and long-stay furnished accommodations in Accra — ideal for business travellers, diaspora returnees, and vacation guests.
+                </p>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                  <a
+                    href="/christies-homestay"
+                    style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', color: 'var(--blue)', fontWeight: 700, fontSize: '14px', textDecoration: 'none', transition: 'color .2s' }}
+                    onMouseEnter={e => (e.currentTarget.style.color = 'var(--gold-d)')}
+                    onMouseLeave={e => (e.currentTarget.style.color = 'var(--blue)')}
+                  >
+                    <span style={{ fontSize: '16px' }}>🏡</span>
+                    Christie&apos;s Homestay
+                    <span style={{ fontSize: '12px', fontWeight: 600, color: 'var(--muted)' }}>— Furnished Apartment Rentals</span>
+                  </a>
+                  <a
+                    href="/christies-homestay"
+                    style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', color: 'var(--blue)', fontWeight: 700, fontSize: '14px', textDecoration: 'none', transition: 'color .2s' }}
+                    onMouseEnter={e => (e.currentTarget.style.color = 'var(--gold-d)')}
+                    onMouseLeave={e => (e.currentTarget.style.color = 'var(--blue)')}
+                  >
+                    <span style={{ fontSize: '16px' }}>🌍</span>
+                    Airbnb Short-Stay Rentals
+                    <span style={{ fontSize: '12px', fontWeight: 600, color: 'var(--muted)' }}>— via Christie&apos;s Homestay</span>
+                  </a>
+                </div>
+              </div>
+
+              <div style={{ marginTop: '24px', display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+                <a href="/christies-homestay" className="btn btn-primary">
                   🏡 The Phoenix Enclave →
-                </Link>
+                </a>
                 <button onClick={() => setBookOpen(true)} className="btn btn-outline">
                   Inquire About Properties
                 </button>

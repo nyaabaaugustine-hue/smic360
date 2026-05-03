@@ -530,17 +530,6 @@ export default function ChatPanel() {
 
       {/* ── Secondary FABs (theme + AI receptionist) ── */}
       <div id="s360-fabs">
-        {/* Dark mode toggle */}
-        <button
-          className="s360-fab"
-          onClick={toggleTheme}
-          aria-label="Toggle theme"
-          style={{ border: 'none' }}
-        >
-          <span className="s360-tip">Switch Theme</span>
-          <span style={{ fontSize: '20px' }}>🎨</span>
-        </button>
-
         {/* AI Receptionist */}
         <button
           className="s360-fab s360-fab-ai"

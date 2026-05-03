@@ -168,7 +168,7 @@ export default function AboutPage() {
       </section>
 
       {/* Stats */}
-      <div style={{ background: 'var(--navy)', padding: '60px 0' }}>
+      <div style={{ background: '#1a1a1a', padding: '64px 0' }}>
         <div className="wrap">
           <div className="stats-grid">
             {[
@@ -177,11 +177,11 @@ export default function AboutPage() {
               { num: '20',  suffix: '+', label: 'Years of Excellence' },
               { num: '3',   suffix: '',  label: 'Core Services' },
             ].map((stat, i) => (
-              <div key={i}>
-                <div style={{ fontFamily: 'Oswald,sans-serif', fontSize: 'clamp(32px,4vw,52px)', fontWeight: 700, color: '#fff', lineHeight: 1 }}>
-                  {stat.num}<span style={{ color: 'var(--gold)' }}>{stat.suffix}</span>
+              <div key={i} style={{ textAlign: 'center', padding: '8px' }}>
+                <div style={{ fontFamily: 'Oswald,sans-serif', fontSize: 'clamp(36px,4vw,56px)', fontWeight: 700, color: '#FFFFFF', lineHeight: 1 }}>
+                  {stat.num}<span style={{ color: '#FFC107' }}>{stat.suffix}</span>
                 </div>
-                <div style={{ fontSize: '12px', color: 'rgba(255,255,255,.5)', textTransform: 'uppercase', letterSpacing: '.8px', marginTop: '8px' }}>{stat.label}</div>
+                <div style={{ fontSize: '13px', fontWeight: 600, color: 'rgba(255,255,255,0.65)', textTransform: 'uppercase', letterSpacing: '1px', marginTop: '10px' }}>{stat.label}</div>
               </div>
             ))}
           </div>
