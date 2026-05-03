@@ -286,7 +286,8 @@ export default function HomePage() {
             <div className="about-text reveal-right">
               <span className="tag">Who We Are</span>
               <h2 className="section-title">SMIC360 Limited — <em>Full Service Advertising & Integrated Marketing</em></h2>
-              <p className="section-sub">SMIC360 is a full service advertising and integrated marketing company which offers comprehensive marketing communication support. Founded on the passion to offer efficient and sustainable solutions to our clients, with the culture of working together as family such that the entire management staff, clients, and suppliers are all happy.</p>
+              <p className="section-sub">SMIC360, formerly Meshan-Ad Consult, was registered in 2006 and began formal operations in April 2009.
+                It was initially established as a sole proprietorship and later converted into a limited liability company in 2011.</p>
               <div className="about-points">
                 {[
                   { icon: '📣', title: 'Advertising & Marketing', desc: 'Print, Outdoor, Broadcast, Digital — we promote your company\'s products and services, building your brand identity and promoting sales across all channels.' },
@@ -313,7 +314,7 @@ export default function HomePage() {
       <div className="ghana-strip">
         <div className="ghana-strip-inner">
           <div className="ghana-strip-text">
-            <h3>Built to Global Standards.</h3>
+            <h3>From strategy to execution, SMIC360 drives visibility, consistency, and real business growth.</h3>
             <p>SMIC360 is headquartered in Accra — deeply rooted in Ghana&apos;s business culture with a vision across the globe.</p>
           </div>
           <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', position: 'relative', zIndex: 1 }}>

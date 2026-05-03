@@ -134,12 +134,11 @@ export default function AboutPage() {
               <span className="tag">Who We Are</span>
               <h2 className="section-title">Advertising &amp; Marketing <em>Solutions</em></h2>
               <p className="section-sub">
-                SMIC360 Limited (formerly Meshan-Ad Consult) was registered in 2006 and started
-                formal operations in April 2009. Founded on the passion to offer efficient and
-                sustainable solutions to clients with the culture of working together as family —
-                such that the entire management staff, clients, and suppliers are all happy
-                providing services.
+                SMIC360, formerly Meshan-Ad Consult, was registered in 2006 and began formal operations in April 2009.
+                It was initially established as a sole proprietorship and later converted into a limited liability company in 2011. This transition ensured proper documentation and positioned the company for growth beyond the founder. SMIC360 is founded on a passion to deliver efficient and sustainable solutions to its clients, guided by a culture of working together as a family. 
+                This approach fosters strong collaboration among management, clients, and suppliers, ensuring that all stakeholders are aligned and satisfied in the delivery of services.
               </p>
+              
               <p className="section-sub" style={{ marginTop: '10px' }}>
                 We specialize in <strong>Advertising</strong>, <strong>Branding</strong>, and{' '}
                 <strong>Marketing</strong>. Most agencies only understand digital. We understand
