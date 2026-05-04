@@ -1859,6 +1859,12 @@ html.mobile-menu-open { overflow: hidden; }
   .blog-grid { grid-template-columns:repeat(2,1fr); }
 }
 
+/* Scoped removal of floating buttons (WhatsApp and AI) for the homepage only */
+.home-page #s360-wa, 
+.home-page #s360-fabs {
+  display: none !important;
+}
+
 /* ============================================================
    COMPREHENSIVE MOBILE RESPONSIVENESS — SMIC360
    Covers all pages at all breakpoints
