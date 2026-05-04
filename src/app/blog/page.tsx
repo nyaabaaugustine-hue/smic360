@@ -188,7 +188,7 @@ export default function BlogPage() {
         </div>
       </section>
 
-      <div style={{ background: 'var(--navy)', padding: '80px 0' }}>
+      <div style={{ background: '#1a1a1a', padding: '80px 0' }}>
         <div
           style={{ maxWidth: '640px', margin: '0 auto', padding: '0 28px', textAlign: 'center' }}
         >
@@ -285,20 +285,19 @@ export default function BlogPage() {
       {mounted && readPost &&
         createPortal(
           <div
-            onClick={(e) => {
-              if (e.target === e.currentTarget) setReadPost(null);
-            }}
+            onClick={(e) => { if (e.target === e.currentTarget) setReadPost(null); }}
+            ref={(el) => { if (el) el.scrollTop = 0; }}
             style={{
-              position: 'fixed',
-              inset: 0,
+              position: 'fixed', inset: 0,
               background: 'rgba(4,14,29,0.9)',
               backdropFilter: 'blur(12px)',
               zIndex: 999998,
               display: 'flex',
-              alignItems: 'center',
+              alignItems: 'flex-start',
               justifyContent: 'center',
-              padding: '20px 16px',
+              padding: '20px 16px 40px',
               overflowY: 'auto',
+              WebkitOverflowScrolling: 'touch',
             }}
           >
             <style>{`@keyframes artIn{from{opacity:0;transform:translateY(28px) scale(0.96);}to{opacity:1;transform:none;}}`}</style>
@@ -312,6 +311,8 @@ export default function BlogPage() {
                 boxShadow: '0 40px 100px rgba(4,14,29,0.5)',
                 borderTop: '4px solid #FFC107',
                 animation: 'artIn 0.35s cubic-bezier(0.16,1,0.3,1) both',
+                alignSelf: 'flex-start',
+                margin: '0 auto',
               }}
             >
               {/* Header image */}
@@ -368,7 +369,7 @@ export default function BlogPage() {
                 </div>
               </div>
               {/* Body */}
-              <div style={{ padding: '28px 32px 36px', maxHeight: '55vh', overflowY: 'auto' }}>
+              <div style={{ padding: '28px 32px 36px' }}>
                 <div
                   style={{
                     display: 'flex',

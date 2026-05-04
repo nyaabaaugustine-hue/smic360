@@ -23,11 +23,11 @@ const clientLogos = [
 ];
 
 const projects = [
-  { img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777199309/VCC_dl6ehf.jpg', alt: 'Rebranding Campaign', badge: 'Marketing', title: 'National Brand Relaunch Campaign', desc: 'Full 360 rebranding for a leading Ghanaian consumer goods company.', meta: [{ label: 'Industry', val: 'Consumer Goods' }, { label: 'Duration', val: '4 months' }, { label: 'Result', val: '+38% awareness' }] },
-  { img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777196963/1_j6fe4u.jpg', alt: 'Phoenix Enclave', badge: 'Real Estate', title: 'The Phoenix Enclave — Phase 1', desc: 'Delivery of Phase 1 of our flagship gated community — 24 residential units.', meta: [{ label: 'Units', val: '24 Homes' }, { label: 'Location', val: 'Greater Accra' }, { label: 'Status', val: 'Completed' }] },
-  { img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1776422246/abz_3_hp78qi.jpg', alt: 'Procurement Project', badge: 'Procurement', title: 'Industrial Procurement — GNPC Supply', desc: 'End-to-end procurement of technical equipment for a major state-owned enterprise.', meta: [{ label: 'Value', val: '$2.4M GHS' }, { label: 'Timeline', val: '6 weeks' }, { label: 'Saving', val: '18% cost saving' }] },
-  { img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777196963/1_j6fe4u.jpg', alt: 'Residential Apartments', badge: 'Real Estate', title: 'Modern Residential Apartments — Phase 2', desc: 'Successfully delivered the second phase adding 30 new luxury apartment units.', meta: [{ label: 'Units', val: '30 Apartments' }, { label: 'Location', val: 'Urban Accra' }, { label: 'Features', val: 'Smart Home Ready' }] },
-  { img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1776422246/abz_3_hp78qi.jpg', alt: 'Office Supply', badge: 'Procurement', title: 'Office Furniture & IT Equipment Supply', desc: 'Managed complete procurement and installation of office furniture and IT infrastructure.', meta: [{ label: 'Type', val: 'Office Fit-out' }, { label: 'Items', val: 'Furniture & IT' }, { label: 'Cost', val: 'Optimised by 12%' }] },
+  { img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777865847/WhatsApp_Image_2026-05-03_at_7.46.16_PM_1_k9n3zg.jpg', alt: 'Rebranding Campaign', badge: 'Marketing', title: 'National Brand Relaunch Campaign', desc: 'Full 360 rebranding for a leading Ghanaian consumer goods company.', meta: [{ label: 'Industry', val: 'Consumer Goods' }, { label: 'Duration', val: '4 months' }, { label: 'Result', val: '+38% awareness' }] },
+  { img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777872542/thisone-logo_x1cl2c.png', alt: 'Phoenix Enclave', badge: 'Real Estate', title: 'The Phoenix Enclave — Phase 1', desc: 'Delivery of Phase 1 of our flagship gated community — 24 residential units.', meta: [{ label: 'Units', val: '24 Homes' }, { label: 'Location', val: 'Greater Accra' }, { label: 'Status', val: 'Completed' }] },
+  { img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777872031/PROCURE_cmjr84.jpg', alt: 'Procurement Project', badge: 'Procurement', title: 'Industrial Procurement — GNPC Supply', desc: 'End-to-end procurement of technical equipment for a major state-owned enterprise.', meta: [{ label: 'Value', val: '$2.4M GHS' }, { label: 'Timeline', val: '6 weeks' }, { label: 'Saving', val: '18% cost saving' }] },
+  { img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777872542/thisone-logo_x1cl2c.png', alt: 'Residential Apartments', badge: 'Real Estate', title: 'Modern Residential Apartments — Phase 2', desc: 'Successfully delivered the second phase adding 30 new luxury apartment units.', meta: [{ label: 'Units', val: '30 Apartments' }, { label: 'Location', val: 'Urban Accra' }, { label: 'Features', val: 'Smart Home Ready' }] },
+  { img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777655037/360sm_mqzf0p.png', alt: 'Office Supply', badge: 'Procurement', title: 'Office Furniture & IT Equipment Supply', desc: 'Managed complete procurement and installation of office furniture and IT infrastructure.', meta: [{ label: 'Type', val: 'Office Fit-out' }, { label: 'Items', val: 'Furniture & IT' }, { label: 'Cost', val: 'Optimised by 12%' }] },
   { img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777223498/medb_kngcnc.jpg', alt: 'Integrated Campaign', badge: 'Marketing', title: 'Integrated Campaign for Local Retailer', desc: 'Multi-channel campaign combining social media, ATL, and local media outreach.', meta: [{ label: 'Sector', val: 'Retail' }, { label: 'Channels', val: 'Digital & OOH' }, { label: 'Sales', val: '+25% increase' }] },
 ];
 
@@ -157,9 +157,9 @@ export default function HomePage() {
   ];
 
   const properties = [
-    { img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777111208/WhatsApp-Image-2025-08-18-at-14.16.35_e93040d9l_gwfnmu.jpg', title: 'Phoenix Enclave — Phase II',    type: 'Residential', beds: 3, baths: 2, area: '180 m²', price: 'From GH₵ 850,000',   status: 'Available', location: 'Spintex, Accra' },
-    { img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777196963/1_j6fe4u.jpg',                                              title: 'Executive Villa — Cantonments', type: 'Luxury Villa', beds: 5, baths: 4, area: '380 m²', price: 'From GH₵ 2,200,000', status: 'Limited',   location: 'Cantonments, Accra' },
-    { img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777106950/Foxcooling-website-cover_p5grjz.jpg',                       title: 'Commercial Space — East Legon', type: 'Commercial',  beds: 0, baths: 2, area: '260 m²', price: 'From GH₵ 1,100,000', status: 'New',       location: 'East Legon, Accra' },
+    { img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777870096/2bed-logo_argqxq.png', title: 'Phoenix Enclave — 2 Bedroom',    type: 'Residential', beds: 3, baths: 2, area: '180 m²', price: 'From GH₵ 850,000',   status: 'Available', location: 'Spintex, Accra' },
+    { img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777870096/2bed-logo_1_somx5l.png',                                              title: 'Phoenix Enclave — 3 Bedroom', type: 'Luxury Villa', beds: 5, baths: 4, area: '380 m²', price: 'From GH₵ 2,200,000', status: 'Limited',   location: 'Cantonments, Accra' },
+    { img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777870093/2bed-logo_2_crh9xp.png',                       title: 'Phoenix Enclave — 4 Bedroom', type: 'Commercial',  beds: 0, baths: 2, area: '260 m²', price: 'From GH₵ 1,100,000', status: 'New',       location: 'East Legon, Accra' },
   ];
 
   return (
@@ -279,8 +279,8 @@ export default function HomePage() {
             <div className="about-img-wrap reveal-left">
               <img className="about-img-main" src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800&q=80" alt="SMIC360 team meeting" />
               <div className="about-badge">
-                <span className="about-badge-num">10+</span>
-                <span className="about-badge-sub">Years of Excellence</span>
+             
+                <span className="about-badge-sub">Akwaaba</span>
               </div>
             </div>
             <div className="about-text reveal-right">

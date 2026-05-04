@@ -7,6 +7,7 @@ import Footer from '@/components/Footer';
 import BookingModal from '@/components/BookingModal';
 import ChatPanel from '@/components/ChatPanel';
 import ScrollReveal from '@/components/ScrollReveal';
+import BrandingGallery from '@/components/BrandingGallery';
 
 interface ServiceItem {
   icon: string;
@@ -32,6 +33,7 @@ export interface MarketingPageProps {
   ctaTitle: string;
   ctaDesc: string;
   relatedLinks: { href: string; label: string }[];
+  showBrandingGallery?: boolean;
 }
 
 export default function MarketingSubPage({
@@ -46,6 +48,7 @@ export default function MarketingSubPage({
   ctaTitle,
   ctaDesc,
   relatedLinks,
+  showBrandingGallery = false,
 }: MarketingPageProps) {
   const [bookOpen, setBookOpen] = useState(false);
 
@@ -149,6 +152,9 @@ export default function MarketingSubPage({
           </div>
         </div>
       </section>
+
+      {/* Branding Gallery — souvenirs & merchandise */}
+      {showBrandingGallery && <BrandingGallery />}
 
       {/* Related Services */}
       {relatedLinks.length > 0 && (

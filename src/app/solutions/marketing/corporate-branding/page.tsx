@@ -67,6 +67,7 @@ export default function CorporateBrandingPage() {
       ]}
       ctaTitle="Elevate Your Corporate Presence"
       ctaDesc="From boardroom to billboards — SMIC360 builds corporate brands that project confidence and command respect in every room."
+      showBrandingGallery={true}
       relatedLinks={[
         { href: '/solutions/marketing/branding-works', label: 'Branding Works' },
         { href: '/solutions/marketing/website-development', label: 'Website Development' },

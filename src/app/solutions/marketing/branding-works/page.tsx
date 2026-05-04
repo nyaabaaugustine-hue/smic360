@@ -67,6 +67,7 @@ export default function BrandingWorksPage() {
       ]}
       ctaTitle="Ready to Build a Brand That Lasts?"
       ctaDesc="Talk to our branding team and find out how a strong identity can transform your market position, customer loyalty, and business value."
+      showBrandingGallery={true}
       relatedLinks={[
         { href: '/solutions/marketing/corporate-branding', label: 'Corporate Branding' },
         { href: '/solutions/marketing/digital-marketing', label: 'Digital Marketing' },

@@ -225,7 +225,7 @@ export default function FAQPage() {
           {/* Still have questions */}
           <div
             style={{
-              background: 'var(--navy)',
+              background: '#1a1a1a',
               borderRadius: 'var(--r-lg)',
               padding: '40px 36px',
               textAlign: 'center',
