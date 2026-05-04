@@ -33,19 +33,6 @@ const galleryImages = [
   { src: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777740134/IMG_9300_usbzke.jpg',  caption: 'Utility Infrastructure',  tag: 'Grounds',  featured: false },
   { src: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777740134/IMG_9278_xnlknf.jpg',  caption: 'Evening Ambience',        tag: 'Exterior', featured: true  },
   { src: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777740139/IMG_9304_orvwtw.jpg',  caption: 'Construction Quality',    tag: 'Exterior', featured: false },
-
-  /* ── Batch 2: New 11 images (uploaded 2 May 2026) ─────────── */
-  { src: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777742699/1_1_csmex3.jpg',       caption: 'Estate Road & Pathway',   tag: 'Exterior', featured: false },
-  { src: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777742700/1_2_nciwfs.jpg',       caption: 'Property Frontage',       tag: 'Exterior', featured: false },
-  { src: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777742700/1_3_joxw7a.jpg',       caption: 'Block Layout & Access',   tag: 'Exterior', featured: false },
-  { src: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777742700/1_4_qkl1ss.jpg',       caption: 'Exterior Elevation',      tag: 'Exterior', featured: false },
-  { src: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777742701/1_5_ckfuae.jpg',       caption: 'Perimeter Wall & Gate',   tag: 'Exterior', featured: true  },
-  { src: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777742700/1_6_wrnqmu.jpg',       caption: 'Compound Overview',       tag: 'Grounds',  featured: false },
-  { src: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777742702/1_7_bncntq.jpg',       caption: 'Unit Interior Detail',    tag: 'Interior', featured: false },
-  { src: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777742701/1_8_snv3sb.jpg',       caption: 'Interior Finish Detail',  tag: 'Interior', featured: false },
-  { src: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777742702/1_9_dipy6a.jpg',       caption: 'Site Landscape',          tag: 'Grounds',  featured: false },
-  { src: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777742702/1_10_a6l5s3.jpg',      caption: 'Living Space Interior',   tag: 'Interior', featured: false },
-  { src: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777773928/backkk_mbfzyh.jpg',    caption: 'Full Estate Panorama',    tag: 'Aerial',   featured: true  },
 ];
 
 const TAGS = [
