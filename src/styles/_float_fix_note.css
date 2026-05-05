@@ -1,0 +1,4 @@
+/* Float buttons — push up significantly — REMOVED: transform on fixed elements
+   creates new stacking context, breaking viewport clipping and causing
+   horizontal overflow on mobile. All float button positioning is handled
+   by the inline <style> inside ChatPanel.tsx at @media (max-width: 640px). */

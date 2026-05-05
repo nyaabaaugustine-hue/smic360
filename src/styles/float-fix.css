@@ -1,0 +1,52 @@
+/*
+  ================================================================
+  SMIC360 — FLOAT BUTTON MOBILE FIX
+  Root cause: tailwind.css had `transform: translateY()` on
+  `position: fixed` elements (#s360-wa, #s360-fabs, #s360-top).
+
+  A CSS transform on a fixed element creates a NEW STACKING
+  CONTEXT, which:
+  1. Breaks the element's fixed viewport anchor (right/bottom)
+  2. Causes the WA pulse ring animation to animate outside the
+     viewport's right edge → invisible horizontal scrollbar →
+     page layout destroyed on every mobile screen.
+
+  FIX: Override those broken rules with clean bottom/right values
+  and NO transform. All float positioning is handled here at
+  the correct breakpoints.
+  ================================================================
+*/
+
+/* ── FORCE OVERRIDE: nullify the broken transform rules ── */
+@media (max-width: 768px) {
+  #s360-wa {
+    transform: none !important;
+    bottom: 14px !important;
+    right: 14px !important;
+  }
+  #s360-fabs {
+    transform: none !important;
+    bottom: 72px !important;
+    right: 14px !important;
+  }
+  #s360-top {
+    transform: none !important;
+    bottom: 14px !important;
+    left: 14px !important;
+  }
+  /* Also kill any chat panel overrides — ChatPanel.tsx handles its own */
+  #s360-chat {
+    transform: none !important;
+  }
+}
+
+/* ── EXTRA SAFETY: prevent ANY fixed element from causing horizontal scroll ── */
+/* This is the nuclear option — clips any animation that leaks past the right edge */
+html {
+  overflow-x: hidden !important;
+}
+body {
+  overflow-x: hidden !important;
+  /* Ensure no transform on body — would break all position:fixed children */
+  transform: none !important;
+}
