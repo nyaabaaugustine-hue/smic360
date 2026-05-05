@@ -99,23 +99,19 @@ export default function PortfolioPage() {
     document.querySelector('meta[name="description"]')?.setAttribute('content', PAGE_DESC);
   }, []);
 
-  // Body scroll lock while modal open
+  // Scroll lock — unified html overflow approach (matches BookingModal + TeamModal)
   useEffect(() => {
-    if (!modal) return;
-    const y = window.scrollY;
-    document.body.style.position  = 'fixed';
-    document.body.style.top       = `-${y}px`;
-    document.body.style.left      = '0';
-    document.body.style.right     = '0';
-    document.body.style.overflowY = 'scroll';
+    if (!modal) {
+      document.documentElement.style.overflow = '';
+      document.documentElement.style.paddingRight = '';
+      return;
+    }
+    const w = window.innerWidth - document.documentElement.clientWidth;
+    document.documentElement.style.overflow = 'hidden';
+    document.documentElement.style.paddingRight = w + 'px';
     return () => {
-      const top = document.body.style.top;
-      document.body.style.position  = '';
-      document.body.style.top       = '';
-      document.body.style.left      = '';
-      document.body.style.right     = '';
-      document.body.style.overflowY = '';
-      if (top) window.scrollTo(0, -parseInt(top, 10));
+      document.documentElement.style.overflow = '';
+      document.documentElement.style.paddingRight = '';
     };
   }, [modal]);
 

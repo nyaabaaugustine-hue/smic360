@@ -320,6 +320,8 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
     </div>
   );
 
+  // Never render on server, never render when closed
   if (!mounted || !isOpen) return null;
+  // Always portal directly to document.body — bypasses ALL stacking contexts
   return createPortal(modalContent, document.body);
 }

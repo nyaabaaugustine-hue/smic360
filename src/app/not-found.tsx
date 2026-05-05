@@ -104,11 +104,16 @@ export default function NotFound() {
             <p className="nf-pages-label">Or visit a page</p>
             <div className="nf-pages">
               {[
-                { href:'/about',     label:'About Us' },
-                { href:'/solutions', label:'Solutions' },
-                { href:'/portfolio', label:'Portfolio' },
-                { href:'/blog',      label:'Blog' },
-                { href:'/faq',       label:'FAQ' },
+                { href:'/',                     label:'Home' },
+                { href:'/about',                 label:'About Us' },
+                { href:'/solutions',             label:'Solutions' },
+                { href:'/the-phoenix-enclave',   label:'Phoenix Enclave' },
+                { href:'/christies-homestay',    label:"Christie's Homestay" },
+                { href:'/portfolio',             label:'Portfolio' },
+                { href:'/blog',                  label:'Blog' },
+                { href:'/contact',               label:'Contact' },
+                { href:'/faq',                   label:'FAQ' },
+                { href:'/sdgs',                  label:'Our SDGs' },
               ].map(({ href, label }) => (
                 <Link key={href} href={href} className="nf-page-link">{label}</Link>
               ))}
