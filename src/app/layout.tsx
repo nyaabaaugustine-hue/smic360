@@ -3,6 +3,7 @@ import type { Metadata, Viewport } from 'next';
 import '../styles/index.css';
 import '../styles/tailwind.css';
 import CookieBanner from '@/components/CookieBanner';
+import LoaderWrapper from '@/components/LoaderWrapper';
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -116,7 +117,11 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         />
         <script type="module" defer src="https://static.rocket.new/rocket-shot.js?v=0.0.2" />
       </head>
-      <body><div className="page-root">{children}</div><CookieBanner /></body>
+      <body>
+        <LoaderWrapper />
+        <div className="page-root">{children}</div>
+        <CookieBanner />
+      </body>
     </html>
   );
 }
