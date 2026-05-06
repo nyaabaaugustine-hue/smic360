@@ -20,18 +20,23 @@ type Project = {
   tags: string[];
   meta: { label: string; val: string }[];
   fullDesc: string;
+  galleryImages?: string[];
 };
 
 const allProjects: Project[] = [
   {
-    img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777199309/VCC_dl6ehf.jpg',
-    alt: 'National Brand Relaunch', category: 'Marketing', badge: 'Brand Strategy',
-    title: 'National Brand Relaunch',
-    desc: 'Full 360° rebranding for a leading consumer goods company involving identity, packaging, and digital launch.',
-    result: '+38%', resultLabel: 'Brand Recall',
-    tags: ['Identity', 'Packaging', 'Digital'],
-    meta: [{ label: 'Industry', val: 'Consumer Goods' }, { label: 'Result', val: '+38% Recall' }, { label: 'Duration', val: '4 Months' }],
-    fullDesc: 'We led a complete 360 brand transformation starting with a brand audit and repositioning workshop, then rebuilding the visual identity, redesigning all packaging SKUs, and orchestrating a phased digital launch. The result was a 38% improvement in brand recall within 90 days of relaunch.',
+    img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1778064099/impex_iq2pho.jpg',
+    alt: 'Sigma Air Conditioners Brand Launch', category: 'Marketing', badge: 'Brand Launch',
+    title: 'Sigma Air Conditioners Brand Launch',
+    desc: 'Multi-channel brand awareness campaign launching Sigma Air Conditioners into the Ghanaian HVAC market as a trusted, affordable solution.',
+    result: 'New', resultLabel: 'Category Entry',
+    tags: ['Outdoor', 'Experiential', 'BTL'],
+    meta: [{ label: 'Industry', val: 'Consumer Goods' }, { label: 'Client', val: 'Platinum Impex' }, { label: 'Channels', val: 'OOH · BTL · Events' }],
+    fullDesc: `Platinum Impex — widely known for Sigma gas cylinders — expanded into air conditioning under the Sigma brand. The challenge was extending an existing brand into a new, competitive HVAC category dominated by established foreign players.\n\nSMIC360 developed a multi-channel campaign to introduce Sigma Air Conditioners to the Ghanaian market. Our strategy focused on transferring brand equity from the trusted Sigma cylinder range, with messaging built around reliability, affordability, and suitability for local conditions.\n\nExecution spanned high-impact billboard placements in key commercial and residential zones, below-the-line distribution of flyers and dealer support materials, and product activation events with live demonstrations for homeowners, retailers, and HVAC installers.\n\nThe campaign successfully increased brand awareness across retail and commercial segments, improved distributor confidence, and established Sigma Air Conditioners as a competitive player in Ghana's HVAC market.`,
+    galleryImages: [
+      'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1778064214/bvbh_uvjd3u.jpg',
+      'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1778064277/lyy_nplxba.jpg',
+    ],
   },
   {
     img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777196963/1_j6fe4u.jpg',
@@ -44,14 +49,18 @@ const allProjects: Project[] = [
     fullDesc: 'The Phoenix Enclave Phase 1 is our flagship residential development in Community 20, Lashibi, off Spintex Road. We delivered 24 premium 3 and 4-bedroom homes with 24/7 security, landscaped gardens, and reliable utilities. All units were sold and occupied within 8 months of completion.',
   },
   {
-    img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1776422246/abz_3_hp78qi.jpg',
-    alt: 'GNPC Industrial Supply', category: 'Procurement', badge: 'State Enterprise',
-    title: 'GNPC Industrial Supply',
-    desc: 'End-to-end procurement of technical equipment and consumables for a major state enterprise on time, on spec.',
-    result: '6 Wks', resultLabel: 'Delivery',
-    tags: ['Energy', 'Technical', 'State Enterprise'],
-    meta: [{ label: 'Value', val: 'GH₵2.4M+' }, { label: 'Timeline', val: '6 Weeks' }, { label: 'Status', val: 'Delivered' }],
-    fullDesc: 'GNPC required fast-turnaround procurement of specialised industrial consumables and technical equipment across multiple site locations. We mobilised our supplier network, ran competitive tendering, and coordinated import logistics delivering all items within 6 weeks at 14% below the initial budget estimate.',
+    img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1778066996/ukku_ysry0p.jpg',
+    alt: 'Haiflow SAL Luxury Sanitary Brand Launch', category: 'Marketing', badge: 'Brand Launch',
+    title: 'Haiflow S.A.L — Luxury Sanitary Brand Launch',
+    desc: 'Full 360° market entry and brand positioning strategy for a premium sanitary ware provider representing Grohe and Villeroy & Boch in Ghana.',
+    result: 'Premium', resultLabel: 'Positioning',
+    tags: ['Luxury', 'Experiential', 'BTL'],
+    meta: [{ label: 'Client', val: 'Haiflow S.A.L' }, { label: 'Sector', val: 'Sanitary Ware' }, { label: 'Outcome', val: 'Premium Positioning' }],
+    fullDesc: `Haiflow S.A.L entered the Ghanaian market as a new player in the sanitary ware industry, offering premium product lines from globally recognised brands such as Grohe and Villeroy & Boch. SMIC360 was engaged to lead the market entry strategy and position Haiflow as a luxury provider of high-quality sanitary solutions.\n\nThe market presented a unique challenge — it was largely price-sensitive, saturated with lower-cost alternatives, and driven by familiarity rather than product quality. The core problem: how do you introduce a new entrant and justify premium pricing in a market dominated by cheaper options?\n\nSMIC360 developed a 360° brand positioning and market penetration strategy focused on visibility, experience, and authority. Traditional media including newspaper and outdoor advertising built credibility. Experiential BTL activity centred on a curated showroom launch and exclusive brand events targeting architects, developers, and high-end clients. The CEO was strategically positioned as an industry voice, elevating Haiflow from a seller to a recognised authority.\n\nHaiflow successfully established itself as a premium brand — achieving strong recognition among high-end audiences, clear differentiation from lower-cost competitors, and growing into a respected name in Ghana’s premium sanitary ware market.`,
+    galleryImages: [
+      'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1778067001/fgfg_aqodp9.jpg',
+      'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1778067000/8kkl_qm326y.jpg',
+    ],
   },
   {
     img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777114247/kkkl_nhdczf.avif',
@@ -64,14 +73,17 @@ const allProjects: Project[] = [
     fullDesc: 'We designed and executed a full media buying strategy for a Tier 1 Ghanaian financial institution covering prime-time TV on GTV and TV3, targeted digital ads across Meta and Google, and OOH sites in Accra and Kumasi. The campaign delivered 2.1M verified impressions and a 22% uplift in branch enquiries.',
   },
   {
-    img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777111208/WhatsApp-Image-2025-08-18-at-14.16.35_e93040d9l_gwfnmu.jpg',
-    alt: 'Commercial Office Fit-Out', category: 'Real Estate', badge: 'Commercial',
-    title: 'Commercial Office Fit-Out',
-    desc: 'Design coordination and procurement for a 3-storey commercial office development in the Spintex corridor.',
-    result: '3', resultLabel: 'Floors Delivered',
-    tags: ['Commercial', 'Fit-Out', 'Spintex'],
-    meta: [{ label: 'Floors', val: '3 Levels' }, { label: 'Status', val: 'Delivered' }, { label: 'Location', val: 'Spintex, Accra' }],
-    fullDesc: 'Acting as integrated project manager, we coordinated all design, procurement, and fit-out for a 3-storey commercial office building in Spintex. Scope included interior design, MEP procurement, furniture supply, and final finishing delivered on time within a 5-month programme.',
+    img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1778067563/download_1_du3rfn.jpg',
+    alt: 'Cummins Ghana Market Entry', category: 'Marketing', badge: 'Market Entry',
+    title: 'Cummins Ghana — Market Entry & Brand Establishment',
+    desc: '360° brand visibility and activation strategy that transitioned Cummins from a low-visibility entrant to a recognised and credible power solutions brand in Ghana.',
+    result: '360°', resultLabel: 'Brand Rollout',
+    tags: ['Corporate ID', 'Experiential', 'OOH'],
+    meta: [{ label: 'Client', val: 'Cummins Ghana' }, { label: 'Sector', val: 'Power Solutions' }, { label: 'Scope', val: 'Full Brand Rollout' }],
+    fullDesc: `Cummins, a globally recognised power solutions brand, entered Ghana with relatively low local visibility despite its global reputation. The challenge was not product credibility — it was market introduction and brand positioning, ensuring Cummins became a recognised and trusted name in the Ghanaian energy sector.\n\nSMIC360 implemented a 360° brand visibility and activation strategy. This covered consistent corporate identity across all customer-facing touchpoints, design and production of corporate apparel and staff uniforms to global brand standards, and standardisation of all visual identity materials used in Ghana operations.\n\nSMIC360 curated the end-to-end showroom launch event, coordinating international stakeholders including US board members, and delivering a premium brand experience aligned with Cummins’ global positioning. Physical visibility was reinforced through strategic showroom branding, signage, and billboard placements in key high-traffic areas. Newspaper advertising and branded collateral — brochures, company profiles, and sales materials — supported awareness and stakeholder engagement.\n\nThrough this structured rollout, Cummins transitioned from a low-visibility entrant to a recognised and credible power solutions brand in Ghana, with stronger brand recall across the energy sector, established B2B and institutional presence, and a professional brand footprint aligned with global standards.`,
+    galleryImages: [
+      'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1778067563/download_2_ffhkzk.jpg',
+    ],
   },
   {
     img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777106950/ec234641a21a9e03c50b708351c53603_vl5piv.jpg',
@@ -304,7 +316,14 @@ export default function PortfolioPage() {
                 <span style={{width:3,height:18,background:'#FFC107',borderRadius:2,display:'inline-block'}}/>
                 Project Overview
               </h3>
-              <p style={{fontSize:15,color:'#5a7186',lineHeight:1.82}}>{modal.fullDesc}</p>
+              <p style={{fontSize:15,color:'#5a7186',lineHeight:1.82}}>{modal.fullDesc.split('\n\n').map((para,i)=><span key={i} style={{display:'block',marginBottom:i<modal.fullDesc.split('\n\n').length-1?14:0}}>{para}</span>)}</p>
+              {modal.galleryImages && modal.galleryImages.length > 0 && (
+                <div style={{display:'grid',gridTemplateColumns:'repeat(2,1fr)',gap:10,marginTop:20}}>
+                  {modal.galleryImages.map((src,i)=>(
+                    <img key={i} src={src} alt={`${modal.title} ${i+1}`} style={{width:'100%',borderRadius:10,objectFit:'cover',height:160,display:'block'}}/>
+                  ))}
+                </div>
+              )}
               <div style={{display:'flex',flexWrap:'wrap',gap:7,marginTop:20}}>
                 {modal.tags.map(t=><span key={t} style={{fontSize:11,fontWeight:600,padding:'5px 12px',borderRadius:20,background:'#f6f8fd',border:'1px solid #dce8f7',color:'#5a7186'}}>{t}</span>)}
               </div>

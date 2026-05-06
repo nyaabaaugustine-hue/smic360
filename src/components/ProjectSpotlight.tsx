@@ -9,6 +9,11 @@ interface ProjectMeta {
   val: string;
 }
 
+interface ProjectSection {
+  heading: string;
+  body: string;
+}
+
 interface Project {
   img: string;
   alt: string;
@@ -16,6 +21,8 @@ interface Project {
   title: string;
   desc: string;
   meta: ProjectMeta[];
+  sections?: ProjectSection[];
+  extraImages?: string[];
 }
 
 interface ProjectSpotlightProps {
@@ -186,6 +193,30 @@ function ProjectDetailModal({
           <p style={{ color: '#5a7186', fontSize: 15, lineHeight: 1.8, margin: 0 }}>
             {project.desc}
           </p>
+
+          {/* Sections */}
+          {project.sections && project.sections.length > 0 && (
+            <div style={{ marginTop: 24, display: 'flex', flexDirection: 'column', gap: 18 }}>
+              {project.sections.map((s, i) => (
+                <div key={i}>
+                  <h4 style={{ fontFamily: "'Oswald', sans-serif", fontSize: 14, fontWeight: 700, color: '#071628', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: 6, display: 'flex', alignItems: 'center', gap: 7 }}>
+                    <span style={{ width: 3, height: 14, background: '#FFC107', borderRadius: 2, display: 'inline-block', flexShrink: 0 }} />
+                    {s.heading}
+                  </h4>
+                  <p style={{ color: '#5a7186', fontSize: 14, lineHeight: 1.78, margin: 0 }}>{s.body}</p>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {/* Extra images */}
+          {project.extraImages && project.extraImages.length > 0 && (
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2,1fr)', gap: 10, marginTop: 20 }}>
+              {project.extraImages.map((src, i) => (
+                <img key={i} src={src} alt={`${project.title} ${i + 1}`} style={{ width: '100%', borderRadius: 10, objectFit: 'cover', height: 150, display: 'block' }} />
+              ))}
+            </div>
+          )}
 
           {/* Meta chips */}
           <div

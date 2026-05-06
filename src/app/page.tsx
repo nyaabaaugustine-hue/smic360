@@ -23,12 +23,79 @@ const clientLogos = [
 ];
 
 const projects = [
-  { img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777865847/WhatsApp_Image_2026-05-03_at_7.46.16_PM_1_k9n3zg.jpg', alt: 'Rebranding Campaign', badge: 'Marketing', title: 'Event Plnning For Canadian Embassy', desc: 'Full 360 rebranding for a leading Ghanaian consumer goods company.', meta: [{ label: 'Industry', val: 'Consumer Goods' }, { label: 'Duration', val: '4 months' }, { label: 'Result', val: '+38% awareness' }] },
+  {
+    img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1778064099/impex_iq2pho.jpg',
+    alt: 'Sigma Air Conditioners Brand Launch',
+    badge: 'Marketing',
+    title: 'Sigma Air Conditioners — Brand Launch & Market Expansion',
+    desc: 'Multi-channel brand awareness campaign that introduced Sigma Air Conditioners to the Ghanaian market, extending an established gas cylinder brand into the competitive HVAC category.',
+    meta: [{ label: 'Client', val: 'Platinum Impex' }, { label: 'Industry', val: 'Consumer Goods' }, { label: 'Channels', val: 'OOH · BTL · Events' }],
+    sections: [
+      { heading: 'Background', body: 'Platinum Impex is widely known in Ghana for its Sigma gas cylinders. When the company expanded into air conditioning under the same Sigma brand, the new product line had little to no market awareness. The challenge was not introducing a new company, but extending an existing brand into a new category — and ensuring Sigma Air Conditioners gained independent recognition in a competitive HVAC market dominated by established foreign brands.' },
+      { heading: 'Objective', body: 'SMIC360 was engaged to introduce Sigma Air Conditioners to the Ghanaian market, build strong household and commercial awareness, position Sigma as a reliable and affordable air conditioning solution, and support market penetration through integrated marketing communications.' },
+      { heading: 'Strategy & Execution', body: 'SMIC360 developed a multi-channel brand awareness campaign focused on visibility, familiarity, and trust-building. Strategic messaging transferred existing brand equity from Sigma cylinders to the new AC range. High-impact billboard placements in key commercial and residential zones reinforced brand recall with a consistent visual identity. Below-the-line activity covered flyer distribution, dealer support materials, and targeted outreach to electrical shops and HVAC installers. Product activation events provided live demonstrations to distributors, retailers, and end customers.' },
+      { heading: 'Outcome', body: 'The campaign successfully positioned Sigma Air Conditioners as a recognisable and trusted brand extension within the Ghanaian market — increasing awareness across retail and commercial segments, improving distributor confidence and retail adoption, and establishing Sigma as a competitive player in the HVAC space.' },
+    ],
+    extraImages: [
+      'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1778064214/bvbh_uvjd3u.jpg',
+      'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1778064277/lyy_nplxba.jpg',
+    ],
+  },
   { img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777872542/thisone-logo_x1cl2c.png', alt: 'Phoenix Enclave', badge: 'Real Estate', title: 'The Phoenix Enclave — Phase 1', desc: 'Delivery of Phase 1 of our flagship gated community — 24 residential units.', meta: [{ label: 'Units', val: '24 Homes' }, { label: 'Location', val: 'Greater Accra' }, { label: 'Status', val: 'Completed' }] },
-  { img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777872031/PROCURE_cmjr84.jpg', alt: 'Procurement Project', badge: 'Procurement', title: 'Industrial Procurement — GNPC Supply', desc: 'End-to-end procurement of technical equipment for a major state-owned enterprise.', meta: [{ label: 'Value', val: '$2.4M GHS' }, { label: 'Timeline', val: '6 weeks' }, { label: 'Saving', val: '18% cost saving' }] },
-  { img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777872542/thisone-logo_x1cl2c.png', alt: 'Residential Apartments', badge: 'Real Estate', title: 'Modern Residential Apartments — Phase 2', desc: 'Successfully delivered the second phase adding 30 new luxury apartment units.', meta: [{ label: 'Units', val: '30 Apartments' }, { label: 'Location', val: 'Urban Accra' }, { label: 'Features', val: 'Smart Home Ready' }] },
+  {
+    img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1778066996/ukku_ysry0p.jpg',
+    alt: 'Haiflow SAL Luxury Sanitary Brand Launch',
+    badge: 'Marketing',
+    title: 'Haiflow S.A.L — Launching a Luxury Sanitary Brand in Ghana',
+    desc: 'Full 360° market entry strategy positioning Haiflow S.A.L as Ghana’s premium sanitary ware provider, representing globally recognised brands like Grohe and Villeroy & Boch.',
+    meta: [{ label: 'Client', val: 'Haiflow S.A.L' }, { label: 'Sector', val: 'Luxury Sanitary Ware' }, { label: 'Outcome', val: 'Premium Positioning' }],
+    sections: [
+      { heading: 'The Challenge', body: 'Haiflow entered a Ghanaian market that was largely price-sensitive, saturated with lower-cost alternatives, and driven by familiarity rather than product quality. The core challenge: how do you introduce a new entrant and justify premium pricing in a market dominated by cheaper options?' },
+      { heading: 'Strategy', body: 'SMIC360 developed a 360° brand positioning and market penetration strategy focused on visibility, experience, and authority. Traditional media — newspaper and outdoor advertising — built credibility and reinforced brand presence. Experiential BTL activity centred on a curated showroom launch and exclusive brand events targeting architects, developers, and high-end clients, giving audiences direct access to the quality of the products.' },
+      { heading: 'Industry & Thought Leadership', body: 'SMIC360 facilitated Haiflow’s participation in key industry events and exhibitions, embedding the brand within the professional ecosystem. The CEO was strategically positioned as an industry voice, elevating Haiflow from a product seller to a recognised authority in quality sanitary solutions.' },
+      { heading: 'Results', body: 'Haiflow successfully established itself as a premium brand in the Ghanaian market — achieving strong positioning as a luxury sanitary ware provider, increased brand recognition among high-end audiences, and clear differentiation from lower-cost competitors. Haiflow S.A.L has grown into a recognised and respected name in Ghana’s premium sanitary ware space.' },
+    ],
+    extraImages: [
+      'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1778067001/fgfg_aqodp9.jpg',
+      'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1778067000/8kkl_qm326y.jpg',
+    ],
+  },
+  {
+    img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1778067563/download_1_du3rfn.jpg',
+    alt: 'Cummins Ghana Market Entry',
+    badge: 'Marketing',
+    title: 'Cummins Ghana — Market Entry & Brand Establishment',
+    desc: '360° brand visibility and activation strategy that transitioned Cummins from a low-visibility entrant to a recognised and credible power solutions brand in Ghana.',
+    meta: [{ label: 'Client', val: 'Cummins Ghana' }, { label: 'Sector', val: 'Power Solutions' }, { label: 'Scope', val: 'Full Brand Rollout' }],
+    sections: [
+      { heading: 'Background', body: 'Cummins, a globally recognised power solutions brand specialising in generators and energy systems, entered the Ghanaian market with relatively low brand visibility compared to established competitors. Despite its global reputation, the challenge was not product credibility — it was market introduction and brand positioning, ensuring Cummins became a recognised and trusted name in the local energy sector.' },
+      { heading: 'Strategy & Brand Rollout', body: 'SMIC360 implemented a 360° brand visibility and activation strategy focused on corporate identity and public presence. This covered development of consistent branding across all customer-facing touchpoints, design and production of corporate apparel and staff uniforms to reflect global Cummins brand standards, and standardisation of visual identity across all Ghanaian operations.' },
+      { heading: 'Showroom Launch & Visibility', body: 'SMIC360 curated the end-to-end Cummins showroom launch event, coordinating international stakeholders including board members from the United States, and delivering a premium brand experience aligned with Cummins’ global positioning. Physical visibility was reinforced through strategic showroom branding, signage installation, and billboard placements in key high-traffic areas.' },
+      { heading: 'Results', body: 'Through a structured and consistent brand rollout, SMIC360 successfully transitioned Cummins from a relatively low-visibility entrant to a recognised and credible power solutions brand in Ghana — with stronger brand recall in the energy sector, established corporate and industry presence, increased visibility across B2B and institutional markets, and a professional brand footprint aligned with global standards.' },
+    ],
+    extraImages: [
+      'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1778067563/download_2_ffhkzk.jpg',
+    ],
+  },
   { img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777655037/360sm_mqzf0p.png', alt: 'Office Supply', badge: 'Procurement', title: 'Office Furniture & IT Equipment Supply', desc: 'Managed complete procurement and installation of office furniture and IT infrastructure.', meta: [{ label: 'Type', val: 'Office Fit-out' }, { label: 'Items', val: 'Furniture & IT' }, { label: 'Cost', val: 'Optimised by 12%' }] },
-  { img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777223498/medb_kngcnc.jpg', alt: 'Integrated Campaign', badge: 'Marketing', title: 'Integrated Campaign for Local Retailer', desc: 'Multi-channel campaign combining social media, ATL, and local media outreach.', meta: [{ label: 'Sector', val: 'Retail' }, { label: 'Channels', val: 'Digital & OOH' }, { label: 'Sales', val: '+25% increase' }] },
+  {
+    img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1778064863/ju6_p08ldl.jpg',
+    alt: 'Fox Cooling MEP Repositioning',
+    badge: 'Marketing',
+    title: 'Fox Cooling — Repositioning from HVAC to Full MEP Solutions',
+    desc: 'Comprehensive multi-channel rebrand campaign helping Fox Cooling shift public perception from an HVAC specialist to a recognised full MEP (Mechanical, Electrical & Plumbing) solutions provider.',
+    meta: [{ label: 'Client', val: 'Fox Cooling' }, { label: 'Channels', val: 'Press · OOH · Radio · Digital' }, { label: 'Outcome', val: 'Full MEP Recognition' }],
+    sections: [
+      { heading: 'The Challenge', body: 'Fox Cooling was well-known in the market — but only within a narrow HVAC scope. After strategic restructuring to expand into full MEP services, the company needed to shift public perception without losing its existing brand equity. The core problem: how do you reposition a specialist into a full-scale solutions provider?' },
+      { heading: 'Strategy', body: 'SMIC360 deployed a multi-channel awareness and reinforcement strategy across traditional, on-ground, and digital platforms. The campaign covered press and print media (full and half-page newspaper ads over two months), outdoor billboards on Spintex Road and Liberation Road, radio LPMs on Joy FM, Citi FM, and Atlantic FM, plus flyers and updated staff contact cards for front-line reinforcement.' },
+      { heading: 'Digital & Industry Presence', body: 'On the digital side, SMIC360 managed website updates, SEO, Google Ads, and social media across Instagram, Facebook, Twitter, LinkedIn, and YouTube Ads. The campaign was further amplified through sponsorships of industry events, exhibitions, and TV and online programmes — ensuring every touchpoint consistently reinforced Fox Cooling\'s new MEP identity.' },
+      { heading: 'Results', body: 'The campaign delivered increased awareness of Fox Cooling\'s expanded MEP services, stronger brand perception beyond HVAC, and better alignment between brand identity and actual service offerings. Fox Cooling evolved from being seen as an HVAC specialist to a recognised MEP solutions provider across its target markets.' },
+    ],
+    extraImages: [
+      'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1778064863/iu6_sfym1g.jpg',
+      'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1778064863/jyj_ktbrta.jpg',
+    ],
+  },
 ];
 
 const teamMembers = [
@@ -285,15 +352,14 @@ export default function HomePage() {
             </div>
             <div className="about-text reveal-right">
               <span className="tag">Who We Are</span>
-              <h2 className="section-title">SMIC360 Limited — <em>Full Service Advertising & Integrated Marketing</em></h2>
-              <p className="section-sub">SMIC360, formerly Meshan-Ad Consult, was registered in 2006 and began formal operations in April 2009.
-                It was initially established as a sole proprietorship and later converted into a limited liability company in 2011.</p>
+              <h2 className="section-title">Our Core Solutions — <em>A Fully Integrated 360° Approach</em></h2>
+              <p className="section-sub">At SMIC360, we drive growth by aligning strategy with execution across three critical business pillars. We eliminate fragmentation by providing seamless, results-driven experiences across the entire value chain. </p>
               <div className="about-points">
                 {[
-                  { icon: '📣', title: 'Advertising & Marketing', desc: 'Print, Outdoor, Broadcast, Digital — we promote your company\'s products and services, building your brand identity and promoting sales across all channels.' },
-                  { icon: '🎨', title: 'Corporate Branding',       desc: 'Whether creating your brand from scratch or refreshing an existing brand — consultancy, design, production and delivery. Your message delivered with a clean, simple and direct approach.' },
-                  { icon: '📰', title: 'Media Buying & PR',        desc: 'As your media consultant, we purchase media space and time, develop the campaign and research how it will be most effective — finding the best combination of media at minimum cost.' },
-                  { icon: '🌍', title: 'Our Vision',      desc: 'Established in 2006, registered as a Limited Liability Company in 2011. Our vision: to become the Preferred Advertising Agency in Ghana and Beyond.' },
+                  { icon: '📣', title: 'Our Vision', desc: 'To become the Preferred Advertising Agency in Ghana and Beyond.' },
+                  { icon: '🎨', title: 'Our Mission',       desc: 'To provid equality and effective Advertising, Media and PR service while investing in the intellect of our professionals and using up todate technology to maximize the value of our clients.' },
+                  { icon: '📰', title: 'Our Core Values',        desc: 'Professionalism ~ Creativity ~ Innovation ~ Quality ~ TeamSpirit ~ Diversity ~ Entrepreneurial Spirit' },
+                  { icon: '🌍', title: '',      desc: '' },
                 ].map((pt, i) => (
                   <div key={i} className="apoint">
                     <div className="apoint-icon">{pt.icon}</div>

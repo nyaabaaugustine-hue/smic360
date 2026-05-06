@@ -115,54 +115,136 @@ export default function AboutPage() {
         </div>
       </div>
 
-      {/* About Section */}
+      {/* About / Core Solutions Section */}
       <section style={{ padding: '90px 0', background: 'var(--white)' }}>
         <div className="wrap">
-          <div className="about-hero-grid">
+
+          {/* ── Top row: image + intro ── */}
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 56, alignItems: 'center', marginBottom: 64 }} className="about-hero-grid">
+
+            {/* Left — image */}
             <div className="reveal-left" style={{ position: 'relative' }}>
-              <img
-                src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800&q=80"
-                alt="Our Team"
-                style={{ width: '100%', height: '420px', objectFit: 'cover', borderRadius: 'var(--r-lg)', boxShadow: 'var(--sh-md)' }}
-              />
-              <div style={{ position: 'absolute', bottom: '-18px', right: '-18px', background: 'var(--blue)', color: '#fff', borderRadius: 'var(--r)', padding: '20px 24px', textAlign: 'center', boxShadow: '0 8px 28px rgba(19,97,196,.38)' }}>
-                <span style={{ fontFamily: 'Oswald,sans-serif', fontSize: '38px', fontWeight: 700, lineHeight: 1, display: 'block' }}>20+</span>
-                <span style={{ fontSize: '12px', fontWeight: 500, opacity: 0.85, marginTop: '2px', display: 'block', textTransform: 'uppercase', letterSpacing: '1px' }}>Years Excellence</span>
+              <div style={{ borderRadius: 20, overflow: 'hidden', boxShadow: '0 24px 64px rgba(7,22,40,0.14)', position: 'relative' }}>
+                <img
+                  src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800&q=80"
+                  alt="Our Team"
+                  style={{ width: '100%', height: 480, objectFit: 'cover', display: 'block' }}
+                />
+                {/* Dark gradient overlay at bottom */}
+                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(7,22,40,0.72) 0%, transparent 55%)' }} />
+                {/* Tagline on image */}
+                <div style={{ position: 'absolute', bottom: 28, left: 28, right: 28 }}>
+                  <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: 12, fontWeight: 700, letterSpacing: '2px', textTransform: 'uppercase', marginBottom: 6 }}>Our Promise</p>
+                  <p style={{ color: '#FFC107', fontSize: 16, fontWeight: 700, fontStyle: 'italic', lineHeight: 1.5, margin: 0 }}>
+                    Building Foundations. Branding Futures. Connecting Markets.
+                  </p>
+                </div>
+              </div>
+              {/* 20+ badge */}
+              <div style={{ position: 'absolute', top: 24, right: -18, background: 'var(--blue)', color: '#fff', borderRadius: 14, padding: '18px 22px', textAlign: 'center', boxShadow: '0 8px 28px rgba(19,97,196,.38)', zIndex: 2 }}>
+                <span style={{ fontFamily: 'Oswald,sans-serif', fontSize: 36, fontWeight: 700, lineHeight: 1, display: 'block' }}>20+</span>
+                <span style={{ fontSize: 11, fontWeight: 600, opacity: 0.85, marginTop: 2, display: 'block', textTransform: 'uppercase', letterSpacing: '1px' }}>Years</span>
               </div>
             </div>
+
+            {/* Right — intro text */}
             <div className="reveal-right">
               <span className="tag">Who We Are</span>
-              <h2 className="section-title">Advertising &amp; Marketing <em>Solutions</em></h2>
-              <p className="section-sub">
-                SMIC360, formerly Meshan-Ad Consult, was registered in 2006 and began formal operations in April 2009.
-                It was initially established as a sole proprietorship and later converted into a limited liability company in 2011. This transition ensured proper documentation and positioned the company for growth beyond the founder. SMIC360 is founded on a passion to deliver efficient and sustainable solutions to its clients, guided by a culture of working together as a family. 
-                This approach fosters strong collaboration among management, clients, and suppliers, ensuring that all stakeholders are aligned and satisfied in the delivery of services.
+              <h2 className="section-title">A Fully Integrated <em>360° Approach</em></h2>
+              <p className="section-sub" style={{ marginBottom: 24 }}>
+                At SMIC360, we drive growth by aligning strategy with execution across three critical business pillars.
+                We eliminate fragmentation by providing seamless, results-driven experiences across the entire value chain.
               </p>
-              
-              <p className="section-sub" style={{ marginTop: '10px' }}>
-                We specialize in <strong>Advertising</strong>, <strong>Branding</strong>, and{' '}
-                <strong>Marketing</strong>. Most agencies only understand digital. We understand
-                the full picture — and we plan advertising that actually gets seen.
-              </p>
-              <div className="about-points" style={{ marginTop: '28px' }}>
+              {/* Three pillar badges */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
                 {[
-                  { icon: '📢', title: 'Advertising', desc: 'Print, outdoor, and broadcast advertising that builds your brand identity and drives sales.' },
-                  { icon: '🎨', title: 'Corporate Branding', desc: 'Whether creating from scratch or refreshing an existing brand — consultancy, design, production, and delivery.' },
-                  { icon: '📡', title: 'Media Buying', desc: 'Responsible for purchasing media space and time, developing campaigns and researching the most effective placement.' },
-                  { icon: '🖨️', title: 'Print Management', desc: 'End-to-end printing coordination — we find the right printer, paper, and bindery for every job.' },
-                ].map((pt, i) => (
-                  <div key={i} className="apoint">
-                    <div className="apoint-icon">{pt.icon}</div>
-                    <div><h4>{pt.title}</h4><p>{pt.desc}</p></div>
+                  { num: 'I.',   color: '#D4A017', title: 'Advertising & Marketing',      sub: 'Laying the Foundation for Brand Power' },
+                  { num: 'II.',  color: '#1261c0', title: 'Real Estate Development',       sub: 'Transforming Potential into Premium Assets' },
+                  { num: 'III.', color: '#16a34a', title: 'Procurement & Supply Solutions', sub: 'Streamlining Global Sourcing' },
+                ].map((p, i) => (
+                  <div key={i} style={{ display: 'flex', flexDirection: 'column', borderLeft: `4px solid ${p.color}`, padding: '8px 18px', background: 'rgba(0,0,0,0.02)', borderRadius: 4 }}>
+                    <div>
+                      <div style={{ fontFamily: "'Oswald',sans-serif", fontSize: 15, fontWeight: 700, color: 'var(--navy)', lineHeight: 1.2 }}>{p.num} {p.title}</div>
+                      <div style={{ fontSize: 12, color: 'var(--muted)', marginTop: 2, fontStyle: 'italic' }}>{p.sub}</div>
+                    </div>
                   </div>
                 ))}
               </div>
-              <div style={{ marginTop: '28px', display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+              <div style={{ marginTop: 28, display: 'flex', gap: 12, flexWrap: 'wrap' }}>
                 <Link href="/contact" className="btn btn-primary">Let&apos;s Discuss Your Project</Link>
                 <Link href="/portfolio" className="btn btn-outline">View Our Work</Link>
               </div>
             </div>
           </div>
+
+          {/* ── Bottom: three pillar detail cards ── */}
+          <div className="values-grid stagger" style={{ marginTop: 40 }}>
+            {[
+              {
+                num: 'I', color: '#D4A017', lightBg: '#fffbeb', borderCol: 'rgba(212,160,23,0.2)',
+                title: 'Advertising & Marketing',
+                sub: 'Laying the Foundation for Brand Power & Market Dominance. We provide a comprehensive ecosystem of creative and strategic services designed to build powerful, memorable brands that achieve sustainable growth.',
+                items: [
+                  { title: 'Strategy & Advisory',   desc: 'We define your path to success through brand positioning, market entry strategies, and data-informed business advisory.' },
+                  { title: 'Branding & Creative',   desc: 'Our team crafts compelling corporate identities and visual communication designs that resonate across digital and traditional platforms.' },
+                  { title: 'Campaign Execution',    desc: 'We bring ideas to life through integrated marketing, leveraging social media, search, and high-impact experiential activations.' },
+                  { title: 'Media & Production',    desc: 'We maximize your reach through expert media buying, out-of-home (OOH) execution, and high-quality print management.' },
+                ],
+              },
+              {
+                num: 'II', color: '#1261c0', lightBg: '#eff6ff', borderCol: 'rgba(18,97,192,0.2)',
+                title: 'Real Estate Development',
+                sub: 'Transforming Potential into Premium Assets. Our real estate division focuses on the full lifecycle of property development and asset management, ensuring architectural excellence and maximum investment value.',
+                items: [
+                  { title: 'Property Development & Strategic Sales',      desc: 'We manage everything from land acquisition and project feasibility to the construction of modern residential and commercial complexes.' },
+                  { title: 'Property Leasing & Asset Management',      desc: 'We specialize in the curation of premium rental portfolios, including furnished apartments and executive stays.' },
+                  { title: 'Operational Excellence',    desc: 'Our services include rigorous tenant screening, lease administration, and proactive maintenance to preserve long-term asset value.' },
+                  { title: 'Hospitality Services',      desc: 'We provide concierge-level support for short-term rentals and guest services.' },
+                ],
+              },
+              {
+                num: 'III', color: '#16a34a', lightBg: '#f0fdf4', borderCol: 'rgba(22,163,74,0.2)',
+                title: 'Procurement & Supply Solutions',
+                sub: 'Streamlining Global Sourcing with Precision and Reliability. We act as your dedicated sourcing partner, simplifying complex supply chains to deliver high-quality materials and equipment at competitive prices.',
+                items: [
+                  { title: 'Strategic Sourcing & Cost Efficiency',        desc: 'Leverage our extensive network to secure the best suppliers and negotiate competitive pricing, reducing your operational costs.' },
+                  { title: 'Quality & Reliability',     desc: 'We prioritize stringent quality assurance and coordinate complex logistics to ensure every item is delivered on time and to specification.' },
+                  { title: 'Industrial & Commercial', desc: 'Machinery, specialized tools, and safety equipment (PPE).' },
+                  { title: 'Construction Materials', desc: 'High-grade cement, steel, roofing, and electrical fittings.' },
+                  { title: 'Bulk Commodities',   desc: 'Industrial and edible salt, and diverse raw materials for manufacturing.' },
+                  { title: 'Household & Specialized Items',   desc: 'Premium appliances, hard-to-find components, and custom-order products.' },
+                ],
+              },
+            ].map((pillar, pi) => (
+              <div key={pi} style={{ background: '#fff', borderRadius: 20, border: `1px solid ${pillar.borderCol}`, overflow: 'hidden', boxShadow: '0 4px 24px rgba(7,22,40,0.07)', display: 'flex', flexDirection: 'column', transition: 'transform 0.3s' }}>
+                {/* Pillar header */}
+                <div style={{ background: pillar.lightBg, borderBottom: `1px solid ${pillar.borderCol}`, padding: '20px 22px', display: 'flex', alignItems: 'center', gap: 14 }}>
+                  <div>
+                    <div style={{ fontSize: 10, fontWeight: 800, color: pillar.color, textTransform: 'uppercase', letterSpacing: 1, marginBottom: 4 }}>Division {pillar.num}</div>
+                    <div style={{ fontFamily: "'Oswald',sans-serif", fontSize: 16, fontWeight: 700, color: 'var(--navy)', lineHeight: 1.2 }}>{pillar.title}</div>
+                  </div>
+                </div>
+                {/* Service items */}
+                <div style={{ padding: '22px', display: 'flex', flexDirection: 'column', gap: 16, flex: 1 }}>
+                  <div style={{ fontSize: 12, color: 'var(--muted)', lineHeight: 1.6, fontStyle: 'italic', marginBottom: 4 }}>{pillar.sub}</div>
+                  {pillar.items.map((item, ii) => (
+                    <div key={ii} style={{ display: 'flex', gap: 12, alignItems: 'flex-start' }}>
+                      <img 
+                        src="https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777107241/cropped-SMIC-01-180x180_pffxe7.jpg" 
+                        alt="" 
+                        style={{ width: 14, height: 14, marginTop: 4, flexShrink: 0, borderRadius: 3 }} 
+                      />
+                      <div>
+                        <div style={{ fontWeight: 700, fontSize: 13, color: 'var(--navy)', marginBottom: 2 }}>{item.title}</div>
+                        <div style={{ fontSize: 12, color: 'var(--muted)', lineHeight: 1.6 }}>{item.desc}</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+
         </div>
       </section>
 
@@ -191,21 +273,19 @@ export default function AboutPage() {
       <section style={{ padding: '90px 0', background: 'var(--off)' }}>
         <div className="wrap">
           <div style={{ textAlign: 'center', marginBottom: '48px' }} className="reveal">
-            <span className="tag" style={{ justifyContent: 'center' }}>Vision, Mission &amp; Values</span>
-            <h2 className="section-title">What Drives <em>Everything We Do</em></h2>
+            <span className="tag" style={{ justifyContent: 'center' }}>Our Foundation</span>
+            <h2 className="section-title">Vision, Mission &amp; <em>Core Values</em></h2>
           </div>
 
           {/* Vision & Mission */}
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px', marginBottom: '48px' }} className="stagger">
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px', marginBottom: '48px' }} className="stagger">
             <div style={{ background: '#fff', borderRadius: 'var(--r-lg)', padding: '36px 28px', boxShadow: 'var(--sh)', border: '1px solid var(--border)' }}>
-              <div style={{ fontSize: '36px', marginBottom: '14px' }}>🎯</div>
               <h3 style={{ fontFamily: 'Oswald,sans-serif', fontSize: '22px', fontWeight: 700, color: 'var(--navy)', marginBottom: '12px' }}>Our Vision</h3>
               <p style={{ fontSize: '15px', color: 'var(--text)', lineHeight: 1.8, fontStyle: 'italic' }}>
                 &ldquo;To become the Preferred Advertising Agency in Ghana &amp; Beyond.&rdquo;
               </p>
             </div>
             <div style={{ background: '#fff', borderRadius: 'var(--r-lg)', padding: '36px 28px', boxShadow: 'var(--sh)', border: '1px solid var(--border)' }}>
-              <div style={{ fontSize: '36px', marginBottom: '14px' }}>🚀</div>
               <h3 style={{ fontFamily: 'Oswald,sans-serif', fontSize: '22px', fontWeight: 700, color: 'var(--navy)', marginBottom: '12px' }}>Our Mission</h3>
               <p style={{ fontSize: '15px', color: 'var(--text)', lineHeight: 1.8, fontStyle: 'italic' }}>
                 &ldquo;To provide quality and effective Advertising, Media and PR service while investing in the intellect of our professionals and using up to date technology to maximize the value of our clients.&rdquo;
@@ -216,17 +296,15 @@ export default function AboutPage() {
           {/* Core Values */}
           <div className="values-grid stagger">
             {[
-              { icon: '🏅', title: 'Professionalism',         desc: 'We hold ourselves to the highest standards of conduct, quality, and client service in every engagement.' },
-              { icon: '💡', title: 'Creativity & Innovation', desc: 'We push beyond the conventional — crafting fresh, bold ideas that cut through the noise and deliver results.' },
-              { icon: '⭐', title: 'Quality',                 desc: 'Excellence is non-negotiable. Every project, every campaign, every deliverable is built to the highest quality standard.' },
-              { icon: '🤝', title: 'Team Spirit',             desc: 'We work together as family — management, clients, and suppliers — united by a shared commitment to success.' },
-              { icon: '🌍', title: 'Diversity',               desc: 'Our team and client base reflect the rich diversity of Ghana and Africa. Different perspectives make us stronger.' },
-              { icon: '💼', title: 'Entrepreneurial Spirit',  desc: 'We think like business owners. We invest in solutions that drive real growth, not just activity.' },
-            ].map((val, i) => (
-              <div key={i} style={{ background: '#fff', borderRadius: 'var(--r-lg)', padding: '36px 28px', textAlign: 'center', boxShadow: 'var(--sh)', border: '1px solid var(--border)', transition: 'all .3s' }}>
-                <div style={{ fontSize: '40px', marginBottom: '16px' }}>{val.icon}</div>
-                <h3 style={{ fontFamily: 'Oswald,sans-serif', fontSize: '22px', fontWeight: 700, color: 'var(--navy)', marginBottom: '12px' }}>{val.title}</h3>
-                <p style={{ fontSize: '14px', color: 'var(--muted)', lineHeight: 1.7 }}>{val.desc}</p>
+              'Professionalism',
+              'Creativity & Innovation',
+              'Quality',
+              'Team Spirit',
+              'Diversity',
+              'Entrepreneurial Spirit',
+            ].map((title, i) => (
+              <div key={i} style={{ background: '#fff', borderRadius: 'var(--r-lg)', padding: '32px 24px', textAlign: 'center', boxShadow: 'var(--sh)', border: '1px solid var(--border)', transition: 'all .3s', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <h3 style={{ fontFamily: 'Oswald,sans-serif', fontSize: '18px', fontWeight: 700, color: 'var(--navy)', margin: 0 }}>{title}</h3>
               </div>
             ))}
           </div>
@@ -274,18 +352,15 @@ export default function AboutPage() {
           </div>
 
           {/* Three pillar content cards */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px', marginBottom: '64px' }} className="stagger">
+          <div className="values-grid stagger" style={{ marginBottom: '64px' }}>
 
             {/* Card 1 — Gender Equality */}
             <div style={{ background: '#fff', borderRadius: 'var(--r-lg)', overflow: 'hidden', boxShadow: 'var(--sh)', border: '1px solid var(--border)', display: 'flex', flexDirection: 'column' }}>
               <div style={{ height: 6, background: '#E5243B' }} />
               <div style={{ padding: '32px 28px', flex: 1 }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
-                  <img src="https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777800989/Sustainable_Development_Goal_05GenderEquality.svg_wn3i55.png" alt="SDG 5" style={{ width: 48, height: 48, borderRadius: 8, objectFit: 'cover' }} />
-                  <div>
-                    <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '1.5px', textTransform: 'uppercase', color: '#E5243B', marginBottom: 2 }}>SDG 5</div>
-                    <h3 style={{ fontFamily: "'Oswald',sans-serif", fontSize: 18, fontWeight: 700, color: 'var(--navy)', lineHeight: 1.2 }}>Gender Equality</h3>
-                  </div>
+                <div style={{ marginBottom: 16 }}>
+                  <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '1.5px', textTransform: 'uppercase', color: '#E5243B', marginBottom: 2 }}>SDG 5</div>
+                  <h3 style={{ fontFamily: "'Oswald',sans-serif", fontSize: 18, fontWeight: 700, color: 'var(--navy)', lineHeight: 1.2 }}>Gender Equality</h3>
                 </div>
                 <p style={{ fontSize: 14, color: 'var(--muted)', lineHeight: 1.78 }}>
                   As a <strong style={{ color: 'var(--text)' }}>woman-owned and funded company</strong>, our foundation is built on the principles
@@ -300,12 +375,9 @@ export default function AboutPage() {
             <div style={{ background: '#fff', borderRadius: 'var(--r-lg)', overflow: 'hidden', boxShadow: 'var(--sh)', border: '1px solid var(--border)', display: 'flex', flexDirection: 'column' }}>
               <div style={{ height: 6, background: '#A21942' }} />
               <div style={{ padding: '32px 28px', flex: 1 }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
-                  <img src="https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777800989/Sustainable_Development_Goal_08DecentWork.svg_kyh8nd.png" alt="SDG 8" style={{ width: 48, height: 48, borderRadius: 8, objectFit: 'cover' }} />
-                  <div>
-                    <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '1.5px', textTransform: 'uppercase', color: '#A21942', marginBottom: 2 }}>SDG 8</div>
-                    <h3 style={{ fontFamily: "'Oswald',sans-serif", fontSize: 18, fontWeight: 700, color: 'var(--navy)', lineHeight: 1.2 }}>Decent Work &amp; Economic Growth</h3>
-                  </div>
+                <div style={{ marginBottom: 16 }}>
+                  <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '1.5px', textTransform: 'uppercase', color: '#A21942', marginBottom: 2 }}>SDG 8</div>
+                  <h3 style={{ fontFamily: "'Oswald',sans-serif", fontSize: 18, fontWeight: 700, color: 'var(--navy)', lineHeight: 1.2 }}>Decent Work &amp; Economic Growth</h3>
                 </div>
                 <p style={{ fontSize: 14, color: 'var(--muted)', lineHeight: 1.78 }}>
                   We contribute to economic prosperity by creating <strong style={{ color: 'var(--text)' }}>meaningful employment opportunities</strong> and
@@ -320,12 +392,9 @@ export default function AboutPage() {
             <div style={{ background: '#fff', borderRadius: 'var(--r-lg)', overflow: 'hidden', boxShadow: 'var(--sh)', border: '1px solid var(--border)', display: 'flex', flexDirection: 'column' }}>
               <div style={{ height: 6, background: '#FD6925' }} />
               <div style={{ padding: '32px 28px', flex: 1 }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
-                  <img src="https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777800989/Sustainable_Development_Goal_09Indust_qzjpbr.png" alt="SDG 9" style={{ width: 48, height: 48, borderRadius: 8, objectFit: 'cover' }} />
-                  <div>
-                    <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '1.5px', textTransform: 'uppercase', color: '#FD6925', marginBottom: 2 }}>SDG 9</div>
-                    <h3 style={{ fontFamily: "'Oswald',sans-serif", fontSize: 18, fontWeight: 700, color: 'var(--navy)', lineHeight: 1.2 }}>Industry, Innovation &amp; Infrastructure</h3>
-                  </div>
+                <div style={{ marginBottom: 16 }}>
+                  <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '1.5px', textTransform: 'uppercase', color: '#FD6925', marginBottom: 2 }}>SDG 9</div>
+                  <h3 style={{ fontFamily: "'Oswald',sans-serif", fontSize: 18, fontWeight: 700, color: 'var(--navy)', lineHeight: 1.2 }}>Industry, Innovation &amp; Infrastructure</h3>
                 </div>
                 <p style={{ fontSize: 14, color: 'var(--muted)', lineHeight: 1.78 }}>
                   Our work directly supports the development of <strong style={{ color: 'var(--text)' }}>sustainable industries and resilient infrastructure</strong>.

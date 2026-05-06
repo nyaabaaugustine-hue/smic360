@@ -49,14 +49,10 @@ export default function SolutionsPage() {
               
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px', marginTop: '24px' }}>
                 {[
-                  'Advertising (Print, Outdoor, Broadcast)',
-                  'Marketing & PR',
-                  'Corporate Branding',
-                  'Multimedia Graphics & Website Design',
-                  'Media Buying & Planning',
-                  'Print Management',
-                  'Social Media Packages',
-                  'Corporate Apparel & PPE',
+                  'Strategy & Advisory ',
+                  'Branding & Creative',
+                  'Campaign Execution ',
+                  '4.	Media & Production',
                 ].map((item, i) => (
                   <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '14px', fontWeight: 500, color: 'var(--text)' }}>
                     <span style={{ color: '#16a34a', fontWeight: 700 }}>✔</span> {item}
