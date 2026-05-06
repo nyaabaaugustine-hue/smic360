@@ -657,7 +657,7 @@ export default function HomePage() {
                 ))}
               </div>
               <div style={{ marginTop: '28px', display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-                <Link href="/he-phoenix-enclave" className="btn btn-primary">Explore The Enclave</Link>
+                <Link href="/the-phoenix-enclave" className="btn btn-primary">Explore The Enclave</Link>
                 <button onClick={openBook} className="btn btn-outline">Book a Site Visit</button>
               </div>
             </div>
