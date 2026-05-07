@@ -40,7 +40,7 @@ const slides: HeroSlide[] = [
     btn1: 'View Properties',
     btn2: 'Inquire Now',
     cardImg: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=1600&q=75',
-    cardTitle: 'Real Estate Development',
+    cardTitle: 'Real Estate & Hospitality',
     cardDesc: 'Modern architecture and premium finishes for the Ghanaian market.',
     cardTags: ['Property', 'Investment'],
   },

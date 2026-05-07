@@ -303,7 +303,7 @@ export default function HomePage() {
             { num: 150, suffix: '+', label: 'Projects Delivered', desc: 'Across all three divisions' },
             { num: 80,  suffix: '+', label: 'Happy Clients',      desc: 'Across Ghana & West Africa' },
             { num: 20,  suffix: '+', label: 'Years of Excellence', desc: 'Established since 2006, Accra' },
-            { num: 3,   suffix: '',  label: 'Core Services',      desc: 'Marketing · Real Estate · Procurement' },
+            { num: 3,   suffix: '',  label: 'Core Services',      desc: 'Marketing · Real Estate & Hospitality · Procurement' },
           ].map((s, i) => (
             <div key={i} className="stats-item">
               <div className="stats-num" style={{ color: '#fff' }}><AnimCounter target={s.num} suffix="" /><span style={{ color: '#FFC107' }}>{s.suffix}</span></div>
@@ -324,7 +324,7 @@ export default function HomePage() {
           <div className="ribbon-grid stagger">
             {[
               { icon: '📣', title: 'Advertising, Branding & Marketing', desc: 'Full service advertising and integrated marketing — Media Buying, Corporate Branding, Multimedia Graphics, Print Management, Corporate Apparel and PR.' },
-              { icon: '🏗️', title: 'Real Estate Development',           desc: 'A mini gated community strategically developed in a serene and secured locality — Community 20, Lashibi, off Spintex Road.' },
+              { icon: '🏗️', title: 'Real Estate & Hospitality',          desc: 'Modern gated communities like The Phoenix Enclave and premium short-stay rentals through Christie’s Homestay.' },
               { icon: '📦', title: 'Procurement & Supply Services',      desc: 'Tailormade Procurement and supply services designed to give you value for money. Consistent cost savings for clients across all sectors.' },
             ].map((s, i) => (
               <Link key={i} href="/solutions" className="ribbon-card">
@@ -547,7 +547,7 @@ export default function HomePage() {
           <div className="cap-grid stagger">
             {[
               { img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777114247/kkkl_nhdczf.avif', alt: 'Brand Strategy', title: 'Advertising & Marketing Solutions', desc: '360 Marketing & Branding Solutions for your brand and business.', href: '/solutions' },
-              { img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777111208/WhatsApp-Image-2025-08-18-at-14.16.35_e93040d9l_gwfnmu.jpg', alt: 'Real Estate', title: 'Real Estate Development', desc: 'A mini gated community strategically developed in a serene and secured locality.', href: '/solutions' },
+              { img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777111208/WhatsApp-Image-2025-08-18-at-14.16.35_e93040d9l_gwfnmu.jpg', alt: 'Real Estate', title: 'Real Estate & Hospitality', desc: 'Residential developments and premium short-stay rentals (Christie’s Homestay).', href: '/solutions' },
               { img: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777655037/360sm_mqzf0p.png', alt: 'Procurement', title: 'Procurement & Supply Services', desc: 'Tailormade Procurement and supply services designed to give you value for money.', href: '/solutions' },
             ].map((cap, i) => (
               <div key={i} className="cap-card">

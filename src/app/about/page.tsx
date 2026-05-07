@@ -159,7 +159,7 @@ export default function AboutPage() {
               <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
                 {[
                   { num: 'I.',   color: '#D4A017', title: 'Advertising & Marketing',      sub: 'Laying the Foundation for Brand Power' },
-                  { num: 'II.',  color: '#1261c0', title: 'Real Estate Development',       sub: 'Transforming Potential into Premium Assets' },
+                  { num: 'II.',  color: '#1261c0', title: 'Real Estate & Hospitality',     sub: 'Transforming Potential into Premium Assets' },
                   { num: 'III.', color: '#16a34a', title: 'Procurement & Supply Solutions', sub: 'Streamlining Global Sourcing' },
                 ].map((p, i) => (
                   <div key={i} style={{ display: 'flex', flexDirection: 'column', borderLeft: `4px solid ${p.color}`, padding: '8px 18px', background: 'rgba(0,0,0,0.02)', borderRadius: 4 }}>
@@ -193,8 +193,8 @@ export default function AboutPage() {
               },
               {
                 num: 'II', color: '#1261c0', lightBg: '#eff6ff', borderCol: 'rgba(18,97,192,0.2)',
-                title: 'Real Estate Development',
-                sub: 'Transforming Potential into Premium Assets. Our real estate division focuses on the full lifecycle of property development and asset management, ensuring architectural excellence and maximum investment value.',
+                title: 'Real Estate & Hospitality',
+                sub: 'Transforming Potential into Premium Assets. Our real estate division focuses on property development and premium hospitality through Christie’s Homestay.',
                 items: [
                   { title: 'Property Development & Strategic Sales',      desc: 'We manage everything from land acquisition and project feasibility to the construction of modern residential and commercial complexes.' },
                   { title: 'Property Leasing & Asset Management',      desc: 'We specialize in the curation of premium rental portfolios, including furnished apartments and executive stays.' },

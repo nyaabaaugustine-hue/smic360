@@ -45,43 +45,46 @@ export default function Navbar({ onBookClick }: NavbarProps) {
             {/* Solutions mega-menu */}
             <li className="has-drop">
               <Link href="/solutions">Solutions</Link>
-              <div className="dropdown" style={{ minWidth: '520px' }}>
-                <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr 1fr', gap:'0' }}>
+              <div className="dropdown" style={{ minWidth: '680px' }}>
+                <div style={{ display:'grid', gridTemplateColumns:'1.2fr 1fr 1fr', gap:'0' }}>
 
-                  {/* Col 1 — Christie's Homestay */}
-                  <div style={{ borderRight:'1px solid var(--border)', paddingRight:'12px' }}>
-                    <div className="drop-group-label">Hospitality</div>
-                    <Link href="/christies-homestay" className="drop-item">
-                      <div className="drop-text">
-                        <h4 style={{color:'var(--cyan)'}}>Christie&apos;s Homestay</h4>
-                        <p>Airbnb Short-Stay Rentals</p>
-                      </div>
-                    </Link>
+                  {/* Col 1 — Advertising and Marketing */}
+                  <div style={{ borderRight:'1px solid var(--border)', paddingRight:'16px' }}>
+                    <div className="drop-group-label">Advertising and Marketing</div>
+                    <Link href="/solutions/marketing/branding-works" className="drop-link-sm">Strategy &amp; Advisory</Link>
+                    <Link href="/solutions/marketing/corporate-branding" className="drop-link-sm">Branding &amp; Creative</Link>
+                    <Link href="/solutions/marketing/digital-marketing" className="drop-link-sm">Campaign Execution</Link>
+                    <Link href="/solutions/marketing/media-buying" className="drop-link-sm">Media &amp; Production</Link>
+                    <div className="drop-group-label" style={{marginTop:'12px'}}>Procurement</div>
+                    <Link href="/solutions#procurement" className="drop-link-sm">Procurement &amp; Supply</Link>
                   </div>
 
-                  {/* Col 2 — Real Estate */}
-                  <div style={{ borderRight:'1px solid var(--border)', padding:'0 12px' }}>
-                    <div className="drop-group-label">Real Estate</div>
+                  {/* Col 2 — Real Estate Development */}
+                  <div style={{ borderRight:'1px solid var(--border)', padding:'0 16px' }}>
+                    <div className="drop-group-label">Real Estate Development</div>
                     <Link href="/the-phoenix-enclave" className="drop-item">
                       <div className="drop-text">
                         <h4 style={{color:'var(--gold)'}}>Phoenix Enclave</h4>
-                        <p>View Property Gallery</p>
+                        <p>Flagship Project</p>
                       </div>
                     </Link>
                   </div>
 
-                  {/* Col 3 — Advertising & Marketing */}
-                  <div style={{ paddingLeft:'12px' }}>
-                    <div className="drop-group-label">Advertising &amp; Marketing</div>
-                    <Link href="/solutions/marketing/branding-works" className="drop-link-sm">Branding Works</Link>
-                    <Link href="/solutions/marketing/corporate-branding" className="drop-link-sm">Corporate Branding</Link>
-                    <Link href="/solutions/marketing/digital-marketing" className="drop-link-sm">Digital Marketing</Link>
-                    <Link href="/solutions/marketing/digital-work" className="drop-link-sm">Digital Works</Link>
-                    <Link href="/solutions/marketing/media-buying" className="drop-link-sm">Media Buying</Link>
-                    <Link href="/solutions/marketing/print-management" className="drop-link-sm">Print Management</Link>
-                    <Link href="/solutions/marketing/website-development" className="drop-link-sm">Website Development</Link>
-                    <div className="drop-group-label" style={{marginTop:'12px'}}>Procurement</div>
-                    <Link href="/solutions#procurement" className="drop-link-sm">Procurement &amp; Supply</Link>
+                  {/* Col 3 — Furnished Apartments */}
+                  <div style={{ paddingLeft:'16px' }}>
+                    <div className="drop-group-label">Furnished Apartments</div>
+                    <Link href="/christies-homestay" className="drop-item">
+                      <div className="drop-text">
+                        <h4 style={{color:'var(--cyan)'}}>Christie&apos;s Homestay</h4>
+                        <p>Lashibi Community 20</p>
+                      </div>
+                    </Link>
+                    <Link href="/christies-homestay" className="drop-item">
+                      <div className="drop-text">
+                        <h4 style={{color:'var(--gold)'}}>Oleaga&apos;s Nest</h4>
+                        <p>Tseado</p>
+                      </div>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -168,21 +171,23 @@ export default function Navbar({ onBookClick }: NavbarProps) {
 
           {/* Solutions group */}
           <Link href="/solutions" onClick={() => setMobileOpen(false)}>Solutions</Link>
+          <div style={{fontSize:11,fontWeight:700,letterSpacing:'1.5px',textTransform:'uppercase',color:'rgba(255,193,7,0.55)',padding:'10px 20px 2px'}}>Advertising and Marketing</div>
           <div className="mobile-sublinks">
-            <Link href="/christies-homestay" onClick={() => setMobileOpen(false)} style={{color:'var(--cyan)',fontWeight:700}}>Christie&apos;s Homestay — Airbnb Short-Stay</Link>
-            <Link href="/the-phoenix-enclave" onClick={() => setMobileOpen(false)} style={{color:'var(--gold)',fontWeight:700}}>Phoenix Enclave — Real Estate</Link>
+            <Link href="/solutions/marketing/branding-works" onClick={() => setMobileOpen(false)}>Strategy &amp; Advisory</Link>
+            <Link href="/solutions/marketing/corporate-branding" onClick={() => setMobileOpen(false)}>Branding &amp; Creative</Link>
+            <Link href="/solutions/marketing/digital-marketing" onClick={() => setMobileOpen(false)}>Campaign Execution</Link>
+            <Link href="/solutions/marketing/media-buying" onClick={() => setMobileOpen(false)}>Media &amp; Production</Link>
           </div>
 
-          {/* Advertising & Marketing sub-items */}
-          <div style={{fontSize:11,fontWeight:700,letterSpacing:'1.5px',textTransform:'uppercase',color:'rgba(255,193,7,0.55)',padding:'10px 20px 2px'}}>Advertising &amp; Marketing</div>
+          <div style={{fontSize:11,fontWeight:700,letterSpacing:'1.5px',textTransform:'uppercase',color:'rgba(255,193,7,0.55)',padding:'10px 20px 2px'}}>Real Estate Development</div>
           <div className="mobile-sublinks">
-            <Link href="/solutions/marketing/branding-works" onClick={() => setMobileOpen(false)}>Branding Works</Link>
-            <Link href="/solutions/marketing/corporate-branding" onClick={() => setMobileOpen(false)}>Corporate Branding</Link>
-            <Link href="/solutions/marketing/digital-marketing" onClick={() => setMobileOpen(false)}>Digital Marketing</Link>
-            <Link href="/solutions/marketing/digital-work" onClick={() => setMobileOpen(false)}>Digital Works</Link>
-            <Link href="/solutions/marketing/media-buying" onClick={() => setMobileOpen(false)}>Media Buying</Link>
-            <Link href="/solutions/marketing/print-management" onClick={() => setMobileOpen(false)}>Print Management</Link>
-            <Link href="/solutions/marketing/website-development" onClick={() => setMobileOpen(false)}>Website Development</Link>
+            <Link href="/the-phoenix-enclave" onClick={() => setMobileOpen(false)} style={{color:'var(--gold)',fontWeight:700}}>Phoenix Enclave — Flagship Project</Link>
+          </div>
+
+          <div style={{fontSize:11,fontWeight:700,letterSpacing:'1.5px',textTransform:'uppercase',color:'rgba(255,193,7,0.55)',padding:'10px 20px 2px'}}>Furnished Apartments</div>
+          <div className="mobile-sublinks">
+            <Link href="/christies-homestay" onClick={() => setMobileOpen(false)} style={{color:'var(--cyan)',fontWeight:700}}>Christie&apos;s Homestay — Community 20</Link>
+            <Link href="/christies-homestay" onClick={() => setMobileOpen(false)} style={{color:'var(--gold)',fontWeight:700}}>Oleaga&apos;s Nest — Tseado</Link>
           </div>
 
           {/* About Us */}
