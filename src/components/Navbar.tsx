@@ -64,9 +64,9 @@ export default function Navbar({ onBookClick }: NavbarProps) {
                     <div className="drop-group-label">Real Estate</div>
                     <div style={{fontSize:'10px', fontWeight:800, color:'rgba(7,22,40,0.4)', textTransform:'uppercase', letterSpacing:'1px', marginBottom:'4px'}}>Development</div>
                     <Link href="/the-phoenix-enclave" className="drop-item">
-                      <div className="drop-text">
+                      <div className="drop-text" style={{color:'var(--navy)'}}>
                         <h4 style={{color:'var(--navy)'}}>Phoenix Enclave</h4>
-                        <p>Flagship Project</p>
+                        <p style={{color:'var(--gold)'}}>Flagship Project</p>
                       </div>
                     </Link>
 
@@ -80,7 +80,7 @@ export default function Navbar({ onBookClick }: NavbarProps) {
                     <Link href="/christies-homestay" className="drop-item">
                       <div className="drop-text">
                         <h4 style={{color:'var(--navy)'}}>Oleaga&apos;s Nest</h4>
-                        <p>Tseado</p>
+                        <p style={{color:'var(--gold)'}}>Tseado</p>
                       </div>
                     </Link>
                   </div>
@@ -179,9 +179,15 @@ export default function Navbar({ onBookClick }: NavbarProps) {
 
           <div style={{fontSize:11,fontWeight:700,letterSpacing:'1.5px',textTransform:'uppercase',color:'rgba(7,22,40,0.55)',padding:'10px 20px 2px'}}>Real Estate</div>
           <div className="mobile-sublinks">
-            <Link href="/the-phoenix-enclave" onClick={() => setMobileOpen(false)} style={{color:'var(--gold)',fontWeight:700}}>Phoenix Enclave — Flagship Project</Link>
-            <Link href="/christies-homestay" onClick={() => setMobileOpen(false)} style={{color:'var(--cyan)',fontWeight:700}}>Christie&apos;s Homestay — Community 20</Link>
-            <Link href="/christies-homestay" onClick={() => setMobileOpen(false)} style={{color:'var(--gold)',fontWeight:700}}>Oleaga&apos;s Nest — Tseado</Link>
+            <Link href="/the-phoenix-enclave" onClick={() => setMobileOpen(false)} style={{color:'var(--navy)',fontWeight:700}}>
+              Phoenix Enclave — <span style={{color:'var(--gold)'}}>Flagship Project</span>
+            </Link>
+            <Link href="/christies-homestay" onClick={() => setMobileOpen(false)} style={{color:'var(--cyan)',fontWeight:700}}>
+              Christie&apos;s Homestay — <span style={{color:'var(--cyan)'}}>Community 20</span>
+            </Link>
+            <Link href="/christies-homestay" onClick={() => setMobileOpen(false)} style={{color:'var(--navy)',fontWeight:700}}>
+              Oleaga&apos;s Nest — <span style={{color:'var(--gold)'}}>Tseado</span>
+            </Link>
           </div> 
 
           {/* About Us */}
