@@ -10,7 +10,8 @@ import ScrollReveal from '@/components/ScrollReveal';
 
 // Page-level SEO — injected via useEffect for client pages
 const PAGE_TITLE = 'Blog & Insights | SMIC360 Limited';
-const PAGE_DESC = 'Expert insights on marketing, real estate investment, and procurement in Ghana. Actionable strategies from the SMIC360 team.';
+const PAGE_DESC =
+  'Expert insights on marketing, real estate investment, and procurement in Ghana. Actionable strategies from the SMIC360 team.';
 
 const posts = [
   {
@@ -282,13 +283,19 @@ export default function BlogPage() {
       <ChatPanel />
 
       {/* Article Reader Modal */}
-      {mounted && readPost &&
+      {mounted &&
+        readPost &&
         createPortal(
           <div
-            onClick={(e) => { if (e.target === e.currentTarget) setReadPost(null); }}
-            ref={(el) => { if (el) el.scrollTop = 0; }}
+            onClick={(e) => {
+              if (e.target === e.currentTarget) setReadPost(null);
+            }}
+            ref={(el) => {
+              if (el) el.scrollTop = 0;
+            }}
             style={{
-              position: 'fixed', inset: 0,
+              position: 'fixed',
+              inset: 0,
               background: 'rgba(4,14,29,0.9)',
               backdropFilter: 'blur(12px)',
               zIndex: 999998,

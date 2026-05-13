@@ -9,7 +9,8 @@ import ChatPanel from '@/components/ChatPanel';
 import ScrollReveal from '@/components/ScrollReveal';
 
 const PAGE_TITLE = 'FAQ | SMIC360 Limited';
-const PAGE_DESC = 'Answers to your questions about SMIC360 — our marketing, real estate, and procurement services, how to work with us, and more.';
+const PAGE_DESC =
+  'Answers to your questions about SMIC360 — our marketing, real estate, and procurement services, how to work with us, and more.';
 
 const faqs = [
   {
@@ -243,7 +244,9 @@ export default function FAQPage() {
               Still have a question?
             </h3>
             <p style={{ color: 'rgba(255,255,255,.55)', fontSize: '15px', marginBottom: '24px' }}>
-              Our team is available Monday–Friday, 8:00 AM – 4:00 PM. We will get back to you within 2 business hours. You can also reach us on 020 336 1155 | 054 166 5108 or email christie@smic360.com.
+              Our team is available Monday–Friday, 8:00 AM – 4:00 PM. We will get back to you within
+              2 business hours. You can also reach us on 020 336 1155 | 054 166 5108 or email
+              christie@smic360.com.
             </p>
             <div
               style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}

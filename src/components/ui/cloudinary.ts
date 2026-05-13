@@ -17,8 +17,8 @@ export function clImg(url: string, width?: number): string {
   const idx = url.indexOf(uploadMarker);
   if (idx === -1) return url;
 
-  const base       = url.slice(0, idx + uploadMarker.length);
-  const rest       = url.slice(idx + uploadMarker.length);
+  const base = url.slice(0, idx + uploadMarker.length);
+  const rest = url.slice(idx + uploadMarker.length);
   const transforms = ['f_auto', 'q_auto', ...(width ? [`w_${width}`] : [])].join(',');
 
   return `${base}${transforms}/${rest}`;
@@ -29,5 +29,5 @@ export function clImg(url: string, width?: number): string {
  * Returns a srcSet string for 3 breakpoints.
  */
 export function clSrcSet(url: string, widths = [480, 800, 1200]): string {
-  return widths.map(w => `${clImg(url, w)} ${w}w`).join(', ');
+  return widths.map((w) => `${clImg(url, w)} ${w}w`).join(', ');
 }

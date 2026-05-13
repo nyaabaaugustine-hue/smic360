@@ -334,15 +334,31 @@ export default function SDGsPage() {
             <div>
               <div className="sdg-hero-un">
                 <span className="sdg-hero-un-dot">🌍</span>
-                <span className="sdg-hero-un-text">United Nations Sustainable Development Goals</span>
+                <span className="sdg-hero-un-text">
+                  United Nations Sustainable Development Goals
+                </span>
               </div>
-              <h1>Our Commitment<br />to <em>Global Goals</em></h1>
+              <h1>
+                Our Commitment
+                <br />
+                to <em>Global Goals</em>
+              </h1>
               <p className="sdg-hero-sub">
-                At SMIC360 Limited, our work is guided by a commitment to creating lasting positive change. We align our business practices with key United Nations Sustainable Development Goals (SDGs), ensuring that our success contributes to a better world.
+                At SMIC360 Limited, our work is guided by a commitment to creating lasting positive
+                change. We align our business practices with key United Nations Sustainable
+                Development Goals (SDGs), ensuring that our success contributes to a better world.
               </p>
               <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-                <Link href="/contact" className="btn btn-primary" style={{ fontSize: 14 }}>Contact Us →</Link>
-                <button onClick={() => setBookOpen(true)} className="btn btn-outline-white" style={{ fontSize: 14 }}>Partner With Us</button>
+                <Link href="/contact" className="btn btn-primary" style={{ fontSize: 14 }}>
+                  Contact Us →
+                </Link>
+                <button
+                  onClick={() => setBookOpen(true)}
+                  className="btn btn-outline-white"
+                  style={{ fontSize: 14 }}
+                >
+                  Partner With Us
+                </button>
               </div>
             </div>
           </div>
@@ -355,7 +371,10 @@ export default function SDGsPage() {
               <em>Building Foundations. Branding Futures. Connecting Markets.</em>
             </p>
             <p className="sdg-intro-body">
-              As a woman-owned and funded company, SMIC360 Limited is committed to operating responsibly and creating impact that goes beyond business. We champion three United Nations Sustainable Development Goals that reflect who we are, how we work, and the future we are building — one business at a time.
+              As a woman-owned and funded company, SMIC360 Limited is committed to operating
+              responsibly and creating impact that goes beyond business. We champion three United
+              Nations Sustainable Development Goals that reflect who we are, how we work, and the
+              future we are building — one business at a time.
             </p>
           </div>
         </div>
@@ -375,7 +394,9 @@ export default function SDGsPage() {
                   <img src={g.img} alt={`SDG ${g.num}`} loading="lazy" />
                 </div>
                 <div>
-                  <div className="sdg-tab-num" style={{ color: g.color }}>SDG {g.num}</div>
+                  <div className="sdg-tab-num" style={{ color: g.color }}>
+                    SDG {g.num}
+                  </div>
                   <div className="sdg-tab-name">{g.title}</div>
                 </div>
               </button>
@@ -391,7 +412,11 @@ export default function SDGsPage() {
                   <div>
                     <div
                       className="sdg-goal-badge"
-                      style={{ background: `${g.color}12`, borderColor: `${g.color}40`, color: g.color }}
+                      style={{
+                        background: `${g.color}12`,
+                        borderColor: `${g.color}40`,
+                        color: g.color,
+                      }}
                     >
                       <img src={g.img} alt={`SDG ${g.num}`} />
                       SDG {g.num} — {g.title}
@@ -401,7 +426,9 @@ export default function SDGsPage() {
                     <div className="sdg-actions-title">How We Take Action</div>
                     {g.actions.map((a, j) => (
                       <div key={j} className="sdg-action">
-                        <div className="sdg-action-tick" style={{ background: g.bg }}>✓</div>
+                        <div className="sdg-action-tick" style={{ background: g.bg }}>
+                          ✓
+                        </div>
                         <div className="sdg-action-text">{a}</div>
                       </div>
                     ))}
@@ -409,12 +436,24 @@ export default function SDGsPage() {
 
                   {/* Right: image + quote */}
                   <div className="sdg-panel-right">
-                    <div className="sdg-img-wrap" style={{ borderColor: `${g.color}35`, boxShadow: `0 20px 60px ${g.shadow}` }}>
+                    <div
+                      className="sdg-img-wrap"
+                      style={{ borderColor: `${g.color}35`, boxShadow: `0 20px 60px ${g.shadow}` }}
+                    >
                       <img src={g.img} alt={`SDG ${g.num} — ${g.title}`} loading="lazy" />
                     </div>
-                    <div className="sdg-quote-box" style={{ borderLeftColor: g.color, borderTopColor: `${g.color}20`, borderRightColor: `${g.color}20`, borderBottomColor: `${g.color}20` }}>
+                    <div
+                      className="sdg-quote-box"
+                      style={{
+                        borderLeftColor: g.color,
+                        borderTopColor: `${g.color}20`,
+                        borderRightColor: `${g.color}20`,
+                        borderBottomColor: `${g.color}20`,
+                      }}
+                    >
                       <p className="sdg-quote-text">
-                        &ldquo;We are leaving no one behind — connect with us on our mission to bring change to the world, one business at a time.&rdquo;
+                        &ldquo;We are leaving no one behind — connect with us on our mission to
+                        bring change to the world, one business at a time.&rdquo;
                       </p>
                       <div className="sdg-quote-author">
                         <img
@@ -425,7 +464,9 @@ export default function SDGsPage() {
                         />
                         <div>
                           <div className="sdg-quote-name">Christiana</div>
-                          <div className="sdg-quote-role" style={{ color: g.color }}>Founder & CEO, SMIC360</div>
+                          <div className="sdg-quote-role" style={{ color: g.color }}>
+                            Founder & CEO, SMIC360
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -440,10 +481,18 @@ export default function SDGsPage() {
         <section className="sdg-three">
           <div className="wrap">
             <div style={{ textAlign: 'center' }} className="reveal">
-              <span className="tag" style={{ justifyContent: 'center' }}>Our Three SDGs</span>
-              <h2 className="section-title">The Goals We <em>Champion</em></h2>
-              <p className="section-sub" style={{ textAlign: 'center', margin: '10px auto 0', maxWidth: 540 }}>
-                Recognised by the United Nations — adopted by SMIC360 as pillars of how we do business worldwide.
+              <span className="tag" style={{ justifyContent: 'center' }}>
+                Our Three SDGs
+              </span>
+              <h2 className="section-title">
+                The Goals We <em>Champion</em>
+              </h2>
+              <p
+                className="section-sub"
+                style={{ textAlign: 'center', margin: '10px auto 0', maxWidth: 540 }}
+              >
+                Recognised by the United Nations — adopted by SMIC360 as pillars of how we do
+                business worldwide.
               </p>
             </div>
             <div className="sdg-three-grid stagger">
@@ -451,10 +500,17 @@ export default function SDGsPage() {
                 <div
                   key={i}
                   className="sdg-card"
-                  onClick={() => { setActive(i); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                  onClick={() => {
+                    setActive(i);
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}
                   style={{ borderColor: `${g.color}25` }}
-                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = g.color; }}
-                  onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = `${g.color}25`; }}
+                  onMouseEnter={(e) => {
+                    (e.currentTarget as HTMLElement).style.borderColor = g.color;
+                  }}
+                  onMouseLeave={(e) => {
+                    (e.currentTarget as HTMLElement).style.borderColor = `${g.color}25`;
+                  }}
                 >
                   {/* Icon with coloured bg */}
                   <div className="sdg-card-img-wrap" style={{ background: g.bg }}>
@@ -462,14 +518,24 @@ export default function SDGsPage() {
                   </div>
                   {/* Body */}
                   <div className="sdg-card-body">
-                    <div className="sdg-card-num" style={{ color: g.color }}>SDG {g.num}</div>
+                    <div className="sdg-card-num" style={{ color: g.color }}>
+                      SDG {g.num}
+                    </div>
                     <div className="sdg-card-title">{g.title}</div>
                     <p className="sdg-card-desc">{g.body.slice(0, 140)}…</p>
                     <button
                       className="sdg-card-btn"
                       style={{ borderColor: g.color, color: g.color }}
-                      onMouseEnter={e => { const b = e.currentTarget as HTMLButtonElement; b.style.background = g.color; b.style.color = '#fff'; }}
-                      onMouseLeave={e => { const b = e.currentTarget as HTMLButtonElement; b.style.background = 'transparent'; b.style.color = g.color; }}
+                      onMouseEnter={(e) => {
+                        const b = e.currentTarget as HTMLButtonElement;
+                        b.style.background = g.color;
+                        b.style.color = '#fff';
+                      }}
+                      onMouseLeave={(e) => {
+                        const b = e.currentTarget as HTMLButtonElement;
+                        b.style.background = 'transparent';
+                        b.style.color = g.color;
+                      }}
                     >
                       Learn More ↑
                     </button>
@@ -486,16 +552,51 @@ export default function SDGsPage() {
             {/* SDG icons row */}
             <div style={{ display: 'flex', gap: 14, justifyContent: 'center', marginBottom: 32 }}>
               {SDGS.map((g, i) => (
-                <div key={i} style={{ width: 60, height: 60, borderRadius: 12, overflow: 'hidden', border: '2px solid rgba(255,255,255,0.15)', boxShadow: `0 6px 22px ${g.shadow}` }}>
-                  <img src={g.img} alt={`SDG ${g.num}`} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} loading="lazy" />
+                <div
+                  key={i}
+                  style={{
+                    width: 60,
+                    height: 60,
+                    borderRadius: 12,
+                    overflow: 'hidden',
+                    border: '2px solid rgba(255,255,255,0.15)',
+                    boxShadow: `0 6px 22px ${g.shadow}`,
+                  }}
+                >
+                  <img
+                    src={g.img}
+                    alt={`SDG ${g.num}`}
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                    loading="lazy"
+                  />
                 </div>
               ))}
             </div>
-            <h2>We Are Leaving<br /><em>No One Behind</em></h2>
-            <p>Connect with us on our mission to bring change to the world, one business at a time. Whether you are a client, partner, or investor — your engagement with SMIC360 contributes to a more equal, prosperous, and innovative world.</p>
+            <h2>
+              We Are Leaving
+              <br />
+              <em>No One Behind</em>
+            </h2>
+            <p>
+              Connect with us on our mission to bring change to the world, one business at a time.
+              Whether you are a client, partner, or investor — your engagement with SMIC360
+              contributes to a more equal, prosperous, and innovative world.
+            </p>
             <div style={{ display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap' }}>
-              <Link href="/contact" className="btn btn-primary" style={{ fontSize: 15, padding: '13px 30px' }}>Contact Us →</Link>
-              <button onClick={() => setBookOpen(true)} className="btn btn-outline-white" style={{ fontSize: 15, padding: '13px 30px' }}>Book a Consultation</button>
+              <Link
+                href="/contact"
+                className="btn btn-primary"
+                style={{ fontSize: 15, padding: '13px 30px' }}
+              >
+                Contact Us →
+              </Link>
+              <button
+                onClick={() => setBookOpen(true)}
+                className="btn btn-outline-white"
+                style={{ fontSize: 15, padding: '13px 30px' }}
+              >
+                Book a Consultation
+              </button>
             </div>
             <div className="sdg-tagline">
               Building Foundations. Branding Futures. Connecting Markets.

@@ -4,38 +4,78 @@ import { createPortal } from 'react-dom';
 
 /* ─── All souvenir / branding media ─────────────────────────── */
 const ITEMS = [
-  { type: 'image', src: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777865846/WhatsApp_Image_2026-05-03_at_7.46.17_PM_1_hqdwyn.jpg',  alt: 'Branded Souvenir — Caps' },
-  { type: 'image', src: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777865846/WhatsApp_Image_2026-05-03_at_7.46.17_PM_2_sdh2bk.jpg',  alt: 'Branded Souvenir — Mugs' },
-  { type: 'image', src: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777865846/WhatsApp_Image_2026-05-03_at_7.46.18_PM_iyx0a0.jpg',  alt: 'Branded Souvenir — Bags' },
-  { type: 'image', src: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777865846/WhatsApp_Image_2026-05-03_at_7.41.12_PM_3_udwvxo.jpg', alt: 'Branded Souvenir — Pens & Stationery' },
-  { type: 'image', src: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777865846/WhatsApp_Image_2026-05-03_at_7.46.17_PM_kaqdd8.jpg',  alt: 'Branded Souvenir — T-Shirts' },
-  { type: 'image', src: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777865847/WhatsApp_Image_2026-05-03_at_7.41.12_PM_2_pvcfxj.jpg', alt: 'Branded Souvenir — Notepads' },
-  { type: 'image', src: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777865847/WhatsApp_Image_2026-05-03_at_7.41.12_PM_1_fztiyx.jpg', alt: 'Branded Souvenir — Umbrella' },
-  { type: 'image', src: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777865848/WhatsApp_Image_2026-05-03_at_7.35.56_PM_hcyd4u.jpg', alt: 'Branded Souvenir — Corporate Gifts' },
-  { type: 'image', src: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777865848/WhatsApp_Image_2026-05-03_at_7.37.37_PM_awmm8c.jpg', alt: 'Branded Souvenir — Keyrings' },
-  { type: 'image', src: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777865848/WhatsApp_Image_2026-05-03_at_7.34.42_PM_wmgzu5.jpg', alt: 'Branded Souvenir — Packaging' },
-  { type: 'image', src: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777865848/WhatsApp_Image_2026-05-03_at_7.34.08_PM_1_rkkyk2.jpg', alt: 'Branded Souvenir — Collection' },
+  {
+    type: 'image',
+    src: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777865846/WhatsApp_Image_2026-05-03_at_7.46.17_PM_1_hqdwyn.jpg',
+    alt: 'Branded Souvenir — Caps',
+  },
+  {
+    type: 'image',
+    src: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777865846/WhatsApp_Image_2026-05-03_at_7.46.17_PM_2_sdh2bk.jpg',
+    alt: 'Branded Souvenir — Mugs',
+  },
+  {
+    type: 'image',
+    src: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777865846/WhatsApp_Image_2026-05-03_at_7.46.18_PM_iyx0a0.jpg',
+    alt: 'Branded Souvenir — Bags',
+  },
+  {
+    type: 'image',
+    src: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777865846/WhatsApp_Image_2026-05-03_at_7.41.12_PM_3_udwvxo.jpg',
+    alt: 'Branded Souvenir — Pens & Stationery',
+  },
+  {
+    type: 'image',
+    src: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777865846/WhatsApp_Image_2026-05-03_at_7.46.17_PM_kaqdd8.jpg',
+    alt: 'Branded Souvenir — T-Shirts',
+  },
+  {
+    type: 'image',
+    src: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777865847/WhatsApp_Image_2026-05-03_at_7.41.12_PM_2_pvcfxj.jpg',
+    alt: 'Branded Souvenir — Notepads',
+  },
+  {
+    type: 'image',
+    src: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777865847/WhatsApp_Image_2026-05-03_at_7.41.12_PM_1_fztiyx.jpg',
+    alt: 'Branded Souvenir — Umbrella',
+  },
+  {
+    type: 'image',
+    src: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777865848/WhatsApp_Image_2026-05-03_at_7.35.56_PM_hcyd4u.jpg',
+    alt: 'Branded Souvenir — Corporate Gifts',
+  },
+  {
+    type: 'image',
+    src: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777865848/WhatsApp_Image_2026-05-03_at_7.37.37_PM_awmm8c.jpg',
+    alt: 'Branded Souvenir — Keyrings',
+  },
+  {
+    type: 'image',
+    src: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777865848/WhatsApp_Image_2026-05-03_at_7.34.42_PM_wmgzu5.jpg',
+    alt: 'Branded Souvenir — Packaging',
+  },
+  {
+    type: 'image',
+    src: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777865848/WhatsApp_Image_2026-05-03_at_7.34.08_PM_1_rkkyk2.jpg',
+    alt: 'Branded Souvenir — Collection',
+  },
 ] as const;
 
 /* ─── Lightbox ─────────────────────────────────────────────── */
-function Lightbox({
-  index,
-  onClose,
-}: {
-  index: number;
-  onClose: () => void;
-}) {
+function Lightbox({ index, onClose }: { index: number; onClose: () => void }) {
   const [cur, setCur] = useState(index);
   const [mounted, setMounted] = useState(false);
   const total = ITEMS.length;
 
-  useEffect(() => { setMounted(true); }, []);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape')      onClose();
-      if (e.key === 'ArrowRight')  setCur(c => (c + 1) % total);
-      if (e.key === 'ArrowLeft')   setCur(c => (c - 1 + total) % total);
+      if (e.key === 'Escape') onClose();
+      if (e.key === 'ArrowRight') setCur((c) => (c + 1) % total);
+      if (e.key === 'ArrowLeft') setCur((c) => (c - 1 + total) % total);
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
@@ -44,7 +84,9 @@ function Lightbox({
   useEffect(() => {
     if (!mounted) return;
     document.documentElement.style.overflow = 'hidden';
-    return () => { document.documentElement.style.overflow = ''; };
+    return () => {
+      document.documentElement.style.overflow = '';
+    };
   }, [mounted]);
 
   if (!mounted) return null;
@@ -55,10 +97,13 @@ function Lightbox({
     <div
       onClick={onClose}
       style={{
-        position: 'fixed', inset: 0,
+        position: 'fixed',
+        inset: 0,
         background: 'rgba(4,14,29,0.97)',
         zIndex: 999999,
-        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
         padding: '20px',
       }}
     >
@@ -85,38 +130,115 @@ function Lightbox({
       `}</style>
 
       {/* Close */}
-      <button className="lb-close" onClick={onClose} type="button">✕</button>
+      <button className="lb-close" onClick={onClose} type="button">
+        ✕
+      </button>
 
       {/* Prev */}
-      <button className="lb-btn" style={{ left: 16 }} type="button"
-        onClick={e => { e.stopPropagation(); setCur(c => (c - 1 + total) % total); }}>‹</button>
+      <button
+        className="lb-btn"
+        style={{ left: 16 }}
+        type="button"
+        onClick={(e) => {
+          e.stopPropagation();
+          setCur((c) => (c - 1 + total) % total);
+        }}
+      >
+        ‹
+      </button>
 
       {/* Media */}
-      <div onClick={e => e.stopPropagation()} style={{ maxWidth: '88vw', maxHeight: '82vh', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14 }}>
+      <div
+        onClick={(e) => e.stopPropagation()}
+        style={{
+          maxWidth: '88vw',
+          maxHeight: '82vh',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: 14,
+        }}
+      >
         <img
           key={cur}
           src={item.src}
           alt={item.alt}
-          style={{ maxWidth: '100%', maxHeight: '72vh', objectFit: 'contain', borderRadius: 14, boxShadow: '0 32px 80px rgba(0,0,0,0.7)', animation: 'lbPop 0.26s ease both' }}
+          style={{
+            maxWidth: '100%',
+            maxHeight: '72vh',
+            objectFit: 'contain',
+            borderRadius: 14,
+            boxShadow: '0 32px 80px rgba(0,0,0,0.7)',
+            animation: 'lbPop 0.26s ease both',
+          }}
         />
-        <div style={{ color: 'rgba(255,255,255,0.6)', fontSize: 13, fontWeight: 600 }}>{item.alt}</div>
+        <div style={{ color: 'rgba(255,255,255,0.6)', fontSize: 13, fontWeight: 600 }}>
+          {item.alt}
+        </div>
       </div>
 
       {/* Next */}
-      <button className="lb-btn" style={{ right: 16 }} type="button"
-        onClick={e => { e.stopPropagation(); setCur(c => (c + 1) % total); }}>›</button>
+      <button
+        className="lb-btn"
+        style={{ right: 16 }}
+        type="button"
+        onClick={(e) => {
+          e.stopPropagation();
+          setCur((c) => (c + 1) % total);
+        }}
+      >
+        ›
+      </button>
 
       {/* Counter */}
-      <div style={{ position: 'absolute', bottom: 24, left: '50%', transform: 'translateX(-50%)', background: 'rgba(255,255,255,0.1)', backdropFilter: 'blur(8px)', border: '1px solid rgba(255,255,255,0.15)', color: '#fff', padding: '5px 16px', borderRadius: 20, fontSize: 12.5, fontWeight: 600 }}>
+      <div
+        style={{
+          position: 'absolute',
+          bottom: 24,
+          left: '50%',
+          transform: 'translateX(-50%)',
+          background: 'rgba(255,255,255,0.1)',
+          backdropFilter: 'blur(8px)',
+          border: '1px solid rgba(255,255,255,0.15)',
+          color: '#fff',
+          padding: '5px 16px',
+          borderRadius: 20,
+          fontSize: 12.5,
+          fontWeight: 600,
+        }}
+      >
         {cur + 1} / {total}
       </div>
 
       {/* Dot strip */}
-      <div style={{ position: 'absolute', bottom: 56, left: '50%', transform: 'translateX(-50%)', display: 'flex', gap: 6 }}>
+      <div
+        style={{
+          position: 'absolute',
+          bottom: 56,
+          left: '50%',
+          transform: 'translateX(-50%)',
+          display: 'flex',
+          gap: 6,
+        }}
+      >
         {ITEMS.map((_, i) => (
-          <button key={i} type="button"
-            onClick={e => { e.stopPropagation(); setCur(i); }}
-            style={{ width: i === cur ? 20 : 7, height: 7, borderRadius: 4, background: i === cur ? '#FFC107' : 'rgba(255,255,255,0.28)', border: 'none', cursor: 'pointer', transition: 'all 0.22s', padding: 0 }}
+          <button
+            key={i}
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              setCur(i);
+            }}
+            style={{
+              width: i === cur ? 20 : 7,
+              height: 7,
+              borderRadius: 4,
+              background: i === cur ? '#FFC107' : 'rgba(255,255,255,0.28)',
+              border: 'none',
+              cursor: 'pointer',
+              transition: 'all 0.22s',
+              padding: 0,
+            }}
           />
         ))}
       </div>
@@ -128,11 +250,11 @@ function Lightbox({
 /* ─── Main Component ────────────────────────────────────────── */
 export default function BrandingGallery() {
   const [lightbox, setLightbox] = useState<number | null>(null);
-  const [hovered, setHovered]   = useState<number | null>(null);
+  const [hovered, setHovered] = useState<number | null>(null);
 
   /* Masonry-style layout: first item is wide (spans 2 cols) */
   const featured = ITEMS[0];
-  const rest     = ITEMS.slice(1);
+  const rest = ITEMS.slice(1);
 
   return (
     <>
@@ -245,23 +367,27 @@ export default function BrandingGallery() {
         `}</style>
 
         <div className="wrap">
-
           {/* Header */}
           <div className="bg-section-header reveal">
-            <span className="tag" style={{ justifyContent: 'center' }}>Our Work in Action</span>
-            <h2 className="section-title">Branded <em>Souvenirs & Merchandise</em></h2>
-            <p className="section-sub" style={{ textAlign: 'center', margin: '10px auto 0', maxWidth: 580 }}>
-              From corporate gifts to branded merchandise — we produce high-quality souvenirs that keep your brand front of mind long after the event.
+            <span className="tag" style={{ justifyContent: 'center' }}>
+              Our Work in Action
+            </span>
+            <h2 className="section-title">
+              Branded <em>Souvenirs & Merchandise</em>
+            </h2>
+            <p
+              className="section-sub"
+              style={{ textAlign: 'center', margin: '10px auto 0', maxWidth: 580 }}
+            >
+              From corporate gifts to branded merchandise — we produce high-quality souvenirs that
+              keep your brand front of mind long after the event.
             </p>
           </div>
 
           {/* Main masonry grid — first 6 items */}
           <div className="bg-grid reveal">
             {/* Featured (large) */}
-            <div
-              className="bg-cell bg-featured"
-              onClick={() => setLightbox(0)}
-            >
+            <div className="bg-cell bg-featured" onClick={() => setLightbox(0)}>
               <img src={featured.src} alt={featured.alt} loading="lazy" />
               <div className="bg-overlay">
                 <div className="bg-zoom-icon">⤢</div>
@@ -285,17 +411,36 @@ export default function BrandingGallery() {
                 <div className="bg-label">{item.alt}</div>
                 {/* "View All" overlay on last visible cell */}
                 {i === 4 && ITEMS.length > 6 && (
-                  <div style={{
-                    position: 'absolute', inset: 0,
-                    background: 'rgba(4,14,29,0.6)',
-                    display: 'flex', flexDirection: 'column',
-                    alignItems: 'center', justifyContent: 'center',
-                    borderRadius: 14,
-                  }}>
-                    <div style={{ color: '#fff', fontFamily: "'Oswald',sans-serif", fontSize: 26, fontWeight: 700 }}>
+                  <div
+                    style={{
+                      position: 'absolute',
+                      inset: 0,
+                      background: 'rgba(4,14,29,0.6)',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      borderRadius: 14,
+                    }}
+                  >
+                    <div
+                      style={{
+                        color: '#fff',
+                        fontFamily: "'Oswald',sans-serif",
+                        fontSize: 26,
+                        fontWeight: 700,
+                      }}
+                    >
                       +{ITEMS.length - 6}
                     </div>
-                    <div style={{ color: 'rgba(255,255,255,0.7)', fontSize: 12, fontWeight: 600, marginTop: 4 }}>
+                    <div
+                      style={{
+                        color: 'rgba(255,255,255,0.7)',
+                        fontSize: 12,
+                        fontWeight: 600,
+                        marginTop: 4,
+                      }}
+                    >
                       More Photos
                     </div>
                   </div>
@@ -320,10 +465,29 @@ export default function BrandingGallery() {
             <div
               className="bg-strip-cell"
               onClick={() => setLightbox(0)}
-              style={{ background: 'linear-gradient(135deg,#040e1d,#0b2d56)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 4 }}
+              style={{
+                background: 'linear-gradient(135deg,#040e1d,#0b2d56)',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: 4,
+              }}
             >
               <span style={{ fontSize: 20 }}>🖼️</span>
-              <span style={{ color: '#FFC107', fontSize: 11, fontWeight: 700, textAlign: 'center', lineHeight: 1.3 }}>View All<br />Photos</span>
+              <span
+                style={{
+                  color: '#FFC107',
+                  fontSize: 11,
+                  fontWeight: 700,
+                  textAlign: 'center',
+                  lineHeight: 1.3,
+                }}
+              >
+                View All
+                <br />
+                Photos
+              </span>
             </div>
           </div>
 
@@ -333,7 +497,7 @@ export default function BrandingGallery() {
               { val: '500+', label: 'Souvenir Types' },
               { val: '100%', label: 'Custom Branded' },
               { val: '48hrs', label: 'Express Delivery' },
-              { val: '80+',  label: 'Corporate Clients' },
+              { val: '80+', label: 'Corporate Clients' },
             ].map((s, i) => (
               <div key={i} className="bg-stat">
                 <div className="bg-stat-val">{s.val}</div>
@@ -343,33 +507,129 @@ export default function BrandingGallery() {
           </div>
 
           {/* Bottom CTA */}
-          <div className="reveal" style={{ marginTop: 44, background: 'linear-gradient(135deg,#040e1d 0%,#0b2d56 55%,#1261c0 100%)', borderRadius: 22, padding: '44px 40px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 24, flexWrap: 'wrap', position: 'relative', overflow: 'hidden', boxShadow: '0 20px 60px rgba(4,14,29,0.2)' }}>
-            <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 3, background: 'linear-gradient(90deg,#FFC107,#00b4d8,#FFC107)' }} />
-            <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(0,180,216,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,180,216,0.04) 1px,transparent 1px)', backgroundSize: '48px 48px', pointerEvents: 'none' }} />
+          <div
+            className="reveal"
+            style={{
+              marginTop: 44,
+              background: 'linear-gradient(135deg,#040e1d 0%,#0b2d56 55%,#1261c0 100%)',
+              borderRadius: 22,
+              padding: '44px 40px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              gap: 24,
+              flexWrap: 'wrap',
+              position: 'relative',
+              overflow: 'hidden',
+              boxShadow: '0 20px 60px rgba(4,14,29,0.2)',
+            }}
+          >
+            <div
+              style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                right: 0,
+                height: 3,
+                background: 'linear-gradient(90deg,#FFC107,#00b4d8,#FFC107)',
+              }}
+            />
+            <div
+              style={{
+                position: 'absolute',
+                inset: 0,
+                backgroundImage:
+                  'linear-gradient(rgba(0,180,216,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,180,216,0.04) 1px,transparent 1px)',
+                backgroundSize: '48px 48px',
+                pointerEvents: 'none',
+              }}
+            />
             <div style={{ position: 'relative', zIndex: 1 }}>
-              <div style={{ fontSize: 11, fontWeight: 800, letterSpacing: '2px', textTransform: 'uppercase', color: '#00b4d8', marginBottom: 8, display: 'flex', alignItems: 'center', gap: 8 }}>
-                <span style={{ display: 'block', width: 20, height: 2, background: '#00b4d8', borderRadius: 2 }} />
+              <div
+                style={{
+                  fontSize: 11,
+                  fontWeight: 800,
+                  letterSpacing: '2px',
+                  textTransform: 'uppercase',
+                  color: '#00b4d8',
+                  marginBottom: 8,
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 8,
+                }}
+              >
+                <span
+                  style={{
+                    display: 'block',
+                    width: 20,
+                    height: 2,
+                    background: '#00b4d8',
+                    borderRadius: 2,
+                  }}
+                />
                 Order Your Branded Merchandise
               </div>
-              <h3 style={{ fontFamily: "'Oswald',sans-serif", fontSize: 'clamp(20px,3vw,30px)', fontWeight: 700, color: '#fff', margin: 0, lineHeight: 1.1 }}>
-                Make Your Brand <em style={{ fontStyle: 'normal', color: '#FFC107' }}>Unforgettable</em>
+              <h3
+                style={{
+                  fontFamily: "'Oswald',sans-serif",
+                  fontSize: 'clamp(20px,3vw,30px)',
+                  fontWeight: 700,
+                  color: '#fff',
+                  margin: 0,
+                  lineHeight: 1.1,
+                }}
+              >
+                Make Your Brand{' '}
+                <em style={{ fontStyle: 'normal', color: '#FFC107' }}>Unforgettable</em>
               </h3>
-              <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: 14, marginTop: 8, maxWidth: 420, lineHeight: 1.7 }}>
-                Caps, T-shirts, mugs, bags, pens, notepads and 500+ more — all custom-branded and delivered fast.
+              <p
+                style={{
+                  color: 'rgba(255,255,255,0.5)',
+                  fontSize: 14,
+                  marginTop: 8,
+                  maxWidth: 420,
+                  lineHeight: 1.7,
+                }}
+              >
+                Caps, T-shirts, mugs, bags, pens, notepads and 500+ more — all custom-branded and
+                delivered fast.
               </p>
             </div>
-            <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', position: 'relative', zIndex: 1 }}>
+            <div
+              style={{
+                display: 'flex',
+                gap: 12,
+                flexWrap: 'wrap',
+                position: 'relative',
+                zIndex: 1,
+              }}
+            >
               <button
                 onClick={() => setLightbox(0)}
-                style={{ padding: '12px 24px', background: 'rgba(255,255,255,0.1)', color: '#fff', border: '1.5px solid rgba(255,255,255,0.28)', borderRadius: 11, fontFamily: "'Outfit',sans-serif", fontWeight: 700, fontSize: 13.5, cursor: 'pointer', transition: 'all 0.22s' }}
-                onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.background = 'rgba(255,255,255,0.18)'; }}
-                onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.background = 'rgba(255,255,255,0.1)'; }}
+                style={{
+                  padding: '12px 24px',
+                  background: 'rgba(255,255,255,0.1)',
+                  color: '#fff',
+                  border: '1.5px solid rgba(255,255,255,0.28)',
+                  borderRadius: 11,
+                  fontFamily: "'Outfit',sans-serif",
+                  fontWeight: 700,
+                  fontSize: 13.5,
+                  cursor: 'pointer',
+                  transition: 'all 0.22s',
+                }}
+                onMouseEnter={(e) => {
+                  (e.currentTarget as HTMLButtonElement).style.background =
+                    'rgba(255,255,255,0.18)';
+                }}
+                onMouseLeave={(e) => {
+                  (e.currentTarget as HTMLButtonElement).style.background = 'rgba(255,255,255,0.1)';
+                }}
               >
                 Browse Gallery ↗
               </button>
             </div>
           </div>
-
         </div>
       </section>
     </>

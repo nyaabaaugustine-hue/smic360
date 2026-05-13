@@ -155,15 +155,12 @@ CONVERSION & RESPONSE RULES
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${grokKey}`,
+          Authorization: `Bearer ${grokKey}`,
         },
         body: JSON.stringify({
           model: 'grok-3-mini',
           max_tokens: 700,
-          messages: [
-            { role: 'system', content: systemPrompt },
-            ...messages,
-          ],
+          messages: [{ role: 'system', content: systemPrompt }, ...messages],
           stream: false,
         }),
       });
@@ -212,7 +209,7 @@ CONVERSION & RESPONSE RULES
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${groqKey}`,
+          Authorization: `Bearer ${groqKey}`,
         },
         body: JSON.stringify({
           model: 'llama-3.3-70b-versatile',
@@ -230,14 +227,19 @@ CONVERSION & RESPONSE RULES
     }
 
     // ─── No key configured — friendly offline message ─────────────────────
-    return NextResponse.json({
-      text: "Hi! I'm Ama from SMIC360 🙋‍♀️\n\nOur AI assistant isn't fully configured yet, but our team is ready to help you right now!\n\n• 📞 **020 336 1155** | **054 166 5108**\n• 📧 **christie@smic360.com**\n• 🌐 **www.smic360.com**\n\nAkwaaba! We look forward to speaking with you.",
-    }, { status: 200 });
-
+    return NextResponse.json(
+      {
+        text: "Hi! I'm Ama from SMIC360 🙋‍♀️\n\nOur AI assistant isn't fully configured yet, but our team is ready to help you right now!\n\n• 📞 **020 336 1155** | **054 166 5108**\n• 📧 **christie@smic360.com**\n• 🌐 **www.smic360.com**\n\nAkwaaba! We look forward to speaking with you.",
+      },
+      { status: 200 }
+    );
   } catch (error) {
     console.error('[SMIC360 Chat API Error]:', error);
-    return NextResponse.json({
-      text: "I'm having a little trouble right now. 😔\n\nPlease call 📞 **020 336 1155** or tap the WhatsApp button — our team will assist you right away!",
-    }, { status: 200 });
+    return NextResponse.json(
+      {
+        text: "I'm having a little trouble right now. 😔\n\nPlease call 📞 **020 336 1155** or tap the WhatsApp button — our team will assist you right away!",
+      },
+      { status: 200 }
+    );
   }
 }

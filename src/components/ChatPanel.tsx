@@ -2,7 +2,11 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 
-interface Message { text: string; type: 'bot' | 'user'; time: string; }
+interface Message {
+  text: string;
+  type: 'bot' | 'user';
+  time: string;
+}
 
 const WELCOME: Message = {
   text: "👋 Akwaaba! I'm Ama, your SMIC360 virtual receptionist.\n\nI can tell you about our **Marketing**, **Real Estate** (Phoenix Enclave), and **Procurement** services — or help you book a free consultation.\n\nHow can I help you today?",
@@ -18,18 +22,18 @@ const QUICK_REPLIES = [
 ];
 
 export default function ChatPanel() {
-  const [mounted, setMounted]         = useState(false);
-  const [chatOpen, setChatOpen]       = useState(false);
-  const [scrollShow, setScrollShow]   = useState(false);
-  const [unread, setUnread]           = useState(0);
-  const [messages, setMessages]       = useState<Message[]>([WELCOME]);
-  const [inputVal, setInputVal]       = useState('');
-  const [isTyping, setIsTyping]       = useState(false);
-  const [waModal, setWaModal]         = useState(false);
-  const [waPhone, setWaPhone]         = useState('');
-  const [waName, setWaName]           = useState('');
-  const [waStep, setWaStep]           = useState<'form'|'submitting'|'done'>('form');
-  const [waError, setWaError]         = useState('');
+  const [mounted, setMounted] = useState(false);
+  const [chatOpen, setChatOpen] = useState(false);
+  const [scrollShow, setScrollShow] = useState(false);
+  const [unread, setUnread] = useState(0);
+  const [messages, setMessages] = useState<Message[]>([WELCOME]);
+  const [inputVal, setInputVal] = useState('');
+  const [isTyping, setIsTyping] = useState(false);
+  const [waModal, setWaModal] = useState(false);
+  const [waPhone, setWaPhone] = useState('');
+  const [waName, setWaName] = useState('');
+  const [waStep, setWaStep] = useState<'form' | 'submitting' | 'done'>('form');
+  const [waError, setWaError] = useState('');
   const endRef = useRef<HTMLDivElement>(null);
   const phoneRef = useRef<HTMLInputElement>(null);
 
@@ -37,9 +41,14 @@ export default function ChatPanel() {
     setMounted(true);
     const onScroll = () => setScrollShow(window.scrollY > 400);
     window.addEventListener('scroll', onScroll, { passive: true });
-    const tease = setTimeout(() => { if (!chatOpen) setUnread(1); }, 8000);
-    return () => { window.removeEventListener('scroll', onScroll); clearTimeout(tease); };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    const tease = setTimeout(() => {
+      if (!chatOpen) setUnread(1);
+    }, 8000);
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      clearTimeout(tease);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -57,16 +66,18 @@ export default function ChatPanel() {
     } else {
       document.documentElement.style.overflow = '';
     }
-    return () => { document.documentElement.style.overflow = ''; };
+    return () => {
+      document.documentElement.style.overflow = '';
+    };
   }, [chatOpen]);
 
   const getTime = () => {
     const d = new Date();
-    return `${d.getHours()}:${String(d.getMinutes()).padStart(2,'0')}`;
+    return `${d.getHours()}:${String(d.getMinutes()).padStart(2, '0')}`;
   };
 
-  const addMsg = (text: string, type: 'bot'|'user') =>
-    setMessages(p => [...p, { text, type, time: getTime() }]);
+  const addMsg = (text: string, type: 'bot' | 'user') =>
+    setMessages((p) => [...p, { text, type, time: getTime() }]);
 
   const clearChat = () => setMessages([WELCOME]);
 
@@ -77,7 +88,7 @@ export default function ChatPanel() {
     addMsg(trimmed, 'user');
     setIsTyping(true);
     try {
-      const history = messages.map(m => ({
+      const history = messages.map((m) => ({
         role: m.type === 'bot' ? 'assistant' : 'user',
         content: m.text,
       }));
@@ -89,12 +100,16 @@ export default function ChatPanel() {
       const data = await res.json();
       setIsTyping(false);
       addMsg(
-        data.text || "I'm having trouble right now. Please call us at 📞 024 478 3099 or WhatsApp us!",
+        data.text ||
+          "I'm having trouble right now. Please call us at 📞 024 478 3099 or WhatsApp us!",
         'bot'
       );
     } catch {
       setIsTyping(false);
-      addMsg("I'm having trouble connecting. Please call 📞 024 478 3099 or tap WhatsApp below!", 'bot');
+      addMsg(
+        "I'm having trouble connecting. Please call 📞 024 478 3099 or tap WhatsApp below!",
+        'bot'
+      );
     }
   };
 
@@ -102,7 +117,10 @@ export default function ChatPanel() {
     e.preventDefault();
     const saved = sessionStorage.getItem('smic_wa_phone');
     if (saved) {
-      window.open(`https://wa.me/233244783099?text=Hi%20SMIC360!%20My%20number%20is%20${encodeURIComponent(saved)}`, '_blank');
+      window.open(
+        `https://wa.me/233244783099?text=Hi%20SMIC360!%20My%20number%20is%20${encodeURIComponent(saved)}`,
+        '_blank'
+      );
       return;
     }
     setWaStep('form');
@@ -114,7 +132,7 @@ export default function ChatPanel() {
   const handleWaSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const phone = waPhone.trim();
-    const name  = waName.trim();
+    const name = waName.trim();
     const cleaned = phone.replace(/\s|-/g, '');
     const valid = /^(\+233|0)[0-9]{9}$/.test(cleaned);
     if (!valid) {
@@ -126,10 +144,17 @@ export default function ChatPanel() {
     try {
       await fetch('https://formspree.io/f/xdayrral', {
         method: 'POST',
-        headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
-        body: JSON.stringify({ _subject: 'WhatsApp Lead', name: name || 'Not provided', phone: cleaned, source: 'WhatsApp Button' }),
+        headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          _subject: 'WhatsApp Lead',
+          name: name || 'Not provided',
+          phone: cleaned,
+          source: 'WhatsApp Button',
+        }),
       });
-    } catch { /* silent */ }
+    } catch {
+      /* silent */
+    }
     setWaStep('done');
     setTimeout(() => {
       setWaModal(false);
@@ -150,10 +175,15 @@ export default function ChatPanel() {
 
   const renderText = (text: string) => {
     return text.split('\n').map((line, i, arr) => {
-      const parts = line.split(/\*\*(.*?)\*\*/g).map((part, j) =>
-        j % 2 === 1 ? <strong key={j}>{part}</strong> : part
+      const parts = line
+        .split(/\*\*(.*?)\*\*/g)
+        .map((part, j) => (j % 2 === 1 ? <strong key={j}>{part}</strong> : part));
+      return (
+        <React.Fragment key={i}>
+          {parts}
+          {i < arr.length - 1 && <br />}
+        </React.Fragment>
       );
-      return <React.Fragment key={i}>{parts}{i < arr.length - 1 && <br />}</React.Fragment>;
     });
   };
 
@@ -468,9 +498,22 @@ export default function ChatPanel() {
         id="s360-top"
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         aria-label="Back to top"
-        style={{ opacity: scrollShow ? 1 : 0, visibility: scrollShow ? 'visible' : 'hidden', border: 'none' }}
+        style={{
+          opacity: scrollShow ? 1 : 0,
+          visibility: scrollShow ? 'visible' : 'hidden',
+          border: 'none',
+        }}
       >
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+        <svg
+          width="17"
+          height="17"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="3"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
           <path d="M18 15l-6-6-6 6" />
         </svg>
       </button>
@@ -494,15 +537,13 @@ export default function ChatPanel() {
       <div id="s360-fabs">
         <button
           className="s360-fab s360-fab-ai"
-          onClick={() => setChatOpen(o => !o)}
+          onClick={() => setChatOpen((o) => !o)}
           aria-label="Chat with Ama, SMIC360 AI Receptionist"
           aria-expanded={chatOpen}
           style={{ border: 'none', padding: 0, overflow: 'hidden' }}
         >
           <span className="s360-tip">Chat with Ama 🤖</span>
-          {unread > 0 && !chatOpen && (
-            <span className="s360-badge">{unread}</span>
-          )}
+          {unread > 0 && !chatOpen && <span className="s360-badge">{unread}</span>}
           <img
             className="s360-fab-img"
             src="https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777107241/cropped-SMIC-01-180x180_pffxe7.jpg"
@@ -512,28 +553,59 @@ export default function ChatPanel() {
       </div>
 
       {/* ── Chat overlay ── */}
-      {chatOpen && (
-        <div id="s360-overlay" onClick={() => setChatOpen(false)} aria-hidden="true" />
-      )}
+      {chatOpen && <div id="s360-overlay" onClick={() => setChatOpen(false)} aria-hidden="true" />}
 
       {/* ── Chat Panel ── */}
       {chatOpen && (
-        <div id="s360-chat" role="dialog" aria-modal="true" aria-label="Chat with Ama, SMIC360 AI Receptionist">
+        <div
+          id="s360-chat"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Chat with Ama, SMIC360 AI Receptionist"
+        >
           <div className="cp-head">
             <div className="cp-avatar">
-              <img src="https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777107241/cropped-SMIC-01-180x180_pffxe7.jpg" alt="Ama AI" />
+              <img
+                src="https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777107241/cropped-SMIC-01-180x180_pffxe7.jpg"
+                alt="Ama AI"
+              />
             </div>
             <div className="cp-info">
               <h4>Ama · SMIC360 Receptionist</h4>
               <p>AI-powered · Replies instantly</p>
             </div>
             <span className="cp-dot" />
-            <button className="cp-ctrl" onClick={clearChat} title="Clear chat" type="button" aria-label="Clear chat">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" width="12" height="12">
-                <polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+            <button
+              className="cp-ctrl"
+              onClick={clearChat}
+              title="Clear chat"
+              type="button"
+              aria-label="Clear chat"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                width="12"
+                height="12"
+              >
+                <polyline points="3 6 5 6 21 6" />
+                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
               </svg>
             </button>
-            <button className="cp-ctrl" onClick={() => setChatOpen(false)} title="Close" type="button" aria-label="Close chat" style={{ marginLeft: '4px' }}>✕</button>
+            <button
+              className="cp-ctrl"
+              onClick={() => setChatOpen(false)}
+              title="Close"
+              type="button"
+              aria-label="Close chat"
+              style={{ marginLeft: '4px' }}
+            >
+              ✕
+            </button>
           </div>
 
           <div className="cp-msgs" role="log" aria-live="polite">
@@ -545,7 +617,9 @@ export default function ChatPanel() {
             ))}
             {isTyping && (
               <div className="cp-typing" aria-label="Ama is typing">
-                <span/><span/><span/>
+                <span />
+                <span />
+                <span />
               </div>
             )}
             <div ref={endRef} />
@@ -553,7 +627,9 @@ export default function ChatPanel() {
 
           <div className="cp-quick" role="group" aria-label="Quick questions">
             {QUICK_REPLIES.map(({ label, msg }) => (
-              <button key={label} type="button" className="cp-qbtn" onClick={() => sendMsg(msg)}>{label}</button>
+              <button key={label} type="button" className="cp-qbtn" onClick={() => sendMsg(msg)}>
+                {label}
+              </button>
             ))}
           </div>
 
@@ -562,14 +638,31 @@ export default function ChatPanel() {
               type="text"
               placeholder="Ask Ama anything…"
               value={inputVal}
-              onChange={e => setInputVal(e.target.value)}
-              onKeyDown={e => { if (e.key === 'Enter') sendMsg(inputVal); }}
+              onChange={(e) => setInputVal(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') sendMsg(inputVal);
+              }}
               aria-label="Type your message"
               autoComplete="off"
             />
-            <button type="button" className="cp-send" onClick={() => sendMsg(inputVal)} aria-label="Send message">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" width="16" height="16">
-                <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
+            <button
+              type="button"
+              className="cp-send"
+              onClick={() => sendMsg(inputVal)}
+              aria-label="Send message"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                width="16"
+                height="16"
+              >
+                <line x1="22" y1="2" x2="11" y2="13" />
+                <polygon points="22 2 15 22 11 13 2 9 22 2" />
               </svg>
             </button>
           </div>
@@ -608,49 +701,128 @@ export default function ChatPanel() {
             .wam-skip:hover { color:#25D366; }
             .wam-privacy { font-size:11px;color:#9bb4cc;text-align:center;margin-top:12px;line-height:1.5; }
           `}</style>
-          <div id="wa-modal-overlay" onClick={(e) => { if (e.target === e.currentTarget) setWaModal(false); }} role="dialog" aria-modal="true" aria-label="WhatsApp contact">
+          <div
+            id="wa-modal-overlay"
+            onClick={(e) => {
+              if (e.target === e.currentTarget) setWaModal(false);
+            }}
+            role="dialog"
+            aria-modal="true"
+            aria-label="WhatsApp contact"
+          >
             <div id="wa-modal">
               <div id="wa-modal-head">
-                <button type="button" className="wam-close" onClick={() => setWaModal(false)} aria-label="Close">✕</button>
+                <button
+                  type="button"
+                  className="wam-close"
+                  onClick={() => setWaModal(false)}
+                  aria-label="Close"
+                >
+                  ✕
+                </button>
                 <div className="wam-icon">
-                  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                  <svg viewBox="0 0 24 24">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                  </svg>
                 </div>
                 <h3>Connect on WhatsApp</h3>
                 <p>Drop your number and we&apos;ll reach out — or chat with us right now.</p>
               </div>
               <div id="wa-modal-body">
                 {waStep === 'done' ? (
-                  <div style={{ textAlign:'center', padding:'20px 0 8px' }}>
-                    <div style={{ fontSize:52, marginBottom:12 }}>✅</div>
-                    <p style={{ fontFamily:"'Oswald',sans-serif", fontSize:18, fontWeight:700, color:'#15803d' }}>Opening WhatsApp…</p>
-                    <p style={{ fontSize:13, color:'#5a7186', marginTop:6 }}>We&apos;ve saved your number. We&apos;ll be in touch soon!</p>
+                  <div style={{ textAlign: 'center', padding: '20px 0 8px' }}>
+                    <div style={{ fontSize: 52, marginBottom: 12 }}>✅</div>
+                    <p
+                      style={{
+                        fontFamily: "'Oswald',sans-serif",
+                        fontSize: 18,
+                        fontWeight: 700,
+                        color: '#15803d',
+                      }}
+                    >
+                      Opening WhatsApp…
+                    </p>
+                    <p style={{ fontSize: 13, color: '#5a7186', marginTop: 6 }}>
+                      We&apos;ve saved your number. We&apos;ll be in touch soon!
+                    </p>
                   </div>
                 ) : (
                   <form onSubmit={handleWaSubmit} noValidate>
                     <div className="wam-notice">
-                      <span style={{ fontSize:15, flexShrink:0, marginTop:1 }}>🔒</span>
-                      <span>Your number is used <strong>only</strong> to open WhatsApp and so our team can follow up. We never share it.</span>
+                      <span style={{ fontSize: 15, flexShrink: 0, marginTop: 1 }}>🔒</span>
+                      <span>
+                        Your number is used <strong>only</strong> to open WhatsApp and so our team
+                        can follow up. We never share it.
+                      </span>
                     </div>
                     <div className="wam-field">
-                      <label className="wam-label" htmlFor="wam-name">Your Name</label>
-                      <input id="wam-name" type="text" className="wam-input" placeholder="e.g. Kofi Mensah" value={waName} onChange={e => setWaName(e.target.value)} autoComplete="name" disabled={waStep === 'submitting'} />
+                      <label className="wam-label" htmlFor="wam-name">
+                        Your Name
+                      </label>
+                      <input
+                        id="wam-name"
+                        type="text"
+                        className="wam-input"
+                        placeholder="e.g. Kofi Mensah"
+                        value={waName}
+                        onChange={(e) => setWaName(e.target.value)}
+                        autoComplete="name"
+                        disabled={waStep === 'submitting'}
+                      />
                     </div>
                     <div className="wam-field">
-                      <label className="wam-label" htmlFor="wam-phone">Phone Number <span>*</span></label>
-                      <input id="wam-phone" ref={phoneRef} type="tel" className="wam-input" placeholder="e.g. 024 478 3099" value={waPhone} onChange={e => { setWaPhone(e.target.value); setWaError(''); }} autoComplete="tel" inputMode="tel" required disabled={waStep === 'submitting'} />
-                      {waError && <div className="wam-error"><span>⚠️</span> {waError}</div>}
+                      <label className="wam-label" htmlFor="wam-phone">
+                        Phone Number <span>*</span>
+                      </label>
+                      <input
+                        id="wam-phone"
+                        ref={phoneRef}
+                        type="tel"
+                        className="wam-input"
+                        placeholder="e.g. 024 478 3099"
+                        value={waPhone}
+                        onChange={(e) => {
+                          setWaPhone(e.target.value);
+                          setWaError('');
+                        }}
+                        autoComplete="tel"
+                        inputMode="tel"
+                        required
+                        disabled={waStep === 'submitting'}
+                      />
+                      {waError && (
+                        <div className="wam-error">
+                          <span>⚠️</span> {waError}
+                        </div>
+                      )}
                     </div>
                     <button type="submit" className="wam-submit" disabled={waStep === 'submitting'}>
                       {waStep === 'submitting' ? (
-                        <><span className="wam-spinner" /> Saving &amp; Opening…</>
+                        <>
+                          <span className="wam-spinner" /> Saving &amp; Opening…
+                        </>
                       ) : (
-                        <><svg viewBox="0 0 24 24" width="18" height="18" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Chat on WhatsApp Now</>
+                        <>
+                          <svg viewBox="0 0 24 24" width="18" height="18" fill="#fff">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                          </svg>{' '}
+                          Chat on WhatsApp Now
+                        </>
                       )}
                     </button>
-                    <button type="button" className="wam-skip" onClick={() => { setWaModal(false); window.open('https://wa.me/233244783099', '_blank'); }}>
+                    <button
+                      type="button"
+                      className="wam-skip"
+                      onClick={() => {
+                        setWaModal(false);
+                        window.open('https://wa.me/233244783099', '_blank');
+                      }}
+                    >
                       Skip &amp; open WhatsApp directly →
                     </button>
-                    <p className="wam-privacy">🔐 Your number is kept private and never shared with third parties.</p>
+                    <p className="wam-privacy">
+                      🔐 Your number is kept private and never shared with third parties.
+                    </p>
                   </form>
                 )}
               </div>

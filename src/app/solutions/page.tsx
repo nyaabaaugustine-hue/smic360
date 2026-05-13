@@ -23,11 +23,14 @@ export default function SolutionsPage() {
         <div className="page-hero-inner">
           <div className="page-hero-tag">Our Expertise</div>
           <h1>
-            Advertising, Branding &amp; <em>Marketing Solutions</em>
+            Our Core Solutions: A Fully Integrated 360° <em>Approach</em>
           </h1>
           <p>
-            SMIC360 is a full service advertising and integrated marketing company offering comprehensive marketing communication support — from Media Buying and Corporate Branding to Multimedia Graphics, Print Management, Corporate Apparel and Procurement.
+            At SMIC360, we drive growth by aligning strategy with execution across three critical
+            business pillars. We eliminate fragmentation by providing seamless, results-driven
+            experiences across the entire value chain.
           </p>
+          <hr style={{ margin: '20px 0', border: 'none', borderTop: '1px solid var(--border)' }} />
         </div>
       </div>
 
@@ -36,34 +39,48 @@ export default function SolutionsPage() {
         <div className="wrap">
           <div className="solutions-section-grid reveal">
             <div>
-              <span className="tag">01. Marketing</span>
+              <span className="tag">I. Advertising & Marketing</span>
               <h2 className="section-title">
-                Advertising &amp; <em>Marketing Solutions</em>
+                Advertising &amp; <em>Marketing</em>
               </h2>
-              <p className="section-sub">
-                We plan advertising that actually gets seen. Most brands are visible online, but not
-                truly seen. We take care of the marketing and communication needs of clients —
-                branding, strategic planning, budgeting, implementation of sales growth strategies,
-                and general marketing advisory. It also includes PR interventions.
+              <p style={{ fontSize: '15px', fontWeight: 600, color: 'var(--navy)', marginTop: '10px', lineHeight: 1.4 }}>
+                Laying the Foundation for Brand Power &amp; Market Dominance
               </p>
-              
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px', marginTop: '24px' }}>
-                {[
-                  'Strategy & Advisory ',
-                  'Branding & Creative',
-                  'Campaign Execution ',
-                  '4.	Media & Production',
-                ].map((item, i) => (
-                  <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '14px', fontWeight: 500, color: 'var(--text)' }}>
-                    <span style={{ color: '#16a34a', fontWeight: 700 }}>✔</span> {item}
-                  </div>
-                ))}
+              <p className="section-sub" style={{ marginTop: '8px' }}>
+                We provide a comprehensive ecosystem of creative and strategic services designed to
+                build powerful, memorable brands that achieve sustainable growth.
+              </p>
+
+              <div style={{ marginTop: '24px' }}>
+                <ul style={{ listStyle: 'none', padding: 0 }}>
+                  <li style={{ marginBottom: '12px', fontSize: '14px', fontWeight: 500, color: 'var(--text)' }}>
+                    <strong style={{ color: 'var(--navy)' }}>Strategy &amp; Advisory:</strong> We define your path to success through brand positioning, market entry strategies, and data-informed business advisory.
+                  </li>
+                  <li style={{ marginBottom: '12px', fontSize: '14px', fontWeight: 500, color: 'var(--text)' }}>
+                    <strong style={{ color: 'var(--navy)' }}>Branding &amp; Creative:</strong> Our team crafts compelling corporate identities and visual communication designs that resonate across digital and traditional platforms.
+                  </li>
+                  <li style={{ marginBottom: '12px', fontSize: '14px', fontWeight: 500, color: 'var(--text)' }}>
+                    <strong style={{ color: 'var(--navy)' }}>Campaign Execution:</strong> We bring ideas to life through integrated marketing, leveraging social media, search, and high-impact experiential activations.
+                  </li>
+                  <li style={{ marginBottom: '12px', fontSize: '14px', fontWeight: 500, color: 'var(--text)' }}>
+                    <strong style={{ color: 'var(--navy)' }}>Media &amp; Production:</strong> We maximize your reach through expert media buying, out-of-home (OOH) execution, and high-quality print management.
+                  </li>
+                </ul>
+                <hr
+                  style={{ margin: '20px 0', border: 'none', borderTop: '1px solid var(--border)' }}
+                />
               </div>
-              <button onClick={() => setBookOpen(true)} className="btn btn-primary" style={{ marginTop: '28px' }}>
+              <button
+                onClick={() => setBookOpen(true)}
+                className="btn btn-primary"
+                style={{ marginTop: '28px' }}
+              >
                 Book A Consultation →
               </button>
             </div>
-            <div style={{ borderRadius: 'var(--r-lg)', overflow: 'hidden', boxShadow: 'var(--sh-md)' }}>
+            <div
+              style={{ borderRadius: 'var(--r-lg)', overflow: 'hidden', boxShadow: 'var(--sh-md)' }}
+            >
               <img
                 src="https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777114247/kkkl_nhdczf.avif"
                 alt="Marketing Solutions"
@@ -78,7 +95,10 @@ export default function SolutionsPage() {
       <section id="realestate" style={{ padding: '90px 0', background: 'var(--off)' }}>
         <div className="wrap">
           <div className="solutions-section-grid reveal">
-            <div className="img-order-first" style={{ borderRadius: 'var(--r-lg)', overflow: 'hidden', boxShadow: 'var(--sh-md)' }}>
+            <div
+              className="img-order-first"
+              style={{ borderRadius: 'var(--r-lg)', overflow: 'hidden', boxShadow: 'var(--sh-md)' }}
+            >
               <img
                 src="https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777111208/WhatsApp-Image-2025-08-18-at-14.16.35_e93040d9l_gwfnmu.jpg"
                 alt="The Phoenix Enclave"
@@ -86,63 +106,37 @@ export default function SolutionsPage() {
               />
             </div>
             <div>
-              <span className="tag">02. Real Estate</span>
+              <span className="tag">II. Real Estate Development</span>
               <h2 className="section-title">
                 Real Estate <em>Development</em>
               </h2>
-              <p className="section-sub">
-                Through our flagship development, The Phoenix Enclave, we provide modern, secured,
-                and serene gated communities. A mini gated community strategically developed in a
-                serene and secured locality — Community 20, Lashibi, off Spintex Road, Accra.
-                Our focus is on contemporary architecture and premium finishes that offer high ROI
-                for investors and comfort for homeowners.
+              <p style={{ fontSize: '15px', fontWeight: 600, color: 'var(--navy)', marginTop: '10px', lineHeight: 1.4 }}>
+                Transforming Potential into Premium Assets
               </p>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px', marginTop: '24px' }}>
-                {[
-                  'Gated Community Development',
-                  'Property Management',
-                  'Furnished Apartments (Christie\'s Homestay)',
-                  'Construction Oversight',
-                  'Investment Advisory',
-                  'Property Sales',
-                ].map((item, i) => (
-                  <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '14px', fontWeight: 500, color: 'var(--text)' }}>
-                    <span style={{ color: '#16a34a', fontWeight: 700 }}>✔</span> {item}
-                  </div>
-                ))}
-              </div>
-
-              {/* Hospitality sub-section */}
-              <div style={{ marginTop: '28px', background: '#fff', border: '1px solid var(--border)', borderLeft: '4px solid var(--gold)', borderRadius: '12px', padding: '20px 22px' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px' }}>
-                  <span style={{ fontSize: '20px' }}>🏨</span>
-                  <span style={{ fontFamily: 'Oswald,sans-serif', fontSize: '16px', fontWeight: 700, color: 'var(--navy)', textTransform: 'uppercase', letterSpacing: '1px' }}>Hospitality</span>
-                </div>
-                <p style={{ fontSize: '13.5px', color: 'var(--muted)', lineHeight: 1.7, marginBottom: '12px' }}>
-                  SMIC360&apos;s hospitality arm offers premium short-stay and long-stay furnished accommodations in Accra — ideal for business travellers, diaspora returnees, and vacation guests.
-                </p>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                  <a
-                    href="/christies-homestay"
-                    style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', color: 'var(--blue)', fontWeight: 700, fontSize: '14px', textDecoration: 'none', transition: 'color .2s' }}
-                    onMouseEnter={e => (e.currentTarget.style.color = 'var(--gold-d)')}
-                    onMouseLeave={e => (e.currentTarget.style.color = 'var(--blue)')}
-                  >
-                    <span style={{ fontSize: '16px' }}>🏡</span>
-                    Christie&apos;s Homestay
-                    <span style={{ fontSize: '12px', fontWeight: 600, color: 'var(--muted)' }}>— Furnished Apartment Rentals</span>
-                  </a>
-                  <a
-                    href="/christies-homestay"
-                    style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', color: 'var(--blue)', fontWeight: 700, fontSize: '14px', textDecoration: 'none', transition: 'color .2s' }}
-                    onMouseEnter={e => (e.currentTarget.style.color = 'var(--gold-d)')}
-                    onMouseLeave={e => (e.currentTarget.style.color = 'var(--blue)')}
-                  >
-                    <span style={{ fontSize: '16px' }}>🌍</span>
-                    Airbnb Short-Stay Rentals
-                    <span style={{ fontSize: '12px', fontWeight: 600, color: 'var(--muted)' }}>— via Christie&apos;s Homestay</span>
-                  </a>
-                </div>
+              <p className="section-sub" style={{ marginTop: '8px' }}>
+                Our real estate division focuses on the full lifecycle of property development and
+                asset management, ensuring architectural excellence and maximum investment value.
+              </p>
+              <div style={{ marginTop: '24px' }}>
+                <ul style={{ listStyle: 'none', padding: 0 }}>
+                  <li style={{ marginBottom: '12px', fontSize: '14px', fontWeight: 500, color: 'var(--text)', display: 'flex', gap: '8px' }}>
+                    <span style={{ color: '#16a34a', fontWeight: 700, flexShrink: 0 }}>✔</span>
+                    <span><strong style={{ color: 'var(--navy)' }}>Property Development &amp; Strategic Sales:</strong> We manage everything from land acquisition and project feasibility to the construction of modern residential and commercial complexes.</span>
+                  </li>
+                  <li style={{ marginBottom: '12px', fontSize: '14px', fontWeight: 500, color: 'var(--text)', display: 'flex', gap: '8px' }}>
+                    <span style={{ color: '#16a34a', fontWeight: 700, flexShrink: 0 }}>✔</span>
+                    <span><strong style={{ color: 'var(--navy)' }}>Property Leasing &amp; Asset Management:</strong> We specialize in the curation of premium rental portfolios, including furnished apartments and executive stays.</span>
+                  </li>
+                  <li style={{ marginBottom: '12px', fontSize: '14px', fontWeight: 500, color: 'var(--text)', display: 'flex', gap: '8px' }}>
+                    <span style={{ color: '#16a34a', fontWeight: 700, flexShrink: 0 }}>✔</span>
+                    <span><strong style={{ color: 'var(--navy)' }}>Operational Excellence:</strong> Our services include rigorous tenant screening, lease administration, and proactive maintenance to preserve long-term asset value.</span>
+                  </li>
+                  <li style={{ marginBottom: '12px', fontSize: '14px', fontWeight: 500, color: 'var(--text)', display: 'flex', gap: '8px' }}>
+                    <span style={{ color: '#16a34a', fontWeight: 700, flexShrink: 0 }}>✔</span>
+                    <span><strong style={{ color: 'var(--navy)' }}>Hospitality Services:</strong> We provide concierge-level support for short-term rentals and guest services.</span>
+                  </li>
+                </ul>
+                <hr style={{ margin: '20px 0', border: 'none', borderTop: '1px solid var(--border)' }} />
               </div>
 
               <div style={{ marginTop: '24px', display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
@@ -163,35 +157,72 @@ export default function SolutionsPage() {
         <div className="wrap">
           <div className="solutions-section-grid reveal">
             <div>
-              <span className="tag">03. Procurement</span>
+              <span className="tag">III. Procurement & Supply Solutions</span>
               <h2 className="section-title">
-                Procurement &amp; <em>Supply Services</em>
+                Procurement &amp; <em>Supply Solutions</em>
               </h2>
-              <p className="section-sub">
-                Tailor-made Procurement and supply services designed to give you value for money.
-                We specialize in end-to-end sourcing of technical equipment, industrial consumables,
-                office supplies, IT equipment, and corporate furniture. Our global vendor network
-                with deep local expertise consistently delivers 15–22% cost savings for clients.
+              <p style={{ fontSize: '15px', fontWeight: 600, color: 'var(--navy)', marginTop: '10px', lineHeight: 1.4 }}>
+                Streamlining Global Sourcing with Precision and Reliability
               </p>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px', marginTop: '24px' }}>
-                {[
-                  'Vendor Management',
-                  'Cost Optimization',
-                  'Quality Assurance',
-                  'Logistics Coordination',
-                  'Industrial Sourcing',
-                  'Contract Negotiation',
-                ].map((item, i) => (
-                  <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '14px', fontWeight: 500, color: 'var(--text)' }}>
-                    <span style={{ color: '#16a34a', fontWeight: 700 }}>✔</span> {item}
-                  </div>
-                ))}
+              <p className="section-sub" style={{ marginTop: '8px' }}>
+                We act as your dedicated sourcing partner, simplifying complex supply chains to
+                deliver high-quality materials and equipment at competitive prices.
+              </p>
+              <div style={{ marginTop: '24px' }}>
+                <ul style={{ listStyle: 'none', padding: 0 }}>
+                  <li style={{ marginBottom: '12px', fontSize: '14px', fontWeight: 500, color: 'var(--text)' }}>
+                    <strong style={{ color: 'var(--navy)' }}>Strategic Sourcing &amp; Cost Efficiency:</strong> Leverage our extensive network to secure the best suppliers and negotiate competitive pricing, reducing your operational costs.
+                  </li>
+                  <li style={{ marginBottom: '12px', fontSize: '14px', fontWeight: 500, color: 'var(--text)' }}>
+                    <strong style={{ color: 'var(--navy)' }}>Quality &amp; Reliability:</strong> We prioritize stringent quality assurance and coordinate complex logistics to ensure every item is delivered on time and to specification.
+                  </li>
+                  <li style={{ marginBottom: '12px', fontSize: '14px', fontWeight: 500, color: 'var(--text)' }}>
+                    <strong style={{ color: 'var(--navy)' }}>Diverse Sourcing Capabilities:</strong>
+                    <ul style={{ listStyle: 'none', paddingLeft: '20px', marginTop: '8px' }}>
+                      <li style={{ marginBottom: '6px', fontSize: '13px', color: 'var(--text)', display: 'flex', gap: '8px' }}>
+                        <span style={{ color: 'var(--gold-d)', flexShrink: 0 }}>›</span>
+                        <span><strong style={{ color: 'var(--navy)' }}>Industrial &amp; Commercial:</strong> Machinery, specialized tools, and safety equipment (PPE).</span>
+                      </li>
+                      <li style={{ marginBottom: '6px', fontSize: '13px', color: 'var(--text)', display: 'flex', gap: '8px' }}>
+                        <span style={{ color: 'var(--gold-d)', flexShrink: 0 }}>›</span>
+                        <span><strong style={{ color: 'var(--navy)' }}>Construction Materials:</strong> High-grade cement, steel, roofing, and electrical fittings.</span>
+                      </li>
+                      <li style={{ marginBottom: '6px', fontSize: '13px', color: 'var(--text)', display: 'flex', gap: '8px' }}>
+                        <span style={{ color: 'var(--gold-d)', flexShrink: 0 }}>›</span>
+                        <span><strong style={{ color: 'var(--navy)' }}>Bulk Commodities:</strong> Industrial and edible salt, and diverse raw materials for manufacturing.</span>
+                      </li>
+                      <li style={{ marginBottom: '6px', fontSize: '13px', color: 'var(--text)', display: 'flex', gap: '8px' }}>
+                        <span style={{ color: 'var(--gold-d)', flexShrink: 0 }}>›</span>
+                        <span><strong style={{ color: 'var(--navy)' }}>Household &amp; Specialized Items:</strong> Premium appliances, hard-to-find components, and custom-order products.</span>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+                <p
+                  style={{
+                    fontSize: '14px',
+                    fontWeight: 600,
+                    color: 'var(--navy)',
+                    marginTop: '20px',
+                  }}
+                >
+                  Building Foundations. Branding Futures. Connecting Markets.
+                </p>
+                <hr
+                  style={{ margin: '20px 0', border: 'none', borderTop: '1px solid var(--border)' }}
+                />
               </div>
-              <button onClick={() => setBookOpen(true)} className="btn btn-primary" style={{ marginTop: '28px' }}>
+              <button
+                onClick={() => setBookOpen(true)}
+                className="btn btn-primary"
+                style={{ marginTop: '28px' }}
+              >
                 Request a Quote →
               </button>
             </div>
-            <div style={{ borderRadius: 'var(--r-lg)', overflow: 'hidden', boxShadow: 'var(--sh-md)' }}>
+            <div
+              style={{ borderRadius: 'var(--r-lg)', overflow: 'hidden', boxShadow: 'var(--sh-md)' }}
+            >
               <img
                 src="https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777655037/360sm_mqzf0p.png"
                 alt="Procurement Solutions"
@@ -203,13 +234,38 @@ export default function SolutionsPage() {
       </section>
 
       {/* CTA */}
-      <div style={{ background: 'linear-gradient(135deg,#071628 0%,#0b2d56 60%,#1361c4 100%)', padding: '80px 0' }}>
-        <div style={{ maxWidth: '800px', margin: '0 auto', padding: '0 28px', textAlign: 'center' }}>
-          <h2 style={{ fontFamily: 'Oswald,sans-serif', fontSize: 'clamp(28px,4vw,48px)', fontWeight: 700, color: '#fff', lineHeight: 1.08, marginBottom: '16px' }}>
-            Ready to Work With <em style={{ fontStyle: 'normal', color: 'var(--cyan)' }}>SMIC360?</em>
+      <div
+        style={{
+          background: 'linear-gradient(135deg,#071628 0%,#0b2d56 60%,#1361c4 100%)',
+          padding: '80px 0',
+        }}
+      >
+        <div
+          style={{ maxWidth: '800px', margin: '0 auto', padding: '0 28px', textAlign: 'center' }}
+        >
+          <h2
+            style={{
+              fontFamily: 'Oswald,sans-serif',
+              fontSize: 'clamp(28px,4vw,48px)',
+              fontWeight: 700,
+              color: '#fff',
+              lineHeight: 1.08,
+              marginBottom: '16px',
+            }}
+          >
+            Ready to Work With{' '}
+            <em style={{ fontStyle: 'normal', color: 'var(--cyan)' }}>SMIC360?</em>
           </h2>
-          <p style={{ color: 'rgba(255,255,255,.62)', fontSize: '16px', marginBottom: '32px', lineHeight: 1.7 }}>
-            Whether you need a national advertising campaign, real estate investment guidance, or a procurement solution — our team is ready to assess your needs and deliver results.
+          <p
+            style={{
+              color: 'rgba(255,255,255,.62)',
+              fontSize: '16px',
+              marginBottom: '32px',
+              lineHeight: 1.7,
+            }}
+          >
+            Whether you need a national advertising campaign, real estate investment guidance, or a
+            procurement solution — our team is ready to assess your needs and deliver results.
           </p>
           <div style={{ display: 'flex', gap: '14px', justifyContent: 'center', flexWrap: 'wrap' }}>
             <button onClick={() => setBookOpen(true)} className="btn btn-primary">

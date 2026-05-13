@@ -14,7 +14,9 @@ function loadTracking() {
   TRACKING_SCRIPTS.forEach(({ src, id }) => {
     if (document.getElementById(id)) return;
     const s = document.createElement('script');
-    s.id = id; s.src = src; s.async = true;
+    s.id = id;
+    s.src = src;
+    s.async = true;
     document.head.appendChild(s);
   });
 }
@@ -24,15 +26,15 @@ function removeTracking() {
     document.getElementById(id)?.remove();
   });
   // Clear common tracking cookies
-  ['_ga', '_gid', '_gat', '_fbp'].forEach(name => {
+  ['_ga', '_gid', '_gat', '_fbp'].forEach((name) => {
     document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.${location.hostname}`;
   });
 }
 
 export default function CookieBanner() {
-  const [show, setShow]       = useState(false);
+  const [show, setShow] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const [view, setView]       = useState<'banner'|'settings'>('banner');
+  const [view, setView] = useState<'banner' | 'settings'>('banner');
 
   useEffect(() => {
     setMounted(true);
@@ -138,14 +140,22 @@ export default function CookieBanner() {
           <span className="ck-icon">🍪</span>
           <div className="ck-text">
             <strong>We value your privacy</strong>
-            <p>We use cookies to improve your experience. Tracking cookies only load with your consent.{' '}
-              <Link href="/privacy">Privacy Policy</Link>.
+            <p>
+              We use cookies to improve your experience. Tracking cookies only load with your
+              consent. <Link href="/privacy">Privacy Policy</Link>.
             </p>
           </div>
           <div className="ck-btns">
-            <button className="ck-accept" onClick={accept}>Accept All</button>
-            <button className="ck-essential" onClick={acceptEssential}>Essential Only</button>
-            <button className="ck-settings-btn" onClick={() => setView(v => v === 'banner' ? 'settings' : 'banner')}>
+            <button className="ck-accept" onClick={accept}>
+              Accept All
+            </button>
+            <button className="ck-essential" onClick={acceptEssential}>
+              Essential Only
+            </button>
+            <button
+              className="ck-settings-btn"
+              onClick={() => setView((v) => (v === 'banner' ? 'settings' : 'banner'))}
+            >
               {view === 'settings' ? 'Hide details ↑' : 'Manage ↓'}
             </button>
           </div>
@@ -155,9 +165,24 @@ export default function CookieBanner() {
           <div className="ck-settings">
             <div className="ck-settings-title">Cookie Details</div>
             {[
-              { label: 'Essential Cookies', desc: 'Session, preferences, security. Required to run the site.', on: true, required: true },
-              { label: 'Analytics Cookies', desc: 'Help us understand how visitors use the site (e.g. Google Analytics).', on: false, required: false },
-              { label: 'Marketing Cookies', desc: 'Used for targeted advertising and remarketing campaigns.', on: false, required: false },
+              {
+                label: 'Essential Cookies',
+                desc: 'Session, preferences, security. Required to run the site.',
+                on: true,
+                required: true,
+              },
+              {
+                label: 'Analytics Cookies',
+                desc: 'Help us understand how visitors use the site (e.g. Google Analytics).',
+                on: false,
+                required: false,
+              },
+              {
+                label: 'Marketing Cookies',
+                desc: 'Used for targeted advertising and remarketing campaigns.',
+                on: false,
+                required: false,
+              },
             ].map((row, i) => (
               <div key={i} className="ck-toggle-row">
                 <div className="ck-toggle-label">
@@ -169,9 +194,13 @@ export default function CookieBanner() {
                 </span>
               </div>
             ))}
-            <div style={{ display:'flex', gap:8, marginTop:14, flexWrap:'wrap' }}>
-              <button className="ck-accept" style={{ flex:1 }} onClick={accept}>Accept All Cookies</button>
-              <button className="ck-essential" style={{ flex:1 }} onClick={decline}>Reject Non-Essential</button>
+            <div style={{ display: 'flex', gap: 8, marginTop: 14, flexWrap: 'wrap' }}>
+              <button className="ck-accept" style={{ flex: 1 }} onClick={accept}>
+                Accept All Cookies
+              </button>
+              <button className="ck-essential" style={{ flex: 1 }} onClick={decline}>
+                Reject Non-Essential
+              </button>
             </div>
           </div>
         )}

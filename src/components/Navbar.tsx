@@ -40,47 +40,83 @@ export default function Navbar({ onBookClick }: NavbarProps) {
           </Link>
 
           <ul className="nav-links">
-            <li><Link href="/">Home</Link></li>
+            <li>
+              <Link href="/">Home</Link>
+            </li>
 
             {/* Solutions mega-menu */}
             <li className="has-drop">
               <Link href="/solutions">Solutions</Link>
               <div className="dropdown" style={{ minWidth: '580px' }}>
-                <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:'0' }}>
-
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0' }}>
                   {/* Col 1 — Advertising and Marketing */}
-                  <div style={{ borderRight:'1px solid var(--border)', paddingRight:'20px' }}>
+                  <div style={{ borderRight: '1px solid var(--border)', paddingRight: '20px' }}>
                     <div className="drop-group-label">Advertising and Marketing</div>
-                    <Link href="/solutions/marketing/branding-works" className="drop-link-sm">Strategy &amp; Advisory</Link>
-                    <Link href="/solutions/marketing/corporate-branding" className="drop-link-sm">Branding &amp; Creative</Link>
-                    <Link href="/solutions/marketing/digital-marketing" className="drop-link-sm">Campaign Execution</Link>
-                    <Link href="/solutions/marketing/media-buying" className="drop-link-sm">Media &amp; Production</Link>
-                    <div className="drop-group-label" style={{marginTop:'12px'}}>Procurement</div>
-                    <Link href="/solutions#procurement" className="drop-link-sm">Procurement &amp; Supply</Link>
+                    <Link href="/solutions/marketing/branding-works" className="drop-link-sm">
+                      Strategy &amp; Advisory
+                    </Link>
+                    <Link href="/solutions/marketing/corporate-branding" className="drop-link-sm">
+                      Branding &amp; Creative
+                    </Link>
+                    <Link href="/solutions/marketing/digital-marketing" className="drop-link-sm">
+                      Campaign Execution
+                    </Link>
+                    <Link href="/solutions/marketing/media-buying" className="drop-link-sm">
+                      Media &amp; Production
+                    </Link>
+                    <div className="drop-group-label" style={{ marginTop: '12px' }}>
+                      Procurement
+                    </div>
+                    <Link href="/solutions#procurement" className="drop-link-sm">
+                      Procurement &amp; Supply
+                    </Link>
                   </div>
 
                   {/* Col 2 — Real Estate */}
-                  <div style={{ paddingLeft:'20px' }}>
+                  <div style={{ paddingLeft: '20px' }}>
                     <div className="drop-group-label">Real Estate</div>
-                    <div style={{fontSize:'10px', fontWeight:800, color:'rgba(7,22,40,0.4)', textTransform:'uppercase', letterSpacing:'1px', marginBottom:'4px'}}>Development</div>
+                    <div
+                      style={{
+                        fontSize: '10px',
+                        fontWeight: 800,
+                        color: 'rgba(7,22,40,0.4)',
+                        textTransform: 'uppercase',
+                        letterSpacing: '1px',
+                        marginBottom: '4px',
+                      }}
+                    >
+                      Development
+                    </div>
                     <Link href="/the-phoenix-enclave" className="drop-item">
-                      <div className="drop-text" style={{color:'var(--navy)'}}>
-                        <h4 style={{color:'var(--navy)'}}>Phoenix Enclave</h4>
-                        <p style={{color:'var(--gold)'}}>Flagship Project</p>
+                      <div className="drop-text" style={{ color: 'var(--navy)' }}>
+                        <h4 style={{ color: 'var(--navy)' }}>Phoenix Enclave</h4>
+                        <p style={{ color: 'var(--gold)' }}>Flagship Project</p>
                       </div>
                     </Link>
 
-                    <div style={{fontSize:'10px', fontWeight:800, color:'rgba(7,22,40,0.4)', textTransform:'uppercase', letterSpacing:'1px', marginBottom:'4px', marginTop:'12px'}}>Furnished Apartments</div>
+                    <div
+                      style={{
+                        fontSize: '10px',
+                        fontWeight: 800,
+                        color: 'rgba(7,22,40,0.4)',
+                        textTransform: 'uppercase',
+                        letterSpacing: '1px',
+                        marginBottom: '4px',
+                        marginTop: '12px',
+                      }}
+                    >
+                      Furnished Apartments
+                    </div>
                     <Link href="/christies-homestay" className="drop-item">
                       <div className="drop-text">
-                        <h4 style={{color:'var(--cyan)'}}>Christie&apos;s Homestay</h4>
+                        <h4 style={{ color: 'var(--cyan)' }}>Christie&apos;s Homestay</h4>
                         <p>Lashibi Community 20</p>
                       </div>
                     </Link>
                     <Link href="/christies-homestay" className="drop-item">
                       <div className="drop-text">
-                        <h4 style={{color:'var(--navy)'}}>Oleaga&apos;s Nest</h4>
-                        <p style={{color:'var(--gold)'}}>Tseado</p>
+                        <h4 style={{ color: 'var(--navy)' }}>Oleaga&apos;s Nest</h4>
+                        <p style={{ color: 'var(--gold)' }}>Tseado</p>
                       </div>
                     </Link>
                   </div>
@@ -93,26 +129,64 @@ export default function Navbar({ onBookClick }: NavbarProps) {
               <Link href="/about">About Us</Link>
               <div className="dropdown">
                 <Link href="/about" className="drop-item">
-                  <div className="drop-text"><h4>Our Story</h4><p>Who we are and our mission</p></div>
+                  <div className="drop-text">
+                    <h4>Our Story</h4>
+                    <p>Who we are and our mission</p>
+                  </div>
                 </Link>
                 <Link href="/about#team" className="drop-item">
-                  <div className="drop-text"><h4>Our Team</h4><p>Meet the experts behind SMIC360</p></div>
+                  <div className="drop-text">
+                    <h4>Our Team</h4>
+                    <p>Meet the experts behind SMIC360</p>
+                  </div>
                 </Link>
                 <Link href="/sdgs" className="drop-item">
-                  <div className="drop-text"><h4>Our SDGs</h4><p>Sustainability &amp; Impact</p></div>
+                  <div className="drop-text">
+                    <h4>Our SDGs</h4>
+                    <p>Sustainability &amp; Impact</p>
+                  </div>
                 </Link>
               </div>
             </li>
 
-            <li><Link href="/portfolio">Portfolio</Link></li>
-            <li><Link href="/contact">Contact</Link></li>
+            <li>
+              <Link href="/portfolio">Portfolio</Link>
+            </li>
+            <li>
+              <Link href="/contact">Contact</Link>
+            </li>
 
             <li>
-              <Link href="/business-login"
-                style={{ display:'inline-flex', alignItems:'center', gap:'5px', background:'rgba(7,22,40,0.12)', border:'1.5px solid rgba(7,22,40,0.35)', borderRadius:'8px', padding:'6px 14px', color:'var(--navy)', fontFamily:'Oswald, sans-serif', fontWeight:700, fontSize:'13px', letterSpacing:'0.4px', textTransform:'uppercase', transition:'all 0.22s', whiteSpace:'nowrap' }}
-                onMouseEnter={e=>{ (e.currentTarget as HTMLElement).style.background='var(--navy)'; (e.currentTarget as HTMLElement).style.color='var(--gold)'; }}
-                onMouseLeave={e=>{ (e.currentTarget as HTMLElement).style.background='rgba(7,22,40,0.12)'; (e.currentTarget as HTMLElement).style.color='var(--navy)'; }}
-              >🔐 Client Login</Link>
+              <Link
+                href="/business-login"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '5px',
+                  background: 'rgba(7,22,40,0.12)',
+                  border: '1.5px solid rgba(7,22,40,0.35)',
+                  borderRadius: '8px',
+                  padding: '6px 14px',
+                  color: 'var(--navy)',
+                  fontFamily: 'Oswald, sans-serif',
+                  fontWeight: 700,
+                  fontSize: '13px',
+                  letterSpacing: '0.4px',
+                  textTransform: 'uppercase',
+                  transition: 'all 0.22s',
+                  whiteSpace: 'nowrap',
+                }}
+                onMouseEnter={(e) => {
+                  (e.currentTarget as HTMLElement).style.background = 'var(--navy)';
+                  (e.currentTarget as HTMLElement).style.color = 'var(--gold)';
+                }}
+                onMouseLeave={(e) => {
+                  (e.currentTarget as HTMLElement).style.background = 'rgba(7,22,40,0.12)';
+                  (e.currentTarget as HTMLElement).style.color = 'var(--navy)';
+                }}
+              >
+                🔐 Client Login
+              </Link>
             </li>
           </ul>
 
@@ -165,52 +239,192 @@ export default function Navbar({ onBookClick }: NavbarProps) {
         </div>
 
         <div className="mobile-links">
-          <Link href="/" onClick={() => setMobileOpen(false)}>Home</Link>
+          <Link href="/" onClick={() => setMobileOpen(false)}>
+            Home
+          </Link>
 
           {/* Solutions group */}
-          <Link href="/solutions" onClick={() => setMobileOpen(false)}>Solutions</Link>
-          <div style={{fontSize:11,fontWeight:700,letterSpacing:'1.5px',textTransform:'uppercase',color:'rgba(7,22,40,0.55)',padding:'10px 20px 2px'}}>Advertising and Marketing</div>
+          <Link href="/solutions" onClick={() => setMobileOpen(false)}>
+            Solutions
+          </Link>
+          <div
+            style={{
+              fontSize: 11,
+              fontWeight: 700,
+              letterSpacing: '1.5px',
+              textTransform: 'uppercase',
+              color: 'rgba(7,22,40,0.55)',
+              padding: '10px 20px 2px',
+            }}
+          >
+            Advertising and Marketing
+          </div>
           <div className="mobile-sublinks">
-            <Link href="/solutions/marketing/branding-works" onClick={() => setMobileOpen(false)} style={{color:'var(--navy)',fontWeight:700}}>Strategy &amp; Advisory</Link>
-            <Link href="/solutions/marketing/corporate-branding" onClick={() => setMobileOpen(false)} style={{color:'var(--navy)',fontWeight:700}}>Branding &amp; Creative</Link>
-            <Link href="/solutions/marketing/digital-marketing" onClick={() => setMobileOpen(false)} style={{color:'var(--navy)',fontWeight:700}}>Campaign Execution</Link>
-            <Link href="/solutions/marketing/media-buying" onClick={() => setMobileOpen(false)} style={{color:'var(--navy)',fontWeight:700}}>Media &amp; Production</Link>
+            <Link
+              href="/solutions/marketing/branding-works"
+              onClick={() => setMobileOpen(false)}
+              style={{ color: 'var(--navy)', fontWeight: 700 }}
+            >
+              Strategy &amp; Advisory
+            </Link>
+            <Link
+              href="/solutions/marketing/corporate-branding"
+              onClick={() => setMobileOpen(false)}
+              style={{ color: 'var(--navy)', fontWeight: 700 }}
+            >
+              Branding &amp; Creative
+            </Link>
+            <Link
+              href="/solutions/marketing/digital-marketing"
+              onClick={() => setMobileOpen(false)}
+              style={{ color: 'var(--navy)', fontWeight: 700 }}
+            >
+              Campaign Execution
+            </Link>
+            <Link
+              href="/solutions/marketing/media-buying"
+              onClick={() => setMobileOpen(false)}
+              style={{ color: 'var(--navy)', fontWeight: 700 }}
+            >
+              Media &amp; Production
+            </Link>
           </div>
 
-          <div style={{fontSize:11,fontWeight:700,letterSpacing:'1.5px',textTransform:'uppercase',color:'rgba(7,22,40,0.55)',padding:'10px 20px 2px'}}>Real Estate</div>
+          <div
+            style={{
+              fontSize: 11,
+              fontWeight: 700,
+              letterSpacing: '1.5px',
+              textTransform: 'uppercase',
+              color: 'rgba(7,22,40,0.55)',
+              padding: '10px 20px 2px',
+            }}
+          >
+            Real Estate
+          </div>
           <div className="mobile-sublinks">
-            <Link href="/the-phoenix-enclave" onClick={() => setMobileOpen(false)} style={{color:'var(--navy)',fontWeight:700}}>
-              Phoenix Enclave — <span style={{color:'var(--gold)'}}>Flagship Project</span>
+            <Link
+              href="/the-phoenix-enclave"
+              onClick={() => setMobileOpen(false)}
+              style={{ color: 'var(--navy)', fontWeight: 700 }}
+            >
+              Phoenix Enclave — <span style={{ color: 'var(--gold)' }}>Flagship Project</span>
             </Link>
-            <Link href="/christies-homestay" onClick={() => setMobileOpen(false)} style={{color:'var(--cyan)',fontWeight:700}}>
-              Christie&apos;s Homestay — <span style={{color:'var(--cyan)'}}>Community 20</span>
+            <Link
+              href="/christies-homestay"
+              onClick={() => setMobileOpen(false)}
+              style={{ color: 'var(--cyan)', fontWeight: 700 }}
+            >
+              Christie&apos;s Homestay — <span style={{ color: 'var(--cyan)' }}>Community 20</span>
             </Link>
-            <Link href="/christies-homestay" onClick={() => setMobileOpen(false)} style={{color:'var(--navy)',fontWeight:700}}>
-              Oleaga&apos;s Nest — <span style={{color:'var(--gold)'}}>Tseado</span>
+            <Link
+              href="/christies-homestay"
+              onClick={() => setMobileOpen(false)}
+              style={{ color: 'var(--navy)', fontWeight: 700 }}
+            >
+              Oleaga&apos;s Nest — <span style={{ color: 'var(--gold)' }}>Tseado</span>
             </Link>
-          </div> 
+          </div>
 
           {/* About Us */}
-          <Link href="/about" onClick={() => setMobileOpen(false)}>About Us</Link>
+          <Link href="/about" onClick={() => setMobileOpen(false)}>
+            About Us
+          </Link>
           <div className="mobile-sublinks">
-            <Link href="/about" onClick={() => setMobileOpen(false)}>Our Story — Who we are and our mission</Link>
-            <Link href="/about#team" onClick={() => setMobileOpen(false)}>Our Team — Meet the experts</Link>
-            <Link href="/sdgs" onClick={() => setMobileOpen(false)}>Our SDGs — Sustainability &amp; Impact</Link>
+            <Link href="/about" onClick={() => setMobileOpen(false)}>
+              Our Story — Who we are and our mission
+            </Link>
+            <Link href="/about#team" onClick={() => setMobileOpen(false)}>
+              Our Team — Meet the experts
+            </Link>
+            <Link href="/sdgs" onClick={() => setMobileOpen(false)}>
+              Our SDGs — Sustainability &amp; Impact
+            </Link>
           </div>
 
-          <Link href="/portfolio" onClick={() => setMobileOpen(false)}>Portfolio</Link>
-          <Link href="/contact" onClick={() => setMobileOpen(false)}>Contact</Link>
+          <Link href="/portfolio" onClick={() => setMobileOpen(false)}>
+            Portfolio
+          </Link>
+          <Link href="/contact" onClick={() => setMobileOpen(false)}>
+            Contact
+          </Link>
 
-          <Link href="/business-login" onClick={() => setMobileOpen(false)}
-            style={{ display:'flex', alignItems:'center', gap:'8px', padding:'13px 16px', borderRadius:'10px', background:'rgba(255,193,7,0.1)', border:'1.5px solid rgba(255,193,7,0.3)', color:'var(--gold)', fontWeight:700, fontSize:'15px', marginTop:'4px' }}
-          >🔐 Business Portal Login</Link>
+          <Link
+            href="/business-login"
+            onClick={() => setMobileOpen(false)}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px',
+              padding: '13px 16px',
+              borderRadius: '10px',
+              background: 'rgba(255,193,7,0.1)',
+              border: '1.5px solid rgba(255,193,7,0.3)',
+              color: 'var(--gold)',
+              fontWeight: 700,
+              fontSize: '15px',
+              marginTop: '4px',
+            }}
+          >
+            🔐 Business Portal Login
+          </Link>
 
-          <button className="mobile-book" onClick={() => { onBookClick(); setMobileOpen(false); }}>📅 Book Us Today</button>
+          <button
+            className="mobile-book"
+            onClick={() => {
+              onBookClick();
+              setMobileOpen(false);
+            }}
+          >
+            📅 Book Us Today
+          </button>
 
-          <div style={{ marginTop:'28px', padding:'20px', background:'rgba(255,255,255,0.05)', borderRadius:'14px', border:'1px solid rgba(255,255,255,0.08)' }}>
-            <div style={{ fontSize:'11px', fontWeight:700, letterSpacing:'2px', textTransform:'uppercase', color:'rgba(255,193,7,0.7)', marginBottom:'12px' }}>Get In Touch</div>
-            <a href="tel:+233203361155" style={{ display:'flex', alignItems:'center', gap:'8px', color:'rgba(255,255,255,0.7)', fontSize:'14px', marginBottom:'8px' }}>📞 +233 20 336 1155</a>
-            <a href="mailto:info@smic360.com" style={{ display:'flex', alignItems:'center', gap:'8px', color:'rgba(255,255,255,0.7)', fontSize:'14px' }}>✉️ info@smic360.com</a>
+          <div
+            style={{
+              marginTop: '28px',
+              padding: '20px',
+              background: 'rgba(255,255,255,0.05)',
+              borderRadius: '14px',
+              border: '1px solid rgba(255,255,255,0.08)',
+            }}
+          >
+            <div
+              style={{
+                fontSize: '11px',
+                fontWeight: 700,
+                letterSpacing: '2px',
+                textTransform: 'uppercase',
+                color: 'rgba(255,193,7,0.7)',
+                marginBottom: '12px',
+              }}
+            >
+              Get In Touch
+            </div>
+            <a
+              href="tel:+233203361155"
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px',
+                color: 'rgba(255,255,255,0.7)',
+                fontSize: '14px',
+                marginBottom: '8px',
+              }}
+            >
+              📞 +233 20 336 1155
+            </a>
+            <a
+              href="mailto:info@smic360.com"
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px',
+                color: 'rgba(255,255,255,0.7)',
+                fontSize: '14px',
+              }}
+            >
+              ✉️ info@smic360.com
+            </a>
           </div>
         </div>
       </div>

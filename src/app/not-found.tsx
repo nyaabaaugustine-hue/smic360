@@ -87,15 +87,15 @@ export default function NotFound() {
             <div className="nf-code">404</div>
             <h1 className="nf-title">Page Not Found</h1>
             <p className="nf-sub">
-              The page you&apos;re looking for doesn&apos;t exist or may have moved.
-              Let&apos;s get you back on track.
+              The page you&apos;re looking for doesn&apos;t exist or may have moved. Let&apos;s get
+              you back on track.
             </p>
 
             <div className="nf-links">
-              <Link href="/" className="btn btn-primary" style={{ textDecoration:'none' }}>
+              <Link href="/" className="btn btn-primary" style={{ textDecoration: 'none' }}>
                 ← Back to Home
               </Link>
-              <Link href="/contact" className="btn btn-outline" style={{ textDecoration:'none' }}>
+              <Link href="/contact" className="btn btn-outline" style={{ textDecoration: 'none' }}>
                 Contact Us
               </Link>
             </div>
@@ -104,18 +104,20 @@ export default function NotFound() {
             <p className="nf-pages-label">Or visit a page</p>
             <div className="nf-pages">
               {[
-                { href:'/',                     label:'Home' },
-                { href:'/about',                 label:'About Us' },
-                { href:'/solutions',             label:'Solutions' },
-                { href:'/the-phoenix-enclave',   label:'Phoenix Enclave' },
-                { href:'/christies-homestay',    label:"Christie's Homestay" },
-                { href:'/portfolio',             label:'Portfolio' },
-                { href:'/blog',                  label:'Blog' },
-                { href:'/contact',               label:'Contact' },
-                { href:'/faq',                   label:'FAQ' },
-                { href:'/sdgs',                  label:'Our SDGs' },
+                { href: '/', label: 'Home' },
+                { href: '/about', label: 'About Us' },
+                { href: '/solutions', label: 'Solutions' },
+                { href: '/the-phoenix-enclave', label: 'Phoenix Enclave' },
+                { href: '/christies-homestay', label: "Christie's Homestay" },
+                { href: '/portfolio', label: 'Portfolio' },
+                { href: '/blog', label: 'Blog' },
+                { href: '/contact', label: 'Contact' },
+                { href: '/faq', label: 'FAQ' },
+                { href: '/sdgs', label: 'Our SDGs' },
               ].map(({ href, label }) => (
-                <Link key={href} href={href} className="nf-page-link">{label}</Link>
+                <Link key={href} href={href} className="nf-page-link">
+                  {label}
+                </Link>
               ))}
             </div>
           </div>

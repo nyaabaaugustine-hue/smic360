@@ -77,7 +77,8 @@ const jsonLd = {
   name: 'SMIC360 Limited',
   url: 'https://www.smic360.com',
   logo: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777107241/cropped-SMIC-01-180x180_pffxe7.jpg',
-  description: "A world-class multi-sector company delivering Strategic Marketing, Real Estate, and Procurement solutions globally.",
+  description:
+    'A world-class multi-sector company delivering Strategic Marketing, Real Estate, and Procurement solutions globally.',
   address: {
     '@type': 'PostalAddress',
     streetAddress: '1st Floor, Verostina House, Opp. DSTV Office, Community 18, Off Spintex Road',
