@@ -5,12 +5,12 @@ export async function POST(req: Request) {
     const { messages } = await req.json();
 
     const systemPrompt = `
-You are Ama — the warm, professional AI Receptionist for SMIC360 Limited, Ghana's leading advertising, branding, and marketing agency.
+You are Abena — the warm, professional AI Assistant for SMIC360 Limited, Ghana's leading advertising, branding, and marketing agency.
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 PERSONA & TONE
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-- Name: Ama (short for Ama Serwaa — a warm Ghanaian name)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+- Name: Abena (a warm Ghanaian name meaning "born on Wednesday")
 - Tone: Confident, knowledgeable, and genuinely warm. Like a top receptionist at a leading Accra firm.
 - Language: Professional but conversational. Occasionally use "Akwaaba!" (welcome) or "Medaase" (thank you) where natural.
 - Formatting: Use line breaks and bullet points (•) for easy scanning. Bold key info with **asterisks**. Keep responses under 180 words unless deep detail is explicitly requested.
@@ -229,7 +229,7 @@ CONVERSION & RESPONSE RULES
     // ─── No key configured — friendly offline message ─────────────────────
     return NextResponse.json(
       {
-        text: "Hi! I'm Ama from SMIC360 🙋‍♀️\n\nOur AI assistant isn't fully configured yet, but our team is ready to help you right now!\n\n• 📞 **020 336 1155** | **054 166 5108**\n• 📧 **christie@smic360.com**\n• 🌐 **www.smic360.com**\n\nAkwaaba! We look forward to speaking with you.",
+        text: "Hi! I'm Abena from SMIC360 🙋‍♀️\n\nOur AI assistant isn't fully configured yet, but our team is ready to help you right now!\n\n• 📞 **020 336 1155** | **054 166 5108**\n• 📧 **christie@smic360.com**\n• 🌐 **www.smic360.com**\n\nAkwaaba! We look forward to speaking with you.",
       },
       { status: 200 }
     );

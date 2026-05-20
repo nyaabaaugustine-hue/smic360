@@ -124,7 +124,7 @@ export default function Footer({ onBookClick }: FooterProps) {
                 transition: 'color 0.2s',
               }}
             >
-              <span style={{ color: 'var(--gold)', fontSize: '12px' }}>📞</span> +233 20 336 1155
+              <span style={{ color: 'var(--gold)', fontSize: '12px' }}>📞</span> +233 20 336 1155 | +233 30 292 5478
             </a>
             <a
               href="mailto:christie@smic360.com"

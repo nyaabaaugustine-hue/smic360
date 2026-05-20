@@ -9,7 +9,7 @@ interface Message {
 }
 
 const WELCOME: Message = {
-  text: "👋 Akwaaba! I'm Ama, your SMIC360 virtual receptionist.\n\nI can tell you about our **Marketing**, **Real Estate** (Phoenix Enclave), and **Procurement** services — or help you book a free consultation.\n\nHow can I help you today?",
+  text: "👋 Akwaaba! I'm Abena, your SMIC360 AI Assistant.\n\nI can tell you about our **Marketing**, **Real Estate** (Phoenix Enclave), and **Procurement** services — or help you book a free consultation.\n\nHow can I help you today?",
   type: 'bot',
   time: 'Just now',
 };
@@ -21,8 +21,13 @@ const QUICK_REPLIES = [
   { label: '📅 Book a Call', msg: 'I would like to book a free consultation' },
 ];
 
-export default function ChatPanel() {
+interface ChatPanelProps {
+  hideFloatingButtons?: boolean;
+}
+
+export default function ChatPanel({ hideFloatingButtons = false }: ChatPanelProps) {
   const [mounted, setMounted] = useState(false);
+  const [pageLoaded, setPageLoaded] = useState(false);
   const [chatOpen, setChatOpen] = useState(false);
   const [scrollShow, setScrollShow] = useState(false);
   const [unread, setUnread] = useState(0);
@@ -39,6 +44,11 @@ export default function ChatPanel() {
 
   useEffect(() => {
     setMounted(true);
+    if (document.readyState === 'complete') {
+      setPageLoaded(true);
+    } else {
+      window.addEventListener('load', () => setPageLoaded(true), { once: true });
+    }
     const onScroll = () => setScrollShow(window.scrollY > 400);
     window.addEventListener('scroll', onScroll, { passive: true });
     const tease = setTimeout(() => {
@@ -92,7 +102,9 @@ export default function ChatPanel() {
         role: m.type === 'bot' ? 'assistant' : 'user',
         content: m.text,
       }));
-      const res = await fetch('/api/chat', {
+      const isLocalhost = typeof window !== 'undefined' && window.location.hostname === 'localhost';
+      const apiUrl = isLocalhost ? '/api/chat' : '/chat-api.php';
+      const res = await fetch(apiUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ messages: [...history, { role: 'user', content: trimmed }] }),
@@ -493,64 +505,69 @@ export default function ChatPanel() {
         .cp-send:hover { transform: scale(1.1) rotate(15deg); }
       `}</style>
 
-      {/* ── Scroll to top ── */}
-      <button
-        id="s360-top"
-        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        aria-label="Back to top"
-        style={{
-          opacity: scrollShow ? 1 : 0,
-          visibility: scrollShow ? 'visible' : 'hidden',
-          border: 'none',
-        }}
-      >
-        <svg
-          width="17"
-          height="17"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="3"
-          strokeLinecap="round"
-          strokeLinejoin="round"
+      {/* ── WhatsApp (visible after page load) ── */}
+      {pageLoaded && (
+        <a
+          id="s360-wa"
+          href="https://wa.me/233244783099"
+          onClick={handleWaClick}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Chat on WhatsApp"
         >
-          <path d="M18 15l-6-6-6 6" />
-        </svg>
-      </button>
+          <span className="wa-tip">💬 Chat on WhatsApp</span>
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+          </svg>
+        </a>
+      )}
 
-      {/* ── WhatsApp ── */}
-      <a
-        id="s360-wa"
-        href="https://wa.me/233244783099"
-        onClick={handleWaClick}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Chat on WhatsApp"
-      >
-        <span className="wa-tip">💬 Chat on WhatsApp</span>
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-        </svg>
-      </a>
+      {/* ── Scroll to top & Secondary FABs (hidden on homepage, show after load) ── */}
+      {pageLoaded && !hideFloatingButtons && (
+        <>
+          <button
+            id="s360-top"
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            aria-label="Back to top"
+            style={{
+              opacity: scrollShow ? 1 : 0,
+              visibility: scrollShow ? 'visible' : 'hidden',
+              border: 'none',
+            }}
+          >
+            <svg
+              width="17"
+              height="17"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M18 15l-6-6-6 6" />
+            </svg>
+          </button>
 
-      {/* ── Secondary FABs ── */}
-      <div id="s360-fabs">
-        <button
-          className="s360-fab s360-fab-ai"
-          onClick={() => setChatOpen((o) => !o)}
-          aria-label="Chat with Ama, SMIC360 AI Receptionist"
-          aria-expanded={chatOpen}
-          style={{ border: 'none', padding: 0, overflow: 'hidden' }}
-        >
-          <span className="s360-tip">Chat with Ama 🤖</span>
-          {unread > 0 && !chatOpen && <span className="s360-badge">{unread}</span>}
-          <img
-            className="s360-fab-img"
-            src="https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777107241/cropped-SMIC-01-180x180_pffxe7.jpg"
-            alt="Ama — SMIC360 AI Receptionist"
-          />
-        </button>
-      </div>
+          <div id="s360-fabs">
+            <button
+              className="s360-fab s360-fab-ai"
+              onClick={() => setChatOpen((o) => !o)}
+              aria-label="Chat with Abena, SMIC360 AI Receptionist"
+              aria-expanded={chatOpen}
+              style={{ border: 'none', padding: 0, overflow: 'hidden' }}
+            >
+              <span className="s360-tip">Chat with Abena 🤖</span>
+              {unread > 0 && !chatOpen && <span className="s360-badge">{unread}</span>}
+              <img
+                className="s360-fab-img"
+                src="https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777107241/cropped-SMIC-01-180x180_pffxe7.jpg"
+                alt="Abena — SMIC360 AI Receptionist"
+              />
+            </button>
+          </div>
+        </>
+      )}
 
       {/* ── Chat overlay ── */}
       {chatOpen && <div id="s360-overlay" onClick={() => setChatOpen(false)} aria-hidden="true" />}
@@ -561,17 +578,17 @@ export default function ChatPanel() {
           id="s360-chat"
           role="dialog"
           aria-modal="true"
-          aria-label="Chat with Ama, SMIC360 AI Receptionist"
+          aria-label="Chat with Abena, SMIC360 AI Receptionist"
         >
           <div className="cp-head">
             <div className="cp-avatar">
               <img
                 src="https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777107241/cropped-SMIC-01-180x180_pffxe7.jpg"
-                alt="Ama AI"
+                alt="Abena AI"
               />
             </div>
             <div className="cp-info">
-              <h4>Ama · SMIC360 Receptionist</h4>
+              <h4>Abena · SMIC360 Receptionist</h4>
               <p>AI-powered · Replies instantly</p>
             </div>
             <span className="cp-dot" />
@@ -616,7 +633,7 @@ export default function ChatPanel() {
               </div>
             ))}
             {isTyping && (
-              <div className="cp-typing" aria-label="Ama is typing">
+              <div className="cp-typing" aria-label="Abena is typing">
                 <span />
                 <span />
                 <span />
@@ -636,7 +653,7 @@ export default function ChatPanel() {
           <div className="cp-input-row">
             <input
               type="text"
-              placeholder="Ask Ama anything…"
+              placeholder="Ask Abena anything…"
               value={inputVal}
               onChange={(e) => setInputVal(e.target.value)}
               onKeyDown={(e) => {

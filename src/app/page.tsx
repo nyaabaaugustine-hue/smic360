@@ -247,25 +247,25 @@ const teamMembers = [
 const testimonials = [
   {
     text: '"Despite our tight deadlines, we could still count on their creativity and delivery; which met our demands and the evolving market of our organization."',
-    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80',
+    avatar: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1779109679/Suleiman_Habuba_abxq5e.avif',
     name: 'Suleiman Habuba',
     company: 'Media Director, Confederation of African Football (CAF)',
   },
   {
     text: '"Thanks for excellent work done and for the swift delivery."',
-    avatar: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=100&q=80',
+    avatar: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1779109679/Mr._Oppong_Ampnsah_nsjftn.avif',
     name: 'Mr. Oppong Ampnsah',
     company: 'MD, Adwinsa Publications Limited',
   },
   {
     text: '"If anyone knows BRANDING then MESHAN-AD CONSULT is the place to go for a good image and awesome communicative artworks. Thanks so much for my design."',
-    avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80',
+    avatar: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1779109679/Katherine_s8yhms.avif',
     name: 'Katherine',
     company: 'Montessori Training Center',
   },
   {
     text: '"When I finally found Meshan-Ad Consult it was simply awesome. It is as if the company knew my needs even before I could tell them! They have the ability to work within your budget to produce any quantity of items you need with topmost quality. I am forever grateful."',
-    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80',
+    avatar: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1779109679/Clara_Pinkrah-Sam_pvjf5v.avif',
     name: 'Clara Pinkrah-Sam',
     company: 'CEO, Claturally Natural Hair',
   },
@@ -941,21 +941,17 @@ export default function HomePage() {
               <div className="about-points">
                 {[
                   {
-                    icon: '📣',
+                    icon: '',
                     title: 'Our Vision',
-                    desc: 'To become the Preferred Advertising Agency in Ghana and Beyond.',
+                    desc: 'To be a globally recognized multi-sector powerhouse, delivering the excellence that empowers sustainable growth.',
                   },
                   {
-                    icon: '🎨',
+                    icon: '',
                     title: 'Our Mission',
-                    desc: 'To provid equality and effective Advertising, Media and PR service while investing in the intellect of our professionals and using up todate technology to maximize the value of our clients.',
+                    desc: 'To engineer growth and deliver measurable results through strategic excellence, data-informed decision-making, and operational precision; all under one roof.  ',
                   },
-                  {
-                    icon: '📰',
-                    title: 'Our Core Values',
-                    desc: 'Professionalism ~ Creativity ~ Innovation ~ Quality ~ TeamSpirit ~ Diversity ~ Entrepreneurial Spirit',
-                  },
-                  { icon: '🌍', title: '', desc: '' },
+                 
+           
                 ].map((pt, i) => (
                   <div key={i} className="apoint">
                     <div className="apoint-icon">{pt.icon}</div>
@@ -1651,7 +1647,7 @@ export default function HomePage() {
                   {
                     icon: '📞',
                     title: 'Phone',
-                    desc: '+233 20 336 1155 — We are always available to serve you',
+                    desc: '+233 20 336 1155 | +233 30 292 5478 — We are always available to serve you',
                   },
                   {
                     icon: '✉️',
@@ -1661,7 +1657,7 @@ export default function HomePage() {
                   {
                     icon: '🕐',
                     title: 'Office Hours',
-                    desc: 'Monday – Friday: 8:00 AM – 6:00 PM | Saturday: 9:00 AM – 2:00 PM',
+                    desc: 'Monday – Friday: 8:00 AM – 5:00 PM |',
                   },
                 ].map((item, i) => (
                   <div key={i} className="hq-detail-item">
@@ -1736,7 +1732,7 @@ export default function HomePage() {
           <p style={{ marginTop: '14px', fontSize: '12px', color: 'rgba(255,255,255,.32)' }}>
             Or call us:{' '}
             <a href="tel:+233203361155" style={{ color: 'var(--cyan)', fontWeight: 700 }}>
-              +233 20 336 1155
+              +233 20 336 1155 | +233 30 292 5478
             </a>{' '}
             — No obligation.
           </p>

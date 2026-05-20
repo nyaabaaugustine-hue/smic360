@@ -40,7 +40,10 @@ export default function PageLoader() {
   // After exit animation (~700ms), fully unmount from DOM
   useEffect(() => {
     if (phase === 'done') {
-      const t = setTimeout(() => setPhase('gone'), 750);
+      const t = setTimeout(() => {
+        setPhase('gone');
+        window.scrollTo(0, 0);
+      }, 750);
       return () => clearTimeout(t);
     }
   }, [phase]);

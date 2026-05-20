@@ -685,7 +685,7 @@ export default function AboutPage() {
               Our Foundation
             </span>
             <h2 className="section-title">
-              Vision, Mission &amp; <em>Core Values</em>
+              Vision &amp; <em> Mission</em>
             </h2>
           </div>
 
@@ -727,7 +727,7 @@ export default function AboutPage() {
                   fontStyle: 'italic',
                 }}
               >
-                &ldquo;To become the Preferred Advertising Agency in Ghana &amp; Beyond.&rdquo;
+                To be a globally recognized multi-sector powerhouse, delivering the excellence that empowers sustainable growth.&rdquo;
               </p>
             </div>
             <div
@@ -758,9 +758,7 @@ export default function AboutPage() {
                   fontStyle: 'italic',
                 }}
               >
-                &ldquo;To provide quality and effective Advertising, Media and PR service while
-                investing in the intellect of our professionals and using up to date technology to
-                maximize the value of our clients.&rdquo;
+                &ldquo;To engineer growth and deliver measurable results through strategic excellence, data-informed decision-making, and operational precision; all under one roof. .&rdquo;
               </p>
             </div>
           </div>

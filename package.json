@@ -40,7 +40,7 @@
   },
   "scripts": {
     "dev": "next dev -p 4028",
-    "build": "next build",
+    "build": "next build && node -e \"require('fs').copyFileSync('.htaccess', 'out/.htaccess'); require('fs').copyFileSync('chat-api.php', 'out/chat-api.php')\"",
     "start": "next dev -p 4028",
     "lint": "next lint",
     "lint:fix": "next lint --fix",

@@ -1,6 +1,8 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import LanguageSwitcher from './LanguageSwitcher';
+import DarkModeToggle from './DarkModeToggle';
 
 interface NavbarProps {
   onBookClick: () => void;
@@ -193,6 +195,11 @@ export default function Navbar({ onBookClick }: NavbarProps) {
           <button onClick={onBookClick} className="nav-book btn">
             Book Us
           </button>
+
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginLeft: '12px' }}>
+            <LanguageSwitcher />
+            <DarkModeToggle />
+          </div>
 
           <div
             className={`hamburger${mobileOpen ? ' open' : ''}`}

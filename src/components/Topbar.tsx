@@ -30,7 +30,7 @@ export default function Topbar() {
             >
               <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.09 10.82a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14v2.92z" />
             </svg>
-            <span style={{ color: 'var(--gold)', fontWeight: 600 }}>+233 20 336 1155</span>
+            <span style={{ color: 'var(--gold)', fontWeight: 600 }}>+233 20 336 1155 | +233 30 292 5478</span>
           </a>
         </div>
         <div className="topbar-right">
@@ -58,7 +58,7 @@ export default function Topbar() {
               ig
             </a>
             <a
-              href="https://web.facebook.com/smic360limited"
+              href="https://www.linkedin.com/company/smic360-limited/posts/?feedView=all"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"

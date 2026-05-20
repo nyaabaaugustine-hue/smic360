@@ -4,6 +4,7 @@ import '../styles/index.css';
 import '../styles/tailwind.css';
 import CookieBanner from '@/components/CookieBanner';
 import LoaderWrapper from '@/components/LoaderWrapper';
+import { LanguageProvider } from '@/context/LanguageContext';
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -54,7 +55,7 @@ export const metadata: Metadata = {
     siteName: 'SMIC360 Limited',
     images: [
       {
-        url: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777114247/kkkl_nhdczf.avif',
+        url: 'https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777107241/cropped-SMIC-01-180x180_pffxe7.jpg',
         width: 1200,
         height: 630,
         alt: 'SMIC360 Limited — Ghana Business Solutions',
@@ -67,7 +68,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'SMIC360 — Building Foundations. Branding Futures.',
     description: "Ghana's leading partner for Strategic Marketing, Real Estate, and Procurement.",
-    images: ['https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777114247/kkkl_nhdczf.avif'],
+    images: ['https://res.cloudinary.com/dwsl2ktt2/image/upload/v1777107241/cropped-SMIC-01-180x180_pffxe7.jpg'],
   },
 };
 
@@ -101,6 +102,16 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en">
       <head>
+        <script dangerouslySetInnerHTML={{__html: `
+          (function() {
+            var theme = localStorage.getItem('smic-theme');
+            if (theme === 'light') {
+              document.documentElement.setAttribute('data-theme', 'light');
+            }
+          })();
+        `}} />
+      </head>
+      <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
@@ -117,11 +128,32 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fsmic3609178back.builtwithrocket.new&_be=https%3A%2F%2Fappanalytics.rocket.new&_v=0.1.18"
         />
         <script type="module" defer src="https://static.rocket.new/rocket-shot.js?v=0.0.2" />
+        {/* Google Analytics - Replace G-XXXXXXX with your Measurement ID */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX" />
+        <script dangerouslySetInnerHTML={{__html: `
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-XXXXXXXXXX');
+        `}} />
       </head>
       <body>
-        <LoaderWrapper />
-        <div className="page-root">{children}</div>
-        <CookieBanner />
+        <style dangerouslySetInnerHTML={{__html: `
+          body { background: #040e1d; }
+          .page-root { opacity: 0; transition: opacity 0.3s; }
+          body.smic-loaded .page-root { opacity: 1; }
+          [data-theme="light"] { --bg-primary: #f5f7fa; --bg-secondary: #ffffff; --text-primary: #1a1a2e; --text-secondary: #4a4a6a; }
+        `}} />
+        <LanguageProvider>
+          <LoaderWrapper />
+          <div className="page-root">{children}</div>
+          <CookieBanner />
+        </LanguageProvider>
+        <script dangerouslySetInnerHTML={{__html: `
+          window.addEventListener('load', function() {
+            setTimeout(function() { document.body.classList.add('smic-loaded'); }, 800);
+          });
+        `}} />
       </body>
     </html>
   );

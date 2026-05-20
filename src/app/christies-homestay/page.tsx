@@ -1503,7 +1503,7 @@ export default function ChristiesHomestayPage() {
             </a>{' '}
             ·{' '}
             <a href="tel:0208812164" style={{ color: 'var(--cyan)', fontWeight: 700 }}>
-              020 881 2164
++233 30 292 5478
             </a>
           </p>
         </div>
